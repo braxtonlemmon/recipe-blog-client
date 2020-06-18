@@ -1,21 +1,22 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled from 'styled-components';
 import PropTypes from "prop-types"
 import Header from './Header';
+import NavBar from './NavBar';
 import Footer from './Footer';
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto auto 1fr auto;
   grid-template-areas:
     "header"
+    "navbar"
     "main"
     "footer";
   min-height: 100vh;
 `
 
 const Main = styled.main`
-  margin-top: 4em;
   padding-bottom: 3em;
   display: flex;
   justify-content: center;
@@ -26,9 +27,33 @@ const Main = styled.main`
 `;
 
 const Layout = ({ children }) => {
+  const [headerHeight, setHeaderHeight] = useState('');
+  // const [isScrolled, setScrolled] = useState();
+  
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined') {
+  //     const box = document.getElementById('main-image');
+  //     const options = {
+  //       rootMargin: '0px',
+  //       threshold: 1
+  //     };
+
+  //     const observer = new IntersectionObserver(entries => {
+  //       entries.forEach(entry => {
+  //         setScrolled(entry.isIntersecting);
+  //       })
+  //     }, options)
+
+  //     observer.observe(box);
+  //     return () => observer.unobserve(box);
+  //   }
+  // }, [])
+
+
   return (
     <Wrapper>
       <Header />
+      <NavBar />
       <Main>{children}</Main>
       <Footer />
     </Wrapper>

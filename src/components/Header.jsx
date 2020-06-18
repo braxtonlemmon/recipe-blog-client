@@ -4,53 +4,29 @@ import { Link } from 'gatsby';
 import { H1 } from './Headings';
 
 const HeaderBar = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
   display: flex;
+  flex-direction: column;
   width: 100%;
-  padding: 10px;
+  padding: 20px;
   background: white;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 3px dashed black;
+  justify-content: center;
   z-index: 10;
   grid-area: header;
 `;
 
 const MyH1 = styled(H1)`
   font-size: 1.4em;
+  border-bottom: 1px solid lightgrey;
+  width: 100%;
+  height: 100%;
   margin: 0;
-  padding: 0;
+  padding: 20px;
+  text-align: center;
   @media (min-width: 600px) {
     font-size: 2.2em;
   }
-`;
-
-const Buttons = styled.div`
-  display: grid;
-  justify-items: center;
-  align-items: center;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 5px;
-`;
-
-const Button = styled.button`
-  display: flex;
-  background-color: #754c4ccf;
-  color: white;
-  justify-content: center;
-  align-items: center;
-  padding: 7px;
-  font-size: 1.1em;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  &:hover {
-    box-shadow: -2px 2px 2px darkgrey;
-    transform: scale(1.01);
-  }
-  outline: none;
 `;
 
 function Header() {
@@ -59,11 +35,6 @@ function Header() {
       <Link to='/'>
         <MyH1>Flat Out Cooking</MyH1>
       </Link>
-      <Buttons>
-        <Link to='/'><Button>Recipes</Button></Link>
-        <Link to='/About'><Button>About</Button></Link>
-        <Link to='/Contact'><Button>Contact</Button></Link>
-      </Buttons>
     </HeaderBar>
   )
 }

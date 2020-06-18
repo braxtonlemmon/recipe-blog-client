@@ -72,7 +72,7 @@ function RecipePage({ data }) {
       <Wrapper>
         <MyH1>{recipe.title}</MyH1>
         <Image url={recipe.image}></Image>
-        <Image>
+        <Image id="main-image">
           {recipe.mainImage && (
             <Img
               className="main-image"
@@ -107,7 +107,7 @@ function RecipePage({ data }) {
           </ul>
         </IngredientsBox>
         <StepsBox id="steps-box">
-          <H2>Steps</H2>
+          <H2 id="steps">Steps</H2>
           <p className='sidenote'>***click each step as you go to keep track of your progress***</p>
           <ul>
             {recipe.steps.map((step, index) => (

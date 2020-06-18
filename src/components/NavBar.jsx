@@ -1,0 +1,64 @@
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'gatsby';
+
+const HeaderBar = styled.div`
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+  background: white;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  justify-content: center;
+  border-bottom: 3px dashed black;
+  z-index: 10;
+  grid-area: navbar;
+`;
+
+
+const Buttons = styled.div`
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  position: sticky;
+  top: 10px;
+`;
+
+const Button = styled.button`
+  display: flex;
+  background-color: #754c4ccf;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    box-shadow: -2px 2px 2px darkgrey;
+    transform: scale(1.01);
+  }
+  outline: none;
+`;
+
+function NavBar() {
+  return (
+    <HeaderBar>
+      <Buttons>
+        <Link to='/'><Button>Recipes</Button></Link>
+        <Link to='/About'><Button>About</Button></Link>
+        <Link to='/Contact'><Button>Contact</Button></Link>
+      </Buttons>
+    </HeaderBar>
+  )
+}
+
+export default NavBar;
+

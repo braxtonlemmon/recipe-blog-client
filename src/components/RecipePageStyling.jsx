@@ -52,7 +52,7 @@ const IngredientsBox = styled(InfoBox)`
         // width: 17.1vw;
         // color: black;
         position: sticky;
-        top: 50px;
+        top: 60px;
         `
     }
   }}

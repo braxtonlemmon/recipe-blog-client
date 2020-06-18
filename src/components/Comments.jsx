@@ -25,6 +25,7 @@ function Comments({ mongodb_id }) {
         setCommentsLoaded={setCommentsLoaded}
       />
       <CommentBox
+        id="comment-box"
         comments={comments}
       />
     </>
