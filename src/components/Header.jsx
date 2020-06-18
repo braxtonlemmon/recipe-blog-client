@@ -7,7 +7,7 @@ const HeaderBar = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 20px;
+  /* padding: 20px; */
   background: white;
   align-items: center;
   justify-content: space-between;

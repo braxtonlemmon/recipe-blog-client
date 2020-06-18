@@ -27,29 +27,6 @@ const Main = styled.main`
 `;
 
 const Layout = ({ children }) => {
-  const [headerHeight, setHeaderHeight] = useState('');
-  // const [isScrolled, setScrolled] = useState();
-  
-  // useEffect(() => {
-  //   if (typeof window !== 'undefined') {
-  //     const box = document.getElementById('main-image');
-  //     const options = {
-  //       rootMargin: '0px',
-  //       threshold: 1
-  //     };
-
-  //     const observer = new IntersectionObserver(entries => {
-  //       entries.forEach(entry => {
-  //         setScrolled(entry.isIntersecting);
-  //       })
-  //     }, options)
-
-  //     observer.observe(box);
-  //     return () => observer.unobserve(box);
-  //   }
-  // }, [])
-
-
   return (
     <Wrapper>
       <Header />

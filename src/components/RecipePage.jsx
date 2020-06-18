@@ -19,6 +19,7 @@ function RecipePage({ data }) {
   const recipe = data.mongodbTestRecipes;
   const [ingredientsFixed, setIngredientsFixed] = useState(false);
   const [checkboxes, setCheckboxes] = useState(loadCheckboxes());
+  const [navHeight, setNavHeight] = useState('');
 
   function loadCheckboxes() {
     if (typeof window !== 'undefined') {
@@ -30,6 +31,13 @@ function RecipePage({ data }) {
   }
 
   useEffect(() => {
+    const navbar = document.getElementById('navbar');
+    const height = navbar.getBoundingClientRect().height;
+    console.log(height);
+    setNavHeight(`${height}px`);
+  }, []);
+
+  useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem(recipe.id));
     if (storedData === null) {
       localStorage.setItem(recipe.id, JSON.stringify({}));
@@ -38,24 +46,22 @@ function RecipePage({ data }) {
     }
   }, [recipe.id])
 
-
   useEffect(() => {
-    const isWindow = typeof window !== 'undefined';
-    if (isWindow) {
-      window.addEventListener('scroll', handleScroll);
-    }
-    return () => isWindow ? window.removeEventListener('scroll', handleScroll) : null;
-  })
+    if (typeof document !== 'undefined') {
+      const box = document.getElementById('ingredients-box');
+      const options = {
+        threshold: 1
+      }
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          setIngredientsFixed(entry.isIntersecting);
+        })
+      }, options)
 
-  function handleScroll() {
-    const ingredientsBox = document.getElementById('ingredients-box').getBoundingClientRect();
-    const stepsBox = document.getElementById('steps-box').getBoundingClientRect();
-    if (stepsBox.top <= 55 && ingredientsBox.height < window.innerHeight - 150) {
-      setIngredientsFixed(true);
-    } else if (stepsBox.top > 55) {
-      setIngredientsFixed(false);
+      observer.observe(box);
+      return () => observer.unobserve(box);
     }
-  }
+  }, [])
 
   function handleCheck(e) {
     const storedData = JSON.parse(localStorage.getItem(recipe.id));
@@ -85,7 +91,11 @@ function RecipePage({ data }) {
           <H2>About</H2>
           <p>{recipe.intro}</p>
         </AboutBox>
-        <IngredientsBox fixed={ingredientsFixed} id="ingredients-box">
+        <IngredientsBox 
+          fixed={ingredientsFixed} 
+          id="ingredients-box"
+          navHeight={navHeight}
+        >
           <H2>Ingredients</H2>
           <ul>
             {recipe.ingredients.map((ingredient, index) => (

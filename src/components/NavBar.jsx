@@ -8,13 +8,14 @@ const HeaderBar = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 10px;
+  padding: 20px;
   background: white;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 15px;
   justify-content: center;
-  border-bottom: 3px dashed black;
+  /* border-bottom: 3px solid black; */
+  box-shadow: 0px 4px 3px lightgrey;
   z-index: 10;
   grid-area: navbar;
 `;
@@ -24,8 +25,8 @@ const Buttons = styled.div`
   display: grid;
   justify-items: center;
   align-items: center;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-auto-flow: column;
+  gap: 50px;
   position: sticky;
   top: 10px;
 `;
@@ -50,9 +51,10 @@ const Button = styled.button`
 
 function NavBar() {
   return (
-    <HeaderBar>
+    <HeaderBar id="navbar">
       <Buttons>
         <Link to='/'><Button>Recipes</Button></Link>
+        <Link to='/'><Button>Random</Button></Link>
         <Link to='/About'><Button>About</Button></Link>
         <Link to='/Contact'><Button>Contact</Button></Link>
       </Buttons>
