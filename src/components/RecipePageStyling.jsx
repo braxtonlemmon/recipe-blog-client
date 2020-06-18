@@ -50,6 +50,7 @@ const IngredientsBox = styled(InfoBox)`
         // position: fixed;
         // top: 50;
         // width: 17.1vw;
+        // color: black;
         position: sticky;
         top: 50px;
         `
