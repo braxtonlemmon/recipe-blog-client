@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
+import { Link, useStaticQuery, graphql } from 'gatsby';
 
 const HeaderBar = styled.div`
   position: sticky;
@@ -50,11 +50,34 @@ const Button = styled.button`
 `;
 
 function NavBar() {
+  const data = useStaticQuery(
+    graphql`
+      query {
+        allMongodbTestRecipes {
+          edges {
+            node {
+              title
+            }
+          }
+        }
+      }
+    `
+  )
+  
+  const getRandomTitle = () => {
+    const dbTitles = data.allMongodbTestRecipes.edges.map(({ node }) => node.title);
+    const randomTitle = dbTitles[Math.floor(Math.random() * dbTitles.length)];
+    return randomTitle.toLowerCase().replace(/ /g, '-');
+  }
+  
+
   return (
     <HeaderBar id="navbar">
       <Buttons>
         <Link to='/'><Button>Recipes</Button></Link>
-        <Link to='/'><Button>Random</Button></Link>
+        <Link to={`/recipe/${getRandomTitle()}`}><Button>Random</Button></Link>
+        {/* <Link to='/'><Button>Random</Button></Link> */}
+
         <Link to='/About'><Button>About</Button></Link>
         <Link to='/Contact'><Button>Contact</Button></Link>
       </Buttons>

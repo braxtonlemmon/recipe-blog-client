@@ -45,9 +45,7 @@ const IngredientsBox = styled(InfoBox)`
   grid-area: ingredients;
   @media (min-width: 1000px) {
     position: ${props => props.fixed ? 'sticky' : 'relative'};
-    top: ${props => props.navHeight};
-    
-  }}
+    top: ${props => props.fixed ? `${props.navHeight}px` : '0'};
   }
 `;
 

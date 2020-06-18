@@ -3,16 +3,26 @@ import styled from 'styled-components';
 import { Link, graphql } from 'gatsby';
 import RecipeCard from '../components/RecipeCard';
 import SEO from '../components/seo';
+import { H1 } from '../components/Headings';
 
 const Wrapper = styled.ul`
   display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  align-items: center;
+  width: 90%;
+  /* li {
+    margin: 15px;
+  } */
+`;
+
+const Recipes = styled.ul`
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, 260px);
-  gap: 10px;
-  width: 90%;
+  width: 100%;
   li {
-    margin: 15px;
+    margin: 20px;
   }
 `;
 
@@ -23,17 +33,20 @@ function IndexPage({ data }) {
     <>
       <SEO title="Home" description="Catalog of recipes" />
       <Wrapper>
-        {recipes.map(({node}) => {
-          const slug = node.title.toLowerCase().replace(/ /g, '-');
-          if (node.is_published) {
-            return (
-              <Link key={node.id} to={`/recipe/${slug}`}>
-                <li key={`list~${node.id}`}>
-                  <RecipeCard recipe={node} key={`card~${node.id}`} />
-                </li>
-              </Link>)
-            }
-          })}
+        <H1>Recipes</H1>
+        <Recipes>
+          {recipes.map(({node}) => {
+            const slug = node.title.toLowerCase().replace(/ /g, '-');
+            if (node.is_published) {
+              return (
+                <Link key={node.id} to={`/recipe/${slug}`}>
+                  <li key={`list~${node.id}`}>
+                    <RecipeCard recipe={node} key={`card~${node.id}`} />
+                  </li>
+                </Link>)
+              }
+            })}
+          </Recipes>
       </Wrapper>
     </>
   )

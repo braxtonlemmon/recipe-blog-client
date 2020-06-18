@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import SEO from '../components/seo';
+import { H1 } from '../components/Headings';
 
 const Wrapper = styled.div`
 
@@ -11,7 +12,7 @@ function Contact() {
     <>
       <SEO title="Contact" description="Contact page" />
       <Wrapper>
-        <h1>Contact</h1>
+        <H1>Contact</H1>
       </Wrapper>
     </>
   )

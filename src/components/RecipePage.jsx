@@ -19,8 +19,9 @@ function RecipePage({ data }) {
   const recipe = data.mongodbTestRecipes;
   const [ingredientsFixed, setIngredientsFixed] = useState(false);
   const [checkboxes, setCheckboxes] = useState(loadCheckboxes());
-  const [navHeight, setNavHeight] = useState('');
+  const [navHeight, setNavHeight] = useState();
 
+  // helper functions
   function loadCheckboxes() {
     if (typeof window !== 'undefined') {
       const storedData = JSON.parse(localStorage.getItem(recipe.id));
@@ -30,11 +31,21 @@ function RecipePage({ data }) {
     }
   }
 
+  function handleCheck(e) {
+    const storedData = JSON.parse(localStorage.getItem(recipe.id));
+    console.log(e.target.id);
+    storedData[e.target.id] = e.target.checked;
+    localStorage.setItem(recipe.id, JSON.stringify(storedData));
+    console.log(storedData);
+    setCheckboxes(storedData);
+  }
+
+  // useEffect
+
   useEffect(() => {
     const navbar = document.getElementById('navbar');
     const height = navbar.getBoundingClientRect().height;
-    console.log(height);
-    setNavHeight(`${height}px`);
+    setNavHeight(height);
   }, []);
 
   useEffect(() => {
@@ -54,7 +65,7 @@ function RecipePage({ data }) {
       }
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-          setIngredientsFixed(entry.isIntersecting);
+          entry.isIntersecting ? setIngredientsFixed(true) : setIngredientsFixed(false);
         })
       }, options)
 
@@ -63,14 +74,6 @@ function RecipePage({ data }) {
     }
   }, [])
 
-  function handleCheck(e) {
-    const storedData = JSON.parse(localStorage.getItem(recipe.id));
-    console.log(e.target.id);
-    storedData[e.target.id] = e.target.checked;
-    localStorage.setItem(recipe.id, JSON.stringify(storedData));
-    console.log(storedData);
-    setCheckboxes(storedData);
-  }
 
   return (
     <>

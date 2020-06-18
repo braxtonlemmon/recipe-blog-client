@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import SEO from '../components/seo';
+import { H1 } from '../components/Headings';
 
 const Wrapper = styled.div`
 
@@ -11,7 +12,7 @@ function About() {
     <>
       <SEO title="About" description="About page" />
       <Wrapper>
-        <h1>About</h1>
+        <H1>About</H1>
         <ul>
           <li>Recipes should include both metric and imperial units</li>
           <li>If you are using a tablet or laptop, the ingredients shoud always be visible</li>
