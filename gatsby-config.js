@@ -74,12 +74,12 @@ module.exports = {
     "gatsby-plugin-styled-components",
     `gatsby-transformer-sharp`,
   ],
-  developMiddleware: app => {
-    app.use(
-      "/api",
-      createProxyMiddleware({
-        target: "http://localhost:9000",
-      })
-    )
-  }
+  // developMiddleware: app => {
+  //   app.use(
+  //     "/api",
+  //     createProxyMiddleware({
+  //       target: "http://localhost:4000",
+  //     })
+  //   )
+  // }
 }

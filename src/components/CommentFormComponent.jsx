@@ -66,7 +66,7 @@ function CommentFormComponent(props) {
       </textarea>
 
       <button
-        onClick={props.handleSubmit}
+        onClick={(e) => props.handleSubmit(e, 0)}
       >
         Submit
       </button>

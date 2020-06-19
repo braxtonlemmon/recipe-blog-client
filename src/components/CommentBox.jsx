@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { H2 } from './Headings';
 
@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   padding: 15px;
   border-top: 5px solid black;
-  align-items: left;
+  align-items: center;
   /* background: blue; */
   width: 80%;
   max-width: 900px;
@@ -15,14 +15,19 @@ const Wrapper = styled.div`
 `;
 
 const CommentRow = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 90%;
   padding: 15px;
-  background: rgba(242,232,242,0.80);
+  padding-bottom: 30px;
+  background: rgba(247, 191, 247, 0.78);
   box-shadow: -2px 2px 2px lightgrey;
   margin: 15px;
+  margin-left: ${props => props.margin}px;
   border-radius: 8px;
+  transition: all 5s ease;
   /* border-bottom: 2px dashed black; */
   .comment-info {
     display: flex;
@@ -43,6 +48,27 @@ const CommentRow = styled.div`
     margin: 5px 20px;
     align-self: center;
     text-align: justify;
+  }
+  .comment-reply {
+    height: 20px;
+    width: 100%;
+    border: 1px solid black;
+  }
+`;
+
+const ReplyButton = styled.button`
+  border: none;
+  color: white;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 5px;
+  padding: 3px;
+  cursor: pointer;
+  background: red;
+  outline: none;
+  &:hover {
+    transform: scale(1.05);
   }
 `;
 
@@ -71,31 +97,145 @@ const CommentRow = styled.div`
 //     margin-left: 20px;
 //   }
 // `;
+const ReplyBox = styled.textarea`
+  height: 80px;
+  width: 90%;
+  padding: 10px;
+  resize: none;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  text-align: center;
+  margin-bottom: 10px;
+`;
 
-function CommentBox(props) {
-  const generateComments = () => {
-    let allComments = [];
-    props.comments.map((comment, i) => {
-      return allComments.push(
-        <CommentRow key={i}>
-          <div className="comment-info">
-            <span className="comment-name">{comment.name.toUpperCase()}</span>
-            <span className="comment-date">{comment.dateFormatted}</span>
-          </div>
-          <p className="comment-content">{comment.content}</p>
-        </CommentRow>
-      )
-    })
-    return allComments;
+const ReplyName = styled.input`
+  border-radius: 5px;
+  padding: 10px 5px;
+  width: 90%;
+  border: none;
+  outline: none;
+  margin-bottom: 10px;
+  text-align: center;
+`
+
+const ReplySubmit = styled.button`
+  border-radius: 5px;
+  padding: 5px;
+  border: none;
+  background: red;
+  color: white;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
   }
 
+`;
+
+const ReplyForm = styled.form`
+  width: 100%;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+`
+
+function Comment({ comment, comments, i, margin}) {
+  const [replyClicked, setReplyClicked] = useState(false);
+  const handleReplyClick = () => {
+    // console.log(comment._id);
+    const parent = document.getElementById(`${comment._id}`)
+    const box = !replyClicked;
+    setReplyClicked(box);
+  }
+  const children = comments.filter(comm => comm.parent === comment._id);
+
+  const nestedComments = (children || []).map(comment => {
+    return <Comment key={comment._id} comment={comment} margin={margin+30} comments={comments} type="child" />
+  })
+
+  return (
+    <div>
+      <CommentRow 
+        margin={margin}
+        key={comment._id}
+        id={comment._id}
+      >
+        <div className="comment-info">
+          <span className="comment-name">{comment.name.toUpperCase()}</span>
+          <span className="comment-date">{comment.dateFormatted}</span>
+        </div>
+        <p className="comment-content">{comment.content}</p>
+        {replyClicked && 
+          <ReplyForm
+          >
+            <ReplyName
+              id="name"
+              name="name"
+              placeholder="Your name (optional)"
+            />
+            <ReplyBox
+              placeholder="Your reply here..."
+              id="reply"
+              name="reply"
+            ></ReplyBox>
+            <ReplySubmit>Submit</ReplySubmit>
+          </ReplyForm>
+        }
+        <ReplyButton onClick={handleReplyClick}>{replyClicked ? 'Close' : 'Reply'}</ReplyButton>
+      </CommentRow>
+      {nestedComments}
+    </div>
+  )
+}
+
+function CommentBox(props) {
+  const [comments, setComments] = useState(props.comments);
+  // const generateComments = () => {
+  //   let allComments = [];
+  //   props.topComments.map((comment, i) => {
+  //     return allComments.push(
+  //       <CommentRow key={i}>
+  //         <div className="comment-info">
+  //           <span className="comment-name">{comment.name.toUpperCase()}</span>
+  //           <span className="comment-date">{comment.dateFormatted}</span>
+  //         </div>
+  //         <p className="comment-content">{comment.content}</p>
+  //       </CommentRow>
+  //     )
+  //   })
+  //   console.log(props.comments);
+  //   props.topComments.map(comment => {
+  //     return (
+  //       <>
+  //         <h1>hey</h1>
+  //         <Comment key={comment._id} comment={comment} comments={props.comments}/>
+  //       </>
+  //     )
+
+  //   })
+  //   return allComments;
+  // }
   return (
     <Wrapper>
       <H2>Comments</H2>
-      <div>{
-        props.comments.length === 0 ?
+      {/* <div>{
+        props.topComments.length === 0 ?
           '- No comments yet -' :
+
           generateComments()}
+      </div> */}
+      <div>
+        {
+          props.topComments.map((comment, i) => {
+            let margin = 15;
+            return (
+              <Comment key={comment._id} comment={comment} comments={comments} i={i} margin={margin}/>
+            )
+          })
+        }
       </div>
     </Wrapper>
   )

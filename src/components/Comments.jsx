@@ -4,32 +4,51 @@ import CommentFormContainer from './CommentFormContainer';
 
 function Comments({ mongodb_id }) {
   const [comments, setComments] = useState([]);
+  const [topComments, setTopComments] = useState([]);
   const [commentsLoaded, setCommentsLoaded] = useState(false);
 
   useEffect(() => {
     const abortController = new AbortController();
     
     // fetch(`/api/comments/${mongodb_id}`, { signal: abortController.signal })
-    fetch(`https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/comments/${mongodb_id}`, { signal: abortController.signal })
+    fetch(`http://localhost:4000/dev/api/comments/${mongodb_id}`, { signal: abortController.signal })
+
+    // fetch(`https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/comments/${mongodb_id}`, { signal: abortController.signal })
       .then(result => result.json())
-      .then(data => setComments(data.data))
-      .then(() => setCommentsLoaded(true))
+      .then(data => { 
+        const topLevel = data.data.filter(comment => comment.level === 0);
+        setTopComments(topLevel);
+        setComments(data.data)
+      })
+      .then(() => {
+        // console.log(comments);
+        // console.log(topComments);
+        setCommentsLoaded(true)
+      })
       .catch(err => console.error("Request failed", err))
       return () => abortController.abort();
   }, [commentsLoaded, mongodb_id])
+  
+  if (commentsLoaded) {
+    return (
+      <>
+        <CommentFormContainer
+          mongodb_id={mongodb_id}
+          setCommentsLoaded={setCommentsLoaded}
+        />
+        <CommentBox
+          id="comment-box"
+          comments={comments}
+          topComments={topComments}
+        />
+      </>
+    )
+  } else {
+    return (
+      <h1>loading. . .</h1>
+    )
+  }
 
-  return (
-    <>
-      <CommentFormContainer
-        mongodb_id={mongodb_id}
-        setCommentsLoaded={setCommentsLoaded}
-      />
-      <CommentBox
-        id="comment-box"
-        comments={comments}
-      />
-    </>
-  )
 }
 
 export default Comments;
