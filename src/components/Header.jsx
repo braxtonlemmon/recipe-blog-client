@@ -12,7 +12,7 @@ const HeaderBar = styled.div`
   align-items: center;
   justify-content: space-between;
   justify-content: center;
-  z-index: 10;
+  z-index: 501;
   grid-area: header;
 `;
 

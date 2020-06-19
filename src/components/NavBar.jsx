@@ -16,7 +16,7 @@ const HeaderBar = styled.div`
   justify-content: center;
   /* border-bottom: 3px solid black; */
   box-shadow: 0px 4px 3px lightgrey;
-  z-index: 10;
+  z-index: 501;
   grid-area: navbar;
 `;
 

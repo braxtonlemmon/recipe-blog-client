@@ -43,9 +43,12 @@ const AboutBox = styled(InfoBox)`
 
 const IngredientsBox = styled(InfoBox)`
   grid-area: ingredients;
+  z-index: 500;
+  box-shadow: -2px 2px 2px lightgrey, 2px -2px 2px lightgrey;
+  background: #ffffff;
   @media (min-width: 1000px) {
     position: ${props => props.fixed ? 'sticky' : 'relative'};
-    top: ${props => props.fixed ? `${props.navHeight}px` : '0'};
+    top: ${props => props.fixed ? `${props.navHeight + 10}px` : '0'};
   }
 `;
 

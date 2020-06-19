@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { H2 } from './Headings';
+import ReplyFormContainer from './ReplyFormContainer';
 
 const Wrapper = styled.div`
   display: flex;
@@ -142,7 +143,7 @@ const ReplyForm = styled.form`
   margin: 10px;
 `
 
-function Comment({ comment, comments, i, margin}) {
+function Comment({ comment, comments, i, margin, setCommentsLoaded}) {
   const [replyClicked, setReplyClicked] = useState(false);
   const handleReplyClick = () => {
     // console.log(comment._id);
@@ -153,7 +154,7 @@ function Comment({ comment, comments, i, margin}) {
   const children = comments.filter(comm => comm.parent === comment._id);
 
   const nestedComments = (children || []).map(comment => {
-    return <Comment key={comment._id} comment={comment} margin={margin+30} comments={comments} type="child" />
+    return <Comment key={comment._id} setCommentsLoaded={setCommentsLoaded} comment={comment} margin={margin+30} comments={comments} type="child" />
   })
 
   return (
@@ -169,20 +170,11 @@ function Comment({ comment, comments, i, margin}) {
         </div>
         <p className="comment-content">{comment.content}</p>
         {replyClicked && 
-          <ReplyForm
-          >
-            <ReplyName
-              id="name"
-              name="name"
-              placeholder="Your name (optional)"
-            />
-            <ReplyBox
-              placeholder="Your reply here..."
-              id="reply"
-              name="reply"
-            ></ReplyBox>
-            <ReplySubmit>Submit</ReplySubmit>
-          </ReplyForm>
+          <ReplyFormContainer 
+            parent={comment._id}
+            recipe={comment.recipe}
+            setCommentsLoaded={setCommentsLoaded}
+          />
         }
         <ReplyButton onClick={handleReplyClick}>{replyClicked ? 'Close' : 'Reply'}</ReplyButton>
       </CommentRow>
@@ -232,7 +224,7 @@ function CommentBox(props) {
           props.topComments.map((comment, i) => {
             let margin = 15;
             return (
-              <Comment key={comment._id} comment={comment} comments={comments} i={i} margin={margin}/>
+              <Comment key={comment._id} setCommentsLoaded={props.setCommentsLoaded} comment={comment} comments={comments} i={i} margin={margin}/>
             )
           })
         }

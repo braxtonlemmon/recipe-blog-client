@@ -29,25 +29,22 @@ function Comments({ mongodb_id }) {
       return () => abortController.abort();
   }, [commentsLoaded, mongodb_id])
   
-  if (commentsLoaded) {
-    return (
+  return (
       <>
         <CommentFormContainer
           mongodb_id={mongodb_id}
           setCommentsLoaded={setCommentsLoaded}
         />
-        <CommentBox
+        { commentsLoaded && 
+          <CommentBox
           id="comment-box"
           comments={comments}
           topComments={topComments}
-        />
+          setCommentsLoaded={setCommentsLoaded}
+          />
+        }
       </>
     )
-  } else {
-    return (
-      <h1>loading. . .</h1>
-    )
-  }
 
 }
 
