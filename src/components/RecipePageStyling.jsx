@@ -50,6 +50,9 @@ const IngredientsBox = styled(InfoBox)`
     position: ${props => props.fixed ? 'sticky' : 'relative'};
     top: ${props => props.fixed ? `${props.navHeight + 10}px` : '0'};
   }
+  .ingredient-label {
+    cursor: pointer;
+  }
 `;
 
 const StepsBox = styled(InfoBox)`

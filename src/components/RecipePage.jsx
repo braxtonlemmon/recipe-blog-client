@@ -114,7 +114,10 @@ function RecipePage({ data }) {
                   defaultChecked={checkboxes[`ingredient-checkbox-${index}`] === true}
                   onChange={handleCheck}
                 ></input>
-                <p>{ingredient}</p>
+                <label className="ingredient-label" htmlFor={`ingredient-checkbox-${index}`}>
+                  {ingredient}
+                </label>
+                {/* <p>{ingredient}</p> */}
               </Ingredient>
             ))}
           </ul>
