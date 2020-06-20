@@ -14,6 +14,7 @@ import {
   Ingredient,
   Step
 } from './RecipePageStyling';
+import PropTypes from 'prop-types';
 
 function RecipePage({ data }) {
   const recipe = data.mongodbTestRecipes;
@@ -33,21 +34,21 @@ function RecipePage({ data }) {
 
   function handleCheck(e) {
     const storedData = JSON.parse(localStorage.getItem(recipe.id));
-    console.log(e.target.id);
     storedData[e.target.id] = e.target.checked;
     localStorage.setItem(recipe.id, JSON.stringify(storedData));
-    console.log(storedData);
     setCheckboxes(storedData);
   }
 
   // useEffect
 
+  // detects height of navbar to use when making ingredients box sticky
   useEffect(() => {
     const navbar = document.getElementById('navbar');
     const height = navbar.getBoundingClientRect().height;
     setNavHeight(height);
   }, []);
 
+  // loads saved data from localStorage
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem(recipe.id));
     if (storedData === null) {
@@ -57,6 +58,7 @@ function RecipePage({ data }) {
     }
   }, [recipe.id])
 
+  // observer that watches position of ingredients box
   useEffect(() => {
     if (typeof document !== 'undefined') {
       const box = document.getElementById('ingredients-box');
@@ -117,7 +119,6 @@ function RecipePage({ data }) {
                 <label className="ingredient-label" htmlFor={`ingredient-checkbox-${index}`}>
                   {ingredient}
                 </label>
-                {/* <p>{ingredient}</p> */}
               </Ingredient>
             ))}
           </ul>
@@ -151,6 +152,9 @@ function RecipePage({ data }) {
       </Wrapper>
     </>
   )
+}
+RecipePage.propTypes = {
+  data: PropTypes.object
 }
 
 export default RecipePage;

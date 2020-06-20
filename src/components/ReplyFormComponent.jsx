@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import Button from './Button';
 
+// Styled components
 const ReplyForm = styled.form`
   width: 100%;
   align-self: center;
@@ -33,19 +36,8 @@ const ReplyName = styled.input`
   text-align: center;
 `;
 
-const ReplySubmit = styled.button`
-  border-radius: 5px;
-  padding: 5px;
-  border: none;
-  background: red;
-  color: white;
-  cursor: pointer;
-  &:hover {
-    transform: scale(1.05);
-  }
-`;
-
-function ReplyFormComponent(props) {
+// Functional component
+function ReplyFormComponent({ data, handleChange, handleSubmit}) {
   return (
     <ReplyForm name="replyForm">
       <ReplyName
@@ -53,8 +45,8 @@ function ReplyFormComponent(props) {
         name="name"
         placeholder="Your name (optional)"
         type="text"
-        value={props.data.name}
-        onChange={props.handleChange}
+        value={data.name}
+        onChange={handleChange}
       />
 
       <ReplyBox
@@ -62,17 +54,23 @@ function ReplyFormComponent(props) {
         id="content"
         name="content"
         required
-        value={props.data.content}
-        onChange={props.handleChange}
+        value={data.content}
+        onChange={handleChange}
       ></ReplyBox>
 
-      <ReplySubmit
-        onClick={(e) => props.handleSubmit(e, 1)}
+      <Button
+        onClick={(e) => handleSubmit(e, 1)}
       >
         Submit
-      </ReplySubmit>
+      </Button>
     </ReplyForm>
   )
+}
+
+ReplyFormComponent.propTypes = {
+  data: PropTypes.object,
+  handleChange: PropTypes.func,
+  handleSubmit: PropTypes.func,
 }
 
 export default ReplyFormComponent;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CommentBox from './CommentBox';
 import CommentFormContainer from './CommentFormContainer';
+import PropTypes from 'prop-types';
 
 function Comments({ mongodb_id }) {
   const [comments, setComments] = useState([]);
@@ -20,11 +21,7 @@ function Comments({ mongodb_id }) {
         setTopComments(topLevel);
         setComments(data.data)
       })
-      .then(() => {
-        // console.log(comments);
-        // console.log(topComments);
-        setCommentsLoaded(true)
-      })
+      .then(() => setCommentsLoaded(true))
       .catch(err => console.error("Request failed", err))
       return () => abortController.abort();
   }, [commentsLoaded, mongodb_id])
@@ -37,15 +34,18 @@ function Comments({ mongodb_id }) {
         />
         { commentsLoaded && 
           <CommentBox
-          id="comment-box"
-          comments={comments}
-          topComments={topComments}
-          setCommentsLoaded={setCommentsLoaded}
+            id="comment-box"
+            comments={comments}
+            topComments={topComments}
+            setCommentsLoaded={setCommentsLoaded}
           />
         }
       </>
     )
+}
 
+Comments.propTypes = {
+  mongodb_id: PropTypes.string
 }
 
 export default Comments;

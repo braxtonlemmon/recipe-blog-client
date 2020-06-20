@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { 
+  createContext, 
+  useContext, 
+  useState, 
+  useEffect 
+} from 'react';
+import PropTypes from 'prop-types';
 
 const viewportContext = createContext({});
 
@@ -39,6 +45,10 @@ export const ViewportProvider = ({ children }) => {
       {children}
     </viewportContext.Provider>
   )
+}
+
+ViewportProvider.propTypes = {
+  children: PropTypes.node.isRequired
 }
 
 export const useViewport = () => {

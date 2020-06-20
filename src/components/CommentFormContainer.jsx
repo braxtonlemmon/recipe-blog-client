@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import CommentFormComponent from './CommentFormComponent';
+import PropTypes from 'prop-types';
 
 function CommentFormContainer({ mongodb_id, setCommentsLoaded }) {
   const [data, setData] = useState({
@@ -51,6 +52,11 @@ function CommentFormContainer({ mongodb_id, setCommentsLoaded }) {
       data={data}
     />
   )
+}
+
+CommentFormContainer.propTypes = {
+  mongodb_id: PropTypes.string,
+  setCommentsLoaded: PropTypes.func,
 }
 
 export default CommentFormContainer;

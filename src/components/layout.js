@@ -7,6 +7,7 @@ import Footer from './Footer';
 
 const Wrapper = styled.div`
   display: grid;
+  width: 100%;
   grid-template-rows: auto auto 1fr auto;
   grid-template-areas:
     "header"

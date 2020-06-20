@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReplyFormComponent from './ReplyFormComponent';
+import PropTypes from 'prop-types';
 
 function ReplyFormContainer({ parent, recipe, setCommentsLoaded }) {
   const [data, setData] = useState({
@@ -54,6 +55,12 @@ function ReplyFormContainer({ parent, recipe, setCommentsLoaded }) {
       data={data}
     />
   )
+}
+
+ReplyFormContainer.propTypes = {
+  parent: PropTypes.string,
+  recipe: PropTypes.string,
+  setCommentsLoaded: PropTypes.func,
 }
 
 export default ReplyFormContainer;

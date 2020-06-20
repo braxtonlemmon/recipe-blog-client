@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
+import PropTypes from 'prop-types';
 
+// Styled components
 const Wrapper = styled.div`
   display: flex;
   position: relative;
@@ -17,14 +19,13 @@ const Wrapper = styled.div`
     background: black;
     color: white;
   }
-  /* width: 100%; */
   height: 100%;
-`
+`;
 
 const H2 = styled.h2`
   font-size: 1.5em;
   text-decoration: none;
-`
+`;
 
 const Image = styled.div`
   height: 200px;
@@ -36,7 +37,7 @@ const Image = styled.div`
   .thumbnail-image {
     height: 100%;
   }
-`
+`;
 
 const Quote = styled.div`
   position: absolute;
@@ -50,8 +51,9 @@ const Quote = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-`
+`;
 
+// Functional component
 function RecipeCard({ recipe }) {
   const [isMouseOver, setIsMouseOver] = useState(false);
 
@@ -80,6 +82,10 @@ function RecipeCard({ recipe }) {
       </Quote>
     </Wrapper>
   )
+}
+
+RecipeCard.propTypes = {
+  recipe: PropTypes.object,
 }
 
 export default RecipeCard;
