@@ -32,7 +32,9 @@ function CommentFormContainer({ mongodb_id, setCommentsLoaded }) {
         name: data.name,
         content: data.content,
         recipe: mongodb_id,
-        level: level
+        level: level,
+        fromAdmin: false,
+        answered: false
       })
     })
       .then(response => {

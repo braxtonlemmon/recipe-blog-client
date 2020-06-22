@@ -35,7 +35,9 @@ function ReplyFormContainer({ parent, recipe, setCommentsLoaded }) {
         content: data.content,
         recipe: data.recipe,
         parent: data.parent,
-        level: level
+        level: level,
+        answered: false,
+        fromAdmin: false
       })
     })
       .then(response => {

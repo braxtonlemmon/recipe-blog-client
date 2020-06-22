@@ -12,7 +12,8 @@ const CommentRow = styled.div`
   width: 90%;
   padding: 15px;
   padding-bottom: 30px;
-  background: rgba(247, 191, 247, 0.78);
+  /* background: rgba(247, 191, 247, 0.78); */
+  background: ${props => props.fromAdmin ? 'lightgreen' : 'rgba(247, 191, 247, 0.78)'};
   box-shadow: -2px 2px 2px lightgrey;
   margin: 15px;
   margin-left: ${props => props.margin}px;
@@ -75,6 +76,7 @@ function Comment({ comment, comments, margin, setCommentsLoaded }) {
         margin={margin}
         key={comment._id}
         id={comment._id}
+        fromAdmin={comment.fromAdmin}
       >
         <div className="comment-info">
           <span className="comment-name">{comment.name.toUpperCase()}</span>
