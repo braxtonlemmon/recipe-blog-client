@@ -33,7 +33,7 @@ function Header() {
   return (
     <HeaderBar>
       <Link to='/'>
-        <MyH1>wheat and corn</MyH1>
+        <MyH1>Peel the Garlic</MyH1>
       </Link>
     </HeaderBar>
   )

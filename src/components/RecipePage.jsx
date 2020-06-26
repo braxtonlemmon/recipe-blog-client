@@ -18,6 +18,7 @@ import PropTypes from 'prop-types';
 
 function RecipePage({ data }) {
   const recipe = data.mongodbTestRecipes;
+  const images = data.mongodbTestRecipes.fields.images;
   const [ingredientsFixed, setIngredientsFixed] = useState(false);
   const [checkboxes, setCheckboxes] = useState(loadCheckboxes());
   const [navHeight, setNavHeight] = useState();
@@ -43,6 +44,7 @@ function RecipePage({ data }) {
 
   // detects height of navbar to use when making ingredients box sticky
   useEffect(() => {
+    console.log(images);
     const navbar = document.getElementById('navbar');
     const height = navbar.getBoundingClientRect().height;
     setNavHeight(height);
@@ -83,7 +85,7 @@ function RecipePage({ data }) {
       <Wrapper>
         <MyH1>{recipe.title}</MyH1>
         <Image url={recipe.image}></Image>
-        <Image id="main-image">
+        {/* <Image id="main-image">
           {recipe.mainImage && (
             <Img
               className="main-image"
@@ -91,6 +93,13 @@ function RecipePage({ data }) {
               alt={recipe.title}
             />
           )}
+        </Image> */}
+        <Image id="main-image">
+            <Img
+              className="main-image"
+              fluid={images[0].localFile.childImageSharp.fluid}
+              alt={recipe.title}
+            />
         </Image>
         <AboutBox>
           <H2>About</H2>
@@ -165,17 +174,31 @@ export const pageQuery = graphql`
       id
       mongodb_id
       title
-      image
+
       ingredients
       intro
       steps
-      mainImage {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
+      fields {
+        images {
+          localFile {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
           }
         }
       }
     }
   }
 `;
+
+// mainImage {
+      //   childImageSharp {
+      //     fluid {
+      //       ...GatsbyImageSharpFluid
+      //     }
+      //   }
+      // }
+
+      //       image

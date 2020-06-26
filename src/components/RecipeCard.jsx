@@ -56,7 +56,7 @@ const Quote = styled.div`
 // Functional component
 function RecipeCard({ recipe }) {
   const [isMouseOver, setIsMouseOver] = useState(false);
-
+  const images = recipe.fields.images;
   const handleMouseOver = () => {
     setIsMouseOver(true);
   }
@@ -69,13 +69,14 @@ function RecipeCard({ recipe }) {
     <Wrapper onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave} onFocus={handleMouseOver}>
       <H2>{recipe.title}</H2>
       <Image>
-        {recipe.mainImage && (
+
           <Img
             className="thumbnail-image"
-            fluid={recipe.mainImage.childImageSharp.fluid}
+            // fluid={recipe.mainImage.childImageSharp.fluid}
+            fluid={images[0].localFile.childImageSharp.fluid}
             alt={recipe.title}
           />
-        )}
+
       </Image>
       <Quote isMouseOver={isMouseOver}>
         <p>{recipe.quote}</p>

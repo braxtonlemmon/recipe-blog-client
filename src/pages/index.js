@@ -28,7 +28,6 @@ const Recipes = styled.ul`
 
 function IndexPage({ data }) {
   const recipes = data.allMongodbTestRecipes.edges;
-
   return (
     <>
       <SEO title="Home" description="Catalog of recipes" />
@@ -62,17 +61,30 @@ export const pageQuery = graphql`
           title
           quote
           is_published
-          image
-          id
-          mainImage {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
+          fields {
+            images {
+              localFile {
+                childImageSharp {
+                  fluid {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
               }
             }
           }
+          id
+           
         }
       }
     }
   }
 `
+
+// mainImage {
+          //   childImageSharp {
+          //     fluid {
+          //       ...GatsbyImageSharpFluid
+          //     }
+          //   }
+          // }
+          // image

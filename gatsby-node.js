@@ -35,30 +35,89 @@ exports.createPages = async ({ graphql, actions }) => {
 //     console.log(node.internal.type)
 // }
 
+// exports.onCreateNode = async ({
+//   node,
+//   actions: { createNode },
+//   store,
+//   cache,
+//   createNodeId,
+// }) => {
+//   if (
+//     node.internal.type === 'mongodbTestRecipes' &&
+//     node.image !== null
+//   ) {
+//     console.log(node.image);
+//     let fileNode = await createRemoteFileNode({
+//       url: node.image,
+//       parentNodeId: node.id,
+//       createNode,
+//       createNodeId,
+//       cache,
+//       store,
+//     })
+
+//     if (fileNode) {
+//       node.mainImage___NODE = fileNode.id
+//     }
+//   }
+// }
+
+const isEmpty = val => {
+  if (val === undefined || val.length === 0) {
+    return true;
+  } else {
+    return false
+  }
+}
+
 exports.onCreateNode = async ({
   node,
-  actions: { createNode },
+  actions,
   store,
   cache,
   createNodeId,
 }) => {
-  if (
-    node.internal.type === 'mongodbTestRecipes' &&
-    node.image !== null
-  ) {
-    console.log(node.image);
-    let fileNode = await createRemoteFileNode({
-      url: node.image,
-      parentNodeId: node.id,
-      createNode,
-      createNodeId,
-      cache,
-      store,
-    })
+  const { createNodeField, createNode } = actions
 
-    if (fileNode) {
-      node.mainImage___NODE = fileNode.id
+  if (node.internal.type === 'mongodbTestRecipes') {
+    if (node.images && !isEmpty(node.images)) {
+      const images = await Promise.all(
+        node.images.map(url =>
+          createRemoteFileNode({
+            url: url,
+            parentNodeId: node.id,
+            store,
+            cache,
+            createNode,
+            createNodeId,
+          })
+        )
+      )
+      
+      await createNodeField({
+        node, 
+        name: "images",
+        value: images,
+      })
+
+      node.fields.images.forEach((image, i) => {
+        image.localFile___NODE = images[i].id
+      })
     }
+
+
+    // let fileNode = await createRemoteFileNode({
+    //   url: node.image,
+    //   parentNodeId: node.id,
+    //   createNode,
+    //   createNodeId,
+    //   cache,
+    //   store,
+    // })
+
+    // if (fileNode) {
+    //   node.mainImage___NODE = fileNode.id
+    // }
   }
 }
 
