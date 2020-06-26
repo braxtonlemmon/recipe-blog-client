@@ -31,37 +31,6 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 }
 
-// exports.onCreateNode = ({ node }) => {
-//     console.log(node.internal.type)
-// }
-
-// exports.onCreateNode = async ({
-//   node,
-//   actions: { createNode },
-//   store,
-//   cache,
-//   createNodeId,
-// }) => {
-//   if (
-//     node.internal.type === 'mongodbTestRecipes' &&
-//     node.image !== null
-//   ) {
-//     console.log(node.image);
-//     let fileNode = await createRemoteFileNode({
-//       url: node.image,
-//       parentNodeId: node.id,
-//       createNode,
-//       createNodeId,
-//       cache,
-//       store,
-//     })
-
-//     if (fileNode) {
-//       node.mainImage___NODE = fileNode.id
-//     }
-//   }
-// }
-
 const isEmpty = val => {
   if (val === undefined || val.length === 0) {
     return true;
@@ -104,20 +73,6 @@ exports.onCreateNode = async ({
         image.localFile___NODE = images[i].id
       })
     }
-
-
-    // let fileNode = await createRemoteFileNode({
-    //   url: node.image,
-    //   parentNodeId: node.id,
-    //   createNode,
-    //   createNodeId,
-    //   cache,
-    //   store,
-    // })
-
-    // if (fileNode) {
-    //   node.mainImage___NODE = fileNode.id
-    // }
   }
 }
 

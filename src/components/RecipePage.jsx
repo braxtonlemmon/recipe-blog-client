@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
 import Comments from './Comments';
+import ImageSlider from './ImageSlider';
+
 import { H2 } from './Headings';
 import SEO from '../components/seo';
 import {
@@ -44,7 +45,6 @@ function RecipePage({ data }) {
 
   // detects height of navbar to use when making ingredients box sticky
   useEffect(() => {
-    console.log(images);
     const navbar = document.getElementById('navbar');
     const height = navbar.getBoundingClientRect().height;
     setNavHeight(height);
@@ -84,22 +84,8 @@ function RecipePage({ data }) {
       <SEO title={recipe.title} description={recipe.intro} />
       <Wrapper>
         <MyH1>{recipe.title}</MyH1>
-        <Image url={recipe.image}></Image>
-        {/* <Image id="main-image">
-          {recipe.mainImage && (
-            <Img
-              className="main-image"
-              fluid={recipe.mainImage.childImageSharp.fluid}
-              alt={recipe.title}
-            />
-          )}
-        </Image> */}
-        <Image id="main-image">
-            <Img
-              className="main-image"
-              fluid={images[0].localFile.childImageSharp.fluid}
-              alt={recipe.title}
-            />
+        <Image>
+          <ImageSlider images={images} />
         </Image>
         <AboutBox>
           <H2>About</H2>
@@ -174,7 +160,6 @@ export const pageQuery = graphql`
       id
       mongodb_id
       title
-
       ingredients
       intro
       steps
@@ -192,13 +177,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-// mainImage {
-      //   childImageSharp {
-      //     fluid {
-      //       ...GatsbyImageSharpFluid
-      //     }
-      //   }
-      // }
-
-      //       image
