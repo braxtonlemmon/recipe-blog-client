@@ -33,7 +33,7 @@ function ReplyFormContainer({ parent, recipe, setCommentsLoaded }) {
       body: JSON.stringify({
         name: data.name,
         content: data.content,
-        recipe: data.recipe,
+        recipe: data.recipe._id,
         parent: data.parent,
         level: level,
         answered: false,

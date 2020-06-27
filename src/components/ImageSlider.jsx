@@ -34,10 +34,10 @@ const ButtonsBox = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   .right {
-      box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.3);
+      box-shadow: -2px 2px 2px rgba(0, 0, 0, 0.3);
   }
   .left {
-      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
   }
 `
 
@@ -46,9 +46,10 @@ const Button = styled.div`
   width: 45px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.7);
-  border: 3px solid rgba(0, 0, 0, 0.5);
-  color: black;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.6);
   display: flex;
+  font-weight: bold;
   justify-content: center;
   align-items: center;
   cursor: pointer;
