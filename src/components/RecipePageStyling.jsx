@@ -17,8 +17,8 @@ const Wrapper = styled.div`
     "commentForm"
     "commentBox"
   ;
-  @media (min-width: 1000px) {
-    grid-template-columns: 1fr 4fr;
+  @media (min-width: 768px) {
+    grid-template-columns: 30vw 70vw;
     grid-template-areas:
       "title title"
       "pic pic"
@@ -28,13 +28,18 @@ const Wrapper = styled.div`
       "commentBox commentBox"
     ;
   }
+
+  @media (min-width: 1000px) {
+    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 20vw 75vw;
+  }
 `;
 
 const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  margin: 5px;
+  /* padding: 10px; */
+  /* margin: 5px; */
   align-items: center;
 `;
 
@@ -43,23 +48,44 @@ const AboutBox = styled(InfoBox)`
 `;
 
 const IngredientsBox = styled(InfoBox)`
+  /* display: grid; */
+  padding-top: 0;
   grid-area: ingredients;
   z-index: 500;
   box-shadow: -2px 2px 2px lightgrey, 2px -2px 2px lightgrey;
-  background: #ffffff;
-  @media (min-width: 1000px) {
+  background: rgba(255, 255, 255, 0.9);
+  width: 95%;
+  @media (min-width: 768px) {
     position: ${props => props.fixed ? 'sticky' : 'relative'};
     top: ${props => props.fixed ? `${props.navHeight + 10}px` : '0'};
+    position: sticky;
+    top: ${props => `${props.navHeight + 10}px`};
+    height: 80vh;
+    overflow-y: auto;
+    /* &::-webkit-scrollbar {
+      display: none;
+      width: 0;
+    } */
+    /* overflow-x: hidden; */
   }
   .ingredient-label {
     cursor: pointer;
+  }
+  .ingredients-box-title {
+    position: sticky;
+    top: 0px;
+    background: white;
+    padding: 10px 0;
+    width: 100%;
+    box-shadow: 0px 4px 3px lightgrey;
+
   }
 `;
 
 const StepsBox = styled(InfoBox)`
   grid-area: steps;
   width: 90%;
-  @media (min-width: 1000px) {
+  @media (min-width: 768px) {
     border-left: 2px dashed black;
     justify-self: left; 
   }
@@ -105,8 +131,8 @@ const Ingredient = styled.li`
     border-radius: 5px;
     cursor: pointer;
     background-color: white;
-    height: 1.8em;
-    width: 1.8em;
+    height: 1.3em;
+    width: 1.3em;
     box-shadow: 1px 1px 1px grey;
     outline: none;
   }
@@ -116,7 +142,7 @@ const Ingredient = styled.li`
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: 600;
     height: 100%;
     width: 100%;
@@ -132,7 +158,7 @@ const Step = styled.li`
   display: grid;
   grid-template-columns: 3em 1fr;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
   .step-box-holder {
     height: 2.2em;
     width: 2.2em;
@@ -162,9 +188,16 @@ const Step = styled.li`
   input:checked + label {
     color: grey;
   }
-  @media (min-width: 1000px) {
-    width: 66vw;
+  /* @media (min-width: 768px) {
+    width: 40vw;
+
   }
+  @media (min-width: 1000px) {
+    width: 50vw;
+
+  } */
+  width: 100%;
+
 `;
 
 export {

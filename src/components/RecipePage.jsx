@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
 import Comments from './Comments';
 import ImageSlider from './ImageSlider';
-
+import PageTransition from 'gatsby-plugin-page-transitions';
 import { H2 } from './Headings';
 import SEO from '../components/seo';
+import Scrollbar from 'react-scrollbars-custom';
+
 import {
   Wrapper,
   AboutBox,
@@ -69,6 +71,7 @@ function RecipePage({ data }) {
       }
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
+          console.log(entry);
           entry.isIntersecting ? setIngredientsFixed(true) : setIngredientsFixed(false);
         })
       }, options)
@@ -82,6 +85,8 @@ function RecipePage({ data }) {
   return (
     <>
       <SEO title={recipe.title} description={recipe.intro} />
+      <PageTransition>
+
       <Wrapper>
         <MyH1>{recipe.title}</MyH1>
         <Image>
@@ -90,33 +95,37 @@ function RecipePage({ data }) {
         <AboutBox>
           <H2>About</H2>
           <p>{recipe.intro}</p>
+          <p>{`time: ${recipe.duration}`}</p>
         </AboutBox>
+
         <IngredientsBox 
           fixed={ingredientsFixed} 
           id="ingredients-box"
           navHeight={navHeight}
-        >
-          <H2>Ingredients</H2>
-          <ul>
-            {recipe.ingredients.map((ingredient, index) => (
-              <Ingredient   
-                key={ingredient}
-                done={checkboxes[`ingredient-checkbox-${index}`]}
-                checkboxes={checkboxes}
-              >
-                <input
-                  className="checkbox"
-                  type="checkbox"
-                  id={`ingredient-checkbox-${index}`}
-                  defaultChecked={checkboxes[`ingredient-checkbox-${index}`] === true}
-                  onChange={handleCheck}
-                ></input>
-                <label className="ingredient-label" htmlFor={`ingredient-checkbox-${index}`}>
-                  {ingredient}
-                </label>
-              </Ingredient>
-            ))}
-          </ul>
+          >
+          <H2 className="ingredients-box-title">Ingredients</H2>
+          <Scrollbar style={{width: "100%", height: "100%"}}>
+            <ul>
+              {recipe.ingredients.map((ingredient, index) => (
+                <Ingredient   
+                  key={ingredient}
+                  done={checkboxes[`ingredient-checkbox-${index}`]}
+                  checkboxes={checkboxes}
+                >
+                  <input
+                    className="checkbox"
+                    type="checkbox"
+                    id={`ingredient-checkbox-${index}`}
+                    defaultChecked={checkboxes[`ingredient-checkbox-${index}`] === true}
+                    onChange={handleCheck}
+                    ></input>
+                  <label className="ingredient-label" htmlFor={`ingredient-checkbox-${index}`}>
+                    {ingredient}
+                  </label>
+                </Ingredient>
+              ))}
+            </ul>
+            </Scrollbar>
         </IngredientsBox>
         <StepsBox id="steps-box">
           <H2 id="steps">Steps</H2>
@@ -124,8 +133,8 @@ function RecipePage({ data }) {
           <ul>
             {recipe.steps.map((step, index) => (
               <Step
-                key={step}
-                done={checkboxes[`step-checkbox-${index}`]}
+              key={step}
+              done={checkboxes[`step-checkbox-${index}`]}
               >
                 <div className="step-box-holder">
                   <input
@@ -133,7 +142,7 @@ function RecipePage({ data }) {
                     id={`step-checkbox-${index}`}
                     defaultChecked={checkboxes[`step-checkbox-${index}`] === true ? true : false}
                     onChange={handleCheck}
-                  ></input>
+                    ></input>
                   <label className="step-number" htmlFor={`step-checkbox-${index}`}>{index + 1}</label>
                 </div>
                 <label className="step-text" htmlFor={`step-checkbox-${index}`}>{step}</label>
@@ -143,8 +152,9 @@ function RecipePage({ data }) {
         </StepsBox>
         <Comments
           mongodb_id={recipe.mongodb_id}
-        />
+          />
       </Wrapper>
+      </PageTransition>
     </>
   )
 }
@@ -162,6 +172,7 @@ export const pageQuery = graphql`
       title
       ingredients
       intro
+      duration
       steps
       fields {
         images {
