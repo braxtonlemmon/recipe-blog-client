@@ -49,6 +49,10 @@ const AboutBox = styled(InfoBox)`
   padding: 15px 0;
   margin-bottom: 15px;
   border-bottom: 5px solid black;
+  .recipe-time {
+    color: lightslategrey;
+    margin-top: 10px;
+  }
 `;
 
 const IngredientsBox = styled(InfoBox)`
@@ -58,8 +62,8 @@ const IngredientsBox = styled(InfoBox)`
   z-index: 500;
   background: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
-  width: 90%;
-  height: auto;
+  min-width: 50%;
+  max-width: 90%;
   @media (min-width: 768px) {
     box-shadow: -2px 2px 2px lightgrey, 2px -2px 2px lightgrey;
     box-shadow: 0 0 12px lightgrey;
@@ -67,9 +71,7 @@ const IngredientsBox = styled(InfoBox)`
     top: ${props => props.fixed ? `${props.navHeight + 10}px` : '0'};
     position: sticky;
     top: ${props => `${props.navHeight + 10}px`};
-    /* height: 80vh; */
     padding-top: 0;
-    /* padding: 0 10px 10px 10px; */
     max-height: 80vh;
     margin: 15px auto;
     .ingredients-box-title {
@@ -84,7 +86,7 @@ const IngredientsBox = styled(InfoBox)`
     }
     ul {
       overflow-y: auto;
-      margin: 0 10px 10px 10px;
+      margin: 5px 10px 10px 10px;
     }
   }
   .ingredient-label {
@@ -119,8 +121,9 @@ const Image = styled.div`
   grid-area: pic;
   height: 250px;
   width: 250px;
-  box-shadow: -12px 7px 2px #383838, 12px 12px 2px #5c5c5c;
-  /* box-shadow: 0 0 20px grey; */
+  box-shadow: -10px 8px 2px #383838, 10px 12px 2px #5c5c5c;
+  box-shadow: 0 0 35px grey;
+  border-radius: 8px;
   margin: 20px;
   @media (min-width: 600px) {
     height: 500px;
@@ -128,6 +131,7 @@ const Image = styled.div`
   }
   .main-image {
     height: 100%;
+    border-radius: 8px;
   }
 `;
 

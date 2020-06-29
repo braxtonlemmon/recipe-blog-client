@@ -19,6 +19,16 @@ import {
 } from './RecipePageStyling';
 import PropTypes from 'prop-types';
 
+const convertDuration = (duration) => {
+  if (duration > 59) {
+    const hours = Math.floor(duration / 60);
+    const mins = duration % 60;
+    return `${hours}h ${mins}min`;
+  } else {
+    return `${duration}min`;
+  }
+}
+
 function RecipePage({ data }) {
   const recipe = data.mongodbTestRecipes;
   const images = data.mongodbTestRecipes.fields.images;
@@ -86,80 +96,96 @@ function RecipePage({ data }) {
     <>
       <SEO title={recipe.title} description={recipe.intro} />
       <PageTransition>
+        <Wrapper>
+          <MyH1>{recipe.title}</MyH1>
+          <Image>
+            <ImageSlider images={images} />
+          </Image>
+          <AboutBox>
+            <H2>About</H2>
+            <p>{recipe.intro}</p>
+            <p className="recipe-time">{`⏰ ${convertDuration(
+              recipe.duration
+            )}`}</p>
+          </AboutBox>
 
-      <Wrapper>
-        <MyH1>{recipe.title}</MyH1>
-        <Image>
-          <ImageSlider images={images} />
-        </Image>
-        <AboutBox>
-          <H2>About</H2>
-          <p>{recipe.intro}</p>
-          <p>{`time: ${recipe.duration}`}</p>
-        </AboutBox>
-
-        <IngredientsBox 
-          fixed={ingredientsFixed} 
-          id="ingredients-box"
-          navHeight={navHeight}
+          <IngredientsBox
+            fixed={ingredientsFixed}
+            id="ingredients-box"
+            navHeight={navHeight}
           >
-          <H2 className="ingredients-box-title">Ingredients</H2>
-   
-{/* 
+            <H2 className="ingredients-box-title">Ingredients</H2>
+
+            {/* 
           <Scrollbar 
             // style={{height: "100%", width: "95%"}}
             translateContentSizeToHolder
             > */}
             <ul>
               {recipe.ingredients.map((ingredient, index) => (
-                <Ingredient   
-                key={ingredient}
+                <Ingredient
+                  key={ingredient}
                   done={checkboxes[`ingredient-checkbox-${index}`]}
                   checkboxes={checkboxes}
-                  >
+                >
                   <input
                     className="checkbox"
                     type="checkbox"
                     id={`ingredient-checkbox-${index}`}
-                    defaultChecked={checkboxes[`ingredient-checkbox-${index}`] === true}
+                    defaultChecked={
+                      checkboxes[`ingredient-checkbox-${index}`] === true
+                    }
                     onChange={handleCheck}
-                    ></input>
-                  <label className="ingredient-label" htmlFor={`ingredient-checkbox-${index}`}>
+                  ></input>
+                  <label
+                    className="ingredient-label"
+                    htmlFor={`ingredient-checkbox-${index}`}
+                  >
                     {ingredient}
                   </label>
                 </Ingredient>
               ))}
             </ul>
-          {/* </Scrollbar> */}
-    
-        </IngredientsBox>
-        <StepsBox id="steps-box">
-          <H2 id="steps">Steps</H2>
-          <p className='sidenote'>***click each step as you go to keep track of your progress***</p>
-          <ul>
-            {recipe.steps.map((step, index) => (
-              <Step
-              key={step}
-              done={checkboxes[`step-checkbox-${index}`]}
-              >
-                <div className="step-box-holder">
-                  <input
-                    type="checkbox"
-                    id={`step-checkbox-${index}`}
-                    defaultChecked={checkboxes[`step-checkbox-${index}`] === true ? true : false}
-                    onChange={handleCheck}
+            {/* </Scrollbar> */}
+          </IngredientsBox>
+          <StepsBox id="steps-box">
+            <H2 id="steps">Steps</H2>
+            <p className="sidenote">
+              ***click each step as you go to keep track of your progress***
+            </p>
+            <ul>
+              {recipe.steps.map((step, index) => (
+                <Step key={step} done={checkboxes[`step-checkbox-${index}`]}>
+                  <div className="step-box-holder">
+                    <input
+                      type="checkbox"
+                      id={`step-checkbox-${index}`}
+                      defaultChecked={
+                        checkboxes[`step-checkbox-${index}`] === true
+                          ? true
+                          : false
+                      }
+                      onChange={handleCheck}
                     ></input>
-                  <label className="step-number" htmlFor={`step-checkbox-${index}`}>{index + 1}</label>
-                </div>
-                <label className="step-text" htmlFor={`step-checkbox-${index}`}>{step}</label>
-              </Step>
-            ))}
-          </ul>
-        </StepsBox>
-        <Comments
-          mongodb_id={recipe.mongodb_id}
-          />
-      </Wrapper>
+                    <label
+                      className="step-number"
+                      htmlFor={`step-checkbox-${index}`}
+                    >
+                      {index + 1}
+                    </label>
+                  </div>
+                  <label
+                    className="step-text"
+                    htmlFor={`step-checkbox-${index}`}
+                  >
+                    {step}
+                  </label>
+                </Step>
+              ))}
+            </ul>
+          </StepsBox>
+          <Comments mongodb_id={recipe.mongodb_id} />
+        </Wrapper>
       </PageTransition>
     </>
   )

@@ -20,34 +20,41 @@ const ImgWrapper = styled.div`
     animation: ${slide} 0.8s ;
     height: 100%;
     width: 100%;
+    border-radius: 10px;
   }
 `;
 
 const ButtonsBox = styled.div`
-  display: ${props => props.multiple === true ? 'flex' : 'none'};
+  display: ${props => (props.multiple === true ? "flex" : "none")};
   position: absolute;
-  left: 0;
+  left: -35px;
+  right: -35px;
   top: 0;
-  width: 100%;
+  /* width: 100%; */
   height: 100%;
-  padding: 10px 10px;
+
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   .right {
-      box-shadow: -2px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: -2px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 8px lightgrey;
   }
   .left {
-      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 8px lightgrey;
   }
 `
 
 const Button = styled.div`
-  height: 45px;
-  width: 45px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.7);
-  border: 2px solid rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
+  /* border: 2px solid rgba(0, 0, 0, 0.5); */
+  /* box-shadow: 0 0 50px white; */
   color: rgba(0, 0, 0, 0.6);
+  color: white;
   display: flex;
   font-weight: bold;
   justify-content: center;
@@ -55,6 +62,10 @@ const Button = styled.div`
   cursor: pointer;
   &:hover {
     transform: scale(1.05);
+  }
+  @media (min-width: 600px) {
+    height: 45px;
+    width: 45px;
   }
 `;
 

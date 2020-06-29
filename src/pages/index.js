@@ -11,7 +11,8 @@ const Wrapper = styled.ul`
   flex-direction: column;
   /* flex-wrap: wrap; */
   align-items: center;
-  width: 90%;
+  justify-items: center;
+  width: 100%;
   /* li {
     margin: 15px;
   } */
@@ -21,9 +22,13 @@ const Recipes = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
   width: 100%;
   li {
     margin: 20px;
+  }
+  @media (min-width: 1000px) {
+    max-width: 80%;
   }
 `;
 
