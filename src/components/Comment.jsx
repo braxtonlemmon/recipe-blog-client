@@ -13,8 +13,9 @@ const CommentRow = styled.div`
   padding: 15px;
   padding-bottom: 30px;
   /* background: rgba(247, 191, 247, 0.78); */
-  background: ${props => props.fromAdmin ? 'lightgreen' : 'rgba(247, 191, 247, 0.78)'};
+  background: ${props => props.fromAdmin ? 'lightgreen' : 'rgba(247, 191, 247, 1)'};
   box-shadow: -2px 2px 2px lightgrey;
+  z-index: 500;
   margin: 15px;
   margin-left: ${props => props.margin}px;
   border-radius: 8px;
