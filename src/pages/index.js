@@ -4,6 +4,7 @@ import { Link, graphql } from 'gatsby';
 import RecipeCard from '../components/RecipeCard';
 import SEO from '../components/seo';
 import { H1 } from '../components/Headings';
+import PageTransition from 'gatsby-plugin-page-transitions';
 
 const Wrapper = styled.ul`
   display: flex;
@@ -31,22 +32,24 @@ function IndexPage({ data }) {
   return (
     <>
       <SEO title="Home" description="Catalog of recipes" />
-      <Wrapper>
-        <H1>Recipes</H1>
-        <Recipes>
-          {recipes.map(({node}) => {
-            const slug = node.title.toLowerCase().replace(/ /g, '-');
-            if (node.is_published) {
-              return (
-                <Link key={node.id} to={`/recipe/${slug}`}>
-                  <li key={`list~${node.id}`}>
-                    <RecipeCard recipe={node} key={`card~${node.id}`} />
-                  </li>
-                </Link>)
-              }
-            })}
-          </Recipes>
-      </Wrapper>
+      <PageTransition>
+        <Wrapper>
+          <H1>Recipes</H1>
+          <Recipes>
+            {recipes.map(({node}) => {
+              const slug = node.title.toLowerCase().replace(/ /g, '-');
+              if (node.is_published) {
+                return (
+                  <Link key={node.id} to={`/recipe/${slug}`}>
+                    <li key={`list~${node.id}`}>
+                      <RecipeCard recipe={node} key={`card~${node.id}`} />
+                    </li>
+                  </Link>)
+                }
+              })}
+            </Recipes>
+        </Wrapper>
+      </PageTransition>
     </>
   )
 }
