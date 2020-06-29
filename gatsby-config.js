@@ -16,6 +16,12 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: 'gatsby-plugin-page-transitions',
+      options: {
+        transitionTime: 800,
+      }
+    },
     // {
     //   resolve: '@robinmetral/gatsby-source-s3',
     //   options: {
