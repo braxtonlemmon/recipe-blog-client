@@ -45,48 +45,60 @@ const InfoBox = styled.div`
 
 const AboutBox = styled(InfoBox)`
   grid-area: about;
+  width: 90%;
+  padding: 15px 0;
+  margin-bottom: 15px;
+  border-bottom: 5px solid black;
 `;
 
 const IngredientsBox = styled(InfoBox)`
   /* display: grid; */
-  padding-top: 0;
+  padding-top: 15px;
   grid-area: ingredients;
   z-index: 500;
-  box-shadow: -2px 2px 2px lightgrey, 2px -2px 2px lightgrey;
   background: rgba(255, 255, 255, 0.9);
-  width: 95%;
+  border-radius: 20px;
+  width: 90%;
+  height: auto;
   @media (min-width: 768px) {
+    box-shadow: -2px 2px 2px lightgrey, 2px -2px 2px lightgrey;
+    box-shadow: 0 0 12px lightgrey;
     position: ${props => props.fixed ? 'sticky' : 'relative'};
     top: ${props => props.fixed ? `${props.navHeight + 10}px` : '0'};
     position: sticky;
     top: ${props => `${props.navHeight + 10}px`};
-    height: 80vh;
-    overflow-y: auto;
-    /* &::-webkit-scrollbar {
-      display: none;
-      width: 0;
-    } */
-    /* overflow-x: hidden; */
+    /* height: 80vh; */
+    padding-top: 0;
+    /* padding: 0 10px 10px 10px; */
+    max-height: 80vh;
+    margin: 15px auto;
+    .ingredients-box-title {
+      position: sticky;
+      top: 0px;
+      background: white;
+      padding: 10px 0;
+      margin-bottom: 0;
+      width: 100%;
+      border-radius: 20px 20px 0 0;
+      box-shadow: 0px 4px 3px lightgrey;
+    }
+    ul {
+      overflow-y: auto;
+      margin: 0 10px 10px 10px;
+    }
   }
   .ingredient-label {
     cursor: pointer;
-  }
-  .ingredients-box-title {
-    position: sticky;
-    top: 0px;
-    background: white;
-    padding: 10px 0;
-    width: 100%;
-    box-shadow: 0px 4px 3px lightgrey;
-
   }
 `;
 
 const StepsBox = styled(InfoBox)`
   grid-area: steps;
   width: 90%;
+  padding: 15px 0;
   @media (min-width: 768px) {
     border-left: 2px dashed black;
+    padding-left: 20px;
     justify-self: left; 
   }
   .sidenote {
@@ -108,6 +120,7 @@ const Image = styled.div`
   height: 250px;
   width: 250px;
   box-shadow: -12px 7px 2px #383838, 12px 12px 2px #5c5c5c;
+  /* box-shadow: 0 0 20px grey; */
   margin: 20px;
   @media (min-width: 600px) {
     height: 500px;
@@ -137,7 +150,7 @@ const Ingredient = styled.li`
     outline: none;
   }
   .checkbox:checked:after {
-    content: '🧀'; 
+    content: "✓";
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,7 +162,7 @@ const Ingredient = styled.li`
     color: black;
     background-color: lightgoldenrodyellow;
   }
-`;
+`
 
 const Step = styled.li`
   margin: 5px 10px 15px 10px;

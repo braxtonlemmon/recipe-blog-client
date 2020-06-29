@@ -104,14 +104,19 @@ function RecipePage({ data }) {
           navHeight={navHeight}
           >
           <H2 className="ingredients-box-title">Ingredients</H2>
-          <Scrollbar style={{width: "100%", height: "100%"}}>
+   
+{/* 
+          <Scrollbar 
+            // style={{height: "100%", width: "95%"}}
+            translateContentSizeToHolder
+            > */}
             <ul>
               {recipe.ingredients.map((ingredient, index) => (
                 <Ingredient   
-                  key={ingredient}
+                key={ingredient}
                   done={checkboxes[`ingredient-checkbox-${index}`]}
                   checkboxes={checkboxes}
-                >
+                  >
                   <input
                     className="checkbox"
                     type="checkbox"
@@ -125,7 +130,8 @@ function RecipePage({ data }) {
                 </Ingredient>
               ))}
             </ul>
-            </Scrollbar>
+          {/* </Scrollbar> */}
+    
         </IngredientsBox>
         <StepsBox id="steps-box">
           <H2 id="steps">Steps</H2>
