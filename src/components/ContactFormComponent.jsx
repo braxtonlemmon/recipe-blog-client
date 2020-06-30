@@ -19,7 +19,10 @@ const FormWrapper = styled.form`
 
 function ContactFormComponent({ handleChange, data, handleSubmit}) {
   return (
-    <FormWrapper>
+    <FormWrapper
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+    >
       <label htmlFor="name">Name</label>
       <input 
         className="contact-form-input"

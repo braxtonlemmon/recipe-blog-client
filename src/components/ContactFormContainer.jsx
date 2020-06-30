@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import ContactFormComponent from './ContactFormComponent';
 
+const encode = data => {
+  return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+}
+
 function ContactFormContainer() {
   const [data, setData] = useState({
     name: '',
@@ -16,6 +22,20 @@ function ContactFormContainer() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('submitting');
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'contact', ...data})
+    })
+    .then(() => {
+      setData({
+        name: '',
+        email: '',
+        content: ''
+      });
+      alert('success!');
+    })
+    .catch(err => alert(err))
   }
 
   return (

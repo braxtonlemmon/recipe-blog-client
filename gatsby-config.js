@@ -4,7 +4,7 @@ require('dotenv').config({
 const { createProxyMiddleware } = require('http-proxy-middleware')
 module.exports = {
   siteMetadata: {
-    title: `Recipe Blog`,
+    title: `Peel the Garlic`,
     description: `A blog with all my recipes`,
     author: `Braxton Lemmon`,
   },
