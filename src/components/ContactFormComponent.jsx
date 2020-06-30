@@ -20,9 +20,13 @@ const FormWrapper = styled.form`
 function ContactFormComponent({ handleChange, data, handleSubmit}) {
   return (
     <FormWrapper
+      name="contact"
+      method="post"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
     >
+      <input type="hidden" name="bot-field" />
+      <input type="hidden" name="form-name" value="contact" />
       <label htmlFor="name">Name</label>
       <input 
         className="contact-form-input"
@@ -30,8 +34,8 @@ function ContactFormComponent({ handleChange, data, handleSubmit}) {
         id="name"
         name="name"
         placeholder="name"
-        onChange={(e) => handleChange(e)}
-        value={data.name}
+        // onChange={(e) => handleChange(e)}
+        // value={data.name}
       />
 
       <label htmlFor="email">Email</label>
@@ -41,8 +45,8 @@ function ContactFormComponent({ handleChange, data, handleSubmit}) {
         id="email"
         name="email"
         placeholder="youremail@example.com"
-        onChange={(e) => handleChange(e)}
-        value={data.email}
+        // onChange={(e) => handleChange(e)}
+        // value={data.email}
       />
 
       <label htmlFor="content">Message</label>
@@ -51,11 +55,12 @@ function ContactFormComponent({ handleChange, data, handleSubmit}) {
         id="content"
         name="content"
         placeholder="Your message here"
-        onChange={(e) => handleChange(e)}
-        value={data.content}
+        // onChange={(e) => handleChange(e)}
+        // value={data.content}
       />
 
-      <button type="submit" onClick={(e) => handleSubmit(e)}>Submit</button>
+      <button type="submit">Submit</button>
+      <input type="reset" value="Clear" />
     </FormWrapper>
   )
 }

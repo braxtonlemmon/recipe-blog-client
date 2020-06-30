@@ -22,20 +22,20 @@ function ContactFormContainer() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('submitting');
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'contact', ...data})
-    })
-    .then(() => {
-      setData({
-        name: '',
-        email: '',
-        content: ''
-      });
-      alert('success!');
-    })
-    .catch(err => alert(err))
+    // fetch('/', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    //   body: encode({ 'form-name': , ...data})
+    // })
+    // .then(() => {
+    //   setData({
+    //     name: '',
+    //     email: '',
+    //     content: ''
+    //   });
+    //   alert('success!');
+    // })
+    // .catch(err => alert(err))
   }
 
   return (
