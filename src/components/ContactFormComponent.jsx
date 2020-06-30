@@ -22,6 +22,7 @@ function ContactFormComponent({ handleChange, data, handleSubmit}) {
     <FormWrapper
       name="contact"
       method="post"
+      action="/ThankYou"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
     >
