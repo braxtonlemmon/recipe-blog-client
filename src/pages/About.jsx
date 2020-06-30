@@ -5,7 +5,12 @@ import { H1 } from '../components/Headings';
 import PageTransition from "gatsby-plugin-page-transitions"
 
 const Wrapper = styled.div`
-
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-content: center;
+  padding: 0 15px;
+  text-align: justify;
 `
 
 function About() {

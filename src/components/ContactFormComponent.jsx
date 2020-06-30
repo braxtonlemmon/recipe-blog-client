@@ -1,23 +1,44 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import Button from './Button';
 
 const FormWrapper = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 15px;
   .contact-form-input {
-    padding: 6px;
+    padding: 10px 6px;
+    line-height: 1.2em;
+    font-size: 1em;
     text-align: center;
     border-radius: 8px;
     outline: none;
     border: 1px solid grey;
     margin: 10px;
   }
+  textarea {
+    resize: none;
+    height: 100px;
+  }
 `;
 
-function ContactFormComponent({ handleChange, data, handleSubmit}) {
+const FormBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+`;
+
+const Buttons = styled.div`
+  display: grid;
+  grid-auto-flow: column;
+  gap: 15px;
+  margin: 5px 0;
+`;
+
+function ContactFormComponent() {
   return (
     <FormWrapper
       name="contact"
@@ -28,48 +49,44 @@ function ContactFormComponent({ handleChange, data, handleSubmit}) {
     >
       <input type="hidden" name="bot-field" />
       <input type="hidden" name="form-name" value="contact" />
-      <label htmlFor="name">Name</label>
-      <input 
-        className="contact-form-input"
-        type="text"
-        id="name"
-        name="name"
-        placeholder="name"
-        // onChange={(e) => handleChange(e)}
-        // value={data.name}
-      />
+      
+      <FormBox>
+        <label htmlFor="name">Name</label>
+        <input 
+          className="contact-form-input"
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Your name here."
+        />
+      </FormBox>
 
-      <label htmlFor="email">Email</label>
-      <input
-        className="contact-form-input"
-        type="email"
-        id="email"
-        name="email"
-        placeholder="youremail@example.com"
-        // onChange={(e) => handleChange(e)}
-        // value={data.email}
-      />
+      <FormBox>
+        <label htmlFor="email">Email</label>
+        <input
+          className="contact-form-input"
+          type="email"
+          id="email"
+          name="email"
+          placeholder="youremail@example.com"
+        />
+      </FormBox>
 
-      <label htmlFor="content">Message</label>
-      <textarea
-        className="contact-form-input"
-        id="content"
-        name="content"
-        placeholder="Your message here"
-        // onChange={(e) => handleChange(e)}
-        // value={data.content}
-      />
-
-      <button type="submit">Submit</button>
-      <input type="reset" value="Clear" />
+      <FormBox>
+        <label htmlFor="content">Message</label>
+        <textarea
+          className="contact-form-input"
+          id="content"
+          name="content"
+          placeholder="Your message here."
+        />
+      </FormBox>
+      <Buttons>
+        <Button type="submit">Submit</Button>
+        <Button type="reset">Clear</Button>
+      </Buttons>
     </FormWrapper>
   )
-}
-
-ContactFormComponent.propTypes = {
-  handleChange: PropTypes.func,
-  data: PropTypes.object,
-  handleSubmit: PropTypes.func
 }
 
 export default ContactFormComponent;

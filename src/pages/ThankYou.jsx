@@ -9,6 +9,11 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: baseline;
   align-items: center;
+  padding: 0 15px;
+  .thank-you-intro {
+    margin: 15px;
+    text-align: center;
+  }
 `;
 
 function ThankYou() {
@@ -18,7 +23,7 @@ function ThankYou() {
       <PageTransition>
         <Wrapper>
           <H1>Thank you!</H1>
-          <p>Your message has been sent. I will reply soon!</p>
+          <p className="thank-you-intro">Your message is on its way. I will get back to you soon. Now back to the kitchen! </p>
         </Wrapper>
       </PageTransition>
     </>

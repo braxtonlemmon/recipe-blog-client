@@ -10,6 +10,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: baseline;
   align-items: center;
+  .contact-intro {
+    margin: 10px;
+  }
 `;
 
 function Contact() {
@@ -19,6 +22,7 @@ function Contact() {
       <PageTransition>
         <Wrapper>
           <H1>Contact</H1>
+          <h2 className="contact-intro">Send me a message! I'm all ears.</h2>
           <ContactFormContainer />
         </Wrapper>
       </PageTransition>

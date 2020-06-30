@@ -5,7 +5,8 @@ const Wrapper = styled.div`
   display: grid;
   justify-items: center;
   align-items: baseline;
-  padding-bottom: 25px;
+  padding: 0px 15px 25px 15px;
+  /* padding-bottom: 25px; */
   width: 100%;
   grid-template-columns: 1fr;
   grid-template-areas:
@@ -169,8 +170,9 @@ const Ingredient = styled.li`
 `
 
 const Step = styled.li`
-  margin: 5px 10px 15px 10px;
-  padding-bottom: 10px;
+  /* margin: 5px 10px 15px 10px; */
+  /* padding-bottom: 10px; */
+  padding: 10px 0;
   border-bottom: 1px dotted black;
   display: grid;
   grid-template-columns: 3em 1fr;
