@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import SEO from '../components/seo';
 import { H1 } from '../components/Headings';
 import PageTransition from "gatsby-plugin-page-transitions"
+import { graphql } from 'gatsby';
 
 const Wrapper = styled.div`
   display: flex;
@@ -11,25 +12,50 @@ const Wrapper = styled.div`
   align-content: center;
   padding: 0 15px;
   text-align: justify;
+  @media (min-width: 76)
 `
 
-function About() {
+const Content = styled.div`
+  h2 {
+    font-size: 1.5em; 
+    margin-top: 40px; 
+  }
+  p {
+    margin: 15px 0;
+  }
+  ul {
+    margin-left: 20px;
+  }
+  li {
+    list-style: disc;
+  }
+`;
+
+function About({ data }) {
+  const { html } = data.markdownRemark;
+
   return (
     <>
       <SEO title="About" description="About page" />
       <PageTransition>
         <Wrapper>
           <H1>About</H1>
-          <ul>
-            <li>Recipes should include both metric and imperial units</li>
-            <li>If you are using a tablet or laptop, the ingredients shoud always be visible</li>
-            <li>The page should not be bloated with photos and ads</li>
-            <li>You should be able to visibly keep track of where you are in the recipe</li>
-          </ul>
+          <Content
+            dangerouslySetInnerHTML={{ __html: html }}
+          ></Content>
+          <div dangerouslySetInnerHTML={{ __html: html }} />
         </Wrapper>
       </PageTransition>
     </>
   )
 }
+
+export const pageQuery = graphql`
+  query AboutData {
+    markdownRemark(id: { eq: "2ee6619d-860f-53a5-9702-462760a91b67" }) {
+      html
+    }
+  }
+`;
 
 export default About;

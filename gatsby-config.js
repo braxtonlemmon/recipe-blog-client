@@ -1,12 +1,22 @@
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
-const { createProxyMiddleware } = require('http-proxy-middleware')
+const { createProxyMiddleware } = require('http-proxy-middleware');
+const {
+  NODE_ENV,
+  URL: NETLIFY_SITE_URL = 'https://www.peelthegarlic.com',
+  DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
+  CONTEXT: NETLIFY_ENV = NODE_ENV,
+} = process.env;
+const isNetlifyProduction = NETLIFY_ENV === 'production';
+const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
+
 module.exports = {
   siteMetadata: {
     title: `Peel the Garlic`,
     description: `A blog with all my recipes`,
     author: `Braxton Lemmon`,
+    siteUrl,
   },
   plugins: [
     {
@@ -17,22 +27,39 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'markdown',
+        path: `${__dirname}/src/markdown`,
+      }
+    },
+    {
       resolve: 'gatsby-plugin-page-transitions',
       options: {
         transitionTime: 800,
       }
     },
-    // {
-    //   resolve: '@robinmetral/gatsby-source-s3',
-    //   options: {
-    //     aws: {
-    //       accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    //       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    //       region: process.env.AWS_REGION,
-    //     },
-    //     buckets: ['remember-to-cook'],
-    //   }
-    // },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        resolveEnv: () => NETLIFY_ENV,
+        env: {
+          production: {
+            policy: [{ userAgent: '*' }]
+          },
+          'branch-deploy': {
+            policy: [{ userAgent: '*', disallow: ['/'] }],
+            sitemap: null,
+            host: null
+          },
+          'deploy-preview': {
+            policy: [{ userAgent: '*', disallow: ['/'] }],
+            sitemap: null,
+            host: null
+          }
+        }
+      }
+    },
     {
       resolve: "gatsby-source-mongodb",
       options: {
@@ -77,8 +104,10 @@ module.exports = {
     },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
-    "gatsby-plugin-styled-components",
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-sitemap',
     `gatsby-transformer-sharp`,
+    'gatsby-transformer-remark',
   ],
   // developMiddleware: app => {
   //   app.use(
