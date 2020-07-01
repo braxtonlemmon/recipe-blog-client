@@ -30,7 +30,7 @@ const Wrapper = styled.div`
 // `;
 
 function About({ data }) {
-  const { html } = data.markdownRemark;
+  // const { html } = data.markdownRemark;
 
   return (
     <>
