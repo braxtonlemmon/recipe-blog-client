@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import SEO from '../components/seo';
 import { H1 } from '../components/Headings';
-import PageTransition from "gatsby-plugin-page-transitions"
 import { graphql } from 'gatsby';
 
 const Wrapper = styled.div`
@@ -12,8 +11,7 @@ const Wrapper = styled.div`
   align-content: center;
   padding: 0 15px;
   text-align: justify;
-  @media (min-width: 76)
-`
+`;
 
 const Content = styled.div`
   h2 {
@@ -37,15 +35,13 @@ function About({ data }) {
   return (
     <>
       <SEO title="About" description="About page" />
-      <PageTransition>
-        <Wrapper>
-          <H1>About</H1>
-          <Content
-            dangerouslySetInnerHTML={{ __html: html }}
-          ></Content>
-          <div dangerouslySetInnerHTML={{ __html: html }} />
-        </Wrapper>
-      </PageTransition>
+      <Wrapper>
+        <H1>About</H1>
+        <Content
+          dangerouslySetInnerHTML={{ __html: html }}
+        ></Content>
+        <div dangerouslySetInnerHTML={{ __html: html }} />
+      </Wrapper>
     </>
   )
 }

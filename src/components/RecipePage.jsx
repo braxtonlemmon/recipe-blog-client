@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
 import Comments from './Comments';
 import ImageSlider from './ImageSlider';
-import PageTransition from 'gatsby-plugin-page-transitions';
 import { H2 } from './Headings';
 import SEO from '../components/seo';
-import Scrollbar from 'react-scrollbars-custom';
 
 import {
   Wrapper,
@@ -95,98 +93,96 @@ function RecipePage({ data }) {
   return (
     <>
       <SEO title={recipe.title} description={recipe.intro} />
-      <PageTransition>
-        <Wrapper>
-          <MyH1>{recipe.title}</MyH1>
-          <Image>
-            <ImageSlider images={images} />
-          </Image>
-          <AboutBox>
-            <H2>About</H2>
-            <p>{recipe.intro}</p>
-            <p className="recipe-time">{`⏰ ${convertDuration(
-              recipe.duration
-            )}`}</p>
-          </AboutBox>
+      <Wrapper>
+        <MyH1>{recipe.title}</MyH1>
+        <Image>
+          <ImageSlider images={images} />
+        </Image>
+        <AboutBox>
+          <H2>About</H2>
+          <p>{recipe.intro}</p>
+          <p className="recipe-time">{`⏰ ${convertDuration(
+            recipe.duration
+          )}`}</p>
+        </AboutBox>
 
-          <IngredientsBox
-            fixed={ingredientsFixed}
-            id="ingredients-box"
-            navHeight={navHeight}
-          >
-            <H2 className="ingredients-box-title">Ingredients</H2>
+        <IngredientsBox
+          fixed={ingredientsFixed}
+          id="ingredients-box"
+          navHeight={navHeight}
+        >
+          <H2 className="ingredients-box-title">Ingredients</H2>
 
-            {/* 
-          <Scrollbar 
-            // style={{height: "100%", width: "95%"}}
-            translateContentSizeToHolder
-            > */}
-            <ul>
-              {recipe.ingredients.map((ingredient, index) => (
-                <Ingredient
-                  key={ingredient}
-                  done={checkboxes[`ingredient-checkbox-${index}`]}
-                  checkboxes={checkboxes}
+          {/* 
+        <Scrollbar 
+          // style={{height: "100%", width: "95%"}}
+          translateContentSizeToHolder
+          > */}
+          <ul>
+            {recipe.ingredients.map((ingredient, index) => (
+              <Ingredient
+                key={ingredient}
+                done={checkboxes[`ingredient-checkbox-${index}`]}
+                checkboxes={checkboxes}
+              >
+                <input
+                  className="checkbox"
+                  type="checkbox"
+                  id={`ingredient-checkbox-${index}`}
+                  defaultChecked={
+                    checkboxes[`ingredient-checkbox-${index}`] === true
+                  }
+                  onChange={handleCheck}
+                ></input>
+                <label
+                  className="ingredient-label"
+                  htmlFor={`ingredient-checkbox-${index}`}
                 >
+                  {ingredient}
+                </label>
+              </Ingredient>
+            ))}
+          </ul>
+          {/* </Scrollbar> */}
+        </IngredientsBox>
+        <StepsBox id="steps-box">
+          <H2 id="steps">Steps</H2>
+          <p className="sidenote">
+            ***click each step as you go to keep track of your progress***
+          </p>
+          <ul>
+            {recipe.steps.map((step, index) => (
+              <Step key={step} done={checkboxes[`step-checkbox-${index}`]}>
+                <div className="step-box-holder">
                   <input
-                    className="checkbox"
                     type="checkbox"
-                    id={`ingredient-checkbox-${index}`}
+                    id={`step-checkbox-${index}`}
                     defaultChecked={
-                      checkboxes[`ingredient-checkbox-${index}`] === true
+                      checkboxes[`step-checkbox-${index}`] === true
+                        ? true
+                        : false
                     }
                     onChange={handleCheck}
                   ></input>
                   <label
-                    className="ingredient-label"
-                    htmlFor={`ingredient-checkbox-${index}`}
-                  >
-                    {ingredient}
-                  </label>
-                </Ingredient>
-              ))}
-            </ul>
-            {/* </Scrollbar> */}
-          </IngredientsBox>
-          <StepsBox id="steps-box">
-            <H2 id="steps">Steps</H2>
-            <p className="sidenote">
-              ***click each step as you go to keep track of your progress***
-            </p>
-            <ul>
-              {recipe.steps.map((step, index) => (
-                <Step key={step} done={checkboxes[`step-checkbox-${index}`]}>
-                  <div className="step-box-holder">
-                    <input
-                      type="checkbox"
-                      id={`step-checkbox-${index}`}
-                      defaultChecked={
-                        checkboxes[`step-checkbox-${index}`] === true
-                          ? true
-                          : false
-                      }
-                      onChange={handleCheck}
-                    ></input>
-                    <label
-                      className="step-number"
-                      htmlFor={`step-checkbox-${index}`}
-                    >
-                      {index + 1}
-                    </label>
-                  </div>
-                  <label
-                    className="step-text"
+                    className="step-number"
                     htmlFor={`step-checkbox-${index}`}
                   >
-                    {step}
+                    {index + 1}
                   </label>
-                </Step>
-              ))}
-            </ul>
-          </StepsBox>
-          <Comments mongodb_id={recipe.mongodb_id} />
-        </Wrapper>
-      </PageTransition>
+                </div>
+                <label
+                  className="step-text"
+                  htmlFor={`step-checkbox-${index}`}
+                >
+                  {step}
+                </label>
+              </Step>
+            ))}
+          </ul>
+        </StepsBox>
+        <Comments mongodb_id={recipe.mongodb_id} />
+      </Wrapper>
     </>
   )
 }

@@ -34,12 +34,6 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-page-transitions',
-      options: {
-        transitionTime: 800,
-      }
-    },
-    {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         resolveEnv: () => NETLIFY_ENV,

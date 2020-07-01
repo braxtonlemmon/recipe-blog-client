@@ -76,8 +76,6 @@ function NavBar() {
       <Buttons>
         <Link to='/'><Button>Recipes</Button></Link>
         <Link to={`/recipe/${getRandomTitle()}`}><Button>Random</Button></Link>
-        {/* <Link to='/'><Button>Random</Button></Link> */}
-
         <Link to='/About'><Button>About</Button></Link>
         <Link to='/Contact'><Button>Contact</Button></Link>
       </Buttons>
