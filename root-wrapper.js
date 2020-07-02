@@ -9,7 +9,8 @@ export const wrapRootElement = ({ element }) => (
   <ThemeProvider theme={theme}>
     <ViewportProvider>
       <GlobalStyle />
-      <Layout>{element}</Layout>
+      {element}
+      {/* <Layout>{element}</Layout> */}
     </ViewportProvider>
   </ThemeProvider>
 )

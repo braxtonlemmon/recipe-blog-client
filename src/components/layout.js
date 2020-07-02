@@ -4,6 +4,7 @@ import PropTypes from "prop-types"
 import Header from './Header';
 import NavBar from './NavBar';
 import Footer from './Footer';
+import Transition from './transition';
 
 const Wrapper = styled.div`
   display: grid;
@@ -27,12 +28,17 @@ const Main = styled.main`
   grid-area: main;
 `;
 
-const Layout = ({ children }) => {
+const Layout = ({ children, location }) => {
   return (
     <Wrapper>
       <Header />
       <NavBar />
-      <Main>{children}</Main>
+      <Transition location={location}>
+        <Main>
+          {children}
+        </Main>
+      </Transition>
+      {/* <Main>{children}</Main> */}
       <Footer />
     </Wrapper>
   )

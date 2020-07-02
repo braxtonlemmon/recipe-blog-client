@@ -22,9 +22,9 @@ function ReplyFormContainer({ parent, recipe, setCommentsLoaded }) {
     }
     setData({ name: '', content: '' });
     // fetch('/api/comments/', {
-    // fetch(`http://localhost:4000/dev/api/comments/`, {
+    fetch(`http://localhost:4000/dev/api/comments/`, {
 
-      fetch('https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/comments', {
+      // fetch('https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/comments', {
       method: 'POST',
       headers: {
         Accept: 'application/json',

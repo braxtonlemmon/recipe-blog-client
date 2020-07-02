@@ -96,6 +96,12 @@ module.exports = {
         ]
       }
     },
+    {
+      resolve: 'gatsby-plugin-layout',
+      options: {
+        component: require.resolve('./src/components/layout.js'),
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
     'gatsby-plugin-styled-components',
