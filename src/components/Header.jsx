@@ -17,12 +17,11 @@ const HeaderBar = styled.div`
 `;
 
 const MyH1 = styled(H1)`
-  font-size: 1.4em;
+  font-size: 2em;
   border-bottom: 1px solid lightgrey;
   width: 100%;
   height: 100%;
-  margin: 0;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   @media (min-width: 600px) {
     font-size: 2.2em;

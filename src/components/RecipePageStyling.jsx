@@ -123,8 +123,8 @@ const MyH1 = styled(H1)`
 
 const Image = styled.div`
   grid-area: pic;
-  height: 250px;
-  width: 250px;
+  height: 260px;
+  width: 260px;
   box-shadow: -10px 8px 2px #383838, 10px 12px 2px #5c5c5c;
   box-shadow: 0 0 35px grey;
   border-radius: 8px;
