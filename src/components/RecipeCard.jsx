@@ -9,9 +9,10 @@ const Wrapper = styled.div`
   position: relative;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
+  justify-content: flex-end;
   box-shadow: -4px 4px 3px grey;
-  padding: 15px 10px;
+  padding: 0px 10px 20px 10px;
   margin: 15px 0;
   background: #f5f5f5;
   cursor: pointer;
@@ -20,6 +21,17 @@ const Wrapper = styled.div`
     color: white;
   }
   height: 100%;
+  width: 300px;
+  height: 350px;
+`;
+
+const Title = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  text-align: center;
+  padding: 0 10px;
 `;
 
 const H2 = styled.h2`
@@ -28,8 +40,8 @@ const H2 = styled.h2`
 `;
 
 const Image = styled.div`
-  height: 200px;
-  width: 200px;
+  height: 260px;
+  width: 260px;
   position: relative;
   background-image: url(${props => props.url});
   background-size: cover;
@@ -41,6 +53,8 @@ const Image = styled.div`
 
 const Quote = styled.div`
   position: absolute;
+  left: 0;
+  bottom: 0;
   height: 100%;
   width: 100%;
   background: white;
@@ -67,7 +81,9 @@ function RecipeCard({ recipe }) {
 
   return (
     <Wrapper onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave} onFocus={handleMouseOver}>
-      <H2>{recipe.title}</H2>
+      <Title>
+        <H2>{recipe.title}</H2>
+      </Title>
       <Image>
 
           <Img
