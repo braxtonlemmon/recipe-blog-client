@@ -13,9 +13,14 @@ const Wrapper = styled.div`
   width: 100%;
   z-index: 501;
   background: white;
-  max-width: 900px;
+  /* max-width: 900px; */
   grid-area: commentBox;
 `;
+
+const List = styled.div`
+  width: 90%;
+  max-width: 600px;
+`
 
 function CommentBox({ comments, topComments, setCommentsLoaded}) {
   if (topComments.length < 1) {
@@ -28,7 +33,7 @@ function CommentBox({ comments, topComments, setCommentsLoaded}) {
   return (
     <Wrapper>
       <H2>Comments</H2>
-      <div>
+      <List>
         {
           topComments.map((comment, i) => {
             let margin = 15;
@@ -42,7 +47,7 @@ function CommentBox({ comments, topComments, setCommentsLoaded}) {
             )
           })
         }
-      </div>
+      </List>
     </Wrapper>
   )
 }
