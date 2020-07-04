@@ -10,12 +10,21 @@ const Wrapper = styled.div`
   padding: 15px;
   border-top: 5px solid black;
   align-items: center;
-  width: 80%;
+  width: 100%;
+  z-index: 501;
+  background: white;
   max-width: 900px;
   grid-area: commentBox;
 `;
 
 function CommentBox({ comments, topComments, setCommentsLoaded}) {
+  if (topComments.length < 1) {
+    return (
+      <Wrapper>
+        <p>No comments yet . . . What did you think??</p>
+      </Wrapper>
+    )
+  } else {
   return (
     <Wrapper>
       <H2>Comments</H2>
@@ -36,6 +45,7 @@ function CommentBox({ comments, topComments, setCommentsLoaded}) {
       </div>
     </Wrapper>
   )
+}
 }
 
 CommentBox.propTypes = {

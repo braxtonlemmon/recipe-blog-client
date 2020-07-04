@@ -11,10 +11,12 @@ const FormWrapper = styled.form`
   justify-content: center;
   border-top: 5px solid black;
   padding: 15px;
-  width: 80%;
+  width: 100%;
   max-width: 1000px;
   grid-area: commentForm;
-  margin: 15px 0;
+  background: white;
+  margin-top: 15px;
+  z-index: 501;
   margin-top: 30px;
   label {
     padding: 8px;
@@ -28,6 +30,8 @@ const FormWrapper = styled.form`
     background: #fbfaff;
     border: 1px solid lightgray;
     border-radius: 5px;
+    width: 70%;
+    max-width: 450px;
   }
 
   textarea {
@@ -40,6 +44,9 @@ const FormWrapper = styled.form`
     margin-bottom: 10px;
     background: #fbfaff;
     border: 1px solid lightgray;
+    width: 80%;
+    max-width: 550px;
+    height: 150px;
   }
 `;
 
@@ -47,7 +54,7 @@ function CommentFormComponent({ data, handleChange, handleSubmit}) {
   return (
     <FormWrapper name="commentForm">
 
-      <H2>Add Comment</H2>
+      <H2>What did you think? Leave a comment!</H2>
       <label htmlFor="name">Name</label>
       <input
         type="text"
@@ -62,8 +69,6 @@ function CommentFormComponent({ data, handleChange, handleSubmit}) {
       <textarea
         name="content"
         id="content"
-        cols="20"
-        rows="10"
         required
         min="2"
         placeholder="Your comment here..."

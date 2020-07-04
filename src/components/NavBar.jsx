@@ -13,10 +13,10 @@ const HeaderBar = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 15px;
+  z-index: 502;
   justify-content: center;
   /* border-bottom: 3px solid black; */
   box-shadow: 0px 4px 3px lightgrey;
-  z-index: 501;
   grid-area: navbar;
 `;
 

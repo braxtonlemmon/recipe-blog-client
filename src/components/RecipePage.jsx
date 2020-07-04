@@ -80,7 +80,6 @@ function RecipePage({ data }) {
       }
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-          console.log(entry);
           entry.isIntersecting ? setIngredientsFixed(true) : setIngredientsFixed(false);
         })
       }, options)
