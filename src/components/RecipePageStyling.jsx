@@ -19,7 +19,7 @@ const Wrapper = styled.div`
     "commentBox"
   ;
   @media (min-width: 768px) {
-    grid-template-columns: 30vw 70vw;
+    grid-template-columns: 1fr 2fr;
     grid-template-areas:
       "title title"
       "pic pic"
@@ -31,8 +31,7 @@ const Wrapper = styled.div`
   }
 
   @media (min-width: 1000px) {
-    grid-template-columns: 1fr 4fr;
-    grid-template-columns: 20vw 75vw;
+    grid-template-columns: 1fr 3.5fr;
   }
 `;
 
@@ -50,10 +49,14 @@ const AboutBox = styled(InfoBox)`
   padding: 15px 0;
   margin-bottom: 15px;
   border-bottom: 5px solid black;
-  .recipe-time {
-    color: lightslategrey;
-    margin-top: 10px;
-  }
+`;
+
+const Details = styled.div`
+  display: grid;
+  grid-auto-flow: column;
+  gap: 20px;
+  color: lightslategrey;
+  margin-bottom: 10px;
 `;
 
 const IngredientsBox = styled(InfoBox)`
@@ -222,6 +225,7 @@ const Step = styled.li`
 export {
   Wrapper,
   AboutBox,
+  Details,
   IngredientsBox,
   StepsBox,
   MyH1,

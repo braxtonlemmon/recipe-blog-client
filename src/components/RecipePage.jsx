@@ -8,6 +8,7 @@ import SEO from '../components/seo';
 import {
   Wrapper,
   AboutBox,
+  Details,
   IngredientsBox,
   StepsBox,
   MyH1,
@@ -100,10 +101,11 @@ function RecipePage({ data }) {
         </Image>
         <AboutBox>
           <H2>About</H2>
+          <Details>
+            <p>⏰ {convertDuration(recipe.duration)}</p>
+            <p>Serves: {recipe.size}</p>
+          </Details>
           <p>{recipe.intro}</p>
-          <p className="recipe-time">{`⏰ ${convertDuration(
-            recipe.duration
-          )}`}</p>
         </AboutBox>
 
         <IngredientsBox
@@ -201,6 +203,7 @@ export const pageQuery = graphql`
       ingredients
       intro
       duration
+      size
       steps
       fields {
         images {

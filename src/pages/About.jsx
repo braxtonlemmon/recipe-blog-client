@@ -2,56 +2,75 @@ import React from 'react';
 import styled from 'styled-components';
 import SEO from '../components/seo';
 import { H1 } from '../components/Headings';
-// import { graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: baseline;
   align-content: center;
-  padding: 0 15px;
   text-align: justify;
+  width: 80%;
 `;
 
-// const Content = styled.div`
-//   h2 {
-//     font-size: 1.5em; 
-//     margin-top: 40px; 
-//   }
-//   p {
-//     margin: 15px 0;
-//   }
-//   ul {
-//     margin-left: 20px;
-//   }
-//   li {
-//     list-style: disc;
-//   }
-// `;
+const Content = styled.div`
+  h2 {
+    font-size: 1.8em; 
+    margin-top: 40px; 
+  }
+
+  h3 {
+    padding-left: 10px;
+    padding-top: 20px;
+    text-decoration: underline;
+  }
+
+  h4 {
+    font-weight: bolder;
+    padding-left: 10px;
+  }
+  p {
+    margin: 15px 0;
+    padding-left: 10px;
+    font-size: 1.1em;
+    line-height: 1.3em;
+  }
+  ul {
+    margin-left: 20px;
+    padding-bottom: 20px;
+  }
+  li {
+    /* list-style: disc; */
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: justify;
+  }
+`;
 
 function About({ data }) {
-  // const { html } = data.markdownRemark;
+  const { markdownRemark } = data;
+  const { html } = markdownRemark;
 
   return (
     <>
       <SEO title="About" description="About page" />
       <Wrapper>
         <H1>About</H1>
-        {/* <Content
+        <Content
           dangerouslySetInnerHTML={{ __html: html }}
         ></Content>
-        <div dangerouslySetInnerHTML={{ __html: html }} /> */}
+        {/* <div dangerouslySetInnerHTML={{ __html: html }} /> */}
       </Wrapper>
     </>
   )
 }
 
-// export const pageQuery = graphql`
-//   query AboutData {
-//     markdownRemark(id: { eq: "2ee6619d-860f-53a5-9702-462760a91b67" }) {
-//       html
-//     }
-//   }
-// `;
+export const pageQuery = graphql`
+  query {
+    markdownRemark(frontmatter: { title: { eq: "About"}}) {
+      html
+    }
+  }
+`;
 
 export default About;
