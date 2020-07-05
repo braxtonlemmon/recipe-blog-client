@@ -31,13 +31,70 @@ const Recipes = styled.ul`
   }
 `;
 
+const Hero = styled.div`
+  /* border: 3px solid black; */
+  position: relative;
+  height: 700px;
+  width: 100%;
+  background: url('https://remember-to-cook.s3.us-east-2.amazonaws.com/veg_burger1.jpg');
+  background-size: cover;
+  background-position: center;
+  /* padding: 10px 200px; */
+  z-index: 10;
+`;
+
+const Layer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 11;
+`;
+
+const HeroText = styled(H1)`
+  color: white;
+  font-size: 2em;
+  font-weight: bolder;
+  z-index: 12;
+  /* position: absolute; */
+  /* bottom: 10px; */
+  /* left: 10px; */
+  /* width: 200px; */
+  text-align: left;
+`
+
+const HeroTextBox = styled.div`
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 40%;
+  position: flex;
+  flex-direction: column;
+  align-content: baseline;
+  p {
+    color: white;
+    font-size: 4em;
+    font-style: italic;
+  }
+`
+
 function IndexPage({ data }) {
   const recipes = data.allMongodbTestRecipes.edges;
   return (
     <>
       <SEO title="Home" description="Catalog of recipes" />
       <Wrapper>
-        <H1>Recipes</H1>
+        <Hero>
+          <Layer></Layer>
+          <HeroTextBox>
+            <p>Turmeric in a burger? Yes, please.</p>
+            <HeroText>Sweet Potato Burgers</HeroText>
+
+          </HeroTextBox>
+        </Hero>
+        {/* <H1>Recipes</H1> */}
         <Recipes>
           {recipes.map(({node}) => {
             const slug = node.title.toLowerCase().replace(/ /g, '-');

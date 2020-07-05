@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
     -webkit-tap-highlight-color: transparent;
     /* font-family: 'Special Elite', cursive; */
     font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Montserrat';
   }
 
   body, html {
@@ -16,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     /* font-family: 'Special Elite', cursive; */
     font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Montserrat';
   }
 
   html {

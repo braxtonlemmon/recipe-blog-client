@@ -92,7 +92,11 @@ module.exports = {
       options: {
         fonts: [
           'Special Elite',
-          'Josefin Sans'
+          'Josefin Sans',
+          'Indie Flower',
+          'Shadows Into Light',
+          'Rock Salt',
+          'Montserrat'
         ]
       }
     },

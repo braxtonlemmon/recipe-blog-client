@@ -4,6 +4,8 @@ import { Link } from 'gatsby';
 
 const Wrapper = styled.footer`
   background: #754c4ccf;
+  background: #cdcbd6;
+  background: #2F3020;
   width: 100%;
   color: white;
   padding: 15px;
@@ -33,9 +35,9 @@ const Links = styled.div`
 const Me = styled.div`
   margin-bottom: 10px;
   a {
-    color: purple;
+    color: #cdcbd6;
     &:hover {
-      color: lightblue;
+      color: #d96846;
     }
   }
 `
