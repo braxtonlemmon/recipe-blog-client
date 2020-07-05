@@ -11,18 +11,23 @@ const Wrapper = styled.div`
   align-items: center;
   /* justify-content: center; */
   justify-content: flex-end;
-  box-shadow: -4px 4px 3px grey;
+  /* box-shadow: -4px 4px 3px grey; */
+  box-shadow: 0 0 8px grey;
   padding: 0px 10px 20px 10px;
   margin: 15px 0;
   background: #f5f5f5;
   cursor: pointer;
   &:hover {
-    background: black;
+    background: #2f3020;
     color: white;
   }
   height: 100%;
   width: 300px;
   height: 350px;
+  @media (min-width: 1000px) {
+    width: 400px;
+    height: 450px;
+  }
 `;
 
 const Title = styled.div`
@@ -37,6 +42,8 @@ const Title = styled.div`
 const H2 = styled.h2`
   font-size: 1.5em;
   text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bolder;
 `;
 
 const Image = styled.div`
@@ -49,6 +56,10 @@ const Image = styled.div`
   .thumbnail-image {
     height: 100%;
   }
+  @media (min-width: 1000px) {
+    height: 360px;
+    width: 360px;  
+  }
 `;
 
 const Quote = styled.div`
@@ -60,11 +71,12 @@ const Quote = styled.div`
   background: white;
   color: black;
   z-index: 5;
-  opacity: ${props => (props.isMouseOver ? "0.7" : "0.0")};
+  opacity: ${props => (props.isMouseOver ? "0.45" : "0.0")};
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  font-size: 3em;
 `;
 
 // Functional component
