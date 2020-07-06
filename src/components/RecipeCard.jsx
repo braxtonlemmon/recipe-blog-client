@@ -12,15 +12,17 @@ const Wrapper = styled.div`
   justify-content: flex-end;
   box-shadow: 0 0 8px grey;
   padding: 0px 10px 20px 10px;
-  margin: 15px 0;
   background: #f5f5f5;
   cursor: pointer;
-  height: 100%;
   width: 280px;
   height: 350px;
+  @media (min-width: 412px) {
+    width: 320px;
+    height: 420px;
+  }
   @media (min-width: 1000px) {
     width: 400px;
-    height: 450px;
+    height: 500px;
   }
 `;
 
@@ -38,11 +40,12 @@ const H2 = styled.h2`
   text-decoration: none;
   text-transform: uppercase;
   font-weight: bolder;
+  @media (min-width: 412px) {
+    font-size: 2em;
+  }
 `;
 
 const Image = styled.div`
-  height: 290px;
-  width: 290px;
   height: 240px;
   width: 240px;
   position: relative;
@@ -52,6 +55,11 @@ const Image = styled.div`
   .thumbnail-image {
     height: 100%;
   }
+  @media (min-width: 412px) {
+    width: 280px;
+    height: 280px;
+  }
+
   @media (min-width: 1000px) {
     height: 360px;
     width: 360px;  
@@ -78,6 +86,9 @@ const Quote = styled.div`
   p {
     margin: 0 20px;
   }
+  @media (min-width: 412px) {
+    font-size: 2.5em;
+  }
 `;
 
 // Functional component
@@ -89,14 +100,11 @@ function RecipeCard({ recipe }) {
         <H2>{recipe.title}</H2>
       </Title>
       <Image>
-
           <Img
             className="thumbnail-image"
-            // fluid={recipe.mainImage.childImageSharp.fluid}
             fluid={images[0].localFile.childImageSharp.fluid}
             alt={recipe.title}
           />
-
       </Image>
       <Quote>
         <p>{recipe.quote}</p>

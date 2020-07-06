@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   align-content: center;
   text-align: justify;
   width: 80%;
+  padding-top: 2em;
 `;
 
 const Content = styled.div`

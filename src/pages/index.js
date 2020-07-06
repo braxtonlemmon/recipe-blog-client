@@ -21,9 +21,9 @@ const Recipes = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-
   width: 100%;
-  li {
+  margin-top: 2em;
+  a {
     margin: 20px;
   }
   @media (min-width: 1000px) {
@@ -32,15 +32,16 @@ const Recipes = styled.ul`
 `;
 
 const Hero = styled.div`
-  /* border: 3px solid black; */
   position: relative;
-  height: 700px;
   height: 400px;
   width: 100%;
   background: url('https://remember-to-cook.s3.us-east-2.amazonaws.com/veg_burger1.jpg');
   background-size: cover;
   background-position: center;
   z-index: 10;
+  @media (min-width: 768px) {
+    height: 700px;
+  }
 `;
 
 const Layer = styled.div`
@@ -78,6 +79,7 @@ const HeroTextBox = styled.div`
 
 function IndexPage({ data }) {
   const recipes = data.allMongodbTestRecipes.edges;
+  
   return (
     <>
       <SEO title="Home" description="Catalog of recipes" />

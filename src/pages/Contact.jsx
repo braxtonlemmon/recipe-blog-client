@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: baseline;
   align-items: center;
+  padding-top: 2em;
   .contact-intro {
     margin: 10px;
   }
