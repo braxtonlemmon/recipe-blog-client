@@ -3,8 +3,15 @@ import styled from 'styled-components';
 import PropTypes from "prop-types"
 import Header from './Header';
 import NavBar from './NavBar';
+import MobileMenu from './MobileMenu';
 import Footer from './Footer';
 import Transition from './transition';
+import { Segment, Responsive } from 'semantic-ui-react';
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from "body-scroll-lock"
 
 const Wrapper = styled.div`
   display: grid;
@@ -29,16 +36,64 @@ const Main = styled.main`
 `;
 
 const Layout = ({ children, location }) => {
+  const [isHeaderVisible, setHeaderVisible] = useState(true);
+  const [showMenu, setShowMenu] = useState(false);
+
+  const handleMenuClick = () => {
+    if (showMenu === true) {
+      clearAllBodyScrollLocks();
+      setShowMenu(false);
+    } else {
+      setShowMenu(true);
+      const menu = document.getElementById('menu');
+      disableBodyScroll(menu);
+
+    }
+    // setShowMenu(!showMenu);
+  }
+
+  const handleMainClick = () => {
+    if (showMenu) {
+      clearAllBodyScrollLocks()
+      setShowMenu(false);
+    }
+  }
+
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      const header = document.getElementById('header');
+      const options = {
+        threshold: 0
+      }
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          entry.isIntersecting ? setHeaderVisible(true) : setHeaderVisible(false);
+        })
+      }, options)
+
+      observer.observe(header);
+      return () => observer.unobserve(header);
+    }
+  }, [])
   return (
     <Wrapper>
       <Header />
-      <NavBar />
+      <NavBar 
+        isHeaderVisible={isHeaderVisible} 
+        handleMenuClick={handleMenuClick}
+        showMenu={showMenu}  
+      />
+      <MobileMenu 
+        showMenu={showMenu}
+        setShowMenu={setShowMenu}
+      />
       <Transition location={location}>
-        <Main>
+        <Main
+          onClick={() => handleMainClick()}
+        >
           {children}
         </Main>
       </Transition>
-      {/* <Main>{children}</Main> */}
       <Footer />
     </Wrapper>
   )
