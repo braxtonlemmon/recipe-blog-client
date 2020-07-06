@@ -9,20 +9,14 @@ const Wrapper = styled.div`
   position: relative;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
   justify-content: flex-end;
-  /* box-shadow: -4px 4px 3px grey; */
   box-shadow: 0 0 8px grey;
   padding: 0px 10px 20px 10px;
   margin: 15px 0;
   background: #f5f5f5;
   cursor: pointer;
-  &:hover {
-    background: #2f3020;
-    color: white;
-  }
   height: 100%;
-  width: 300px;
+  width: 280px;
   height: 350px;
   @media (min-width: 1000px) {
     width: 400px;
@@ -47,8 +41,10 @@ const H2 = styled.h2`
 `;
 
 const Image = styled.div`
-  height: 260px;
-  width: 260px;
+  height: 290px;
+  width: 290px;
+  height: 240px;
+  width: 240px;
   position: relative;
   background-image: url(${props => props.url});
   background-size: cover;
@@ -68,31 +64,27 @@ const Quote = styled.div`
   bottom: 0;
   height: 100%;
   width: 100%;
-  background: white;
-  color: black;
-  z-index: 5;
-  opacity: ${props => (props.isMouseOver ? "0.45" : "0.0")};
+  background: #2f302066;
+  color: white;
+  opacity: 0;
+  &:hover {
+    opacity: 1;
+  }
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 3em;
+  font-size: 2em;
+  p {
+    margin: 0 20px;
+  }
 `;
 
 // Functional component
 function RecipeCard({ recipe }) {
-  const [isMouseOver, setIsMouseOver] = useState(false);
   const images = recipe.fields.images;
-  const handleMouseOver = () => {
-    setIsMouseOver(true);
-  }
-
-  const handleMouseLeave = () => {
-    setIsMouseOver(false);
-  }
-
   return (
-    <Wrapper onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave} onFocus={handleMouseOver}>
+    <Wrapper>
       <Title>
         <H2>{recipe.title}</H2>
       </Title>
@@ -106,7 +98,7 @@ function RecipeCard({ recipe }) {
           />
 
       </Image>
-      <Quote isMouseOver={isMouseOver}>
+      <Quote>
         <p>{recipe.quote}</p>
       </Quote>
     </Wrapper>

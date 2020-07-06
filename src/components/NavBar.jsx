@@ -21,6 +21,22 @@ const HeaderBar = styled.div`
   grid-area: navbar;
 `;
 
+const Links = styled.div`
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-auto-flow: column;
+  gap: 10px;
+  position: sticky;
+  top: 10px;
+  /* border-top: 1px solid black; */
+`;
+
+const NavLink = styled.p`
+  color: #2F3020;
+  text-transform: uppercase;
+  font-size: 0.9em;
+`;
 
 const Buttons = styled.div`
   display: grid;
@@ -81,12 +97,18 @@ function NavBar() {
 
   return (
     <HeaderBar id="navbar">
-      <Buttons>
+      <Links>
+        <Link to='/'><NavLink>Recipes</NavLink></Link>
+        <Link to={`/recipe/${getRandomTitle()}`}><NavLink>Random</NavLink></Link>
+        <Link to='/About'><NavLink>About</NavLink></Link>
+        <Link to='/Contact'><NavLink>Contact</NavLink></Link>
+      </Links>
+      {/* <Buttons>
         <Link to='/'><Button>Recipes</Button></Link>
         <Link to={`/recipe/${getRandomTitle()}`}><Button>Random</Button></Link>
         <Link to='/About'><Button>About</Button></Link>
         <Link to='/Contact'><Button>Contact</Button></Link>
-      </Buttons>
+      </Buttons> */}
     </HeaderBar>
   )
 }
