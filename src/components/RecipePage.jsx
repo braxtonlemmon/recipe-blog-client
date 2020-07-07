@@ -4,17 +4,14 @@ import Comments from './Comments';
 import ImageSlider from './ImageSlider';
 import { H2 } from './Headings';
 import SEO from '../components/seo';
-
+import Ingredients from './Ingredients';
+import Steps from './Steps';
 import {
   Wrapper,
   AboutBox,
   Details,
-  IngredientsBox,
-  StepsBox,
   MyH1,
   Image,
-  Ingredient,
-  Step
 } from './RecipePageStyling';
 import PropTypes from 'prop-types';
 
@@ -31,9 +28,7 @@ const convertDuration = (duration) => {
 function RecipePage({ data }) {
   const recipe = data.mongodbTestRecipes;
   const images = data.mongodbTestRecipes.fields.images;
-  const [ingredientsFixed, setIngredientsFixed] = useState(false);
   const [checkboxes, setCheckboxes] = useState(loadCheckboxes());
-  const [navHeight, setNavHeight] = useState();
 
   // helper functions
   function loadCheckboxes() {
@@ -52,15 +47,6 @@ function RecipePage({ data }) {
     setCheckboxes(storedData);
   }
 
-  // useEffect
-
-  // detects height of navbar to use when making ingredients box sticky
-  useEffect(() => {
-    const navbar = document.getElementById('navbar');
-    const height = navbar.getBoundingClientRect().height;
-    setNavHeight(height);
-  }, []);
-
   // loads saved data from localStorage
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem(recipe.id));
@@ -70,25 +56,6 @@ function RecipePage({ data }) {
       setCheckboxes({...storedData})
     }
   }, [recipe.id])
-
-  // observer that watches position of ingredients box
-  useEffect(() => {
-    if (typeof document !== 'undefined') {
-      const box = document.getElementById('ingredients-box');
-      const options = {
-        threshold: 1
-      }
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          entry.isIntersecting ? setIngredientsFixed(true) : setIngredientsFixed(false);
-        })
-      }, options)
-
-      observer.observe(box);
-      return () => observer.unobserve(box);
-    }
-  }, [])
-
 
   return (
     <>
@@ -106,82 +73,16 @@ function RecipePage({ data }) {
           </Details>
           <p>{recipe.intro}</p>
         </AboutBox>
-
-        <IngredientsBox
-          fixed={ingredientsFixed}
-          id="ingredients-box"
-          navHeight={navHeight}
-        >
-          <H2 className="ingredients-box-title">Ingredients</H2>
-
-          {/* 
-        <Scrollbar 
-          // style={{height: "100%", width: "95%"}}
-          translateContentSizeToHolder
-          > */}
-          <ul>
-            {recipe.ingredients.map((ingredient, index) => (
-              <Ingredient
-                key={ingredient}
-                done={checkboxes[`ingredient-checkbox-${index}`]}
-                checkboxes={checkboxes}
-              >
-                <input
-                  className="checkbox"
-                  type="checkbox"
-                  id={`ingredient-checkbox-${index}`}
-                  defaultChecked={
-                    checkboxes[`ingredient-checkbox-${index}`] === true
-                  }
-                  onChange={handleCheck}
-                ></input>
-                <label
-                  className="ingredient-label"
-                  htmlFor={`ingredient-checkbox-${index}`}
-                >
-                  {ingredient}
-                </label>
-              </Ingredient>
-            ))}
-          </ul>
-          {/* </Scrollbar> */}
-        </IngredientsBox>
-        <StepsBox id="steps-box">
-          <H2 id="steps">Steps</H2>
-          <p className="sidenote">
-            ***click each step as you go to keep track of your progress***
-          </p>
-          <ul>
-            {recipe.steps.map((step, index) => (
-              <Step key={step} done={checkboxes[`step-checkbox-${index}`]}>
-                <div className="step-box-holder">
-                  <input
-                    type="checkbox"
-                    id={`step-checkbox-${index}`}
-                    defaultChecked={
-                      checkboxes[`step-checkbox-${index}`] === true
-                        ? true
-                        : false
-                    }
-                    onChange={handleCheck}
-                  ></input>
-                  <label
-                    className="step-number"
-                    htmlFor={`step-checkbox-${index}`}
-                  >
-                    {index + 1}
-                  </label>
-                </div>
-                <label
-                  className="step-text"
-                  htmlFor={`step-checkbox-${index}`}
-                >
-                  {step}
-                </label>
-              </Step>
-            ))}
-          </ul>
-        </StepsBox>
+        <Ingredients 
+          recipe={recipe}
+          checkboxes={checkboxes}
+          handleCheck={handleCheck}
+        />
+        <Steps
+          recipe={recipe}
+          checkboxes={checkboxes}
+          handleCheck={handleCheck}
+        />
         <Comments mongodb_id={recipe.mongodb_id} />
       </Wrapper>
     </>
@@ -218,3 +119,79 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+
+
+
+        {
+          /* <IngredientsBox
+          fixed={ingredientsFixed}
+          id="ingredients-box"
+          navHeight={navHeight}
+        >
+          <H2 className="ingredients-box-title">Ingredients</H2>
+          <ul>
+            {recipe.ingredients.map((ingredient, index) => (
+              <Ingredient
+                key={ingredient}
+                done={checkboxes[`ingredient-checkbox-${index}`]}
+                checkboxes={checkboxes}
+              >
+                <input
+                  className="checkbox"
+                  type="checkbox"
+                  id={`ingredient-checkbox-${index}`}
+                  defaultChecked={
+                    checkboxes[`ingredient-checkbox-${index}`] === true
+                  }
+                  onChange={handleCheck}
+                ></input>
+                <label
+                  className="ingredient-label"
+                  htmlFor={`ingredient-checkbox-${index}`}
+                >
+                  {ingredient}
+                </label>
+              </Ingredient>
+            ))}
+          </ul>
+        </IngredientsBox> */
+        }
+        {
+          /* <StepsBox id="steps-box">
+          <H2 id="steps">Steps</H2>
+          <p className="sidenote">
+            ***click each step as you go to keep track of your progress***
+          </p>
+          <ul>
+            {recipe.steps.map((step, index) => (
+              <Step key={step} done={checkboxes[`step-checkbox-${index}`]}>
+                <div className="step-box-holder">
+                  <input
+                    type="checkbox"
+                    id={`step-checkbox-${index}`}
+                    defaultChecked={
+                      checkboxes[`step-checkbox-${index}`] === true
+                        ? true
+                        : false
+                    }
+                    onChange={handleCheck}
+                  ></input>
+                  <label
+                    className="step-number"
+                    htmlFor={`step-checkbox-${index}`}
+                  >
+                    {index + 1}
+                  </label>
+                </div>
+                <label
+                  className="step-text"
+                  htmlFor={`step-checkbox-${index}`}
+                >
+                  {step}
+                </label>
+              </Step>
+            ))}
+          </ul>
+        </StepsBox> */
+        }

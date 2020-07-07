@@ -4,8 +4,10 @@ const Button = styled.button`
   border: none;
   color: white;
   border-radius: 5px;
-  background: red;
+  background: #cdcbd6;
+  background: #596235;
   outline: none;
+  color: #fff;
   padding: 5px;
   cursor: pointer;
   &:hover {

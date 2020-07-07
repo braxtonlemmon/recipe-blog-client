@@ -7,8 +7,8 @@ import PropTypes from 'prop-types';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 15px;
-  border-top: 5px solid black;
+  padding: 15px 0;
+  border-top: 5px solid #2f3020;
   align-items: center;
   width: 100%;
   z-index: 501;
@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 `;
 
 const List = styled.div`
-  width: 90%;
+  width: 95%;
   max-width: 600px;
 `
 

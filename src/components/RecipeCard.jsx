@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
@@ -40,9 +40,6 @@ const H2 = styled.h2`
   text-decoration: none;
   text-transform: uppercase;
   font-weight: bolder;
-  @media (min-width: 412px) {
-    font-size: 2em;
-  }
 `;
 
 const Image = styled.div`

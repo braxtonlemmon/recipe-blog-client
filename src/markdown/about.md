@@ -31,13 +31,13 @@ The site you are viewings is built with Gatsby and deployed with Netlify. My adm
 ### TO IMPROVE THE COOKING EXPERIENCE
 
 Sometimes when viewing recipe blogs I imagine what the ideal online recipe experience would be like. Peel the Garlic attempts to provide the following:
-  - #### Accessibility: quantities listed    in both weight and volume
+  - #### 1) Accessibility: quantities listed    in both weight and volume
 
     While living in France I purchased a few cookbooks. Excited to test my French and cook something new, I cracked open the book, selected a recipe, and looked at the list of ingredients. Immediately I noticed that the quantity of most items was indicated by weight in grams. I went to the store, purchased a kitchen scale, and it has since been a permanent feature on my kitchen counter. While I agree that exact measurements are usually not as vital in cooking as in baking, I love being able to place a bowl on the scale and add a certain weight of each ingredient without having to measure by volume with cups or spoons. 
     
     I want my recipes to be accesible at an international level, so I attempt to indicate ingredient quantities using both volume and weight. I have a preference for the Metric system and have therefore decided to use it as the primary unit in my recipes.  
     
-  - #### Visibility: see ingredients and steps simultaneously
+  - #### 2) Visibility: see ingredients and steps simultaneously
     
     I regularly use a laptop or phone when following a recipe. Often I will reach a recipe step that says something like, "now add the oil, the nuts, and all the spices except for cumin" and have to scroll back up the page to remember how much of each ingredient is needed. Even worse, I then have to scroll back down the page and find again the step I had just read. For this reason I have designed my recipe pages in a way that allows you to visibily mark your progress through the lists of ingredients and steps. Your progress will be saved in your browser and will allow you to return to the page at a later time to continue where you left off. Additionally, the list of ingredients will remain fixed as a side column on the page for display screens that are tablet-sized and larger.
 

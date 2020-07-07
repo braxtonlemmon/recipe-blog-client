@@ -9,14 +9,17 @@ const CommentRow = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 90%;
+  width: 80%;
   padding: 15px;
   padding-bottom: 30px;
   /* background: rgba(247, 191, 247, 0.78); */
-  background: ${props => props.fromAdmin ? 'lightgreen' : 'rgba(247, 191, 247, 1)'};
+  background: ${props => props.fromAdmin ? '#5962356e' : '#cdcbd640'};
+  /* background: white; */
+  /* background: #cdcbd680; */
   box-shadow: -2px 2px 2px lightgrey;
+  /* box-shadow: 0 0 6px lightgrey; */
   z-index: 500;
-  margin: 15px;
+  margin: 15px 0;
   margin-left: ${props => props.margin}px;
   border-radius: 8px;
   transition: all 5s ease;
@@ -48,9 +51,19 @@ const CommentRow = styled.div`
 
 const ReplyButton = styled(Button)`
   position: absolute;
-  right: 10px;
+  left: 40%;
+  /* right: 10px; */
   bottom: 10px;
   padding: 3px;
+  /* margin-top: 20px; */
+  background: #cdcbd680;
+  border: 1px solid black;
+  border-radius: 0;
+  text-transform: uppercase;
+  color: black;
+  /* background: transparent;
+  color: black;
+  font-size: 1.2em; */
   `;
 
 function Comment({ comment, comments, margin, setCommentsLoaded }) {
@@ -66,7 +79,7 @@ function Comment({ comment, comments, margin, setCommentsLoaded }) {
       <Comment 
         key={comment._id} 
         setCommentsLoaded={setCommentsLoaded} 
-        comment={comment} margin={margin + 20} 
+        comment={comment} margin={margin + 15} 
         comments={comments} type="child" 
       />)
   })

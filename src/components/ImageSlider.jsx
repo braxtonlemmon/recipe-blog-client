@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import Img from 'gatsby-image';
+import PropTypes from 'prop-types';
 
 const slide = keyframes`
   from {
@@ -38,45 +39,21 @@ const FakeImg = styled.div`
 const ButtonsBox = styled.div`
   display: ${props => (props.multiple === true ? "flex" : "none")};
   position: absolute;
-  left: -35px;
-  right: -35px;
+  left: 0;
+  right: 0;
   top: 0;
-  /* width: 100%; */
+  z-index: 15;
   height: 100%;
-
   justify-content: space-between;
   align-items: center;
-  .right {
-    box-shadow: -2px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 0 8px lightgrey;
-  }
-  .left {
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
-    box-shadow: 0 0 8px lightgrey;
-  }
 `
-
-const Button = styled.div`
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.7);
-  background: rgba(0, 0, 0, 0.5);
-  /* border: 2px solid rgba(0, 0, 0, 0.5); */
-  /* box-shadow: 0 0 50px white; */
-  color: rgba(0, 0, 0, 0.6);
-  color: white;
-  display: flex;
-  font-weight: bold;
-  justify-content: center;
-  align-items: center;
+const Arrow = styled.p`
+  font-size: 6em;
+  color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
+  padding: 10px;
   &:hover {
-    transform: scale(1.05);
-  }
-  @media (min-width: 600px) {
-    height: 45px;
-    width: 45px;
+    color: rgba(255, 255, 255);
   }
 `;
 
@@ -105,21 +82,25 @@ function ImageSlider({ images }) {
       <ButtonsBox
         multiple={images.length > 1}
       >
-        <Button 
+        <Arrow 
           className="left" 
           onClick={() => handlePrevious()}
         >
-          {`<<`}
-        </Button>
-        <Button 
+          {`<`}
+        </Arrow>
+        <Arrow 
           className="right" 
           onClick={() => handleNext()}
         >
-          {`>>`}
-        </Button>
+          {`>`}
+        </Arrow>
       </ButtonsBox>
     </ImgWrapper>
   )
+}
+
+ImageSlider.propTypes = {
+  images: PropTypes.array
 }
 
 export default ImageSlider;

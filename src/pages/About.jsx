@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: baseline;
   align-content: center;
-  text-align: justify;
+  /* text-align: justify; */
   width: 80%;
   padding-top: 2em;
 `;
@@ -17,24 +17,27 @@ const Wrapper = styled.div`
 const Content = styled.div`
   h2 {
     font-size: 1.8em; 
-    margin-top: 40px; 
+    margin-top: 40px;
+    text-align: left; 
   }
 
   h3 {
     padding-left: 10px;
     padding-top: 20px;
     text-decoration: underline;
+    text-align: left;
   }
 
   h4 {
     font-weight: bolder;
     padding-left: 10px;
+    font-size: 1.5em;
   }
   p {
     margin: 15px 0;
     padding-left: 10px;
-    font-size: 1.1em;
-    line-height: 1.3em;
+    font-size: 1.2em;
+    line-height: 1.5em;
   }
   ul {
     margin-left: 20px;

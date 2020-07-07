@@ -103,7 +103,7 @@ const StepsBox = styled(InfoBox)`
   width: 90%;
   padding: 15px 0;
   @media (min-width: 768px) {
-    border-left: 2px dashed black;
+    /* border-left: 2px dashed black; */
     padding-left: 20px;
     justify-self: left; 
   }
@@ -128,7 +128,7 @@ const Image = styled.div`
   box-shadow: -10px 8px 2px #383838, 10px 12px 2px #5c5c5c;
   box-shadow: 0 0 35px grey;
   border-radius: 8px;
-  margin: 20px;
+  margin: 20px 0;
   @media (min-width: 600px) {
     height: 500px;
     width: 500px;
@@ -146,6 +146,8 @@ const Ingredient = styled.li`
   grid-template-columns: 2.5em 1fr;
   align-items: center;
   border-bottom: 1px dotted black;
+  line-height: 1.2em;
+  letter-spacing: 0.15px;
   .checkbox {
     appearance: none;
     border: 2px solid black;
@@ -159,6 +161,8 @@ const Ingredient = styled.li`
   }
   .checkbox:checked:after {
     content: "✓";
+    padding-left: 5px;
+    padding-bottom: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -168,7 +172,7 @@ const Ingredient = styled.li`
     height: 100%;
     width: 100%;
     color: black;
-    background-color: lightgoldenrodyellow;
+    /* background-color: lightgoldenrodyellow; */
   }
 `
 
@@ -181,6 +185,8 @@ const Step = styled.li`
   grid-template-columns: 3em 1fr;
   align-items: center;
   gap: 5px;
+  line-height: 1.2em;
+  letter-spacing: 0.15px;
   .step-box-holder {
     height: 2.2em;
     width: 2.2em;
@@ -210,16 +216,7 @@ const Step = styled.li`
   input:checked + label {
     color: grey;
   }
-  /* @media (min-width: 768px) {
-    width: 40vw;
-
-  }
-  @media (min-width: 1000px) {
-    width: 50vw;
-
-  } */
   width: 100%;
-
 `;
 
 export {

@@ -14,7 +14,7 @@ const H2 = styled.h2`
   text-align: center;
   align-self: center;
   margin-bottom: 10px;
-  text-shadow: 1px 1px grey, -1px 2px lightgreen;
+  /* text-shadow: 1px 1px grey, -1px 2px lightgreen; */
 `;
 
 export {
