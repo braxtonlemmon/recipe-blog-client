@@ -3,18 +3,15 @@ import styled from 'styled-components';
 import { Link, graphql } from 'gatsby';
 import RecipeCard from '../components/RecipeCard';
 import SEO from '../components/seo';
-import { H1 } from '../components/Headings';
+import Hero from '../components/Hero';
+import PropTypes from 'prop-types';
 
 const Wrapper = styled.ul`
   display: flex;
   flex-direction: column;
-  /* flex-wrap: wrap; */
   align-items: center;
   justify-items: center;
   width: 100%;
-  /* li {
-    margin: 15px;
-  } */
 `;
 
 const Recipes = styled.ul`
@@ -31,66 +28,14 @@ const Recipes = styled.ul`
   }
 `;
 
-const Hero = styled.div`
-  position: relative;
-  height: 400px;
-  width: 100%;
-  background: url('https://remember-to-cook.s3.us-east-2.amazonaws.com/veg_burger1.jpg');
-  background-size: cover;
-  background-position: center;
-  z-index: 10;
-  @media (min-width: 768px) {
-    height: 700px;
-  }
-`;
-
-const Layer = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.2);
-  z-index: 11;
-`;
-
-const HeroText = styled(H1)`
-  color: white;
-  font-size: 1.5em;
-  font-weight: bolder;
-  text-align: left;
-`
-
-const HeroTextBox = styled.div`
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  width: 40%;
-  position: flex;
-  z-index: 13;
-  flex-direction: column;
-  align-content: baseline;
-  p {
-    color: white;
-    font-size: 2.5em;
-    font-style: italic;
-  }
-`
-
 function IndexPage({ data }) {
   const recipes = data.allMongodbTestRecipes.edges;
-  
+
   return (
     <>
       <SEO title="Home" description="Catalog of recipes" />
       <Wrapper>
-        <Hero>
-          <Layer></Layer>
-          <HeroTextBox>
-            <p>Turmeric in a burger? Yes, please.</p>
-            <HeroText>Sweet Potato Burgers</HeroText>
-          </HeroTextBox>
-        </Hero>
+        <Hero />
         <Recipes>
           {recipes.map(({node}) => {
             const slug = node.title.toLowerCase().replace(/ /g, '-');
@@ -109,6 +54,10 @@ function IndexPage({ data }) {
   )
 }
 
+IndexPage.propTypes = {
+  data: PropTypes.object,
+}
+
 export default IndexPage;
 
 export const pageQuery = graphql`
@@ -116,6 +65,7 @@ export const pageQuery = graphql`
     allMongodbTestRecipes {
       edges {
         node {
+          id
           title
           quote
           is_published
@@ -130,19 +80,8 @@ export const pageQuery = graphql`
               }
             }
           }
-          id
-           
         }
       }
     }
   }
-`
-
-// mainImage {
-          //   childImageSharp {
-          //     fluid {
-          //       ...GatsbyImageSharpFluid
-          //     }
-          //   }
-          // }
-          // image
+  `

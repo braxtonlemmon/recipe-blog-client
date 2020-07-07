@@ -36,6 +36,7 @@ const Content = styled.div`
 const Logo = styled.p`
   position: absolute;
   left: 10px;
+  top: 12px;
   height: 100%;
   opacity: 0;
   color: #2f3020;
