@@ -1,23 +1,20 @@
 import React from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import { Responsive, Segment } from 'semantic-ui-react';
+import Hamburger from './Hamburger';
+import PropTypes from 'prop-types';
 
 const HeaderBar = styled.div`
   position: sticky;
   top: 0;
-  /* display: flex; */
   width: 100%;
   z-index: 503;
   background: white;
   height: 50px;
   box-shadow: 0px 2px 2px grey;
   grid-area: navbar;
-  /* .logo { */
-    /* font-weight: bolder; */
-  /* } */
 `;
-
 
 const Content = styled.div`
   width: 100%;
@@ -40,7 +37,6 @@ const Logo = styled.p`
   height: 100%;
   opacity: 0;
   color: #2f3020;
-  /* padding-top: 12px; */
   transition: opacity 250ms ease;
   ${props =>
     !props.isHeaderVisible &&
@@ -91,45 +87,6 @@ const NavLink = styled.p`
   }
 `;
 
-const MenuButton = styled.div`
-  position: absolute;
-  top: 10px;
-  right: 30px;
-  height: 28px;
-  width: 28px;
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  align-items: center;
-  cursor: pointer;
-  .icon {
-    display: inline-block;
-    .line1,
-    .line2,
-    .line3 {
-      margin: 6px 0;
-      height: 2px;
-      width: 35px;
-      background: #2F3020;
-      transition: transform 0.4s ease;
-    }
-    .line1 {
-      transform-origin: top left;
-    }
-    .line3 {
-      transform-origin: bottom left;
-    }
-    .view.line1 {
-      transform: rotate(28deg);
-    }
-    .view.line2 {
-      opacity: 0;
-    }
-    .view.line3 {
-      transform: rotate(-28deg);
-    }
-  }
-`
-
 function NavBar({ isHeaderVisible, handleMenuClick, showMenu }) {
   const data = useStaticQuery(
     graphql`
@@ -153,29 +110,26 @@ function NavBar({ isHeaderVisible, handleMenuClick, showMenu }) {
   
   return (
     <HeaderBar id="navbar" isHeaderVisible={isHeaderVisible}>
-      <Responsive as={Segment} maxWidth={780}>
-        <Content isHeaderVisible={isHeaderVisible}>
-          <Link to="/">
-            <Logo mobile isHeaderVisible={isHeaderVisible} className="logo">
-              PEEL THE GARLIC
-            </Logo>
-          </Link>
-          <MenuButton onClick={() => handleMenuClick()}>
+      <Content isHeaderVisible={isHeaderVisible}>
+        <Link to="/">
+          <Logo isHeaderVisible={isHeaderVisible} className="logo">
+            PEEL THE GARLIC
+          </Logo>
+        </Link>
+
+        {/* Mobile version */}
+        <Responsive as={Segment} maxWidth={780}>
+          <Hamburger onClick={() => handleMenuClick()}>
             <div className="icon">
               <div className={showMenu ? "line1 view" : "line1"}></div>
               <div className={showMenu ? "line2 view" : "line2"}></div>
               <div className={showMenu ? "line3 view" : "line3"}></div>
             </div>
-          </MenuButton>
-        </Content>
-      </Responsive>
-      <Responsive as={Segment} minWidth={780}>
-        <Content isHeaderVisible={isHeaderVisible}>
-          <Link to="/">
-            <Logo isHeaderVisible={isHeaderVisible} className="logo">
-              PEEL THE GARLIC
-            </Logo>
-          </Link>
+          </Hamburger>
+        </Responsive>
+
+        {/* Larger-than-mobile version */}
+        <Responsive as={Segment} minWidth={780}>
           <Links isHeaderVisible={isHeaderVisible}>
             <Link to="/">
               <NavLink>Recipes</NavLink>
@@ -190,10 +144,17 @@ function NavBar({ isHeaderVisible, handleMenuClick, showMenu }) {
               <NavLink>Contact</NavLink>
             </Link>
           </Links>
-        </Content>
-      </Responsive>
+        </Responsive>
+
+      </Content>
     </HeaderBar>
   )
+}
+
+NavBar.propTypes = { 
+  isHeaderVisible: PropTypes.bool, 
+  handleMenuClick: PropTypes.func, 
+  showMenu: PropTypes.func 
 }
 
 export default NavBar;
