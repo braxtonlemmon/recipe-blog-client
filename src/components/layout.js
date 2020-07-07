@@ -7,11 +7,6 @@ import MobileMenu from './MobileMenu';
 import Footer from './Footer';
 import Transition from './transition';
 import { Segment, Responsive } from 'semantic-ui-react';
-import {
-  disableBodyScroll,
-  enableBodyScroll,
-  clearAllBodyScrollLocks,
-} from "body-scroll-lock"
 
 const Wrapper = styled.div`
   display: grid;
@@ -40,21 +35,11 @@ const Layout = ({ children, location }) => {
   const [showMenu, setShowMenu] = useState(false);
 
   const handleMenuClick = () => {
-    if (showMenu === true) {
-      clearAllBodyScrollLocks();
-      setShowMenu(false);
-    } else {
-      setShowMenu(true);
-      const menu = document.getElementById('menu');
-      disableBodyScroll(menu);
-
-    }
-    // setShowMenu(!showMenu);
+    setShowMenu(!showMenu);
   }
 
   const handleMainClick = () => {
     if (showMenu) {
-      clearAllBodyScrollLocks()
       setShowMenu(false);
     }
   }
