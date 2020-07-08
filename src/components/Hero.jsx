@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-import { H1 } from "./Headings"
+import { H1, H2 } from "./Headings"
 import Img from 'gatsby-image';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 
 const Wrapper = styled(Link)`
+  overflow-x: hidden;
   position: relative;
   height: 400px;
   width: 100%;
@@ -34,15 +35,6 @@ const DimLayer = styled.div`
   z-index: 11;
 `
 
-const HeroText = styled(H1)`
-  color: white;
-  font-size: 1.5em;
-  font-weight: bolder;
-  text-align: left;
-  transition: transform 1.1s ease;
-  transform: ${({ isVisible }) => isVisible ? 'translateX(0)' : 'translateX(200%)'};
-
-`
 
 const HeroTextBox = styled.div`
   position: absolute;
@@ -52,14 +44,41 @@ const HeroTextBox = styled.div`
   z-index: 13;
   display: flex;
   flex-direction: column;
-  align-content: baseline;
-  p {
-    color: white;
-    font-size: 2.5em;
-    font-style: italic;
-    transition: transform 1.1s ease;
-    transform: ${({ isVisible }) => isVisible ? 'translateX(0)' : 'translateX(-105%)'};
+  @media (min-width: 600px) {
+    width: 50%;
+    bottom: 15px;
+    left: 15px;
+  }
+  @media (min-width: 1024px) {
+    width: 40%;
+  }
 
+`
+
+const HeroQuote = styled(H2)`
+  color: white;
+  font-size: 2em;
+  align-self: flex-start;
+  text-align: left;
+  transition: transform 1.1s ease;
+  transform: ${({ isVisible }) => isVisible ? 'translateX(0)' : 'translateX(-105%)'};
+  @media (min-width: 760px) {
+    font-size: 3em;
+  })
+`;
+
+const HeroTitle = styled(H1)`
+  color: white;
+  font-style: italic;
+  font-size: 1.2em;
+  font-weight: bolder;
+  align-self: flex-start;
+  text-align: start;
+  transition: transform 1.1s ease;
+  transform: ${({ isVisible }) => isVisible ? 'translateX(0)' : 'translateX(200%)'};
+  @media (min-width: 760px) {
+    font-size: 1.5em;
+    transform: ${({ isVisible }) => isVisible ? 'translateX(0)' : 'translateX(800%)'};
   }
 `
 
@@ -116,8 +135,9 @@ function Hero() {
       <HeroTextBox
         isVisible={isVisible}
       >
-        <p isVisible={isVisible}>{`"${featured.quote}"`}</p>
-        <HeroText isVisible={isVisible}>{featured.title}</HeroText>
+        {/* <HeroQuote isVisible={isVisible}>{`${featured.quote}`}</HeroQuote> */}
+        <HeroQuote isVisible={isVisible}>Turmeric in a burger? Yes, please.</HeroQuote>
+        <HeroTitle isVisible={isVisible}>{featured.title}</HeroTitle>
       </HeroTextBox>
     </Wrapper>
   )
