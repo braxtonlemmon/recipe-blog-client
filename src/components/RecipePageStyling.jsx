@@ -18,7 +18,7 @@ const Wrapper = styled.div`
     "commentForm"
     "commentBox"
   ;
-  @media (min-width: 768px) {
+  @media (min-width: 760px) {
     grid-template-columns: 1fr 2fr;
     grid-template-areas:
       "title title"
@@ -68,7 +68,7 @@ const IngredientsBox = styled(InfoBox)`
   border-radius: 20px;
   min-width: 50%;
   max-width: 90%;
-  @media (min-width: 768px) {
+  @media (min-width: 760px) {
     box-shadow: -2px 2px 2px lightgrey, 2px -2px 2px lightgrey;
     box-shadow: 0 0 12px lightgrey;
     position: ${props => props.fixed ? 'sticky' : 'relative'};
@@ -102,7 +102,7 @@ const StepsBox = styled(InfoBox)`
   grid-area: steps;
   width: 90%;
   padding: 15px 0;
-  @media (min-width: 768px) {
+  @media (min-width: 760px) {
     /* border-left: 2px dashed black; */
     padding-left: 20px;
     justify-self: left; 

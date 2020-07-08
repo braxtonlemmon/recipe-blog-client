@@ -16,8 +16,16 @@ const Wrapper = styled.div`
     "header"
     "navbar"
     "main"
+    "mobile"
     "footer";
   min-height: 100vh;
+  @media (min-width: 760px) {
+    grid-template-areas:
+      "header"
+      "navbar"
+      "main"
+      "footer";
+  }
 `
 
 const Main = styled.main`
@@ -69,10 +77,12 @@ const Layout = ({ children, location }) => {
         handleMenuClick={handleMenuClick}
         showMenu={showMenu}  
       />
-      <MobileMenu 
-        showMenu={showMenu}
-        setShowMenu={setShowMenu}
-      />
+      <Responsive as={Segment} maxWidth={760}>
+        <MobileMenu 
+          showMenu={showMenu}
+          setShowMenu={setShowMenu}
+        />
+      </Responsive>
       <Transition location={location}>
         <Main
           onClick={() => handleMainClick()}

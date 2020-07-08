@@ -4,6 +4,7 @@ import { Link, graphql, useStaticQuery } from 'gatsby';
 import PropTypes from 'prop-types';
 
 const Wrapper = styled.div`
+  grid-area: mobile;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

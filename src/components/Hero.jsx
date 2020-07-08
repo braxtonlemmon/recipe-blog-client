@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   height: 400px;
   width: 100%;
   z-index: 10;
-  @media (min-width: 768px) {
+  @media (min-width: 760px) {
     height: 700px;
   }
 `;

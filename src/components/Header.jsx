@@ -34,10 +34,10 @@ const MyH1 = styled(H1)`
 function Header() {
   return (
     <>
-      <Responsive as={Segment} maxWidth={780}>
+      <Responsive as={Segment} maxWidth={760}>
         <HeaderBar mobile id="header"></HeaderBar>
       </Responsive>
-      <Responsive as={Segment} minWidth={780}>
+      <Responsive as={Segment} minWidth={760}>
         <HeaderBar id="header">
           <Link to='/'>
             <MyH1>Peel the Garlic</MyH1>
