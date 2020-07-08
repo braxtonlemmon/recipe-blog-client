@@ -79,6 +79,9 @@ export const pageQuery = graphql`
           title
           quote
           is_published
+          publish_date(
+            formatString: "MMMM DD, YYYY"
+          )
           fields {
             images {
               localFile {

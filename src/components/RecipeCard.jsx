@@ -28,6 +28,7 @@ const Wrapper = styled.div`
 
 const Title = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
@@ -36,10 +37,13 @@ const Title = styled.div`
 `;
 
 const H2 = styled.h2`
-  font-size: 1.5em;
+  font-size: 1.3em;
   text-decoration: none;
   text-transform: uppercase;
   font-weight: bolder;
+  /* padding: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white; */
 `;
 
 const Image = styled.div`
@@ -51,6 +55,14 @@ const Image = styled.div`
   background-position: center;
   .thumbnail-image {
     height: 100%;
+  }
+  p {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: white;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.6);
   }
   @media (min-width: 412px) {
     width: 280px;
@@ -102,6 +114,7 @@ function RecipeCard({ recipe }) {
             fluid={images[0].localFile.childImageSharp.fluid}
             alt={recipe.title}
           />
+          <p>{recipe.publish_date}</p>
       </Image>
       <Quote>
         <p>{recipe.quote}</p>

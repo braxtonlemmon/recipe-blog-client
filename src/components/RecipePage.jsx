@@ -113,6 +113,7 @@ export const pageQuery = graphql`
       duration
       size
       steps
+      publish_date
       fields {
         images {
           localFile {
