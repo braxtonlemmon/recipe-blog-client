@@ -24,27 +24,27 @@ const FormWrapper = styled.form`
   input {
     padding: 10px 5px;
     line-height: 1.4em;
-    font-size: 1.1em;
+    font-size: 1em;
     text-align: center;
     outline: none;
     background: #fbfaff;
     border: 1px solid lightgray;
     border-radius: 5px;
-    width: 70%;
+    width: 100%;
     max-width: 450px;
   }
 
   textarea {
     resize: none;
     outline: none;
-    padding: 10px;
+    padding: 5px;
     border-radius: 8px;
-    font-size: 1.1em;
+    font-size: 1em;
     text-align: center;
     margin-bottom: 10px;
     background: #fbfaff;
     border: 1px solid lightgray;
-    width: 80%;
+    width: 100%;
     max-width: 550px;
     height: 150px;
   }
