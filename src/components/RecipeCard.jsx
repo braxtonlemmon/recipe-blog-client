@@ -62,7 +62,7 @@ const Image = styled.div`
     right: 10px;
     color: white;
     padding: 5px;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.4);
   }
   @media (min-width: 412px) {
     width: 280px;

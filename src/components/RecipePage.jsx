@@ -10,6 +10,7 @@ import { Link } from 'gatsby';
 import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
 import {
   Wrapper,
+  Links,
   AboutBox,
   Details,
   MyH1,
@@ -64,11 +65,29 @@ function RecipePage({ data, location }) {
       <SEO title={recipe.title} description={recipe.intro} />
       <Wrapper>
         <MyH1>{recipe.title}</MyH1>
+        <Links>
+          <p>Psst! Two shortcuts just for you...</p>
+          <div className="links-buttons">
+            <ScrollLink
+              className="scrollLink"
+              to={'about-end'}
+              smooth={true}>
+              Recipe
+            </ScrollLink>
+            <ScrollLink
+              className="scrollLink"
+              to={'steps-end'}
+              smooth={true}>
+                Comments
+            </ScrollLink>
+          </div>
+        </Links>
         <Image>
           <ImageSlider images={images} />
         </Image>
         <AboutBox>
           <H2>About</H2>
+          <p>{recipe.publish_date}</p>
           <ScrollLink 
             to={`steps-end`}
             smooth={true}
@@ -80,6 +99,7 @@ function RecipePage({ data, location }) {
             <p>Serves: {recipe.size}</p>
           </Details>
           <p>{recipe.intro}</p>
+          <div id="about-end"></div>
         </AboutBox>
         <Ingredients
           recipe={recipe}
@@ -113,7 +133,9 @@ export const pageQuery = graphql`
       duration
       size
       steps
-      publish_date
+      publish_date(
+        formatString: "MMMM DD, YYYY"
+      )
       fields {
         images {
           localFile {

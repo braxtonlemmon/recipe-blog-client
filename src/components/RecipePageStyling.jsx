@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   grid-template-areas:
     "title"
     "pic"
+    "links"
     "about"
     "ingredients"
     "steps"
@@ -23,6 +24,7 @@ const Wrapper = styled.div`
     grid-template-areas:
       "title title"
       "pic pic"
+      "links links"
       "about about"
       "ingredients steps"
       "commentForm commentForm"
@@ -32,6 +34,38 @@ const Wrapper = styled.div`
 
   @media (min-width: 1000px) {
     grid-template-columns: 1fr 3.5fr;
+  }
+`;
+
+const Links = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-area: links;
+  margin: 15px;
+  padding: 10px 15px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  .links-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: column;
+    gap: 20px;
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+  .scrollLink {
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    background: #cdcbd680;
+    &:hover {
+      background: #cdcbd6;
+    }
   }
 `;
 
@@ -221,6 +255,7 @@ const Step = styled.li`
 
 export {
   Wrapper,
+  Links,
   AboutBox,
   Details,
   IngredientsBox,
