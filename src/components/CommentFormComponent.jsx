@@ -52,7 +52,10 @@ const FormWrapper = styled.form`
 
 function CommentFormComponent({ data, handleChange, handleSubmit}) {
   return (
-    <FormWrapper name="commentForm">
+    <FormWrapper 
+      name="commentForm"
+      id="comments-anchor"  
+    >
 
       <H2>What did you think? Leave a comment!</H2>
       <label htmlFor="name">Name</label>

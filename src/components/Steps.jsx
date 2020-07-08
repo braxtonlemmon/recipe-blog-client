@@ -35,6 +35,7 @@ function Steps({ recipe, checkboxes, handleCheck }) {
           </Step>
         ))}
       </ul>
+      <div id="steps-end"></div>
     </StepsBox>
   )
 }

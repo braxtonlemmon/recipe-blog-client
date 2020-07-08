@@ -6,6 +6,8 @@ import { H2 } from './Headings';
 import SEO from '../components/seo';
 import Ingredients from './Ingredients';
 import Steps from './Steps';
+import { Link } from 'gatsby';
+import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
 import {
   Wrapper,
   AboutBox,
@@ -25,7 +27,7 @@ const convertDuration = (duration) => {
   }
 }
 
-function RecipePage({ data }) {
+function RecipePage({ data, location }) {
   const recipe = data.mongodbTestRecipes;
   const images = data.mongodbTestRecipes.fields.images;
   const [checkboxes, setCheckboxes] = useState(loadCheckboxes());
@@ -67,13 +69,19 @@ function RecipePage({ data }) {
         </Image>
         <AboutBox>
           <H2>About</H2>
+          <ScrollLink 
+            to={`steps-end`}
+            smooth={true}
+          >test</ScrollLink>
+
+
           <Details>
             <p>⏰ {convertDuration(recipe.duration)}</p>
             <p>Serves: {recipe.size}</p>
           </Details>
           <p>{recipe.intro}</p>
         </AboutBox>
-        <Ingredients 
+        <Ingredients
           recipe={recipe}
           checkboxes={checkboxes}
           handleCheck={handleCheck}

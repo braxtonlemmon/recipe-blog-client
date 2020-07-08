@@ -60,6 +60,7 @@ const Layout = ({ children, location }) => {
       return () => observer.unobserve(header);
     }
   }, [])
+  
   return (
     <Wrapper>
       <Header />

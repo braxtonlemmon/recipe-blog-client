@@ -5,6 +5,7 @@ import RecipeCard from '../components/RecipeCard';
 import SEO from '../components/seo';
 import Hero from '../components/Hero';
 import PropTypes from 'prop-types';
+import { Link as ScrollLink, animateScroll as scroll } from "react-scroll"
 
 const Wrapper = styled.ul`
   display: flex;
@@ -36,6 +37,11 @@ function IndexPage({ data }) {
       <SEO title="Home" description="Catalog of recipes" />
       <Wrapper>
         <Hero />
+
+        <ScrollLink
+          to="test"
+          smooth={true}
+        >TEST</ScrollLink>
         <Recipes>
           {recipes.map(({node}) => {
             const slug = node.title.toLowerCase().replace(/ /g, '-');
@@ -43,12 +49,16 @@ function IndexPage({ data }) {
               return (
                 <Link key={node.id} to={`/recipe/${slug}`}>
                   <li key={`list~${node.id}`}>
-                    <RecipeCard recipe={node} key={`card~${node.id}`} />
+                    <RecipeCard 
+                      recipe={node} 
+                      key={`card~${node.id}`} 
+                    />
                   </li>
                 </Link>)
               }
             })}
           </Recipes>
+          <p id="test">TEST</p>
       </Wrapper>
     </>
   )
