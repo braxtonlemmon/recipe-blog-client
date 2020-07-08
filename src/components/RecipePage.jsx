@@ -6,7 +6,6 @@ import { H2 } from './Headings';
 import SEO from '../components/seo';
 import Ingredients from './Ingredients';
 import Steps from './Steps';
-import { Link } from 'gatsby';
 import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
 import {
   Wrapper,
@@ -88,12 +87,6 @@ function RecipePage({ data, location }) {
         <AboutBox>
           <H2>About</H2>
           <p>{recipe.publish_date}</p>
-          <ScrollLink 
-            to={`steps-end`}
-            smooth={true}
-          >test</ScrollLink>
-
-
           <Details>
             <p>⏰ {convertDuration(recipe.duration)}</p>
             <p>Serves: {recipe.size}</p>

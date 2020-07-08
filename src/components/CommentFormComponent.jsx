@@ -9,7 +9,7 @@ const FormWrapper = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-top: 5px solid black;
+  border-top: 5px solid #2f3020;
   padding: 15px;
   width: 100%;
   /* max-width: 1000px; */

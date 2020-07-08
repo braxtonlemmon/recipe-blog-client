@@ -82,7 +82,7 @@ const AboutBox = styled(InfoBox)`
   width: 90%;
   padding: 15px 0;
   margin-bottom: 15px;
-  border-bottom: 5px solid black;
+  border-bottom: 5px solid #2f3020;
 `;
 
 const Details = styled.div`
