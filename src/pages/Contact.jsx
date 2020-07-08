@@ -6,6 +6,8 @@ import ContactFormContainer from '../components/ContactFormContainer';
 
 const Wrapper = styled.div`
   display: flex;
+  /* background: blue; */
+  width: 90%;
   flex-direction: column;
   justify-content: baseline;
   align-items: center;

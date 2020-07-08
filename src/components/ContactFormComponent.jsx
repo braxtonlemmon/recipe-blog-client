@@ -7,6 +7,7 @@ const FormWrapper = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
   margin-top: 15px;
   .contact-form-input {
     padding: 10px 6px;
@@ -17,10 +18,16 @@ const FormWrapper = styled.form`
     outline: none;
     border: 1px solid grey;
     margin: 10px;
+    background: #fbfaff;
+    width: 100%;
+  }
+  input {
+    max-width: 450px;
   }
   textarea {
     resize: none;
-    height: 100px;
+    height: 150px;
+    max-width: 500px;
   }
 `;
 
@@ -29,6 +36,7 @@ const FormBox = styled.div`
   flex-direction: column;
   align-items: center;
   margin-bottom: 15px;
+  width: 100%;
 `;
 
 const Buttons = styled.div`
@@ -83,7 +91,7 @@ function ContactFormComponent() {
       </FormBox>
       <Buttons>
         <Button type="submit">Submit</Button>
-        <Button type="reset">Clear</Button>
+        <Button type="reset">Reset</Button>
       </Buttons>
     </FormWrapper>
   )
