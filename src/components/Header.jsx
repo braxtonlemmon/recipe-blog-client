@@ -34,7 +34,7 @@ const MyH1 = styled(H1)`
 function Header() {
   return (
     <>
-      <Responsive as={Segment} maxWidth={760}>
+      <Responsive as={Segment} maxWidth={759}>
         <HeaderBar mobile id="header"></HeaderBar>
       </Responsive>
       <Responsive as={Segment} minWidth={760}>

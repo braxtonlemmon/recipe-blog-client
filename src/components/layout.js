@@ -77,7 +77,7 @@ const Layout = ({ children, location }) => {
         handleMenuClick={handleMenuClick}
         showMenu={showMenu}  
       />
-      <Responsive as={Segment} maxWidth={760}>
+      <Responsive as={Segment} maxWidth={759}>
         <MobileMenu 
           showMenu={showMenu}
           setShowMenu={setShowMenu}

@@ -118,7 +118,7 @@ function NavBar({ isHeaderVisible, handleMenuClick, showMenu }) {
         </Link>
 
         {/* Mobile version */}
-        <Responsive as={Segment} maxWidth={760}>
+        <Responsive as={Segment} maxWidth={759}>
           <Hamburger onClick={() => handleMenuClick()}>
             <div className="icon">
               <div className={showMenu ? "line1 view" : "line1"}></div>
