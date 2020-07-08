@@ -12,11 +12,13 @@ const ReplyForm = styled.form`
   align-items: center;
   flex-direction: column;
   margin: 10px;
+  border-top: 1px solid #2f3020;
+  padding-top: 10px;
 `;
 
 const ReplyBox = styled.textarea`
-  height: 80px;
-  width: 90%;
+  height: 120px;
+  width: 100%;
   padding: 10px;
   resize: none;
   border-radius: 8px;
@@ -24,16 +26,18 @@ const ReplyBox = styled.textarea`
   outline: none;
   text-align: center;
   margin-bottom: 10px;
+  font-size: 1em;
 `;
 
 const ReplyName = styled.input`
   border-radius: 5px;
   padding: 10px 5px;
-  width: 90%;
+  width: 100%;
   border: none;
   outline: none;
   margin-bottom: 10px;
   text-align: center;
+  font-size: 1em;
 `;
 
 // Functional component

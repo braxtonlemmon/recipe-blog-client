@@ -24,8 +24,9 @@ const CommentRow = styled.div`
   border-radius: 8px;
   transition: all 5s ease;
   .comment-info {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-auto-flow: row;
+    gap: 2px;
     width: 100%;
     margin-bottom: 10px;
   }
@@ -51,20 +52,32 @@ const CommentRow = styled.div`
 
 const ReplyButton = styled(Button)`
   position: absolute;
-  left: 40%;
-  /* right: 10px; */
+  right: 10px;
   bottom: 10px;
-  padding: 3px;
-  /* margin-top: 20px; */
-  background: #cdcbd680;
-  border: 1px solid black;
-  border-radius: 0;
-  text-transform: uppercase;
-  color: black;
-  /* background: transparent;
-  color: black;
-  font-size: 1.2em; */
+  margin-top: 20px;
   `;
+
+const CloseButton = styled.div`
+  font-size: 1em;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  margin-top: 20px;
+  display: flex;
+  cursor: pointer;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  padding: 4px 4px 5px 5px;
+  border-radius: 50%;
+  color: #2f3020;
+  background: rgba(0, 0, 0, 0.2);
+  &:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+`;
 
 function Comment({ comment, comments, margin, setCommentsLoaded }) {
   const [replyClicked, setReplyClicked] = useState(false);
@@ -104,7 +117,12 @@ function Comment({ comment, comments, margin, setCommentsLoaded }) {
             setCommentsLoaded={setCommentsLoaded}
           />
         }
-        <ReplyButton onClick={handleReplyClick}>{replyClicked ? 'Close' : 'Reply'}</ReplyButton>
+        {
+          replyClicked
+          ? <CloseButton onClick={handleReplyClick}>x</CloseButton>
+          : <ReplyButton onClick={handleReplyClick}>Reply</ReplyButton>
+        }
+        {/* <ReplyButton onClick={handleReplyClick}>{replyClicked ? 'Close' : 'Reply'}</ReplyButton> */}
       </CommentRow>
       {nestedComments}
     </div>
