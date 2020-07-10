@@ -14,11 +14,13 @@ import {
   Details,
   MyH1,
   Image,
+  ToTop
 } from './RecipePageStyling';
 import PropTypes from 'prop-types';
 import Printable from './Printable';
 import { useReactToPrint } from 'react-to-print';
 import { FaPrint } from 'react-icons/fa';
+import { TiArrowUpOutline, TiArrowDownOutline } from 'react-icons/ti';
 
 const convertDuration = (duration) => {
   if (duration > 59) {
@@ -71,7 +73,7 @@ function RecipePage({ data, location }) {
   return (
     <>
       <SEO title={recipe.title} description={recipe.intro} />
-      <Wrapper>
+      <Wrapper id="page-top">
         <MyH1>{recipe.title}</MyH1>
         <Image>
           <ImageSlider images={images} />
@@ -79,25 +81,18 @@ function RecipePage({ data, location }) {
         <Links>
           <p>Psst! Some shortcuts just for you...</p>
           <div className="links-buttons">
-            <ScrollLink
-              className="scrollLink"
-              to={'about-end'}
-              smooth={true}>
+            <ScrollLink className="scrollLink button-w-icon" to={"about-end"} smooth={true}>
               Recipe
+              <TiArrowDownOutline />
             </ScrollLink>
-            <ScrollLink
-              className="scrollLink"
-              to={'steps-end'}
-              smooth={true}>
-                Comments
+            <ScrollLink className="scrollLink button-w-icon" to={"steps-end"} smooth={true}>
+              Comments
+              <TiArrowDownOutline />
             </ScrollLink>
-            <div
-              className="scrollLink print-button"
-              onClick={handlePrint}
-              >
-                <FaPrint />
-                <p>Print</p>
-              </div>
+            <div className="scrollLink button-w-icon" onClick={handlePrint}>
+              <p>Print</p>
+              <FaPrint />
+            </div>
           </div>
         </Links>
         <AboutBox>
@@ -122,11 +117,16 @@ function RecipePage({ data, location }) {
           handleCheck={handleCheck}
         />
         <Comments mongodb_id={recipe.mongodb_id} />
-        <Printable 
-          ref={componentRef} 
+        <Printable
+          ref={componentRef}
           recipe={recipe}
           convertDuration={convertDuration}
         />
+        <ToTop>
+          <ScrollLink className="scrollLink" to={"page-top"} smooth={true}>
+            <TiArrowUpOutline /> Top of page <TiArrowUpOutline />
+          </ScrollLink>
+        </ToTop>
       </Wrapper>
     </>
   )

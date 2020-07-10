@@ -17,7 +17,8 @@ const Wrapper = styled.div`
     "ingredients"
     "steps"
     "commentForm"
-    "commentBox";
+    "commentBox"
+    "toTop";
   @media (min-width: 760px) {
     grid-template-columns: 1fr 2fr;
     grid-template-areas:
@@ -27,7 +28,8 @@ const Wrapper = styled.div`
       "about about"
       "ingredients steps"
       "ingredients commentForm"
-      "ingredients commentBox";
+      "ingredients commentBox"
+      "toTop toTop";
   }
 
   @media (min-width: 1300px) {
@@ -41,6 +43,28 @@ const Wrapper = styled.div`
       "commentBox commentBox"; */
 
     grid-template-columns: 1fr 3.5fr;
+  }
+  .scrollLink {
+    cursor: pointer;
+    /* border: 1px solid black; */
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    padding: 10px 8px;
+    text-align: center;
+    background: #cdcbd6af;
+    background: white;
+    &:hover {
+      background: #cdcbd6;
+    }
+  }
+  .button-w-icon {
+    display: grid;
+    grid-auto-flow: row;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    justify-items: center;
   }
 `
 
@@ -64,26 +88,7 @@ const Links = styled.div`
     width: 100%;
     justify-content: center;
   }
-  .scrollLink {
-    cursor: pointer;
-    /* border: 1px solid black; */
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    padding: 10px 8px;
-    text-align: center;
-    background: #cdcbd6af;
-    background: white;
-    &:hover {
-      background: #cdcbd6;
-    }
-  }
 
-  .print-button {
-    display: grid;
-    grid-auto-flow: column;
-    gap: 5px;
-    justify-content: center;
-  }
 `;
 
 
@@ -272,6 +277,14 @@ const Step = styled.li`
   width: 100%;
 `;
 
+const ToTop = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: toTop;
+  margin-top: 20px;
+`;
+
 export {
   Wrapper,
   Links,
@@ -282,5 +295,6 @@ export {
   MyH1,
   Image,
   Ingredient,
-  Step
+  Step,
+  ToTop
 }
