@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
+import { FaAngleRight, FaAngleLeft } from 'react-icons/fa';
 
 const slide = keyframes`
   from {
@@ -39,23 +40,29 @@ const FakeImg = styled.div`
 const ButtonsBox = styled.div`
   display: ${props => (props.multiple === true ? "flex" : "none")};
   position: absolute;
-  left: 0;
-  right: 0;
+  left: -8px;
+  right: -8px;
   top: 0;
   z-index: 15;
   height: 100%;
   justify-content: space-between;
   align-items: center;
-`
-const Arrow = styled.p`
-  font-size: 6em;
-  color: rgba(255, 255, 255, 0.6);
-  cursor: pointer;
-  padding: 10px;
-  &:hover {
-    color: rgba(255, 255, 255);
+  .button {
+    color: rgba(255, 255, 255, 0.7);
+    z-index: 16;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+    &:hover {
+      color: rgba(255, 255, 255);
+      transform: scale(1.05);
+    }
+    @media (min-width: 600px) {
+      height: 100px;
+      width: 100px;
+    }
   }
-`;
+`
 
 function ImageSlider({ images }) {
   const [index, setIndex] = useState(0);
@@ -82,18 +89,14 @@ function ImageSlider({ images }) {
       <ButtonsBox
         multiple={images.length > 1}
       >
-        <Arrow 
-          className="left" 
+        <FaAngleLeft 
+          className="button"
           onClick={() => handlePrevious()}
-        >
-          {`<`}
-        </Arrow>
-        <Arrow 
-          className="right" 
+        />
+        <FaAngleRight 
+          className="button"
           onClick={() => handleNext()}
-        >
-          {`>`}
-        </Arrow>
+        />
       </ButtonsBox>
     </ImgWrapper>
   )
