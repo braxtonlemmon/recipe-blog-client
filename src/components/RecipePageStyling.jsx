@@ -51,7 +51,7 @@ const Links = styled.div`
   align-items: center;
   grid-area: links;
   margin: 15px 0;
-  padding: 10px 15px;
+  padding: 10px 0;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   text-align: center;
@@ -69,7 +69,7 @@ const Links = styled.div`
     /* border: 1px solid black; */
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    padding: 5px;
+    padding: 10px 8px;
     text-align: center;
     background: #cdcbd6af;
     background: white;
@@ -77,7 +77,15 @@ const Links = styled.div`
       background: #cdcbd6;
     }
   }
+
+  .print-button {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 5px;
+    justify-content: center;
+  }
 `;
+
 
 const InfoBox = styled.div`
   display: flex;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { graphql } from 'gatsby';
 import Comments from './Comments';
 import ImageSlider from './ImageSlider';
@@ -16,6 +16,9 @@ import {
   Image,
 } from './RecipePageStyling';
 import PropTypes from 'prop-types';
+import Printable from './Printable';
+import { useReactToPrint } from 'react-to-print';
+import { FaPrint } from 'react-icons/fa';
 
 const convertDuration = (duration) => {
   if (duration > 59) {
@@ -31,6 +34,12 @@ function RecipePage({ data, location }) {
   const recipe = data.mongodbTestRecipes;
   const images = data.mongodbTestRecipes.fields.images;
   const [checkboxes, setCheckboxes] = useState(loadCheckboxes());
+
+  // PRINTING
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  })
 
   // helper functions
   function loadCheckboxes() {
@@ -82,7 +91,13 @@ function RecipePage({ data, location }) {
               smooth={true}>
                 Comments
             </ScrollLink>
-            <p className="scrollLink">Print</p>
+            <div
+              className="scrollLink print-button"
+              onClick={handlePrint}
+              >
+                <FaPrint />
+                <p>Print</p>
+              </div>
           </div>
         </Links>
         <AboutBox>
@@ -96,6 +111,7 @@ function RecipePage({ data, location }) {
           <div id="about-end"></div>
         </AboutBox>
         <Ingredients
+          ref={componentRef}
           recipe={recipe}
           checkboxes={checkboxes}
           handleCheck={handleCheck}
@@ -106,6 +122,11 @@ function RecipePage({ data, location }) {
           handleCheck={handleCheck}
         />
         <Comments mongodb_id={recipe.mongodb_id} />
+        <Printable 
+          ref={componentRef} 
+          recipe={recipe}
+          convertDuration={convertDuration}
+        />
       </Wrapper>
     </>
   )
