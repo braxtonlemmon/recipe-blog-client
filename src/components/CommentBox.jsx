@@ -18,6 +18,10 @@ const Wrapper = styled.div`
   @media (min-width: 1200px) {
     width: 80%;
   }
+  p {
+    text-align: center;
+    padding: 5px 100px;
+  }
 `;
 
 const List = styled.div`
@@ -29,7 +33,8 @@ function CommentBox({ comments, topComments, setCommentsLoaded}) {
   if (topComments.length < 1) {
     return (
       <Wrapper>
-        <p>No comments yet . . . What did you think??</p>
+        <p>There are no comments yet...</p>
+        <p>Quick! You can fix that!</p>
       </Wrapper>
     )
   } else {

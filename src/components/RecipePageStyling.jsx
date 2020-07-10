@@ -71,6 +71,7 @@ const Links = styled.div`
     padding: 5px;
     text-align: center;
     background: #cdcbd6af;
+    background: white;
     &:hover {
       background: #cdcbd6;
     }
