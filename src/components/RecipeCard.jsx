@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
@@ -9,6 +9,9 @@ const Wrapper = styled.div`
   cursor: pointer;
   width: 280px;
   height: 280px;
+  transition: opacity 700ms ease-in-out, transform 400ms ease-in-out;
+  transform: ${({ isVisible }) => isVisible ? 'scale(1.0)' : 'scale(0.8)'};
+  opacity: ${({ isVisible }) => isVisible ? '1' : '0.5'};
   @media (min-width: 412px) {
     width: 320px;
     height: 320px;
@@ -88,8 +91,29 @@ const Quote = styled.div`
 // Functional component
 function RecipeCard({ recipe }) {
   const images = recipe.fields.images;
+  const [isVisible, setVisible] = useState();
+  
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      const card = document.getElementById(`card-${recipe.title}`);
+      const options = {
+        threshold: 0,
+      }
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          entry.isIntersecting ? setVisible(true) : setVisible(false);
+        })
+      }, options);
+      observer.observe(card);
+      return () => observer.unobserve(card);
+    }
+  }, [])
+
   return (
-    <Wrapper>
+    <Wrapper
+      id={`card-${recipe.title}`}
+      isVisible={isVisible}
+    >
       <Image>
         <Title>
           <H2>{recipe.title}</H2>
