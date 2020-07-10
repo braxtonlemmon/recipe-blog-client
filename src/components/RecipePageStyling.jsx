@@ -17,8 +17,7 @@ const Wrapper = styled.div`
     "ingredients"
     "steps"
     "commentForm"
-    "commentBox"
-  ;
+    "commentBox";
   @media (min-width: 760px) {
     grid-template-columns: 1fr 2fr;
     grid-template-areas:
@@ -27,15 +26,23 @@ const Wrapper = styled.div`
       "links links"
       "about about"
       "ingredients steps"
-      "commentForm commentForm"
-      "commentBox commentBox"
-    ;
+      "ingredients commentForm"
+      "ingredients commentBox";
   }
 
-  @media (min-width: 1000px) {
+  @media (min-width: 1300px) {
+    /* grid-template-areas:
+      "title title"
+      "pic pic"
+      "links links"
+      "about about"
+      "ingredients steps"
+      "commentForm commentForm"
+      "commentBox commentBox"; */
+
     grid-template-columns: 1fr 3.5fr;
   }
-`;
+`
 
 const Links = styled.div`
   display: flex;
@@ -111,7 +118,8 @@ const IngredientsBox = styled(InfoBox)`
     position: sticky;
     top: ${props => `${props.navHeight + 10}px`};
     padding-top: 0;
-    max-height: 80vh;
+    max-height: 90vh;
+
     margin: 15px auto;
     .ingredients-box-title {
       position: sticky;

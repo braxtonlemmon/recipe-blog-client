@@ -14,7 +14,7 @@ const FormWrapper = styled.form`
   width: 100%;
   /* max-width: 1000px; */
   grid-area: commentForm;
-  background: white;
+  /* background: white; */
   margin-top: 15px;
   z-index: 501;
   margin-top: 30px;
@@ -47,6 +47,9 @@ const FormWrapper = styled.form`
     width: 100%;
     max-width: 550px;
     height: 150px;
+  }
+  @media (min-width: 1200px) {
+    width: 80%;
   }
 `;
 
