@@ -70,25 +70,20 @@ const Layout = ({ children, location }) => {
   }, [])
   
   return (
-    <Wrapper>
+    <Wrapper
+      onClick={() => handleMainClick()}
+    >
       <Header />
-      <NavBar 
-        isHeaderVisible={isHeaderVisible} 
+      <NavBar
+        isHeaderVisible={isHeaderVisible}
         handleMenuClick={handleMenuClick}
-        showMenu={showMenu}  
+        showMenu={showMenu}
       />
       <Responsive as={Segment} maxWidth={759}>
-        <MobileMenu 
-          showMenu={showMenu}
-          setShowMenu={setShowMenu}
-        />
+        <MobileMenu showMenu={showMenu} setShowMenu={setShowMenu} />
       </Responsive>
       <Transition location={location}>
-        <Main
-          onClick={() => handleMainClick()}
-        >
-          {children}
-        </Main>
+        <Main onClick={() => handleMainClick()}>{children}</Main>
       </Transition>
       <Footer />
     </Wrapper>

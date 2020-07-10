@@ -109,7 +109,10 @@ function NavBar({ isHeaderVisible, handleMenuClick, showMenu }) {
   }
   
   return (
-    <HeaderBar id="navbar" isHeaderVisible={isHeaderVisible}>
+    <HeaderBar 
+      id="navbar" 
+      isHeaderVisible={isHeaderVisible}
+    >
       <Content isHeaderVisible={isHeaderVisible}>
         <Link to="/">
           <Logo isHeaderVisible={isHeaderVisible} className="logo">

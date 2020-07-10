@@ -58,11 +58,12 @@ const Links = styled.div`
   }
   .scrollLink {
     cursor: pointer;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     padding: 5px;
     text-align: center;
-    background: #cdcbd680;
+    background: #cdcbd6af;
     &:hover {
       background: #cdcbd6;
     }
