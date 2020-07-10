@@ -64,8 +64,11 @@ function RecipePage({ data, location }) {
       <SEO title={recipe.title} description={recipe.intro} />
       <Wrapper>
         <MyH1>{recipe.title}</MyH1>
+        <Image>
+          <ImageSlider images={images} />
+        </Image>
         <Links>
-          <p>Psst! Two shortcuts just for you...</p>
+          <p>Psst! Some shortcuts just for you...</p>
           <div className="links-buttons">
             <ScrollLink
               className="scrollLink"
@@ -79,11 +82,9 @@ function RecipePage({ data, location }) {
               smooth={true}>
                 Comments
             </ScrollLink>
+            <p className="scrollLink">Print</p>
           </div>
         </Links>
-        <Image>
-          <ImageSlider images={images} />
-        </Image>
         <AboutBox>
           <H2>About</H2>
           <p>{recipe.publish_date}</p>

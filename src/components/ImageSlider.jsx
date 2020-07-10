@@ -48,18 +48,18 @@ const ButtonsBox = styled.div`
   justify-content: space-between;
   align-items: center;
   .button {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.5);
     z-index: 16;
-    height: 60px;
-    width: 60px;
+    /* height: 60px;
+    width: 60px; */
     cursor: pointer;
     &:hover {
       color: rgba(255, 255, 255);
       transform: scale(1.05);
     }
     @media (min-width: 600px) {
-      height: 100px;
-      width: 100px;
+      height: 80px;
+      width: 80px;
     }
   }
 `

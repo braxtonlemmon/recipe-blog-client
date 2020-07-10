@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   }
   p {
     text-align: center;
-    padding: 5px 100px;
+    /* padding: 5px 100px; */
   }
 `;
 

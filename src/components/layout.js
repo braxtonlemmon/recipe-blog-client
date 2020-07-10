@@ -11,7 +11,7 @@ import { Segment, Responsive } from 'semantic-ui-react';
 const Wrapper = styled.div`
   display: grid;
   width: 100%;
-  grid-template-rows: auto auto 1fr auto;
+  grid-template-rows: auto auto 1fr auto auto;
   grid-template-areas:
     "header"
     "navbar"
@@ -20,6 +20,7 @@ const Wrapper = styled.div`
     "footer";
   min-height: 100vh;
   @media (min-width: 760px) {
+    grid-template-rows: auto auto 1fr auto;
     grid-template-areas:
       "header"
       "navbar"

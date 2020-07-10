@@ -50,15 +50,16 @@ const Links = styled.div`
   justify-content: center;
   align-items: center;
   grid-area: links;
-  margin: 15px;
+  margin: 15px 0;
   padding: 10px 15px;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
+  text-align: center;
   .links-buttons {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-auto-flow: column;
-    gap: 20px;
+    gap: 10px;
     margin-top: 10px;
     width: 100%;
     justify-content: center;
