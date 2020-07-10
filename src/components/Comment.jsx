@@ -39,7 +39,7 @@ const CommentRow = styled.div`
     font-style: italic;
   }
   .comment-content {
-    margin: 5px 20px;
+    margin: 5px 10px 20px 10px;
     align-self: center;
     text-align: justify;
   }
@@ -55,6 +55,7 @@ const ReplyButton = styled(Button)`
   right: 10px;
   bottom: 10px;
   margin-top: 20px;
+  padding: 4px 5px;
   `;
 
 const CloseButton = styled.div`

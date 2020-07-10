@@ -19,7 +19,7 @@ import {
 import PropTypes from 'prop-types';
 import Printable from './Printable';
 import { useReactToPrint } from 'react-to-print';
-import { FaPrint } from 'react-icons/fa';
+import { FaPrint, FaRegClock } from 'react-icons/fa';
 import { TiArrowUpOutline, TiArrowDownOutline } from 'react-icons/ti';
 
 const convertDuration = (duration) => {
@@ -99,7 +99,7 @@ function RecipePage({ data, location }) {
           <H2>About</H2>
           <p>{recipe.publish_date}</p>
           <Details>
-            <p>⏰ {convertDuration(recipe.duration)}</p>
+            <p><FaRegClock/> {convertDuration(recipe.duration)}</p>
             <p>Serves: {recipe.size}</p>
           </Details>
           <p>{recipe.intro}</p>
@@ -123,8 +123,11 @@ function RecipePage({ data, location }) {
           convertDuration={convertDuration}
         />
         <ToTop>
-          <ScrollLink className="scrollLink" to={"page-top"} smooth={true}>
-            <TiArrowUpOutline /> Top of page <TiArrowUpOutline />
+          <ScrollLink className="scrollLink button-w-icon" to={"page-top"} smooth={true}>
+            <span>
+              <TiArrowUpOutline /> Top of page. <TiArrowUpOutline />
+            </span>
+            <p>(save your scroll finger)</p>
           </ScrollLink>
         </ToTop>
       </Wrapper>
@@ -167,77 +170,3 @@ export const pageQuery = graphql`
 `;
 
 
-
-
-        {
-          /* <IngredientsBox
-          fixed={ingredientsFixed}
-          id="ingredients-box"
-          navHeight={navHeight}
-        >
-          <H2 className="ingredients-box-title">Ingredients</H2>
-          <ul>
-            {recipe.ingredients.map((ingredient, index) => (
-              <Ingredient
-                key={ingredient}
-                done={checkboxes[`ingredient-checkbox-${index}`]}
-                checkboxes={checkboxes}
-              >
-                <input
-                  className="checkbox"
-                  type="checkbox"
-                  id={`ingredient-checkbox-${index}`}
-                  defaultChecked={
-                    checkboxes[`ingredient-checkbox-${index}`] === true
-                  }
-                  onChange={handleCheck}
-                ></input>
-                <label
-                  className="ingredient-label"
-                  htmlFor={`ingredient-checkbox-${index}`}
-                >
-                  {ingredient}
-                </label>
-              </Ingredient>
-            ))}
-          </ul>
-        </IngredientsBox> */
-        }
-        {
-          /* <StepsBox id="steps-box">
-          <H2 id="steps">Steps</H2>
-          <p className="sidenote">
-            ***click each step as you go to keep track of your progress***
-          </p>
-          <ul>
-            {recipe.steps.map((step, index) => (
-              <Step key={step} done={checkboxes[`step-checkbox-${index}`]}>
-                <div className="step-box-holder">
-                  <input
-                    type="checkbox"
-                    id={`step-checkbox-${index}`}
-                    defaultChecked={
-                      checkboxes[`step-checkbox-${index}`] === true
-                        ? true
-                        : false
-                    }
-                    onChange={handleCheck}
-                  ></input>
-                  <label
-                    className="step-number"
-                    htmlFor={`step-checkbox-${index}`}
-                  >
-                    {index + 1}
-                  </label>
-                </div>
-                <label
-                  className="step-text"
-                  htmlFor={`step-checkbox-${index}`}
-                >
-                  {step}
-                </label>
-              </Step>
-            ))}
-          </ul>
-        </StepsBox> */
-        }

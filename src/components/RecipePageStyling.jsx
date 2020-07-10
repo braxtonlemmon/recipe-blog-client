@@ -111,9 +111,12 @@ const AboutBox = styled(InfoBox)`
 const Details = styled.div`
   display: grid;
   grid-auto-flow: column;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
   color: lightslategrey;
   margin-bottom: 10px;
+  margin: 10px 0;
 `;
 
 const IngredientsBox = styled(InfoBox)`

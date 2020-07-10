@@ -7,6 +7,7 @@ const Button = styled.button`
   outline: none;
   color: #cdcbd6;
   padding: 4px 5px;
+  padding: 11px;
   font-size: 0.8em;
   font-weight: bolder;
   text-transform: uppercase;
