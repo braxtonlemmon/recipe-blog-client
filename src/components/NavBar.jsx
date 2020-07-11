@@ -38,11 +38,7 @@ const Logo = styled.p`
   opacity: 0;
   color: #2f3020;
   transition: opacity 250ms ease;
-  ${props =>
-    !props.isHeaderVisible &&
-    css`
-      opacity: 1;
-    `}
+  opacity: ${({ isHeaderVisible }) => isHeaderVisible ? '0' : '1'};
   font-size: 1.5em;
 `
 

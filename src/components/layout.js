@@ -40,7 +40,7 @@ const Main = styled.main`
 `;
 
 const Layout = ({ children, location }) => {
-  const [isHeaderVisible, setHeaderVisible] = useState(true);
+  const [isHeaderVisible, setHeaderVisible] = useState();
   const [showMenu, setShowMenu] = useState(false);
 
   const handleMenuClick = () => {
