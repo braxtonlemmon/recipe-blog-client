@@ -163,6 +163,7 @@ const StepsBox = styled(InfoBox)`
   grid-area: steps;
   width: 90%;
   padding: 15px 0;
+  border: 1px solid blue;
   @media (min-width: 760px) {
     /* border-left: 2px dashed black; */
     padding-left: 20px;
@@ -174,6 +175,7 @@ const StepsBox = styled(InfoBox)`
   }
   ul {
     margin-top: 20px;
+    width: 100%;
   }
 `;
 
@@ -243,25 +245,39 @@ const Step = styled.li`
   padding: 10px 0;
   border-bottom: 1px dotted black;
   display: grid;
+  /* grid-template-columns: 3em 1fr; */
   grid-template-columns: 3em 1fr;
+  display: flex;
   align-items: center;
   gap: 5px;
   line-height: 1.2em;
   letter-spacing: 0.15px;
+  width: 100%;
   .step-box-holder {
-    height: 2.2em;
-    width: 2.2em;
+    /* height: 2.2em; */
+    /* width: 2.2em; */
+    width: 100%;
     position: relative;
     display: flex;
     justify-content: center;
+    /* border: 1px solid red; */
   }
   input {
     appearance: none;
     height: 0;
     width: 0;
   }
+  .step-label {
+    display: grid;
+    grid-template-columns: 3em 1fr;
+    height: 100%;
+    width: 100%;
+    text-decoration: ${props => props.done === 'yes' ? 'line-through' : 'none'};
+    color: ${props => props.done === 'yes' ? 'grey' : 'black'};
+  }
+
   .step-number {
-    position: absolute;
+    /* position: absolute; */
     font-size: 2em;
     z-index: 5;
     cursor: pointer;
@@ -271,11 +287,12 @@ const Step = styled.li`
     display: flex;
     align-items: center;
     cursor: pointer;
-    text-decoration: ${props => props.done ? 'line-through' : 'none'};
-    color: ${props => props.done ? 'grey' : 'black'};
+    /* text-decoration: ${props => props.done === 'yes' ? 'line-through' : 'none'};
+    color: ${props => props.done === 'yes' ? 'orange' : 'black'}; */
   }
   input:checked + label {
     color: grey;
+    text-decoration: line-through;
   }
   width: 100%;
 `;

@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   z-index: 502;
   box-shadow: -3px 0 2px 1px rgba(0, 0, 0, 0.4);
   transition: transform 400ms ease;
-  transform: ${({ showMenu }) => showMenu ? 'translateX(30%)' : 'translateX(105%)'};
+  transform: ${({ showMenu }) => showMenu ? 'translateX(30%)' : 'translateX(150%)'};
   a {
     padding: 15px 10px;
     width: 100%;

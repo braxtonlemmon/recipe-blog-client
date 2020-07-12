@@ -5,7 +5,8 @@ import { H1 } from './Headings';
 import {Segment, Responsive} from 'semantic-ui-react';
 
 const HeaderBar = styled.div`
-  display: ${props => props.mobile ? 'none' : 'flex'};
+  /* display: ${props => props.mobile ? 'none' : 'flex'}; */
+  display: flex;
   flex-direction: column;
   width: 100%;
   background: white;

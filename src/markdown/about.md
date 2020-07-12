@@ -35,7 +35,7 @@ Sometimes when viewing recipe blogs I imagine what the ideal online recipe exper
 
     While living in France I purchased a few cookbooks. Excited to test my French and cook something new, I cracked open the book, selected a recipe, and looked at the list of ingredients. Immediately I noticed that the quantity of most items was indicated by weight in grams. I went to the store, purchased a kitchen scale, and it has since been a permanent feature on my kitchen counter. While I agree that exact measurements are usually not as vital in cooking as in baking, I love being able to place a bowl on the scale and add a certain weight of each ingredient without having to measure by volume with cups or spoons. 
     
-    I want my recipes to be accesible at an international level, so I attempt to indicate ingredient quantities using both volume and weight. I have a preference for the Metric system and have therefore decided to use it as the primary unit in my recipes.  
+    I want my recipes to be accessible at an international level, so I attempt to indicate ingredient quantities using both volume and weight. I have a preference for the Metric system and have therefore decided to use it as the primary unit in my recipes.  
     
   - #### 2) Visibility: see ingredients and steps simultaneously
     

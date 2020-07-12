@@ -153,7 +153,7 @@ function NavBar({ isHeaderVisible, handleMenuClick, showMenu }) {
 NavBar.propTypes = { 
   isHeaderVisible: PropTypes.bool, 
   handleMenuClick: PropTypes.func, 
-  showMenu: PropTypes.func 
+  showMenu: PropTypes.bool 
 }
 
 export default NavBar;

@@ -91,13 +91,14 @@ module.exports = {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
         fonts: [
-          'Special Elite',
-          'Josefin Sans',
-          'Indie Flower',
-          'Shadows Into Light',
-          'Rock Salt',
           'Montserrat'
         ]
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-canonical-urls',
+      options: {
+        siteUrl: 'https://www.peelthegarlic.com/'
       }
     },
     {
@@ -106,10 +107,11 @@ module.exports = {
         component: require.resolve('./src/components/layout.js'),
       },
     },
+    'gatsby-plugin-styled-components',
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
-    'gatsby-plugin-styled-components',
     'gatsby-plugin-sitemap',
+    'gatsby-plugin-netlify',
     `gatsby-transformer-sharp`,
     'gatsby-transformer-remark',
   ],

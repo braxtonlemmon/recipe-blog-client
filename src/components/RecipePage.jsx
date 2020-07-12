@@ -54,6 +54,7 @@ function RecipePage({ data, location }) {
   }
 
   function handleCheck(e) {
+    console.log(e.target.checked);
     const storedData = JSON.parse(localStorage.getItem(recipe.id));
     storedData[e.target.id] = e.target.checked;
     localStorage.setItem(recipe.id, JSON.stringify(storedData));
@@ -106,7 +107,6 @@ function RecipePage({ data, location }) {
           <div id="about-end"></div>
         </AboutBox>
         <Ingredients
-          ref={componentRef}
           recipe={recipe}
           checkboxes={checkboxes}
           handleCheck={handleCheck}

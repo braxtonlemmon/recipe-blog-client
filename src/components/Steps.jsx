@@ -15,7 +15,7 @@ function Steps({ recipe, checkboxes, handleCheck }) {
       </p>
       <ul>
         {recipe.steps.map((step, index) => (
-          <Step key={step} done={checkboxes[`step-checkbox-${index}`]}>
+          <Step key={step} done={checkboxes[`step-checkbox-${index}`] === true ? 'yes' : 'no'}>
             <div className="step-box-holder">
               <input
                 type="checkbox"
@@ -25,13 +25,17 @@ function Steps({ recipe, checkboxes, handleCheck }) {
                 }
                 onChange={handleCheck}
               ></input>
-              <label className="step-number" htmlFor={`step-checkbox-${index}`}>
+              {/* <label className="step-number" htmlFor={`step-checkbox-${index}`}>
                 {index + 1}
+              </label> */}
+              <label className="step-label" htmlFor={`step-checkbox-${index}`}>
+                <p className="step-number">{index + 1}</p>
+                <p className="step-text">{step}</p>
               </label>
             </div>
-            <label className="step-text" htmlFor={`step-checkbox-${index}`}>
+            {/* <label className="step-text" htmlFor={`step-checkbox-${index}`} >
               {step}
-            </label>
+            </label> */}
           </Step>
         ))}
       </ul>

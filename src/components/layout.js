@@ -83,9 +83,12 @@ const Layout = ({ children, location }) => {
       <Responsive as={Segment} maxWidth={759}>
         <MobileMenu showMenu={showMenu} setShowMenu={setShowMenu} />
       </Responsive>
-      <Transition location={location}>
-        <Main onClick={() => handleMainClick()}>{children}</Main>
-      </Transition>
+      <Main onClick={() => handleMainClick()}>
+        <Transition location={location}>
+          {/* <Main onClick={() => handleMainClick()}>{children}</Main> */}
+          {children}
+        </Transition>
+      </Main>
       <Footer />
     </Wrapper>
   )
