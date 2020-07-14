@@ -163,7 +163,7 @@ const StepsBox = styled(InfoBox)`
   grid-area: steps;
   width: 90%;
   padding: 15px 0;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   @media (min-width: 760px) {
     /* border-left: 2px dashed black; */
     padding-left: 20px;
@@ -300,7 +300,6 @@ const Step = styled.li`
 const ToTop = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
   grid-area: toTop;
   margin-top: 20px;
 `;

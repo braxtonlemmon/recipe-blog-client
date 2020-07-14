@@ -6,14 +6,16 @@ import ContactFormContainer from '../components/ContactFormContainer';
 
 const Wrapper = styled.div`
   display: flex;
-  /* background: blue; */
   width: 90%;
+  margin: 0 auto;
   flex-direction: column;
   justify-content: baseline;
   align-items: center;
   padding-top: 2em;
   .contact-intro {
-    margin: 10px;
+    margin: 30px 10px 10px 10px;
+    text-align: center;
+    font-size: 1.2em;
   }
 `;
 
@@ -23,7 +25,7 @@ function Contact() {
       <SEO title="Contact" description="Contact page" />
       <Wrapper>
         <H1>Contact</H1>
-        <h2 className="contact-intro">Send me a message! I'm all ears.</h2>
+        <h2 className="contact-intro">{`Send me a message! I'm all ears.`}</h2>
         <ContactFormContainer />
       </Wrapper>
     </>

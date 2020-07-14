@@ -6,7 +6,6 @@ import NavBar from './NavBar';
 import MobileMenu from './MobileMenu';
 import Footer from './Footer';
 import Transition from './transition';
-import { Segment, Responsive } from 'semantic-ui-react';
 
 const Wrapper = styled.div`
   display: grid;
@@ -25,6 +24,7 @@ const Wrapper = styled.div`
       "header"
       "navbar"
       "main"
+      "mobile"
       "footer";
   }
 `
@@ -40,7 +40,7 @@ const Main = styled.main`
 `;
 
 const Layout = ({ children, location }) => {
-  const [isHeaderVisible, setHeaderVisible] = useState();
+  const [isHeaderVisible, setHeaderVisible] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
 
   const handleMenuClick = () => {
@@ -80,12 +80,9 @@ const Layout = ({ children, location }) => {
         handleMenuClick={handleMenuClick}
         showMenu={showMenu}
       />
-      <Responsive as={Segment} maxWidth={759}>
-        <MobileMenu showMenu={showMenu} setShowMenu={setShowMenu} />
-      </Responsive>
+      <MobileMenu showMenu={showMenu} isHeaderVisible={isHeaderVisible} setShowMenu={setShowMenu} />
       <Main onClick={() => handleMainClick()}>
         <Transition location={location}>
-          {/* <Main onClick={() => handleMainClick()}>{children}</Main> */}
           {children}
         </Transition>
       </Main>

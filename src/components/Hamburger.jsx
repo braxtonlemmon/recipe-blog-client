@@ -10,6 +10,8 @@ const Hamburger = styled.div`
   grid-template-rows: repeat(3, 1fr);
   align-items: center;
   cursor: pointer;
+  transition: transform 400ms ease;
+  transform: ${props => props.isHeaderVisible ? 'translateX(250%)' : 'translateX(0%)'};
   .icon {
     display: inline-block;
     .line1,
@@ -36,6 +38,9 @@ const Hamburger = styled.div`
     .view.line3 {
       transform: rotate(-28deg);
     }
+  }
+  @media (min-width: 760px) {
+    display: none;
   }
 `
 

@@ -50,8 +50,8 @@ const ButtonsBox = styled.div`
   .button {
     color: rgba(255, 255, 255, 0.5);
     z-index: 16;
-    /* height: 60px;
-    width: 60px; */
+    height: 60px;
+    width: 60px;
     cursor: pointer;
     &:hover {
       color: rgba(255, 255, 255);

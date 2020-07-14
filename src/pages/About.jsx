@@ -9,7 +9,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: baseline;
   align-content: center;
-  /* text-align: justify; */
   width: 80%;
   padding-top: 2em;
   margin: 0 auto;
@@ -25,6 +24,7 @@ const Content = styled.div`
   h3 {
     padding-left: 10px;
     padding-top: 20px;
+    font-size: 1.4em;
     text-decoration: underline;
     text-align: left;
   }
@@ -32,7 +32,7 @@ const Content = styled.div`
   h4 {
     font-weight: bolder;
     padding-left: 10px;
-    font-size: 1.5em;
+    font-size: 1.2em;
   }
   p {
     margin: 15px 0;
@@ -41,14 +41,14 @@ const Content = styled.div`
     line-height: 1.5em;
   }
   ul {
-    margin-left: 20px;
+    margin-left: 10px;
     padding-bottom: 20px;
   }
   li {
     /* list-style: disc; */
-    margin-left: 20px;
-    margin-right: 20px;
-    text-align: justify;
+    margin-left: 10px;
+    /* margin-right: 20px; */
+    padding-bottom: 15px;
   }
 `;
 

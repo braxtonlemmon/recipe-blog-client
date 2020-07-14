@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import { Link, useStaticQuery, graphql } from 'gatsby';
-import { Responsive, Segment } from 'semantic-ui-react';
 import Hamburger from './Hamburger';
 import PropTypes from 'prop-types';
 
@@ -21,10 +20,10 @@ const Content = styled.div`
   height: 100%;
   position: relative;
   display: flex;
-  padding: 11px 20px 10px 20px;
   align-items: center;
   align-content: center;
   justify-content: center;
+  overflow: hidden;
   .logo {
     font-weight: bolder;
   }
@@ -40,23 +39,31 @@ const Logo = styled.p`
   transition: opacity 250ms ease;
   opacity: ${({ isHeaderVisible }) => isHeaderVisible ? '0' : '1'};
   font-size: 1.5em;
+  transition: transform 400ms ease;
+  transform: ${props => props.isHeaderVisible ? 'translateY(-150%)' : 'translateY(0%)'};
 `
 
 const Links = styled.div`
   display: grid;
-  justify-items: center;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  gap: 15px;
   grid-auto-flow: column;
-  transition: transform 500ms ease;
   justify-self: baseline;
+  overflow: hidden;
+  transition: transform 500ms ease;
+  transform: ${props => props.isHeaderVisible ? 'translateY(0)' : 'translateY(150%)'};
   @media (min-width: 412px) {
     gap: 20px;
+    font-size: 1.1em;
   }
   @media (min-width: 730px) {
     ${props => !props.isHeaderVisible && css`
       transform: translateX(30%);
     `}
+  }
+  @media (min-width: 760px) {
+    display: grid;
   }
   @media (min-width: 900px) {
     transform: translateX(0);
@@ -103,7 +110,7 @@ function NavBar({ isHeaderVisible, handleMenuClick, showMenu }) {
     const randomTitle = dbTitles[Math.floor(Math.random() * dbTitles.length)];
     return randomTitle.toLowerCase().replace(/ /g, '-');
   }
-  
+
   return (
     <HeaderBar 
       id="navbar" 
@@ -115,36 +122,27 @@ function NavBar({ isHeaderVisible, handleMenuClick, showMenu }) {
             PEEL THE GARLIC
           </Logo>
         </Link>
-
-        {/* Mobile version */}
-        <Responsive as={Segment} maxWidth={759}>
-          <Hamburger onClick={() => handleMenuClick()}>
-            <div className="icon">
-              <div className={showMenu ? "line1 view" : "line1"}></div>
-              <div className={showMenu ? "line2 view" : "line2"}></div>
-              <div className={showMenu ? "line3 view" : "line3"}></div>
-            </div>
-          </Hamburger>
-        </Responsive>
-
-        {/* Larger-than-mobile version */}
-        <Responsive as={Segment} minWidth={760}>
-          <Links isHeaderVisible={isHeaderVisible}>
-            <Link to="/">
-              <NavLink>Recipes</NavLink>
-            </Link>
-            <Link to={`/recipe/${getRandomTitle()}`}>
-              <NavLink>Random</NavLink>
-            </Link>
-            <Link to="/About">
-              <NavLink>About</NavLink>
-            </Link>
-            <Link to="/Contact">
-              <NavLink>Contact</NavLink>
-            </Link>
-          </Links>
-        </Responsive>
-
+        <Hamburger onClick={() => handleMenuClick()} isHeaderVisible={isHeaderVisible}>
+          <div className="icon">
+            <div className={showMenu ? "line1 view" : "line1"}></div>
+            <div className={showMenu ? "line2 view" : "line2"}></div>
+            <div className={showMenu ? "line3 view" : "line3"}></div>
+          </div>
+        </Hamburger>
+        <Links isHeaderVisible={isHeaderVisible}>
+          <Link to="/">
+            <NavLink>Recipes</NavLink>
+          </Link>
+          <Link to={`/recipe/${getRandomTitle()}`}>
+            <NavLink>Random</NavLink>
+          </Link>
+          <Link to="/About">
+            <NavLink>About</NavLink>
+          </Link>
+          <Link to="/Contact">
+            <NavLink>Contact</NavLink>
+          </Link>
+        </Links>
       </Content>
     </HeaderBar>
   )

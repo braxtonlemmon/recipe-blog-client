@@ -23,9 +23,12 @@ const Wrapper = styled.div`
     width: 100%;
     border-bottom: 1px solid black;
   }
+  @media (min-width: 760px) {
+    display: none;
+  }
   
 `
-function MobileMenu({ showMenu, setShowMenu }) {
+function MobileMenu({ showMenu, setShowMenu, isHeaderVisible }) {
   const data = useStaticQuery(
     graphql`
       query {
@@ -52,38 +55,44 @@ function MobileMenu({ showMenu, setShowMenu }) {
     
   
   return (
-    <Wrapper showMenu={showMenu} id="menu">
-      <Link 
-        to="/"
-        onClick={() => handleClick()}
-      >
-       Recipes
-      </Link>
-      <Link 
-        to={`/recipe/${getRandomTitle()}`}
-        onClick={() => handleClick()}
-        >
-       Random
-      </Link>
-      <Link 
-        to="/About"
-        onClick={() => handleClick()}
-        >
-       About
-      </Link>
-      <Link 
-        to="/Contact"
-        onClick={() => handleClick()}
-        >
-       Contact
-      </Link>
-    </Wrapper>
+    <>
+      {
+        !isHeaderVisible && 
+        <Wrapper showMenu={showMenu} id="menu">
+          <Link 
+            to="/"
+            onClick={() => handleClick()}
+            >
+          Recipes
+          </Link>
+          <Link 
+            to={`/recipe/${getRandomTitle()}`}
+            onClick={() => handleClick()}
+            >
+          Random
+          </Link>
+          <Link 
+            to="/About"
+            onClick={() => handleClick()}
+            >
+          About
+          </Link>
+          <Link 
+            to="/Contact"
+            onClick={() => handleClick()}
+            >
+          Contact
+          </Link>
+        </Wrapper>
+      }
+    </>
   )
 }
 
 MobileMenu.propTypes = {
   showMenu: PropTypes.bool,
-  setShowMenu: PropTypes.func
+  setShowMenu: PropTypes.func,
+  isHeaderVisible: PropTypes.bool
 }
 
 export default MobileMenu;

@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { H1 } from './Headings';
-import {Segment, Responsive} from 'semantic-ui-react';
 
 const HeaderBar = styled.div`
   /* display: ${props => props.mobile ? 'none' : 'flex'}; */
@@ -26,25 +25,21 @@ const MyH1 = styled(H1)`
   color: #2F3020;
   font-family: 'Montserrat';
   text-transform: uppercase;
-  
+  /* border-bottom: 1px solid black; */
   @media (min-width: 600px) {
     font-size: 4em;
   }
 `;
 
 function Header() {
+
   return (
     <>
-      <Responsive as={Segment} maxWidth={759}>
-        <HeaderBar mobile id="header"></HeaderBar>
-      </Responsive>
-      <Responsive as={Segment} minWidth={760}>
-        <HeaderBar id="header">
-          <Link to='/'>
-            <MyH1>Peel the Garlic</MyH1>
-          </Link>
-        </HeaderBar>
-      </Responsive>
+      <HeaderBar id="header">
+        <Link to='/'>
+          <MyH1>Peel the Garlic</MyH1>
+        </Link>
+      </HeaderBar>
     </>
   )
 }
