@@ -12,15 +12,12 @@ const Wrapper = styled.div`
   align-items: center;
   width: 100%;
   z-index: 501;
-  /* background: white; */
-  /* max-width: 900px; */
   grid-area: commentBox;
   @media (min-width: 1200px) {
     width: 80%;
   }
   p {
     text-align: center;
-    /* padding: 5px 100px; */
   }
 `;
 

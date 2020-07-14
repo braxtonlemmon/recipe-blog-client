@@ -12,9 +12,7 @@ const FormWrapper = styled.form`
   border-top: 5px solid #2f3020;
   padding: 15px;
   width: 100%;
-  /* max-width: 1000px; */
   grid-area: commentForm;
-  /* background: white; */
   margin-top: 15px;
   z-index: 501;
   margin-top: 30px;

@@ -10,9 +10,6 @@ function Comments({ mongodb_id }) {
 
   useEffect(() => {
     const abortController = new AbortController();
-    
-    // fetch(`/api/comments/${mongodb_id}`, { signal: abortController.signal })
-    // fetch(`http://localhost:4000/dev/api/comments/${mongodb_id}`, { signal: abortController.signal })
 
     fetch(`https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/comments/${mongodb_id}`, { signal: abortController.signal })
       .then(result => result.json())

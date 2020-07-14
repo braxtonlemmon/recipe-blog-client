@@ -75,7 +75,7 @@ const HeroTitle = styled(H1)`
   align-self: flex-start;
   text-align: start;
   transition: transform 1.1s ease;
-  transform: ${({ isVisible }) => isVisible ? 'translateX(0)' : 'translateX(200%)'};
+  transform: ${({ isVisible }) => isVisible ? 'translateX(0)' : 'translateX(250%)'};
   @media (min-width: 760px) {
     font-size: 1.5em;
     transform: ${({ isVisible }) => isVisible ? 'translateX(0)' : 'translateX(800%)'};

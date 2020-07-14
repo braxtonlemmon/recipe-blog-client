@@ -12,12 +12,8 @@ const CommentRow = styled.div`
   width: 80%;
   padding: 15px;
   padding-bottom: 30px;
-  /* background: rgba(247, 191, 247, 0.78); */
   background: ${props => props.fromAdmin ? '#5962356e' : '#cdcbd640'};
-  /* background: white; */
-  /* background: #cdcbd680; */
   box-shadow: -2px 2px 2px lightgrey;
-  /* box-shadow: 0 0 6px lightgrey; */
   z-index: 500;
   margin: 15px 0;
   margin-left: ${props => props.margin}px;
@@ -111,7 +107,8 @@ function Comment({ comment, comments, margin, setCommentsLoaded }) {
           <span className="comment-date">{comment.dateFormatted}</span>
         </div>
         <p className="comment-content">{comment.content}</p>
-        {replyClicked &&
+        {
+          replyClicked &&
           <ReplyFormContainer
             parent={comment._id}
             recipe={comment.recipe}
@@ -123,7 +120,6 @@ function Comment({ comment, comments, margin, setCommentsLoaded }) {
           ? <CloseButton onClick={handleReplyClick}>x</CloseButton>
           : <ReplyButton onClick={handleReplyClick}>Reply</ReplyButton>
         }
-        {/* <ReplyButton onClick={handleReplyClick}>{replyClicked ? 'Close' : 'Reply'}</ReplyButton> */}
       </CommentRow>
       {nestedComments}
     </div>

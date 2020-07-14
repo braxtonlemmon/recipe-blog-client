@@ -61,7 +61,13 @@ const Layout = ({ children, location }) => {
       }
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-          entry.isIntersecting ? setHeaderVisible(true) : setHeaderVisible(false);
+          if (entry.isIntersecting) {
+            setHeaderVisible(true);
+            setShowMenu(false);
+          } else {
+            setHeaderVisible(false);
+          }
+          // entry.isIntersecting ? setHeaderVisible(true) : setHeaderVisible(false);
         })
       }, options)
 

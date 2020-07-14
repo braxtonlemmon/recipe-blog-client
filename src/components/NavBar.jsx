@@ -62,9 +62,6 @@ const Links = styled.div`
       transform: translateX(30%);
     `}
   }
-  @media (min-width: 760px) {
-    display: grid;
-  }
   @media (min-width: 900px) {
     transform: translateX(0);
   }
