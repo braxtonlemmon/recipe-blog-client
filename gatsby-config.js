@@ -14,7 +14,7 @@ const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
 module.exports = {
   siteMetadata: {
     title: `Peel the Garlic`,
-    description: `A blog with all my recipes`,
+    description: `Online recipes with the user in mind.`,
     author: `Braxton Lemmon`,
     siteUrl,
   },
@@ -81,10 +81,10 @@ module.exports = {
         name: `gatsby-starter-default`,
         short_name: `starter`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#2f3020`,
+        theme_color: `#2f3020`,
         display: `minimal-ui`,
-        icon: "src/images/lemon_icon.png"
+        icon: "src/images/garlic.png"
       },
     },
     {
@@ -115,12 +115,4 @@ module.exports = {
     `gatsby-transformer-sharp`,
     'gatsby-transformer-remark',
   ],
-  // developMiddleware: app => {
-  //   app.use(
-  //     "/api",
-  //     createProxyMiddleware({
-  //       target: "http://localhost:4000",
-  //     })
-  //   )
-  // }
 }
