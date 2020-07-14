@@ -135,8 +135,8 @@ function Hero() {
       <HeroTextBox
         isVisible={isVisible}
       >
-        {/* <HeroQuote isVisible={isVisible}>{`${featured.quote}`}</HeroQuote> */}
-        <HeroQuote isVisible={isVisible}>Turmeric in a burger? Yes, please.</HeroQuote>
+        <HeroQuote isVisible={isVisible}>{`${featured.quote}`}</HeroQuote>
+        {/* <HeroQuote isVisible={isVisible}>Turmeric in a burger? Yes, please.</HeroQuote> */}
         <HeroTitle isVisible={isVisible}>{featured.title}</HeroTitle>
       </HeroTextBox>
     </Wrapper>

@@ -25,7 +25,6 @@ const MyH1 = styled(H1)`
   color: #2F3020;
   font-family: 'Montserrat';
   text-transform: uppercase;
-  /* border-bottom: 1px solid black; */
   @media (min-width: 600px) {
     font-size: 4em;
   }

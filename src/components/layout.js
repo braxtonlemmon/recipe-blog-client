@@ -67,7 +67,6 @@ const Layout = ({ children, location }) => {
           } else {
             setHeaderVisible(false);
           }
-          // entry.isIntersecting ? setHeaderVisible(true) : setHeaderVisible(false);
         })
       }, options)
 

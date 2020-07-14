@@ -66,6 +66,7 @@ function ContactFormComponent() {
           id="name"
           name="name"
           placeholder="Your name here."
+          required
         />
       </FormBox>
 
@@ -77,6 +78,7 @@ function ContactFormComponent() {
           id="email"
           name="email"
           placeholder="youremail@example.com"
+          required
         />
       </FormBox>
 
@@ -87,6 +89,7 @@ function ContactFormComponent() {
           id="content"
           name="content"
           placeholder="Your message here."
+          required
         />
       </FormBox>
       <Buttons>

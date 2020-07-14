@@ -25,17 +25,11 @@ function Steps({ recipe, checkboxes, handleCheck }) {
                 }
                 onChange={handleCheck}
               ></input>
-              {/* <label className="step-number" htmlFor={`step-checkbox-${index}`}>
-                {index + 1}
-              </label> */}
               <label className="step-label" htmlFor={`step-checkbox-${index}`}>
                 <p className="step-number">{index + 1}</p>
                 <p className="step-text">{step}</p>
               </label>
             </div>
-            {/* <label className="step-text" htmlFor={`step-checkbox-${index}`} >
-              {step}
-            </label> */}
           </Step>
         ))}
       </ul>
