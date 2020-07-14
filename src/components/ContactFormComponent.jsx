@@ -91,7 +91,6 @@ function ContactFormComponent() {
       </FormBox>
       <Buttons>
         <Button type="submit">Submit</Button>
-        <Button type="reset">Reset</Button>
       </Buttons>
     </FormWrapper>
   )

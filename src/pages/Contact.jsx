@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import SEO from '../components/seo';
 import { H1 } from '../components/Headings';
 import ContactFormContainer from '../components/ContactFormContainer';
+import ContactFormComponent from '../components/ContactFormComponent';
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,13 +21,14 @@ const Wrapper = styled.div`
 `;
 
 function Contact() {
-  return (
+  return ( 
     <>
       <SEO title="Contact" description="Contact page" />
       <Wrapper>
         <H1>Contact</H1>
         <h2 className="contact-intro">{`Send me a message! I'm all ears.`}</h2>
-        <ContactFormContainer />
+        {/* <ContactFormContainer /> */}
+        <ContactFormComponent />
       </Wrapper>
     </>
   )
