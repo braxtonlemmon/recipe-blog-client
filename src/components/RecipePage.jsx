@@ -114,12 +114,12 @@ function RecipePage({ data }) {
           checkboxes={checkboxes}
           handleCheck={handleCheck}
         />
-        {/* <Steps
+        <Steps
           recipe={recipe}
           checkboxes={checkboxes}
           handleCheck={handleCheck}
-        /> */}
-        {/* <Comments mongodb_id={recipe.mongodb_id} /> */}
+        />
+        <Comments mongodb_id={recipe.mongodb_id} />
         {/* <Printable
           ref={componentRef}
           recipe={recipe}
