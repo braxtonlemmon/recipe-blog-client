@@ -2,6 +2,8 @@ import { H1 } from './Headings';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   display: grid;
   justify-items: center;
   align-items: baseline;
@@ -30,6 +32,10 @@ const Wrapper = styled.div`
       "ingredients commentForm"
       "ingredients commentBox"
       "toTop toTop";
+  }
+  
+  @supports not (display: grid) {
+    align-items: center;
   }
 
   @media (min-width: 1300px) {
@@ -130,15 +136,19 @@ const IngredientsBox = styled(InfoBox)`
   @media (min-width: 760px) {
     box-shadow: -2px 2px 2px lightgrey, 2px -2px 2px lightgrey;
     box-shadow: 0 0 12px lightgrey;
-    /* position: ${props => props.fixed ? 'sticky' : 'relative'}; */
-    /* top: ${props => props.fixed ? `${props.navHeight + 10}px` : '0'}; */
+    /* position: ${props => (props.fixed ? "sticky" : "relative")}; */
+    /* top: ${props => (props.fixed ? `${props.navHeight + 10}px` : "0")}; */
+    position: -webkit-sticky;
     position: sticky;
     top: ${props => `${props.navHeight + 10}px`};
     padding-top: 0;
     max-height: 90vh;
-
     margin: 15px auto;
+
+
+
     .ingredients-box-title {
+      position: -webkit-sticky;
       position: sticky;
       top: 0px;
       background: white;
@@ -156,7 +166,13 @@ const IngredientsBox = styled(InfoBox)`
   .ingredient-label {
     cursor: pointer;
   }
-`;
+  @supports not (display: grid) {
+    position: relative;
+    .ingredients-box-title {
+      position: relative;
+    }
+  }
+`
 
 const StepsBox = styled(InfoBox)`
   grid-area: steps;

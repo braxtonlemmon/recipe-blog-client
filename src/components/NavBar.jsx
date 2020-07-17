@@ -5,6 +5,7 @@ import Hamburger from './Hamburger';
 import PropTypes from 'prop-types';
 
 const HeaderBar = styled.div`
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   width: 100%;
@@ -13,6 +14,9 @@ const HeaderBar = styled.div`
   height: 50px;
   box-shadow: 0px 2px 2px grey;
   grid-area: navbar;
+  @supports not (display: grid) {
+    position: relative;
+  }
 `;
 
 const Content = styled.div`

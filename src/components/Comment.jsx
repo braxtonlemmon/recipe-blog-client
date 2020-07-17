@@ -20,6 +20,8 @@ const CommentRow = styled.div`
   border-radius: 8px;
   transition: all 5s ease;
   .comment-info {
+    display: flex;
+    flex-direction: column;
     display: grid;
     grid-auto-flow: row;
     gap: 2px;

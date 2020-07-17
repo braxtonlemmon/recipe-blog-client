@@ -40,6 +40,7 @@ const FormBox = styled.div`
 `;
 
 const Buttons = styled.div`
+  display: flex;
   display: grid;
   grid-auto-flow: column;
   gap: 30px;
