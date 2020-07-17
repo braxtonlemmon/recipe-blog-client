@@ -6,7 +6,7 @@ import { H2 } from './Headings';
 import SEO from '../components/seo';
 import Ingredients from './Ingredients';
 import Steps from './Steps';
-// import { Link as ScrollLink } from 'react-scroll';
+import { Link as ScrollLink } from 'react-scroll';
 import {
   Wrapper,
   Links,
@@ -79,10 +79,10 @@ function RecipePage({ data }) {
       <SEO title={recipe.title} description={recipe.intro} />
       <Wrapper id="page-top">
         <MyH1>{recipe.title}</MyH1>
-        <Image>
+        {/* <Image>
           <ImageSlider images={images} />
         </Image>
-        {/* <Links>
+        <Links>
           <p>Psst! Some shortcuts just for you...</p>
           <div className="links-buttons">
             <ScrollLink className="scrollLink button-w-icon" to={"about-end"} smooth={true}>
@@ -98,7 +98,7 @@ function RecipePage({ data }) {
               <FaPrint />
             </div>
           </div>
-        </Links> */}
+        </Links>
         <AboutBox>
           <H2>About</H2>
           <p>{recipe.publish_date}</p>
@@ -125,7 +125,7 @@ function RecipePage({ data }) {
           recipe={recipe}
           convertDuration={convertDuration}
         />
-        {/* <ToTop>
+        <ToTop>
           <ScrollLink className="scrollLink button-w-icon" to={"page-top"} smooth={true}>
             <span>
               <TiArrowUpOutline /> Top of page. <TiArrowUpOutline />
