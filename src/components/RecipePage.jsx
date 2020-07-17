@@ -79,10 +79,10 @@ function RecipePage({ data }) {
       <SEO title={recipe.title} description={recipe.intro} />
       <Wrapper id="page-top">
         <MyH1>{recipe.title}</MyH1>
-        {/* <Image>
+        <Image>
           <ImageSlider images={images} />
         </Image>
-        <Links>
+        {/* <Links>
           <p>Psst! Some shortcuts just for you...</p>
           <div className="links-buttons">
             <ScrollLink className="scrollLink button-w-icon" to={"about-end"} smooth={true}>
@@ -98,8 +98,8 @@ function RecipePage({ data }) {
               <FaPrint />
             </div>
           </div>
-        </Links>
-        <AboutBox>
+        </Links> */}
+        {/* <AboutBox>
           <H2>About</H2>
           <p>{recipe.publish_date}</p>
           <Details>
@@ -108,24 +108,24 @@ function RecipePage({ data }) {
           </Details>
           <p>{recipe.intro}</p>
           <div id="about-end"></div>
-        </AboutBox>
-        <Ingredients
+        </AboutBox> */}
+        {/* <Ingredients
           recipe={recipe}
           checkboxes={checkboxes}
           handleCheck={handleCheck}
-        />
-        <Steps
+        /> */}
+        {/* <Steps
           recipe={recipe}
           checkboxes={checkboxes}
           handleCheck={handleCheck}
-        />
-        <Comments mongodb_id={recipe.mongodb_id} />
-        <Printable
+        /> */}
+        {/* <Comments mongodb_id={recipe.mongodb_id} /> */}
+        {/* <Printable
           ref={componentRef}
           recipe={recipe}
           convertDuration={convertDuration}
-        />
-        <ToTop>
+        /> */}
+        {/* <ToTop>
           <ScrollLink className="scrollLink button-w-icon" to={"page-top"} smooth={true}>
             <span>
               <TiArrowUpOutline /> Top of page. <TiArrowUpOutline />
