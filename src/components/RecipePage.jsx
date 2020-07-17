@@ -99,7 +99,7 @@ function RecipePage({ data }) {
             </div>
           </div>
         </Links> */}
-        {/* <AboutBox>
+        <AboutBox>
           <H2>About</H2>
           <p>{recipe.publish_date}</p>
           <Details>
@@ -108,12 +108,12 @@ function RecipePage({ data }) {
           </Details>
           <p>{recipe.intro}</p>
           <div id="about-end"></div>
-        </AboutBox> */}
-        {/* <Ingredients
+        </AboutBox>
+        <Ingredients
           recipe={recipe}
           checkboxes={checkboxes}
           handleCheck={handleCheck}
-        /> */}
+        />
         {/* <Steps
           recipe={recipe}
           checkboxes={checkboxes}
