@@ -32,7 +32,7 @@ const convertDuration = (duration) => {
   }
 }
 
-function RecipePage({ data, location }) {
+function RecipePage({ data }) {
   const recipe = data.mongodbTestRecipes;
   const images = data.mongodbTestRecipes.fields.images;
   const [checkboxes, setCheckboxes] = useState(loadCheckboxes());
@@ -45,7 +45,7 @@ function RecipePage({ data, location }) {
 
   // helper functions
   function loadCheckboxes() {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && typeof window.localStorage != 'undefined' && 5 === 4) {
       const storedData = JSON.parse(localStorage.getItem(recipe.id));
       return storedData === null ? {} : storedData;
     } else {
@@ -54,20 +54,23 @@ function RecipePage({ data, location }) {
   }
 
   function handleCheck(e) {
-    console.log(e.target.checked);
-    const storedData = JSON.parse(localStorage.getItem(recipe.id));
-    storedData[e.target.id] = e.target.checked;
-    localStorage.setItem(recipe.id, JSON.stringify(storedData));
-    setCheckboxes(storedData);
+    if (typeof window !== 'undefined' && typeof window.localStorage != 'undefined' && 5 === 4) {  
+      const storedData = JSON.parse(localStorage.getItem(recipe.id));
+      storedData[e.target.id] = e.target.checked;
+      localStorage.setItem(recipe.id, JSON.stringify(storedData));
+      setCheckboxes(storedData);
+    }
   }
 
   // loads saved data from localStorage
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem(recipe.id));
-    if (storedData === null) {
-      localStorage.setItem(recipe.id, JSON.stringify({}));
-    } else {
-      setCheckboxes({...storedData})
+    if (typeof window !== 'undefined' && typeof window.localStorage != 'undefined' && 5 === 4) {
+      const storedData = JSON.parse(localStorage.getItem(recipe.id));
+      if (storedData === null) {
+        localStorage.setItem(recipe.id, JSON.stringify({}));
+      } else {
+        setCheckboxes({...storedData})
+      }
     }
   }, [recipe.id])
 
