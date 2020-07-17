@@ -19,6 +19,7 @@ module.exports = {
     siteUrl,
   },
   plugins: [
+    'gatsby-plugin-polyfill-io',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
