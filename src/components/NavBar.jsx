@@ -44,6 +44,7 @@ const Logo = styled.p`
 `
 
 const Links = styled.div`
+  display: flex;
   display: grid;
   justify-content: space-between;
   align-items: center;
@@ -62,7 +63,7 @@ const Links = styled.div`
       transform: translateX(30%);
     `}
   }
-  @media (min-width: 900px) {
+  @media (min-width: 950px) {
     transform: translateX(0);
   }
 `;
