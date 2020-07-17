@@ -33,7 +33,7 @@ const Wrapper = styled.div`
       "ingredients commentBox"
       "toTop toTop";
   }
-  
+
   @supports not (display: grid) {
     align-items: center;
   }
@@ -72,6 +72,9 @@ const Wrapper = styled.div`
     align-items: center;
     text-align: center;
     justify-items: center;
+    @supports not (display: grid) {
+      margin: 0 5px;
+    }
   }
 `
 
