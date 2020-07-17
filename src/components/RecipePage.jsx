@@ -82,7 +82,7 @@ function RecipePage({ data }) {
         <Image>
           <ImageSlider images={images} />
         </Image>
-        {/* <Links>
+        <Links>
           <p>Psst! Some shortcuts just for you...</p>
           <div className="links-buttons">
             <ScrollLink className="scrollLink button-w-icon" to={"about-end"} smooth={true}>
@@ -98,7 +98,7 @@ function RecipePage({ data }) {
               <FaPrint />
             </div>
           </div>
-        </Links> */}
+        </Links>
         <AboutBox>
           <H2>About</H2>
           <p>{recipe.publish_date}</p>
@@ -120,19 +120,19 @@ function RecipePage({ data }) {
           handleCheck={handleCheck}
         />
         <Comments mongodb_id={recipe.mongodb_id} />
-        {/* <Printable
+        <Printable
           ref={componentRef}
           recipe={recipe}
           convertDuration={convertDuration}
-        /> */}
-        {/* <ToTop>
+        />
+        <ToTop>
           <ScrollLink className="scrollLink button-w-icon" to={"page-top"} smooth={true}>
             <span>
               <TiArrowUpOutline /> Top of page. <TiArrowUpOutline />
             </span>
             <p>(save your scroll finger)</p>
           </ScrollLink>
-        </ToTop> */}
+        </ToTop>
       </Wrapper>
     </>
   )
