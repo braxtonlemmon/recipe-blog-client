@@ -64,6 +64,7 @@ const Wrapper = styled.div`
     }
   }
   .button-w-icon {
+    display: flex;
     display: grid;
     grid-auto-flow: row;
     gap: 5px;
@@ -86,6 +87,7 @@ const Links = styled.div`
   border-bottom: 1px solid black;
   text-align: center;
   .links-buttons {
+    display: flex;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-auto-flow: column;
