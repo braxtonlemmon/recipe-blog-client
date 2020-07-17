@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   padding: 15px 0;
   border-top: 5px solid #2f3020;
   align-items: center;
-  width: 100%;
+  width: 90%;
   z-index: 501;
   grid-area: commentBox;
   @media (min-width: 1200px) {

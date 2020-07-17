@@ -126,13 +126,12 @@ const IngredientsBox = styled(InfoBox)`
   z-index: 500;
   background: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
-  min-width: 50%;
-  max-width: 90%;
+  margin-right: 10px;
   @media (min-width: 760px) {
     box-shadow: -2px 2px 2px lightgrey, 2px -2px 2px lightgrey;
     box-shadow: 0 0 12px lightgrey;
-    position: ${props => props.fixed ? 'sticky' : 'relative'};
-    top: ${props => props.fixed ? `${props.navHeight + 10}px` : '0'};
+    /* position: ${props => props.fixed ? 'sticky' : 'relative'}; */
+    /* top: ${props => props.fixed ? `${props.navHeight + 10}px` : '0'}; */
     position: sticky;
     top: ${props => `${props.navHeight + 10}px`};
     padding-top: 0;
@@ -242,7 +241,7 @@ const Ingredient = styled.li`
 const Step = styled.li`
   /* margin: 5px 10px 15px 10px; */
   /* padding-bottom: 10px; */
-  padding: 10px 0;
+  padding: 15px 0;
   border-bottom: 1px dotted black;
   display: grid;
   /* grid-template-columns: 3em 1fr; */
@@ -253,6 +252,9 @@ const Step = styled.li`
   line-height: 1.2em;
   letter-spacing: 0.15px;
   width: 100%;
+  @media (min-width: 1300px) {
+    padding: 20px 0;
+  }
   .step-box-holder {
     /* height: 2.2em; */
     /* width: 2.2em; */
@@ -270,6 +272,7 @@ const Step = styled.li`
   .step-label {
     display: grid;
     grid-template-columns: 3em 1fr;
+    align-items: center;
     height: 100%;
     width: 100%;
     text-decoration: ${props => props.done === 'yes' ? 'line-through' : 'none'};

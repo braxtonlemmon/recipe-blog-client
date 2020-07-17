@@ -11,7 +11,7 @@ const FormWrapper = styled.form`
   justify-content: center;
   border-top: 5px solid #2f3020;
   padding: 15px;
-  width: 100%;
+  width: 90%;
   grid-area: commentForm;
   margin-top: 15px;
   z-index: 501;
