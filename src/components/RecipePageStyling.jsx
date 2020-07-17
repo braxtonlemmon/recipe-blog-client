@@ -170,6 +170,7 @@ const IngredientsBox = styled(InfoBox)`
   }
   @supports not (display: grid) {
     position: relative;
+    padding-bottom: 30px;
     .ingredients-box-title {
       position: relative;
     }

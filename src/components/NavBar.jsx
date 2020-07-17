@@ -73,7 +73,7 @@ const Links = styled.div`
 `;
 
 const NavLink = styled.p`
-  color: #2F3020;
+  color: #2f3020;
   text-transform: uppercase;
   font-size: 0.9em;
   padding: 4px 0 5px 0;
@@ -90,7 +90,11 @@ const NavLink = styled.p`
   @media (min-width: 600px) {
     font-size: 1.2em;
   }
-`;
+
+  @supports not (display: grid) {
+    margin: 0 10px;
+  }
+`
 
 function NavBar({ isHeaderVisible, handleMenuClick, showMenu }) {
   const data = useStaticQuery(
