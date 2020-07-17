@@ -1,4 +1,5 @@
 import { wrapRootElement as wrap } from './root-wrapper';
+import 'whatwg-fetch';
 
 export const onClientEntry = async () => {
   if (typeof IntersectionObserver === 'undefined') {

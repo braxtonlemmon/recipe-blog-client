@@ -9,18 +9,21 @@ function Comments({ mongodb_id }) {
   const [commentsLoaded, setCommentsLoaded] = useState(false);
 
   useEffect(() => {
-    const abortController = new AbortController();
+    // const abortController = new AbortController();
 
-    fetch(`https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/comments/${mongodb_id}`, { signal: abortController.signal })
-      .then(result => result.json())
-      .then(data => { 
-        const topLevel = data.data.filter(comment => comment.level === 0);
-        setTopComments(topLevel);
-        setComments(data.data)
-      })
-      .then(() => setCommentsLoaded(true))
-      .catch(err => console.error("Request failed", err))
-      return () => abortController.abort();
+    // fetch(`https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/comments/${mongodb_id}`, { signal: abortController.signal })
+        fetch(
+          `https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/comments/${mongodb_id}`,
+        )
+          .then(result => result.json())
+          .then(data => {
+            const topLevel = data.data.filter(comment => comment.level === 0)
+            setTopComments(topLevel)
+            setComments(data.data)
+          })
+          .then(() => setCommentsLoaded(true))
+          .catch(err => console.error("Request failed", err))
+      // return () => abortController.abort();
   }, [commentsLoaded, mongodb_id])
   
   return (
