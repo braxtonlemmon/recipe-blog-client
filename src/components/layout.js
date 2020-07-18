@@ -42,16 +42,21 @@ const Main = styled.main`
 const Layout = ({ children, location }) => {
   const [isHeaderVisible, setHeaderVisible] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
-
+  
   const handleMenuClick = () => {
     setShowMenu(!showMenu);
   }
-
+  
   const handleMainClick = () => {
     if (showMenu) {
       setShowMenu(false);
     }
   }
+  
+  useEffect(() => {
+    const body = document.querySelector('body');
+    showMenu ? body.style.overflow = 'hidden' : body.style.overflow = 'visible';
+  }, [showMenu])
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
