@@ -198,6 +198,9 @@ const StepsBox = styled(InfoBox)`
     margin-top: 20px;
     width: 100%;
   }
+  @supports not (display: grid) {
+    margin-top: 30px;
+  }
 `;
 
 const MyH1 = styled(H1)`
