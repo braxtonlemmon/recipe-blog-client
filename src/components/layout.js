@@ -79,7 +79,7 @@ const Layout = ({ children, location }) => {
     <Wrapper
       onClick={() => handleMainClick()}
     >
-      <Header />
+      <Header isHeaderVisible={isHeaderVisible} />
       <NavBar
         isHeaderVisible={isHeaderVisible}
         handleMenuClick={handleMenuClick}
