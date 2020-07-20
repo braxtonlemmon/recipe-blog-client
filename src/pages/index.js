@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link, graphql } from 'gatsby';
 import RecipeCard from '../components/RecipeCard';
-import SEO from '../components/seo';
+// import SEO from '../components/seo';
+import SEO from '../components/SEOv2';
 import Hero from '../components/Hero';
 import PropTypes from 'prop-types';
 

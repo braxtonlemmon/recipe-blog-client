@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import SEO from '../components/seo';
+// import SEO from '../components/seo';
+import SEO from '../components/SEOv2';
 import { H1 } from '../components/Headings';
 import ContactFormComponent from '../components/ContactFormComponent';
 

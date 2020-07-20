@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import SEO from '../components/seo';
+// import SEO from '../components/seo';
+import SEO from '../components/SEOv2';
 import { H1 } from '../components/Headings';
 import { graphql } from 'gatsby';
 
@@ -58,6 +59,7 @@ function About({ data }) {
 
   return (
     <>
+      {/* <SEO title="About" description="About page" /> */}
       <SEO title="About" description="About page" />
       <Wrapper>
         <H1>About</H1>

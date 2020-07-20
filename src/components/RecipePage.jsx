@@ -3,7 +3,8 @@ import { graphql } from 'gatsby';
 import Comments from './Comments';
 import ImageSlider from './ImageSlider';
 import { H2 } from './Headings';
-import SEO from '../components/seo';
+// import SEO from '../components/seo';
+import SEO from '../components/SEOv2';
 import Ingredients from './Ingredients';
 import Steps from './Steps';
 import { Link as ScrollLink } from 'react-scroll';
@@ -21,6 +22,7 @@ import Printable from './Printable';
 import { useReactToPrint } from 'react-to-print';
 import { FaPrint, FaRegClock } from 'react-icons/fa';
 import { TiArrowUpOutline, TiArrowDownOutline } from 'react-icons/ti';
+import useSiteMetadata from '../hooks/use-site-metadata';
 
 const convertDuration = (duration) => {
   if (duration > 59) {
@@ -32,10 +34,12 @@ const convertDuration = (duration) => {
   }
 }
 
-function RecipePage({ data }) {
+function RecipePage({ data, location }) {
   const recipe = data.mongodbTestRecipes;
   const images = data.mongodbTestRecipes.fields.images;
   const [checkboxes, setCheckboxes] = useState(loadCheckboxes());
+  const { siteUrl } = useSiteMetadata();
+  const url = `${siteUrl}${location.pathname}`;
 
   // PRINTING
   const componentRef = useRef();
@@ -76,7 +80,14 @@ function RecipePage({ data }) {
 
   return (
     <>
-      <SEO title={recipe.title} description={recipe.intro} />
+      <SEO
+        recipe={recipe}
+        isRecipe={true}
+        title={recipe.title}
+        description={recipe.description}
+        url={url}
+      />
+      {/* <SEO title={recipe.title} description={recipe.intro} /> */}
       <Wrapper id="page-top">
         <MyH1>{recipe.title}</MyH1>
         <Image>
@@ -149,11 +160,18 @@ export const pageQuery = graphql`
       id
       mongodb_id
       title
+      description
+      keywords
+      prep_time
+      cook_time
       ingredients
+      category
+      cook_method
+      cuisine
       intro
-      duration
       size
       steps
+      images
       publish_date(
         formatString: "MMMM DD, YYYY"
       )
