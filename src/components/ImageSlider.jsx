@@ -40,29 +40,39 @@ const FakeImg = styled.div`
 const ButtonsBox = styled.div`
   display: ${props => (props.multiple === true ? "flex" : "none")};
   position: absolute;
-  left: -8px;
-  right: -8px;
   top: 0;
   z-index: 15;
   height: 100%;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
-  .button {
+`
+
+const ArrowBox = styled.div`
+  display: flex;
+  width: 40%;
+  height: 80%;
+  align-items: center;
+  justify-content: baseline;
+  cursor: pointer;
+  .image-slider___right {
+    margin-left: auto;
+  }
+  .image-slider___button {
     color: rgba(255, 255, 255, 0.5);
     z-index: 16;
     height: 60px;
     width: 60px;
-    cursor: pointer;
-    &:hover {
-      color: rgba(255, 255, 255);
-      transform: scale(1.05);
-    }
     @media (min-width: 600px) {
       height: 80px;
       width: 80px;
     }
   }
-`
+  &:hover .image-slider___button {
+    color: white;
+    transform: scale(1.05);
+  }
+`;
 
 function ImageSlider({ images }) {
   const [index, setIndex] = useState(0);
@@ -89,14 +99,12 @@ function ImageSlider({ images }) {
       <ButtonsBox
         multiple={images.length > 1}
       >
-        <FaAngleLeft 
-          className="button"
-          onClick={() => handlePrevious()}
-        />
-        <FaAngleRight 
-          className="button"
-          onClick={() => handleNext()}
-        />
+        <ArrowBox onClick={() => handlePrevious()}>
+          <FaAngleLeft className="image-slider___button" />
+        </ArrowBox>
+        <ArrowBox onClick={() => handleNext()}>
+          <FaAngleRight className="image-slider___button image-slider___right" />
+        </ArrowBox>
       </ButtonsBox>
     </ImgWrapper>
   )
