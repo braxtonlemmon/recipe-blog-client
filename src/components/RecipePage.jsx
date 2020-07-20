@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { graphql } from 'gatsby';
 import Comments from './Comments';
 import ImageSlider from './ImageSlider';
+import Ratings from './Ratings';
 import { H2 } from './Headings';
 // import SEO from '../components/seo';
 import SEO from '../components/SEOv2';
@@ -110,6 +111,7 @@ function RecipePage({ data, location }) {
             </div>
           </div>
         </Links>
+        <Ratings id={recipe.mongodb_id} />
         <AboutBox>
           <H2>About</H2>
           <p>{recipe.publish_date}</p>

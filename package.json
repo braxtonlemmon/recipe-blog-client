@@ -37,6 +37,7 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^6.0.0",
     "react-icons": "^3.10.0",
+    "react-rating": "^2.0.5",
     "react-scroll": "^1.7.16",
     "react-scrollbars-custom": "^4.0.25",
     "react-to-print": "^2.9.0",
