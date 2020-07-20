@@ -46,7 +46,7 @@ const Border = styled.div`
   height: 1px;
   background: #2F3020;
   transition: transform 500ms ease;
-  transform: ${props => props.isHeaderVisible ? 'scaleX(100%)' : 'scaleX(0%)'};
+  transform: ${props => props.isHeaderVisible ? 'scaleX(100%)' : 'scaleX(0)'};
   @media (min-width: 1024px) {
     width: 60%;
   }
@@ -54,15 +54,15 @@ const Border = styled.div`
 
 function Header({ isHeaderVisible }) {
   return (
-    <>
-      <HeaderBar id="header">
-        <Link to='/'>
-          <MyH1>Peel the Garlic</MyH1>
-        </Link>
-        <Border isHeaderVisible={isHeaderVisible}></Border>
-      </HeaderBar>
-    </>
-  )
+      <>
+        <HeaderBar id="header">
+          <Link to='/'>
+            <MyH1>Peel the Garlic</MyH1>
+          </Link>
+          <Border isHeaderVisible={isHeaderVisible}></Border>
+        </HeaderBar>
+      </>
+    )
 }
 
 Header.propTypes = {

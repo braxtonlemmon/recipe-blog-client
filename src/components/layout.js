@@ -69,7 +69,9 @@ const Layout = ({ children, location }) => {
           if (entry.isIntersecting) {
             setHeaderVisible(true);
             setShowMenu(false);
+            console.log('header is visible')
           } else {
+            console.log('header is not visible')
             setHeaderVisible(false);
           }
         })
