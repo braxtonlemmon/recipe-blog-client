@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { H2 } from './Headings';
 import PropTypes from 'prop-types';
 import Button from './Button';
+import Stars from './Stars';
 
 const FormWrapper = styled.form`
   display: flex;
@@ -51,7 +52,7 @@ const FormWrapper = styled.form`
   }
 `;
 
-function CommentFormComponent({ data, handleChange, handleSubmit}) {
+function CommentFormComponent({ data, handleChange, handleSubmit, selected, handleOptionChange}) {
   return (
     <FormWrapper 
       name="commentForm"
@@ -80,7 +81,10 @@ function CommentFormComponent({ data, handleChange, handleSubmit}) {
         onChange={handleChange}
       >
       </textarea>
-
+      <Stars 
+        selected={selected}
+        handleOptionChange={handleOptionChange}
+      />
       <Button
         onClick={(e) => handleSubmit(e, 0)}
       >
@@ -95,7 +99,9 @@ function CommentFormComponent({ data, handleChange, handleSubmit}) {
 CommentFormComponent.propTypes = {
   data: PropTypes.object,
   handleChange: PropTypes.func,
-  handleSubmit: PropTypes.func
+  handleSubmit: PropTypes.func,
+  selected: PropTypes.number,
+  handleOptionChange: PropTypes.func
 }
 
 export default CommentFormComponent;

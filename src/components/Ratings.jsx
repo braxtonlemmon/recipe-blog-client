@@ -3,31 +3,13 @@ import styled, {keyframes} from 'styled-components';
 import Rating from 'react-rating';
 import { FaRegStar, FaStar } from "react-icons/fa"
 import Button from './Button';
-
-const bounce = keyframes`
-  0% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-`
+import Stars from './Stars';
 
 const grow = keyframes`
-  0% {
-    transform: scale(1);
-  }
-  40% {
-    transform: scale(1.08);
-  }
-  100% {
-    scale(1)
-  }
-
-`
+  0% { transform: scale(1); }
+  40% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+`;
 
 const Wrapper = styled.div`
   padding: 10px 5px;
@@ -59,12 +41,6 @@ const Wrapper = styled.div`
     animation: ${grow} 1.3s ease-in-out infinite;
   }
 `
-const Form = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
 
 const Bottom = styled.div`
   display: flex;
@@ -106,14 +82,18 @@ function Ratings({ id }) {
   return (
     <Wrapper>
       {/* stars */}
-      <Rating
+      <Stars 
+        selected={selected}
+        handleOptionChange={handleOptionChange}
+      />
+      {/* <Rating
         className="rating"
         emptySymbol={<FaRegStar className="star"/>}
         fullSymbol={<FaStar className="star"/>}
         fractions={2}
         initialRating={selected}
         onChange={(value) => handleOptionChange(value)}
-      />
+      /> */}
       {/* div with madeit, button, rate it */}
       <Bottom>
         { !rated && <p className="made-it ratings-text">Made it?</p>}
@@ -121,9 +101,7 @@ function Ratings({ id }) {
           rated
           ? <p>Thanks for rating!</p>
           : 
-          <Form>
-            <Button onClick={handleRate}>Rate</Button>
-          </Form>
+          <Button onClick={handleRate}>Rate</Button>
         }
         { !rated && <p className="rate-it ratings-text">Rate it!</p>}
       </Bottom>

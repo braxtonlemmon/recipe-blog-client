@@ -3,10 +3,15 @@ import CommentFormComponent from './CommentFormComponent';
 import PropTypes from 'prop-types';
 
 function CommentFormContainer({ mongodb_id, setCommentsLoaded }) {
+  const [selected, setSelected] = useState(5);
   const [data, setData] = useState({
     name: '',
     content: '',
   });
+
+  const handleOptionChange = (value) => {
+    setSelected(value);
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,8 +23,7 @@ function CommentFormContainer({ mongodb_id, setCommentsLoaded }) {
     if (data.content.length < 1 || data.content.length > 1000) {
       return alert('wrongo');
     }
-    setData({ name: '', content: '' });
-
+    
     fetch('https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/comments', {
       method: 'POST',
       headers: {
@@ -35,14 +39,37 @@ function CommentFormContainer({ mongodb_id, setCommentsLoaded }) {
         answered: false
       })
     })
+    .then(response => {
+      if (response.ok && response.status === 200) {
+        setData({ name: '', content: '' });
+        setCommentsLoaded(false);
+        return response.json();
+      }
+      throw new Error('Network response was not okay');
+    })
+    .catch(err => console.log(err.message));
+
+    fetch(
+      `https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/recipes/${mongodb_id}/ratings`,
+      {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          rating: selected
+        }),
+      })
       .then(response => {
         if (response.ok && response.status === 200) {
-          setCommentsLoaded(false);
-          return response.json();
+          setSelected(5);
+          return response.json()
         }
-        throw new Error('Network response was not okay');
+        throw new Error("Network response was not okay")
       })
-      .catch(err => console.log(err.message));
+      .catch(err => console.log(err.message))
+
   }
 
   return (
@@ -50,6 +77,8 @@ function CommentFormContainer({ mongodb_id, setCommentsLoaded }) {
       handleChange={handleChange}
       handleSubmit={handleSubmit}
       data={data}
+      selected={selected}
+      handleOptionChange={handleOptionChange}
     />
   )
 }
