@@ -12,7 +12,7 @@ const Links = styled.div`
   align-items: center;
   grid-area: links;
   margin: 15px 0;
-  padding: 10px 0;
+  padding: 15px 0;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   text-align: center;
