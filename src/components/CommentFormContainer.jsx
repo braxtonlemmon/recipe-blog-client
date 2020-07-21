@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import CommentFormComponent from './CommentFormComponent';
 import PropTypes from 'prop-types';
 
-function CommentFormContainer({ mongodb_id, setCommentsLoaded }) {
+function CommentFormContainer({ mongodb_id, setCommentsLoaded, handleNewRating }) {
   const [selected, setSelected] = useState(5);
   const [data, setData] = useState({
     name: '',
@@ -64,6 +64,7 @@ function CommentFormContainer({ mongodb_id, setCommentsLoaded }) {
       .then(response => {
         if (response.ok && response.status === 200) {
           setSelected(5);
+          handleNewRating();
           return response.json()
         }
         throw new Error("Network response was not okay")
@@ -86,6 +87,7 @@ function CommentFormContainer({ mongodb_id, setCommentsLoaded }) {
 CommentFormContainer.propTypes = {
   mongodb_id: PropTypes.string,
   setCommentsLoaded: PropTypes.func,
+  handleNewRating: PropTypes.func
 }
 
 export default CommentFormContainer;

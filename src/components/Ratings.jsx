@@ -4,6 +4,7 @@ import Rating from 'react-rating';
 import { FaRegStar, FaStar } from "react-icons/fa"
 import Button from './Button';
 import Stars from './Stars';
+import PropTypes from 'prop-types';
 
 const grow = keyframes`
   0% { transform: scale(1); }
@@ -53,7 +54,7 @@ const Bottom = styled.div`
   align-items: center;
 `;
 
-function Ratings({ id }) {
+function Ratings({ id, handleNewRating }) {
   const [selected, setSelected] = useState(5);
   const [rated, setRated] = useState(false);
 
@@ -76,6 +77,7 @@ function Ratings({ id }) {
       })
       .then(response => {
         if (response.ok && response.status === 200) {
+          handleNewRating();
           setRated(true);
           return response.json()
         }
@@ -104,6 +106,11 @@ function Ratings({ id }) {
       </Bottom>
     </Wrapper>
   )
+}
+
+Ratings.propTypes = {
+  id: PropTypes.string,
+  handleNewRating: PropTypes.func
 }
 
 export default Ratings;

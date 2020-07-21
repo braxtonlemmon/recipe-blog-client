@@ -3,7 +3,7 @@ import CommentBox from './CommentBox';
 import CommentFormContainer from './CommentFormContainer';
 import PropTypes from 'prop-types';
 
-function Comments({ mongodb_id }) {
+function Comments({ mongodb_id, handleNewRating }) {
   const [comments, setComments] = useState([]);
   const [topComments, setTopComments] = useState([]);
   const [commentsLoaded, setCommentsLoaded] = useState(false);
@@ -31,6 +31,7 @@ function Comments({ mongodb_id }) {
         <CommentFormContainer
           mongodb_id={mongodb_id}
           setCommentsLoaded={setCommentsLoaded}
+          handleNewRating={handleNewRating}
         />
         { commentsLoaded && 
           <CommentBox
@@ -45,7 +46,8 @@ function Comments({ mongodb_id }) {
 }
 
 Comments.propTypes = {
-  mongodb_id: PropTypes.string
+  mongodb_id: PropTypes.string,
+  handleNewRating: PropTypes.func
 }
 
 export default Comments;

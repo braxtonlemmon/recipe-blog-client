@@ -70,14 +70,14 @@ const getAverage = (ratings) => {
   }
 }
 
-function Details({ recipe, convertDuration }) {
+function Details({ recipe, convertDuration, ratings }) {
   return (
     <AboutBox>
       <H2>About</H2>
       <DateAndRatings>
         <Rating
           readonly
-          initialRating={getAverage(recipe.ratings)}
+          initialRating={getAverage(ratings)}
           emptySymbol={<FaRegStar/>}
           fullSymbol={<FaStar/>}
           />
@@ -102,7 +102,8 @@ function Details({ recipe, convertDuration }) {
 
 Details.propTypes = {
   recipe: PropTypes.object,
-  convertDuration: PropTypes.func
+  convertDuration: PropTypes.func,
+  ratings: PropTypes.array
 }
 
 export default Details;

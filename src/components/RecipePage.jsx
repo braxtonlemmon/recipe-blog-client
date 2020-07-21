@@ -34,6 +34,8 @@ function RecipePage({ data, location }) {
   const recipe = data.mongodbTestRecipes;
   const images = data.mongodbTestRecipes.fields.images;
   const [checkboxes, setCheckboxes] = useState(loadCheckboxes());
+  const [ratings, setRatings] = useState([]);
+  const [ratingsLoaded, setRatingsLoaded] = useState(false);
   const { siteUrl } = useSiteMetadata();
   const url = `${siteUrl}${location.pathname}`;
 
@@ -62,6 +64,10 @@ function RecipePage({ data, location }) {
     }
   }
 
+  function handleNewRating() {
+    setRatingsLoaded(false);
+  }
+
   // loads saved data from localStorage
   useEffect(() => {
     if (typeof window !== 'undefined' && typeof window.localStorage != 'undefined') {
@@ -73,6 +79,27 @@ function RecipePage({ data, location }) {
       }
     }
   }, [recipe.id])
+
+  useEffect(() => {
+    const id = recipe.mongodb_id;
+    fetch(
+      `https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/recipes/${id}/ratings`,
+      {
+        method: "GET",
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }
+      }
+    )
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      setRatings(data.ratings);
+      setRatingsLoaded(true);
+    })
+    .catch(err => console.error('Request failed', err));
+  }, [ratingsLoaded])
 
   return (
     <>
@@ -92,11 +119,13 @@ function RecipePage({ data, location }) {
           handlePrint={handlePrint} 
         />
         <Ratings 
-          id={recipe.mongodb_id} 
+          id={recipe.mongodb_id}
+          handleNewRating={handleNewRating} 
         />
         <Details 
           recipe={recipe} 
-          convertDuration={convertDuration} 
+          convertDuration={convertDuration}
+          ratings={ratings}
         />
         <Ingredients
           recipe={recipe}
@@ -108,7 +137,10 @@ function RecipePage({ data, location }) {
           checkboxes={checkboxes}
           handleCheck={handleCheck}
         />
-        <Comments mongodb_id={recipe.mongodb_id} />
+        <Comments 
+          mongodb_id={recipe.mongodb_id} 
+          handleNewRating={handleNewRating}
+        />
         <Printable
           ref={componentRef}
           recipe={recipe}
