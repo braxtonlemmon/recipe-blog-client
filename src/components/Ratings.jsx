@@ -13,7 +13,11 @@ const grow = keyframes`
 
 const Wrapper = styled.div`
   padding: 10px 5px;
+  margin: 10px 0;
+  height: 100px;
   width: 90%;
+  max-width: 320px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,8 +47,9 @@ const Wrapper = styled.div`
 `
 
 const Bottom = styled.div`
+  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 `;
 
@@ -81,25 +86,17 @@ function Ratings({ id }) {
 
   return (
     <Wrapper>
-      {/* stars */}
-      <Stars 
-        selected={selected}
-        handleOptionChange={handleOptionChange}
-      />
-      {/* <Rating
-        className="rating"
-        emptySymbol={<FaRegStar className="star"/>}
-        fullSymbol={<FaStar className="star"/>}
-        fractions={2}
-        initialRating={selected}
-        onChange={(value) => handleOptionChange(value)}
-      /> */}
-      {/* div with madeit, button, rate it */}
+      { !rated &&
+        <Stars 
+          selected={selected}
+          handleOptionChange={handleOptionChange}
+        />
+      }
       <Bottom>
         { !rated && <p className="made-it ratings-text">Made it?</p>}
         {
           rated
-          ? <p>Thanks for rating!</p>
+          ? <p className="ratings-text">Thanks for rating!</p>
           : 
           <Button onClick={handleRate}>Rate</Button>
         }
