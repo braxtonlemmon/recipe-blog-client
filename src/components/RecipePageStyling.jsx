@@ -80,31 +80,6 @@ const Wrapper = styled.div`
   }
 `
 
-const Links = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  grid-area: links;
-  margin: 15px 0;
-  padding: 10px 0;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  text-align: center;
-  .links-buttons {
-    display: flex;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-auto-flow: column;
-    gap: 10px;
-    margin-top: 10px;
-    width: 100%;
-    justify-content: center;
-  }
-
-`;
-
-
 const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -113,13 +88,13 @@ const InfoBox = styled.div`
   align-items: center;
 `;
 
-const AboutBox = styled(InfoBox)`
-  grid-area: about;
-  width: 90%;
-  padding: 15px 0;
-  margin-bottom: 15px;
-  border-bottom: 5px solid #2f3020;
-`;
+// const AboutBox = styled(InfoBox)`
+//   grid-area: about;
+//   width: 90%;
+//   padding: 15px 0;
+//   margin-bottom: 15px;
+//   border-bottom: 5px solid #2f3020;
+// `;
 
 const Details = styled.div`
   display: grid;
@@ -327,23 +302,13 @@ const Step = styled.li`
   width: 100%;
 `;
 
-const ToTop = styled.div`
-  display: flex;
-  justify-content: center;
-  grid-area: toTop;
-  margin-top: 20px;
-`;
-
 export {
   Wrapper,
-  Links,
-  AboutBox,
-  Details,
+  InfoBox,
   IngredientsBox,
   StepsBox,
   MyH1,
   Image,
   Ingredient,
   Step,
-  ToTop
 }

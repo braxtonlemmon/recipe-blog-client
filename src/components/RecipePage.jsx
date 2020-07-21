@@ -3,25 +3,21 @@ import { graphql } from 'gatsby';
 import Comments from './Comments';
 import ImageSlider from './ImageSlider';
 import Ratings from './Ratings';
-import { H2 } from './Headings';
 import Shortcuts from './Shortcuts';
 import SEO from '../components/SEOv2';
 import Ingredients from './Ingredients';
 import Steps from './Steps';
-import { Link as ScrollLink } from 'react-scroll';
+import Details from './Details';
+import ToTop from './ToTop';
 import {
   Wrapper,
-  AboutBox,
-  Details,
   MyH1,
   Image,
-  ToTop
+  // ToTop
 } from './RecipePageStyling';
 import PropTypes from 'prop-types';
 import Printable from './Printable';
 import { useReactToPrint } from 'react-to-print';
-import { FaRegClock } from 'react-icons/fa';
-import { TiArrowUpOutline } from 'react-icons/ti';
 import useSiteMetadata from '../hooks/use-site-metadata';
 
 const convertDuration = (duration) => {
@@ -40,7 +36,7 @@ function RecipePage({ data, location }) {
   const [checkboxes, setCheckboxes] = useState(loadCheckboxes());
   const { siteUrl } = useSiteMetadata();
   const url = `${siteUrl}${location.pathname}`;
-  console.log(typeof location);
+
   // PRINTING
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
@@ -92,18 +88,16 @@ function RecipePage({ data, location }) {
         <Image>
           <ImageSlider images={images} />
         </Image>
-        <Shortcuts handlePrint={handlePrint} />
-        <Ratings id={recipe.mongodb_id} />
-        <AboutBox>
-          <H2>About</H2>
-          <p>{recipe.publish_date}</p>
-          <Details>
-            <p><FaRegClock/> {convertDuration(recipe.duration)}</p>
-            <p>Serves: {recipe.size}</p>
-          </Details>
-          <p>{recipe.intro}</p>
-          <div id="about-end"></div>
-        </AboutBox>
+        <Shortcuts 
+          handlePrint={handlePrint} 
+        />
+        <Ratings 
+          id={recipe.mongodb_id} 
+        />
+        <Details 
+          recipe={recipe} 
+          convertDuration={convertDuration} 
+        />
         <Ingredients
           recipe={recipe}
           checkboxes={checkboxes}
@@ -120,14 +114,7 @@ function RecipePage({ data, location }) {
           recipe={recipe}
           convertDuration={convertDuration}
         />
-        <ToTop>
-          <ScrollLink className="scrollLink button-w-icon" to={"page-top"} smooth={true}>
-            <span>
-              <TiArrowUpOutline /> Top of page. <TiArrowUpOutline />
-            </span>
-            <p>(save your scroll finger)</p>
-          </ScrollLink>
-        </ToTop>
+        <ToTop />
       </Wrapper>
     </>
   )
