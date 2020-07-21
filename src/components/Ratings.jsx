@@ -16,11 +16,24 @@ const bounce = keyframes`
   }
 `
 
+const grow = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.08);
+  }
+  100% {
+    scale(1)
+  }
+
+`
+
 const Wrapper = styled.div`
   padding: 10px 5px;
   width: 90%;
   display: flex;
-
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
@@ -32,24 +45,18 @@ const Wrapper = styled.div`
     margin: 0 5px;
     color: #2f3020;
   }
-
-  .made-it {
-    transform: rotate(20deg);
-    margin-right: 15px;
+  .ratings-text {
     font-size: 1.2em;
-    animation: ${bounce} 1.5s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
     text-align: center;
   }
+
+  .made-it {
+    margin-right: 15px;
+    /* animation: ${grow} 1.5s ease-in-out infinite; */
+  }
   .rate-it {
-    transform: rotate(-20deg);
     margin-left: 15px;
-    font-size: 1.2em;
-    animation: ${bounce} 1.3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    text-align: center;
+    animation: ${grow} 1.3s ease-in-out infinite;
   }
 `
 const Form = styled.div`
@@ -58,6 +65,13 @@ const Form = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+const Bottom = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 function Ratings({ id }) {
   const [selected, setSelected] = useState(5);
   const [rated, setRated] = useState(false);
@@ -91,24 +105,28 @@ function Ratings({ id }) {
 
   return (
     <Wrapper>
-      { !rated && <p className="made-it">Made it?</p>}
-      {
-        rated
-        ? <p>Thanks for rating!</p>
-        : 
-        <Form>
-          <Rating
-            className="rating"
-            emptySymbol={<FaRegStar className="star"/>}
-            fullSymbol={<FaStar className="star"/>}
-            fractions={2}
-            initialRating={selected}
-            onChange={(value) => handleOptionChange(value)}
-          />
-          <Button onClick={handleRate}>Rate</Button>
-        </Form>
-      }
-      { !rated && <p className="rate-it">Rate it!</p>}
+      {/* stars */}
+      <Rating
+        className="rating"
+        emptySymbol={<FaRegStar className="star"/>}
+        fullSymbol={<FaStar className="star"/>}
+        fractions={2}
+        initialRating={selected}
+        onChange={(value) => handleOptionChange(value)}
+      />
+      {/* div with madeit, button, rate it */}
+      <Bottom>
+        { !rated && <p className="made-it ratings-text">Made it?</p>}
+        {
+          rated
+          ? <p>Thanks for rating!</p>
+          : 
+          <Form>
+            <Button onClick={handleRate}>Rate</Button>
+          </Form>
+        }
+        { !rated && <p className="rate-it ratings-text">Rate it!</p>}
+      </Bottom>
     </Wrapper>
   )
 }
