@@ -8,6 +8,7 @@ import ContactFormComponent from '../components/ContactFormComponent';
 const Wrapper = styled.div`
   display: flex;
   width: 90%;
+  max-width: 600px;
   margin: 0 auto;
   flex-direction: column;
   justify-content: baseline;
@@ -17,6 +18,7 @@ const Wrapper = styled.div`
     margin: 30px 10px 10px 10px;
     text-align: center;
     font-size: 1.2em;
+    line-height: 1.5em;
   }
 `;
 
@@ -26,7 +28,7 @@ function Contact() {
       <SEO title="Contact" description="Contact page" />
       <Wrapper>
         <H1>Contact</H1>
-        <h2 className="contact-intro">{`Send me a message! I'm all ears.`}</h2>
+        <h2 className="contact-intro">{`Questions? Complaints? Suggestions? Recipe requests? I'm all ears.`}</h2>
         <ContactFormComponent />
       </Wrapper>
     </>

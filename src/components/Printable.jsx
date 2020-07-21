@@ -34,8 +34,8 @@ const About = styled.ul`
   width: 100%;
   display: flex;
   text-align: center;
-  flex-direction: column;
-  justify-content: center;
+  /* flex-direction: column; */
+  justify-content: space-evenly;
   align-items: center;
   li {
     margin: 5px 0;
@@ -114,7 +114,8 @@ class Printable extends Component {
       <Wrapper>
         <Title>{title}</Title>
         <About>
-          <li>Estimated time required: {convertDuration(duration)}</li>
+          <li>Prep time: { convertDuration(recipe.prep_time) }</li>
+          <li>Cook time: { convertDuration(recipe.cook_time) }</li>
           <li>Serving size: {size}</li>
         </About>
         <Ingredients>
