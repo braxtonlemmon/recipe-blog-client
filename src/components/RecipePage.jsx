@@ -4,14 +4,13 @@ import Comments from './Comments';
 import ImageSlider from './ImageSlider';
 import Ratings from './Ratings';
 import { H2 } from './Headings';
-// import SEO from '../components/seo';
+import Shortcuts from './Shortcuts';
 import SEO from '../components/SEOv2';
 import Ingredients from './Ingredients';
 import Steps from './Steps';
 import { Link as ScrollLink } from 'react-scroll';
 import {
   Wrapper,
-  Links,
   AboutBox,
   Details,
   MyH1,
@@ -21,8 +20,8 @@ import {
 import PropTypes from 'prop-types';
 import Printable from './Printable';
 import { useReactToPrint } from 'react-to-print';
-import { FaPrint, FaRegClock } from 'react-icons/fa';
-import { TiArrowUpOutline, TiArrowDownOutline } from 'react-icons/ti';
+import { FaRegClock } from 'react-icons/fa';
+import { TiArrowUpOutline } from 'react-icons/ti';
 import useSiteMetadata from '../hooks/use-site-metadata';
 
 const convertDuration = (duration) => {
@@ -41,7 +40,7 @@ function RecipePage({ data, location }) {
   const [checkboxes, setCheckboxes] = useState(loadCheckboxes());
   const { siteUrl } = useSiteMetadata();
   const url = `${siteUrl}${location.pathname}`;
-
+  console.log(typeof location);
   // PRINTING
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
@@ -88,29 +87,12 @@ function RecipePage({ data, location }) {
         description={recipe.description}
         url={url}
       />
-      {/* <SEO title={recipe.title} description={recipe.intro} /> */}
       <Wrapper id="page-top">
         <MyH1>{recipe.title}</MyH1>
         <Image>
           <ImageSlider images={images} />
         </Image>
-        <Links>
-          <p>Psst! Some shortcuts just for you...</p>
-          <div className="links-buttons">
-            <ScrollLink className="scrollLink button-w-icon" to={"about-end"} smooth={true}>
-              Recipe
-              <TiArrowDownOutline />
-            </ScrollLink>
-            <ScrollLink className="scrollLink button-w-icon" to={"steps-end"} smooth={true}>
-              Comments
-              <TiArrowDownOutline />
-            </ScrollLink>
-            <div className="scrollLink button-w-icon" onClick={handlePrint}>
-              <p>Print</p>
-              <FaPrint />
-            </div>
-          </div>
-        </Links>
+        <Shortcuts handlePrint={handlePrint} />
         <Ratings id={recipe.mongodb_id} />
         <AboutBox>
           <H2>About</H2>
@@ -151,7 +133,8 @@ function RecipePage({ data, location }) {
   )
 }
 RecipePage.propTypes = {
-  data: PropTypes.object
+  data: PropTypes.object,
+  location: PropTypes.object
 }
 
 export default RecipePage;
