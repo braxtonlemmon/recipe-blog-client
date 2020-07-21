@@ -5,7 +5,7 @@ import { Link } from 'gatsby';
 const Wrapper = styled.footer`
   background: #754c4ccf;
   background: #cdcbd6;
-  background: #2F3020;
+  background: ${props => props.theme.colors.dark};
   width: 100%;
   color: white;
   padding: 15px;

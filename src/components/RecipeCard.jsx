@@ -64,7 +64,7 @@ const Quote = styled.div`
   bottom: 0;
   height: 100%;
   width: 100%;
-  background: #2f302066;
+  background: ${props => props.theme.colors.dark}66;
   color: white;
   opacity: 0;
   z-index: 5;

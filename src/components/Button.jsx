@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Button = styled.button`
   border: none;
   border-radius: 5px;
-  background: #596235;
+  background: ${props => props.theme.colors.medium};
   outline: none;
   color: #cdcbd6;
   padding: 4px 5px;
@@ -13,7 +13,7 @@ const Button = styled.button`
   text-transform: uppercase;
   cursor: pointer;
   &:hover {
-    background: #596235e6;
+    background: ${props => props.theme.colors.medium}e6;
   }
 `;
 

@@ -24,7 +24,7 @@ const MyH1 = styled(H1)`
   height: 100%;
   padding-bottom: 20px;
   text-align: center;
-  color: #2F3020;
+  color: ${props => props.theme.colors.dark};
   font-family: 'Montserrat';
   text-transform: uppercase;
   @media (min-width: 380px) {
@@ -44,7 +44,7 @@ const Border = styled.div`
   width: 80%; 
   margin: 0 auto;
   height: 1px;
-  background: #2F3020;
+  background: ${props => props.theme.colors.dark};
   transition: transform 500ms ease;
   transform: ${props => props.isHeaderVisible ? 'scaleX(100%)' : 'scaleX(0)'};
   @media (min-width: 1024px) {

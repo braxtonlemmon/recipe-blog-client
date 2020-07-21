@@ -32,7 +32,7 @@ const Wrapper = styled.div`
     height: 30px;
     width: 30px;
     margin: 0 5px;
-    color: #2f3020;
+    color: ${props => props.theme.colors.dark};
   }
   .ratings-text {
     font-size: 1.2em;

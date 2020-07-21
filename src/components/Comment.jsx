@@ -12,7 +12,7 @@ const CommentRow = styled.div`
   width: 80%;
   padding: 15px;
   padding-bottom: 30px;
-  background: ${props => props.fromAdmin ? '#5962356e' : '#cdcbd640'};
+  background: ${props => props.fromAdmin ? '${props => props.theme.colors.medium}6e' : '#cdcbd640'};
   box-shadow: -2px 2px 2px lightgrey;
   z-index: 500;
   margin: 15px 0;
@@ -71,7 +71,7 @@ const CloseButton = styled.div`
   width: 30px;
   padding: 4px 4px 5px 5px;
   border-radius: 50%;
-  color: #2f3020;
+  color: ${props => props.theme.colors.dark};
   background: rgba(0, 0, 0, 0.2);
   &:hover {
     background: rgba(0, 0, 0, 0.3);

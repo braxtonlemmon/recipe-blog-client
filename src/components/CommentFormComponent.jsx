@@ -10,7 +10,7 @@ const FormWrapper = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-top: 5px solid #2f3020;
+  border-top: 5px solid ${props => props.theme.colors.dark};
   padding: 15px;
   width: 90%;
   grid-area: commentForm;

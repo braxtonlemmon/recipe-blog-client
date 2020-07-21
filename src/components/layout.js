@@ -40,6 +40,7 @@ const Main = styled.main`
 `;
 
 const Layout = ({ children, location }) => {
+  console.log(location.pathname);
   const [isHeaderVisible, setHeaderVisible] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
   
@@ -91,6 +92,7 @@ const Layout = ({ children, location }) => {
         isHeaderVisible={isHeaderVisible}
         handleMenuClick={handleMenuClick}
         showMenu={showMenu}
+        location={location}
       />
       <MobileMenu showMenu={showMenu} isHeaderVisible={isHeaderVisible} setShowMenu={setShowMenu} />
       <Main onClick={() => handleMainClick()}>

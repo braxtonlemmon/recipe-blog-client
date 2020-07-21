@@ -20,7 +20,7 @@ const Hamburger = styled.div`
       margin: 6px 0;
       height: 2px;
       width: 35px;
-      background: #2F3020;
+      background: ${props => props.theme.colors.dark};
       transition: transform 0.4s ease;
     }
     .line1 {

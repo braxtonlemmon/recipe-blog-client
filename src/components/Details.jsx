@@ -12,8 +12,8 @@ const AboutBox = styled(InfoBox)`
   width: 90%;
   padding: 15px 0;
   margin: 15px 0;
-  border-bottom: 5px solid #2f3020;
-  border-top: 5px solid #2f3020;
+  border-bottom: 5px solid ${props => props.theme.colors.dark};
+  border-top: 5px solid ${props => props.theme.colors.dark};
   p {
     font-size: 1.2em;
     line-height: 1.5em;
@@ -24,6 +24,7 @@ const DateAndRatings = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
+  max-width: 400px;
   justify-content: space-evenly;
 `;
 

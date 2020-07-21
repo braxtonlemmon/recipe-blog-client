@@ -93,7 +93,7 @@ const InfoBox = styled.div`
 //   width: 90%;
 //   padding: 15px 0;
 //   margin-bottom: 15px;
-//   border-bottom: 5px solid #2f3020;
+//   border-bottom: 5px solid ${props => props.theme.colors.dark};
 // `;
 
 const Details = styled.div`

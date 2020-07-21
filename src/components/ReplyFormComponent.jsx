@@ -12,7 +12,7 @@ const ReplyForm = styled.form`
   align-items: center;
   flex-direction: column;
   margin: 10px;
-  border-top: 1px solid #2f3020;
+  border-top: 1px solid ${props => props.theme.colors.dark};
   padding-top: 10px;
 `;
 

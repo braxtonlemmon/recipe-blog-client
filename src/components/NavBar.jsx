@@ -39,7 +39,7 @@ const Logo = styled.p`
   top: 12px;
   height: 100%;
   opacity: 0;
-  color: #2f3020;
+  color: ${props => props.theme.colors.dark};
   transition: opacity 250ms ease;
   opacity: ${({ isHeaderVisible }) => isHeaderVisible ? '0' : '1'};
   font-size: 1.5em;
@@ -73,7 +73,7 @@ const Links = styled.div`
 `;
 
 const NavLink = styled.p`
-  color: #2f3020;
+  color: ${props => props.selected ? props.theme.colors.medium : props.theme.colors.dark};
   text-transform: uppercase;
   font-size: 0.9em;
   padding: 4px 0 5px 0;
@@ -96,7 +96,7 @@ const NavLink = styled.p`
   }
 `
 
-function NavBar({ isHeaderVisible, handleMenuClick, showMenu }) {
+function NavBar({ isHeaderVisible, handleMenuClick, showMenu, location }) {
   const data = useStaticQuery(
     graphql`
       query {
@@ -136,17 +136,17 @@ function NavBar({ isHeaderVisible, handleMenuClick, showMenu }) {
           </div>
         </Hamburger>
         <Links isHeaderVisible={isHeaderVisible}>
-          <Link to="/">
-            <NavLink>Recipes</NavLink>
+          <Link to='/'>
+            <NavLink selected={location.pathname === '/'}>Recipes</NavLink>
           </Link>
           <Link to={`/recipe/${getRandomTitle()}`}>
             <NavLink>Random</NavLink>
           </Link>
-          <Link to="/About">
-            <NavLink>About</NavLink>
+          <Link to='/About'>
+            <NavLink selected={location.pathname === '/About'}>About</NavLink>
           </Link>
-          <Link to="/Contact">
-            <NavLink>Contact</NavLink>
+          <Link to='/Contact'>
+            <NavLink selected={location.pathname === '/Contact'}>Contact</NavLink>
           </Link>
         </Links>
       </Content>
@@ -157,7 +157,8 @@ function NavBar({ isHeaderVisible, handleMenuClick, showMenu }) {
 NavBar.propTypes = { 
   isHeaderVisible: PropTypes.bool, 
   handleMenuClick: PropTypes.func, 
-  showMenu: PropTypes.bool 
+  showMenu: PropTypes.bool,
+  location: PropTypes.object 
 }
 
 export default NavBar;
