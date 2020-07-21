@@ -174,6 +174,7 @@ export const pageQuery = graphql`
       size
       steps
       images
+      ratings
       publish_date(
         formatString: "MMMM DD, YYYY"
       )

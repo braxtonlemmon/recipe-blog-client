@@ -15,25 +15,71 @@ const transformTime = (time) => {
 
 const generateSteps = (steps) => {
   return steps.map(step => ( 
-      {
-        "@type": "HowToStep",
-        "name": step,
-        "text": step,
-      }
-    )
-  )
+    {
+      "@type": "HowToStep",
+      "name": step,
+      "text": step,
+    } 
+  ))
 }
 
-// 1
+const averageRatings = (ratings) => {
+  const sum = ratings.reduce((accumulator, current) => {
+    return accumulator + current
+  })
+  return (sum / ratings.length);
+}
+
+const makeRecipeObject = (recipe, url) => {
+  const prepTime = transformTime(recipe.prep_time);
+  const cookTime = transformTime(recipe.cook_time);
+  const totalTime = transformTime(recipe.prep_time + recipe.cook_time);
+  const instructions = generateSteps(recipe.steps);
+
+  let recipeObject = {
+    "@context": "http://schema.org",
+    "@type": "Recipe",
+    "name": recipe.title,
+    "description": recipe.description,
+    "keywords": recipe.keywords,
+    "image": recipe.images,
+    "url": url,
+    "recipeIngredient": recipe.ingredients,
+    "prepTime": prepTime,
+    "cookTime": cookTime,
+    "totalTime": totalTime,
+    "recipeYield": recipe.size,
+    "recipeCategory": recipe.category,
+    "cookingMethod": recipe.cook_method,
+    "recipeCuisine": recipe.cuisine,
+    "datePublished": recipe.publish_date,
+    "author": {
+      "@type": "Person",
+      "name": "Braxton - Peel the Garlic",
+    },
+    "recipeInstructions": instructions,
+  }
+
+  if (recipe.ratings.length > 0) {
+    recipeObject["aggregateRating"] = {
+      "@type": "AggregateRating",
+      "ratingValue": averageRatings(recipe.ratings), //string number out of 5, need to PROCESS from recipe.ratings
+      "ratingCount": recipe.ratings.length //string number need to PROCESS from recipe.ratings        
+    }
+  }
+
+  return recipeObject;
+}
+
+
+
 const getSchemaOrgJSONLD = ({
   isRecipe,
   url,
   recipe,
 }) => {
-  const prepTime = isRecipe ? transformTime(recipe.prep_time) : null;
-  const cookTime = isRecipe ? transformTime(recipe.cook_time) : null;
-  const totalTime = isRecipe ? transformTime(recipe.prep_time + recipe.cook_time) : null;
-  const instructions = isRecipe ? generateSteps(recipe.steps) : null;
+  
+
   const schemaOrgJSONLD = [
     {
       "@context": "http://schema.org",
@@ -43,38 +89,9 @@ const getSchemaOrgJSONLD = ({
     }
   ]
   
-  return isRecipe
-    ? [ 
-      ...schemaOrgJSONLD,
-      {
-        "@context": "http://schema.org",
-        "@type": "Recipe",
-        "name": recipe.title, 
-        "description": recipe.description, 
-        "keywords": recipe.keywords, 
-        "image": recipe.images, 
-        "url": url, 
-        "recipeIngredient": recipe.ingredients, 
-        "prepTime": prepTime, 
-        "cookTime": cookTime, 
-        "totalTime": totalTime, 
-        "recipeYield": recipe.size, 
-        "recipeCategory": recipe.category, 
-        "cookingMethod": recipe.cook_method, 
-        "recipeCuisine": recipe.cuisine, 
-        "datePublished": recipe.publish_date, 
-        "author": {
-          "@type": "Person",
-          "name": "Braxton - Peel the Garlic",
-        },
-        "recipeInstructions": instructions,
-        // "aggregateRating": {
-        //   "@type": "AggregateRating",
-        //   "ratingValue": '4.8', //string number out of 5, need to PROCESS from recipe.ratings
-        //   "ratingCount": '125'//string number need to PROCESS from recipe.ratings
-        // }
-      }
-    ] : schemaOrgJSONLD;
+  return isRecipe 
+         ? [ ...schemaOrgJSONLD, makeRecipeObject(recipe, url) ] 
+         : schemaOrgJSONLD;
 }
 
 function SEO({ recipe, isRecipe, title, description, url, lang }) {
@@ -110,6 +127,7 @@ function SEO({ recipe, isRecipe, title, description, url, lang }) {
     >
       {/* General tags */}
       <meta name="description" content={metaDescription} />
+      <meta name="title" content={title} />
       {/* Schema.org tags */}
       <script type="application/ld+json">
         {JSON.stringify(schemaOrgJSONLD)}
