@@ -15,7 +15,7 @@ const grow = keyframes`
 const Wrapper = styled.div`
   padding: 10px 5px;
   margin: 10px 0;
-  height: 100px;
+  /* height: 100px; */
   width: 90%;
   max-width: 320px;
   border-radius: 8px;
@@ -25,7 +25,9 @@ const Wrapper = styled.div`
   align-items: center;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
   grid-area: ratings;
-
+  transition: height 500ms ease 2s, transform 500ms ease 2s;
+  height: ${props => props.rated ? '0px' : '100px'};
+  transform: ${props => props.rated ? 'scaleY(0)' : 'scaleY(100%)'};
   .star {
     height: 30px;
     width: 30px;
@@ -87,7 +89,7 @@ function Ratings({ id, handleNewRating }) {
   }
 
   return (
-    <Wrapper>
+    <Wrapper rated={rated}>
       { !rated &&
         <Stars 
           selected={selected}
