@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import SEO from '../components/SEOv2';
 import { H1 } from '../components/Headings';
 import ContactFormComponent from '../components/ContactFormComponent';
+import ContactFormContainer from '../components/ContactFormContainer';
 
 const Wrapper = styled.div`
   display: flex;
@@ -29,7 +30,8 @@ function Contact() {
       <Wrapper>
         <H1>Contact</H1>
         <h2 className="contact-intro">{`Questions? Complaints? Suggestions? Recipe requests? I'm all ears.`}</h2>
-        <ContactFormComponent />
+        {/* <ContactFormComponent /> */}
+        <ContactFormContainer />
       </Wrapper>
     </>
   )
