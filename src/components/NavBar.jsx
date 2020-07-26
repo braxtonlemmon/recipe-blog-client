@@ -73,18 +73,18 @@ const Links = styled.div`
 `;
 
 const NavLink = styled.p`
-  color: ${props => props.selected ? props.theme.colors.medium : props.theme.colors.dark};
+  color: ${props => props.theme.colors.dark};
   text-transform: uppercase;
   font-size: 0.9em;
   padding: 4px 0 5px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0);
-  border-top: 1px solid rgba(0, 0, 0, 0);
+  /* border-top: 1px solid rgba(0, 0, 0, 0); */
   transition: border-bottom 250ms ease-in-out;
-  transition: border-top 250ms ease-in-out;
+  /* transition: border-top 250ms ease-in-out; */
   transition: all 250ms ease;
   &:hover {
     border-bottom: 1px solid rgba(0, 0, 0, 1);
-    border-top: 1px solid rgba(0, 0, 0, 1);
+    /* border-top: 1px solid rgba(0, 0, 0, 1); */
   }
 
   @media (min-width: 600px) {
