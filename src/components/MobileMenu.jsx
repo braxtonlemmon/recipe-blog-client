@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import PropTypes from 'prop-types';
@@ -45,6 +45,11 @@ function MobileMenu({ showMenu, setShowMenu, isHeaderVisible }) {
   const handleClick = () => {
     setShowMenu(false);
   }
+
+  useEffect(() => {
+    const body = document.querySelector('body');
+    showMenu ? body.style.overflow = 'hidden' : body.style.overflow = 'visible';
+  }, [showMenu])
   
         
   const getRandomTitle = () => {

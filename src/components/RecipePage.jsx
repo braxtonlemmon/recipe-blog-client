@@ -94,7 +94,6 @@ function RecipePage({ data, location }) {
     )
     .then(response => response.json())
     .then(data => {
-      console.log(data);
       setRatings(data.ratings);
       setRatingsLoaded(true);
     })

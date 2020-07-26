@@ -40,7 +40,6 @@ const Main = styled.main`
 `;
 
 const Layout = ({ children, location }) => {
-  console.log(location.pathname);
   const [isHeaderVisible, setHeaderVisible] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
   
@@ -55,11 +54,6 @@ const Layout = ({ children, location }) => {
   }
   
   useEffect(() => {
-    const body = document.querySelector('body');
-    showMenu ? body.style.overflow = 'hidden' : body.style.overflow = 'visible';
-  }, [showMenu])
-
-  useEffect(() => {
     if (typeof document !== 'undefined') {
       const header = document.getElementById('header');
       const options = {
@@ -70,9 +64,7 @@ const Layout = ({ children, location }) => {
           if (entry.isIntersecting) {
             setHeaderVisible(true);
             setShowMenu(false);
-            console.log('header is visible')
           } else {
-            console.log('header is not visible')
             setHeaderVisible(false);
           }
         })
