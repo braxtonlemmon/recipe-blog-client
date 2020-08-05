@@ -46,7 +46,7 @@ const TLDR = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 10px 0;
+  margin: 10px 0 20px 0;
   padding: 10px 0;
   width: 100%;
   max-width: 600px;
@@ -61,6 +61,12 @@ const TLDR = styled.div`
 
 const Intro = styled.div`
   margin: 10px 0;
+  p {
+    margin-bottom: 25px;
+  }
+  em {
+    font-style: italic;
+  }
 `;
 
 const getAverage = (ratings) => {
@@ -71,9 +77,9 @@ const getAverage = (ratings) => {
   }
 }
 
-function Details({ recipe, convertDuration, ratings }) {
+function Details({ recipe, convertDuration, ratings, content }) {
   return (
-    <AboutBox>
+    <AboutBox id="about-box">
       <H2>About</H2>
       <DateAndRatings>
         <Rating
@@ -90,11 +96,11 @@ function Details({ recipe, convertDuration, ratings }) {
         <p>Serves: {recipe.size}</p>
       </Specs>
       <TLDR>
-        <h1>TLDR</h1>
+        <h1>TL;DR</h1>
         <p>{recipe.description}</p>
       </TLDR>
-      <Intro>
-        <p>{recipe.intro}</p>
+      <Intro dangerouslySetInnerHTML={{ __html: content }}>
+        {/* <p>{recipe.intro}</p> */}
       </Intro>
       <div id="about-end"></div>
     </AboutBox>

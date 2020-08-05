@@ -33,6 +33,7 @@ const convertDuration = (duration) => {
 function RecipePage({ data, location }) {
   const recipe = data.mongodbTestRecipes;
   const images = data.mongodbTestRecipes.fields.images;
+  const content = data.markdownRemark.html;
   const [checkboxes, setCheckboxes] = useState(loadCheckboxes());
   const [ratings, setRatings] = useState([]);
   const [ratingsLoaded, setRatingsLoaded] = useState(false);
@@ -125,6 +126,7 @@ function RecipePage({ data, location }) {
           recipe={recipe} 
           convertDuration={convertDuration}
           ratings={ratings}
+          content={content}
         />
         <Ingredients
           recipe={recipe}
@@ -158,7 +160,7 @@ RecipePage.propTypes = {
 export default RecipePage;
 
 export const pageQuery = graphql`
-  query($id: String!) {
+  query($id: String!, $title: String!) {
     mongodbTestRecipes(id: { eq: $id }) {
       id
       mongodb_id
@@ -190,6 +192,9 @@ export const pageQuery = graphql`
           }
         }
       }
+    }
+    markdownRemark(frontmatter: { title: {eq: $title } } ) {
+      html
     }
   }
 `;

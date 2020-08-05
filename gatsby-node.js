@@ -26,6 +26,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: pageTemplate,
       context: {
         id: node.id,
+        title: title
       },
     })
   }
