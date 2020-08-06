@@ -27,15 +27,7 @@ const MyH1 = styled(H1)`
   color: ${props => props.theme.colors.dark};
   font-family: 'Montserrat';
   text-transform: uppercase;
-  @media (min-width: 380px) {
-    font-size: 2.5em;
-  }
-  @media (min-width: 600px) {
-    font-size: 4em;
-  }
-  @media (min-width: 1024px) {
-    font-size: 5em;
-  }
+  font-size: calc(32px + (90 - 32) * ((100vw - 320px) / (1600 - 320)));
 `;
 
 const Border = styled.div`

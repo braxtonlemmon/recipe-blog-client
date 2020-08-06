@@ -54,11 +54,6 @@ const HeroImage = styled(Img)`
   @media (min-width: 900px) {
     width: 75%;
     left: 25%;
-  }
-  @media (min-width: 1500px) {
-    width: 60%;
-    left: 40%;
-  }
   &:after {
     content: '';
     display: block;
@@ -67,6 +62,11 @@ const HeroImage = styled(Img)`
     width: 100%;
     height: 100%;
     box-shadow: inset 170px 0 160px 0 ${props => props.theme.colors.hero};
+  }
+  }
+  @media (min-width: 1500px) {
+    width: 60%;
+    left: 40%;
   }
 `
 const DimLayer = styled.div`
@@ -92,17 +92,15 @@ const HeroTextBox = styled.div`
   display: flex;
   flex-direction: column;
   @media (min-width: 600px) {
-    width: 50%;
+    /* width: 50%; */
     bottom: 15px;
     left: 15px;
   }
   @media (min-width: 900px) {
     bottom: 25%;
-    width: 30%;
+    width: 35%;
   }
-  @media (min-width: 1024px) {
-    width: 30%;
-  }
+
 
 `
 
@@ -113,9 +111,10 @@ const HeroQuote = styled(H2)`
   text-align: left;
   transition: transform 1.1s ease;
   transform: ${({ isVisible }) => isVisible ? 'translateX(0)' : 'translateX(-105%)'};
-  @media (min-width: 760px) {
-    font-size: 3em;
-  })
+  font-size: calc(32px + (70 - 32) * ((100vw - 320px) / (1600 - 320)));
+  /* 
+  calc([min] + ([max] - [min]) * ((100vw - [minVw]) / ([maxVw] - [minVw])))
+   */
 `;
 
 const HeroTitle = styled(H1)`
@@ -127,8 +126,8 @@ const HeroTitle = styled(H1)`
   text-align: start;
   transition: transform 1.1s ease;
   transform: ${({ isVisible }) => isVisible ? 'translateX(0)' : 'translateX(250%)'};
+  font-size: calc(19px + (35 - 19) * ((100vw - 320px) / (1600 - 320)));
   @media (min-width: 760px) {
-    font-size: 1.5em;
     transform: ${({ isVisible }) => isVisible ? 'translateX(0)' : 'translateX(800%)'};
   }
 `
