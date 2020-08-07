@@ -26,7 +26,7 @@ function ToTop() {
     if (typeof document !== 'undefined') {
       const aboutBox = document.getElementById('about-box');
       const observer = new IntersectionObserver(entries => {
-        console.log(entries);
+        // console.log(entries);
         if (entries[0].boundingClientRect.top < 0) {
           setNeedArrow(true);
         } else {

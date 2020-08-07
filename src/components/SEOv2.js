@@ -108,9 +108,10 @@ function SEO({ recipe, isRecipe, title, description, url, lang }) {
       }
     `
   )
-
+  
   const metaDescription = description || site.siteMetadata.description;
-
+  const image = recipe ? recipe.images[0] : '';
+  
   // const recipeMeta = recipeData || {};
   const schemaOrgJSONLD = getSchemaOrgJSONLD({
     isRecipe,
@@ -129,12 +130,16 @@ function SEO({ recipe, isRecipe, title, description, url, lang }) {
       <meta name="description" content={metaDescription} />
       <meta name="title" content={title} />
       <meta property="og:type" content="website" />
-      <meta property="og:image" content={recipe.images[0]} />
-      <meta property="og:title" content={title}/ >
+      <meta property="og:image" content={image} />
+      <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:site_name" content="Peel the Garlic" />
       <meta property="og:url" content={url} />
-      
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:image" content={image} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={metaDescription} />
+
       {/* Schema.org tags */}
       <script type="application/ld+json">
         {JSON.stringify(schemaOrgJSONLD)}
