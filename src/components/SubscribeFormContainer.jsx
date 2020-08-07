@@ -8,7 +8,8 @@ function SubscribeFormContainer({ setSubscribed }) {
 
   const handleChange = e => {
     const { value } = e.target
-    setEmail(value)
+    setError('');
+    setEmail(value);
   }
 
   const handleSubmit = e => {
