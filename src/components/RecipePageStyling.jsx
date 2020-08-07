@@ -187,15 +187,23 @@ const MyH1 = styled(H1)`
 
 const Image = styled.div`
   grid-area: pic;
-  height: 260px;
-  width: 260px;
+  height: 275px;
+  width: 275px;
   box-shadow: -10px 8px 2px #383838, 10px 12px 2px #5c5c5c;
   box-shadow: 0 0 35px grey;
   border-radius: 8px;
   margin: 20px 0;
+  @media (min-width: 412px) {
+    height: 380px;
+    width: 380px;
+  }
   @media (min-width: 600px) {
     height: 500px;
     width: 500px;
+  }
+  @media (min-width: 768px) {
+    height: 650px;
+    width: 650px;
   }
   .main-image {
     height: 100%;
