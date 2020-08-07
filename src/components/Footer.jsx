@@ -55,13 +55,14 @@ function Footer() {
   return (
     <Wrapper>
       <Links>
-        <Link to='/'>Recipes</Link> -
-        <Link to='/About'>About</Link> -
-        <Link to='/Contact'>Contact</Link>
+        <Link title="All Recipes" to='/'>Recipes</Link> -
+        <Link title="About Page" to='/About'>About</Link> -
+        <Link title="Contact Page" to='/Contact'>Contact</Link>
+        <Link title="Subscribe to Newsletter" to="/Subscribe">Subscribe</Link>
       </Links>
       <SocialMedia inverse={true} />
       <Me>Designed and developed by 
-        <a href="https://www.braxtonlemmon.com" target="_blank" rel="noopener" rel="noreferrer"> Braxton Lemmon</a>
+        <a title="Braxton Lemmon Web Developer" href="https://www.braxtonlemmon.com" target="_blank" rel="noopener" rel="noreferrer"> Braxton Lemmon</a>
       </Me>
       <Copyright>
         <span role="img" aria-label="copyright">©</span>
