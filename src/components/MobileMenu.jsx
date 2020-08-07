@@ -61,35 +61,31 @@ function MobileMenu({ showMenu, setShowMenu, isHeaderVisible }) {
   
   return (
     <>
-      {
-        !isHeaderVisible && 
+      {!isHeaderVisible && (
         <Wrapper showMenu={showMenu} id="menu">
-          <Link 
-            to="/"
-            onClick={() => handleClick()}
-            >
-          Recipes
+          <Link to="/" onClick={() => handleClick()}>
+            Recipes
           </Link>
-          <Link 
+          {/* <Link
             to={`/recipe/${getRandomTitle()}`}
             onClick={() => handleClick()}
-            >
-          Random
+          >
+            Random
+          </Link> */}
+          <Link to="/About" onClick={() => handleClick()}>
+            About
           </Link>
-          <Link 
-            to="/About"
-            onClick={() => handleClick()}
-            >
-          About
+          <Link to="/Contact" onClick={() => handleClick()}>
+            Contact
           </Link>
-          <Link 
-            to="/Contact"
+          <Link
+            to={`/Subscribe`}
             onClick={() => handleClick()}
-            >
-          Contact
+          >
+            Subscribe
           </Link>
         </Wrapper>
-      }
+      )}
     </>
   )
 }

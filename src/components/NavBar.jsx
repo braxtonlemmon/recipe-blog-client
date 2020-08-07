@@ -139,14 +139,17 @@ function NavBar({ isHeaderVisible, handleMenuClick, showMenu, location }) {
           <Link to='/'>
             <NavLink selected={location.pathname === '/'}>Recipes</NavLink>
           </Link>
-          <Link to={`/recipe/${getRandomTitle()}`}>
+          {/* <Link to={`/recipe/${getRandomTitle()}`}>
             <NavLink>Random</NavLink>
-          </Link>
+          </Link> */}
           <Link to='/About'>
             <NavLink selected={location.pathname === '/About'}>About</NavLink>
           </Link>
           <Link to='/Contact'>
             <NavLink selected={location.pathname === '/Contact'}>Contact</NavLink>
+          </Link>
+          <Link to='/Subscribe'>
+            <NavLink>Subscribe</NavLink>
           </Link>
         </Links>
       </Content>
