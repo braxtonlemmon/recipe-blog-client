@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import SocialMedia from '../components/SocialMedia';
 
 const Wrapper = styled.footer`
   background: #754c4ccf;
@@ -58,8 +59,9 @@ function Footer() {
         <Link to='/About'>About</Link> -
         <Link to='/Contact'>Contact</Link>
       </Links>
+      <SocialMedia inverse={true} />
       <Me>Designed and developed by 
-        <a href="https://www.braxtonlemmon.com" target="_blank"> Braxton Lemmon</a>
+        <a href="https://www.braxtonlemmon.com" target="_blank" rel="noopener" rel="noreferrer"> Braxton Lemmon</a>
       </Me>
       <Copyright>
         <span role="img" aria-label="copyright">©</span>

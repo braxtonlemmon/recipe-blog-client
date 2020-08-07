@@ -2,12 +2,15 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import PropTypes from 'prop-types';
+import SocialMedia from './SocialMedia';
 
 const Wrapper = styled.div`
   grid-area: mobile;
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: baseline;
   position: fixed;
   top: 50px;
   left: 0px;
@@ -19,15 +22,16 @@ const Wrapper = styled.div`
   transition: transform 400ms ease;
   transform: ${({ showMenu }) => showMenu ? 'translateX(20%)' : 'translateX(150%)'};
   a {
-    padding: 15px 10px;
+    padding: 20px 10px;
     width: 100%;
-    border-bottom: 1px solid black;
+    font-size: 1.3em;
+    /* border-bottom: 1px solid black; */
   }
   @media (min-width: 760px) {
     display: none;
   }
-  
 `
+
 function MobileMenu({ showMenu, setShowMenu, isHeaderVisible }) {
   const data = useStaticQuery(
     graphql`
@@ -84,6 +88,7 @@ function MobileMenu({ showMenu, setShowMenu, isHeaderVisible }) {
           >
             Subscribe
           </Link>
+          <SocialMedia inverse={false} />
         </Wrapper>
       )}
     </>

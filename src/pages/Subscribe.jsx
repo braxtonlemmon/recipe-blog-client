@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { H1 } from '../components/Headings';
 import SubscribeFormContainer from '../components/SubscribeFormContainer';
 import SubscribePopup from '../components/SubscribePopup'; 
+import SocialMedia from '../components/SocialMedia';
 
 const Wrapper = styled.div`
   display: flex;
@@ -28,6 +29,8 @@ function Subscribe() {
       {
         subscribed && <SubscribePopup handleClose={handleClose} /> 
       }
+      <p>Follow me on social media:</p>
+      <SocialMedia inverse={false} />
     </Wrapper>
   )
 }
