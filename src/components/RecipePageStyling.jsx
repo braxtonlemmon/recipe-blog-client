@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   display: grid;
   justify-items: center;
   align-items: baseline;
-  padding: 2em 15px 25px 15px;
+  padding: 2em 15px 10px 15px;
   /* padding-bottom: 25px; */
   width: 100%;
   grid-template-columns: 1fr;
