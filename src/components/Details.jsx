@@ -90,19 +90,19 @@ function Details({ recipe, convertDuration, ratings, content }) {
           />
         <p>{recipe.publish_date}</p>
       </DateAndRatings>
-      <Specs>
+      {/* <Specs>
         <p><FaRegClock /> Prep: {convertDuration(recipe.prep_time)}</p>
         <p><FaRegClock /> Cook: {convertDuration(recipe.cook_time)}</p>
         <p>Serves: {recipe.size}</p>
-      </Specs>
-      <TLDR>
+      </Specs> */}
+      {/* <TLDR>
         <h1>TL;DR</h1>
         <p>{recipe.description}</p>
-      </TLDR>
+      </TLDR> */}
       {/* <Intro dangerouslySetInnerHTML={{ __html: content }}> */}
-      <Intro>
+      {/* <Intro>
         <p>{recipe.intro}</p>
-      </Intro>
+      </Intro> */}
       <div id="about-end"></div>
     </AboutBox>
   )

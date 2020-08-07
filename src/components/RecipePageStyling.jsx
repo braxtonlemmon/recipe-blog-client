@@ -14,6 +14,7 @@ const Wrapper = styled.div`
   grid-template-areas:
     "title"
     "pic"
+    "share"
     "links"
     "ratings"
     "about"
@@ -27,6 +28,7 @@ const Wrapper = styled.div`
     grid-template-areas:
       "title title"
       "pic pic"
+      "share share"
       "links links"
       "ratings ratings"
       "about about"

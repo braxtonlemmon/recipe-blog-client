@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { graphql } from 'gatsby';
 import Comments from './Comments';
+import ShareLinks from './ShareLinks';
 import ImageSlider from './ImageSlider';
 import Ratings from './Ratings';
 import Shortcuts from './Shortcuts';
@@ -34,6 +35,7 @@ function RecipePage({ data, location }) {
   const recipe = data.mongodbTestRecipes;
   const images = data.mongodbTestRecipes.fields.images;
   // const content = data.markdownRemark.html;
+  const [viewShare, setViewShare] = useState(false);
   const [checkboxes, setCheckboxes] = useState(loadCheckboxes());
   const [ratings, setRatings] = useState([]);
   const [ratingsLoaded, setRatingsLoaded] = useState(false);
@@ -112,11 +114,15 @@ function RecipePage({ data, location }) {
       />
       <Wrapper id="page-top">
         <MyH1>{recipe.title}</MyH1>
+        { viewShare && 
+        <ShareLinks setViewShare={setViewShare} ></ShareLinks>
+        }
         <Image>
           <ImageSlider images={images} />
         </Image>
         <Shortcuts 
           handlePrint={handlePrint} 
+          setViewShare={setViewShare}
         />
         <Ratings 
           id={recipe.mongodb_id}

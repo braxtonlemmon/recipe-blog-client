@@ -19,30 +19,27 @@ const Wrapper = styled.div`
 `;
 
 function SocialMedia({ inverse }) {
-  const size = 40;
+  const size = 30;
   return (
     <Wrapper inverse={inverse}>
       <a
         href="https://www.instagram.com/peelthegarlic/"
         target="_blank"
-        rel="noopener"
-        rel="noreferrer"
+        rel="noopener noreferrer"
       >
         <FaInstagram size={size} className="social-media-icon" />
       </a>
       <a
         href="https://www.facebook.com/Peel-the-Garlic-105045281272206"
         target="_blank"
-        rel="noopener"
-        rel="noreferrer"
+        rel="noopener noreferrer"
       >
         <FaFacebook size={size} className="social-media-icon" />
       </a>
       <a
         href="https://github.com/braxtonlemmon"
         target="_blank"
-        rel="noopener"
-        rel="noreferrer"
+        rel="noopener noreferrer"
       >
         <FaGithub size={size} className="social-media-icon" />
       </a>
