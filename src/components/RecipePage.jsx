@@ -33,7 +33,7 @@ const convertDuration = (duration) => {
 function RecipePage({ data, location }) {
   const recipe = data.mongodbTestRecipes;
   const images = data.mongodbTestRecipes.fields.images;
-  const content = data.markdownRemark.html;
+  // const content = data.markdownRemark.html;
   const [checkboxes, setCheckboxes] = useState(loadCheckboxes());
   const [ratings, setRatings] = useState([]);
   const [ratingsLoaded, setRatingsLoaded] = useState(false);
@@ -126,7 +126,7 @@ function RecipePage({ data, location }) {
           recipe={recipe} 
           convertDuration={convertDuration}
           ratings={ratings}
-          content={content}
+          // content={content}
         />
         <Ingredients
           recipe={recipe}

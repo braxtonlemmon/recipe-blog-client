@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-// import SEO from '../components/seo';
 import SEO from '../components/SEOv2';
 import { H1 } from '../components/Headings';
-import ContactFormComponent from '../components/ContactFormComponent';
 import ContactFormContainer from '../components/ContactFormContainer';
 
 const Wrapper = styled.div`
@@ -29,8 +27,7 @@ function Contact() {
       <SEO title="Contact" description="Contact page" />
       <Wrapper>
         <H1>Contact</H1>
-        <h2 className="contact-intro">{`Questions? Complaints? Suggestions? Recipe requests? I'm all ears.`}</h2>
-        {/* <ContactFormComponent /> */}
+        <h2 className="contact-intro">{`Send me something funny! Or serious. Either way, I'm all ears.`}</h2>
         <ContactFormContainer />
       </Wrapper>
     </>
