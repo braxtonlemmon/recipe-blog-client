@@ -8,12 +8,14 @@ const Wrapper = styled.div`
   grid-area: mobile;
   padding-top: 10px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: baseline;
+  align-items: baseline;
+  /* flex-direction: column; */
+  /* align-items: flex-start; */
+  /* justify-content: baseline; */
   position: fixed;
-  top: 50px;
+  top: 0;
   left: 0px;
+  /* bottom: 0; */
   width: 100%;
   height: 100%;
   background: white;
@@ -21,16 +23,37 @@ const Wrapper = styled.div`
   box-shadow: -3px 0 2px 1px rgba(0, 0, 0, 0.4);
   transition: transform 400ms ease;
   transform: ${({ showMenu }) => showMenu ? 'translateX(20%)' : 'translateX(150%)'};
-  a {
-    padding: 20px 10px;
-    width: 100%;
-    font-size: 1.3em;
-    /* border-bottom: 1px solid black; */
-  }
   @media (min-width: 760px) {
     display: none;
   }
 `
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  max-height: 600px;
+  padding-top: 50px;
+  padding-left: 5px;
+  a {
+    /* padding: 20px 10px; */
+    width: 100%;
+    font-size: 1.3em;
+    /* border-bottom: 1px solid black; */
+  }
+`;
+
+const Links = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 300px;
+  padding-left: 10px;
+  justify-content: space-around;
+`;
 
 function MobileMenu({ showMenu, setShowMenu, isHeaderVisible }) {
   const data = useStaticQuery(
@@ -67,28 +90,26 @@ function MobileMenu({ showMenu, setShowMenu, isHeaderVisible }) {
     <>
       {!isHeaderVisible && (
         <Wrapper showMenu={showMenu} id="menu">
-          <Link to="/" onClick={() => handleClick()}>
-            Recipes
-          </Link>
-          {/* <Link
-            to={`/recipe/${getRandomTitle()}`}
-            onClick={() => handleClick()}
-          >
-            Random
-          </Link> */}
-          <Link to="/About" onClick={() => handleClick()}>
-            About
-          </Link>
-          <Link to="/Contact" onClick={() => handleClick()}>
-            Contact
-          </Link>
-          <Link
-            to={`/Subscribe`}
-            onClick={() => handleClick()}
-          >
-            Subscribe
-          </Link>
-          <SocialMedia inverse={false} />
+          <Container>
+            <Links>
+              <Link to="/" onClick={() => handleClick()}>
+                Recipes
+              </Link>
+              <Link to="/About" onClick={() => handleClick()}>
+                About
+              </Link>
+              <Link to="/Contact" onClick={() => handleClick()}>
+                Contact
+              </Link>
+              <Link
+                to={`/Subscribe`}
+                onClick={() => handleClick()}
+              >
+                Subscribe
+              </Link>
+            </Links>
+            <SocialMedia inverse={false} />
+          </Container>
         </Wrapper>
       )}
     </>

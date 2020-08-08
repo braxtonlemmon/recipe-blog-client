@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   align-items: center;
   margin: 15px 0;
   .social-media-icon {
-    margin: 5px 10px;
+    margin: 5px 15px;
     cursor: pointer;
     color: ${props => props.inverse === true ? 'white' : props.theme.colors.dark};
     &:hover {
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 `;
 
 function SocialMedia({ inverse }) {
-  const size = 30;
+  const size = 40;
   return (
     <Wrapper inverse={inverse}>
       <a

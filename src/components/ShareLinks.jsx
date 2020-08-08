@@ -104,7 +104,6 @@ const Close = styled.div`
   }
 `;
 
-
 function ShareLinks({ setViewShare }) {
   const url='www.peelthegarlic.com/recipe/spanish-tortilla';
   const size = 37;

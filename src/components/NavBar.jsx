@@ -50,9 +50,9 @@ const Logo = styled.p`
 const Links = styled.div`
   display: flex;
   display: grid;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
   grid-auto-flow: column;
   justify-self: baseline;
   overflow: hidden;
