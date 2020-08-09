@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   grid-template-areas:
     "title title"
     "about about"
+    "description description"
     "ingredients steps"
     "outro outro";
   @media print {
@@ -42,6 +43,12 @@ const About = styled.ul`
   }
 `;
 
+const Description = styled.div`
+  grid-area: description;
+  width: 80%;
+  margin: 10px auto;
+
+`;
 
 const Ingredients = styled.div`
   grid-area: ingredients;
@@ -100,15 +107,16 @@ const Outro = styled.ul`
 `;
 
 
+
 class Printable extends Component {
   render() {
     const { recipe, convertDuration } = this.props;
     const {
       ingredients,
       steps,
-      duration,
       size,
-      title
+      title,
+      description
     } = recipe;
     return (
       <Wrapper>
@@ -118,6 +126,7 @@ class Printable extends Component {
           <li>Cook time: { convertDuration(recipe.cook_time) }</li>
           <li>Serving size: {size}</li>
         </About>
+        <Description>{description}</Description>
         <Ingredients>
           <h2>INGREDIENTS</h2>
           <ul>
