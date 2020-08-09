@@ -7,6 +7,8 @@ import SEO from '../components/SEOv2';
 import Hero from '../components/Hero';
 import PropTypes from 'prop-types';
 import makeSlug from '../utils/makeSlug';
+import Loader from '../components/Loader';
+
 
 const Wrapper = styled.ul`
   display: flex;
@@ -60,7 +62,7 @@ function IndexPage({ data }) {
     <>
       <SEO title="Home" description="Catalog of recipes" />
       <Wrapper>
-        <Hero />
+        <Hero setRecipeClicked={setRecipeClicked} />
         <Recipes>
           {recipes.map(({node}) => {
             const slug = makeSlug(node.title);
@@ -77,7 +79,7 @@ function IndexPage({ data }) {
               }
             })}
           </Recipes>
-          {recipeClicked && <Loading></Loading>}
+          {recipeClicked && <Loader message="Loading" />}
       </Wrapper>
     </>
   )

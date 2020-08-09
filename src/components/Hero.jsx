@@ -133,7 +133,7 @@ const HeroTitle = styled(H1)`
   }
 `
 
-function Hero() {
+function Hero({ setRecipeClicked }) {
   const [isVisible, setVisible] = useState();
   const data = useStaticQuery(graphql`
     query {
@@ -175,7 +175,7 @@ function Hero() {
   }, [])
 
   return (
-    <Wrapper to={`/recipe/${slug}`}>
+    <Wrapper to={`/recipe/${slug}`} onClick={() => setRecipeClicked(true) }>
       <DimLayer
         id="hero-image"
       ></DimLayer>
