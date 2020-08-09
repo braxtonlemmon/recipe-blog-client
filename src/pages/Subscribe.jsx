@@ -15,6 +15,13 @@ const Wrapper = styled.div`
   margin: 0 auto;
 `;
 
+const Intro = styled.p`
+  margin: 20px auto;
+  max-width: 500px;
+  line-height: 1.5em;
+  text-align: center;
+`;
+
 function Subscribe() {
   const [subscribed, setSubscribed] = useState(false);
 
@@ -25,6 +32,9 @@ function Subscribe() {
   return (
     <Wrapper>
       <H1>Subscribe</H1>
+      <Intro>
+        {`Here's the deal. You'll get one email from Peel the Garlic each week on Tuesday.`}
+      </Intro>
       <SubscribeFormContainer setSubscribed={setSubscribed} />
       {
         subscribed && <SubscribePopup handleClose={handleClose} /> 

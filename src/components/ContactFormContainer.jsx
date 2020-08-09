@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ContactFormComponent from './ContactFormComponent';
 import { navigate } from 'gatsby';
+import Loader from './Loader';
 
 function ContactFormContainer() {
   const [data, setData] = useState({
@@ -11,6 +12,7 @@ function ContactFormContainer() {
   })
   const [formErrors, setFormErrors] = useState({});
   const [showErrors, setShowErrors] = useState(false);
+  const [isSending, setSending] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,6 +48,7 @@ function ContactFormContainer() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (handleValidation()) {
+      setSending(true);
       fetch('https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/contact', {
         method: 'POST',
         headers: {
@@ -63,6 +66,7 @@ function ContactFormContainer() {
         if (response.ok && response.status === 200) {
           setData({ from: '', email: '', subject: '', message: '' });
           setShowErrors(false);
+          setSending(false);
           navigate('/ThankYou');
           return response.json();
         }
@@ -83,6 +87,9 @@ function ContactFormContainer() {
         showErrors={showErrors}
         formErrors={formErrors}
       />
+      {isSending && 
+        <Loader message="Sending" />
+      }
     </>
   )
 }

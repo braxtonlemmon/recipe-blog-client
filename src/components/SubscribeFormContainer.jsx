@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import SubscribeFormComponent from './SubscribeFormComponent';
 import PropTypes from 'prop-types';
+import Loader from './Loader';
 
 function SubscribeFormContainer({ setSubscribed }) {
   const [email, setEmail] = useState("")
-  const [error, setError] = useState('');
+  const [error, setError] = useState(false);
+  const [isSending, setSending] = useState(false);
 
   const handleChange = e => {
     const { value } = e.target
-    setError('');
+    setError(false);
     setEmail(value);
   }
 
@@ -16,6 +18,7 @@ function SubscribeFormContainer({ setSubscribed }) {
     e.preventDefault()
     const isValid = handleValidation()
     if (isValid) {
+      setSending(true);
       console.log("good")
       fetch(
         "https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/emails",
@@ -34,6 +37,7 @@ function SubscribeFormContainer({ setSubscribed }) {
         if (response.ok && response.status === 200) {
           setEmail("")
           setSubscribed(true);
+          setSending(false);
           return response.json()
         }
         throw new Error("Network response was not okay")
@@ -66,17 +70,22 @@ function SubscribeFormContainer({ setSubscribed }) {
         formIsValid = false
       }
     }
-    formIsValid ? setError('') : setError('Oops! Enter a valid email!');
+    formIsValid ? setError(false) : setError(true);
     return formIsValid
   }
 
   return (
-    <SubscribeFormComponent 
-      email={email}
-      handleChange={handleChange}
-      handleSubmit={handleSubmit}
-      error={error}
-    />
+    <>
+      <SubscribeFormComponent 
+        email={email}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        error={error}
+      />
+      {isSending &&
+        <Loader message="Sending" />
+      }
+    </>
   )
 }
 
