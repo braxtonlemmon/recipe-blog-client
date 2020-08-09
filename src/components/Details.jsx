@@ -99,10 +99,7 @@ function Details({ recipe, convertDuration, ratings, content }) {
         <h1>TL;DR</h1>
         <p>{recipe.description}</p>
       </TLDR>
-      {/* <Intro dangerouslySetInnerHTML={{ __html: content }}> */}
-      <Intro>
-        <p>{recipe.intro}</p>
-      </Intro>
+      <Intro dangerouslySetInnerHTML={{ __html: content }} />
       <div id="about-end"></div>
     </AboutBox>
   )
