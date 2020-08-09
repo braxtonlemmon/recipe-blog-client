@@ -1,5 +1,6 @@
 const path = require('path');
 const { createRemoteFileNode } = require('gatsby-source-filesystem');
+const makeSlug = require('./src/utils/makeSlug');
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -20,7 +21,8 @@ exports.createPages = async ({ graphql, actions }) => {
   const pageTemplate = path.resolve('./src/components/RecipePage.jsx');
 
   for (const { node } of data.recipes.edges) {
-    const title = node.title.toLowerCase().replace(/ /g, '-');
+    const title = makeSlug(node.title);
+    // const title = node.title.toLowerCase().replace(/ /g, '-');
     createPage({
       path: `/recipe/${title}/`,
       component: pageTemplate,

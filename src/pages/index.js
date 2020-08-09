@@ -1,11 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import styled, { keyframes } from 'styled-components';
 import { Link, graphql } from 'gatsby';
 import RecipeCard from '../components/RecipeCard';
 // import SEO from '../components/seo';
 import SEO from '../components/SEOv2';
 import Hero from '../components/Hero';
 import PropTypes from 'prop-types';
+import makeSlug from '../utils/makeSlug';
 
 const Wrapper = styled.ul`
   display: flex;
@@ -13,6 +14,7 @@ const Wrapper = styled.ul`
   align-items: center;
   justify-items: center;
   width: 100%;
+  position: relative;
 `;
 
 const Recipes = styled.ul`
@@ -29,9 +31,31 @@ const Recipes = styled.ul`
   }
 `;
 
+const spin = keyframes`
+  0% { transform: rotate(0deg) }
+  100% { transform: rotate(360deg) }
+`;
+
+const Loading = styled.div`
+  position: fixed;
+  top: calc(50% - 100px);
+  z-index: 100;
+  height: 200px;
+  width: 200px;
+  border: 20px double black;
+  border-top: 20px solid yellow;
+  border-radius: 50%;
+  animation: ${spin} 2s linear infinite;
+`;
+
 function IndexPage({ data }) {
   const recipes = data.allMongodbTestRecipes.edges;
+  const [recipeClicked, setRecipeClicked] = useState(false);
 
+  const handleRecipeClick = () => {
+    setRecipeClicked(true);
+  }
+  
   return (
     <>
       <SEO title="Home" description="Catalog of recipes" />
@@ -39,10 +63,10 @@ function IndexPage({ data }) {
         <Hero />
         <Recipes>
           {recipes.map(({node}) => {
-            const slug = node.title.toLowerCase().replace(/ /g, '-');
+            const slug = makeSlug(node.title);
             if (node.is_published) {
               return (
-                <Link key={node.id} to={`/recipe/${slug}`}>
+                <Link key={node.id} to={`/recipe/${slug}`} onClick={handleRecipeClick}>
                   <li key={`list~${node.id}`}>
                     <RecipeCard 
                       recipe={node} 
@@ -53,6 +77,7 @@ function IndexPage({ data }) {
               }
             })}
           </Recipes>
+          {recipeClicked && <Loading></Loading>}
       </Wrapper>
     </>
   )

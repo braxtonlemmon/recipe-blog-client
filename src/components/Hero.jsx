@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { H1, H2 } from "./Headings"
 import Img from 'gatsby-image';
 import { Link, graphql, useStaticQuery } from 'gatsby';
+import makeSlug from '../utils/makeSlug';
 
 const Wrapper = styled(Link)`
   overflow-x: hidden;
@@ -155,7 +156,7 @@ function Hero() {
     }
   `)
   const featured = data.mongodbTestRecipes;
-  const slug = featured.title.toLowerCase().replace(/ /g, '-');
+  const slug = makeSlug(featured.title);
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
