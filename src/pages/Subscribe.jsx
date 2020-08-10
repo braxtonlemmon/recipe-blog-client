@@ -33,7 +33,7 @@ function Subscribe() {
     <Wrapper>
       <H1>Subscribe</H1>
       <Intro>
-        {`Here's the deal. You'll get one email from Peel the Garlic each week on Tuesday.`}
+        {`Here's the deal. You'll get one email from Peel the Garlic each week on Tuesday. Every email will have an unsubscribe link if you get sick of me or decide you are committing 100% to take out.`}
       </Intro>
       <SubscribeFormContainer setSubscribed={setSubscribed} />
       {
