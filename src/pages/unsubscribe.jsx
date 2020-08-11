@@ -13,6 +13,13 @@ const Wrapper = styled.div`
   width: 80%;
   padding-top: 2em;
   margin: 0 auto;
+  p {
+    text-align: center;
+    margin: 20px 0;
+    line-height: 1.4em;
+    font-size: 1.2em;
+    max-width: 500px;
+  }
 `;
 
 const Buttons = styled.div`
@@ -22,7 +29,7 @@ const Buttons = styled.div`
 `;
 
 const MyButton = styled(Button)`
-
+margin: 10px 8px;
 `;
 
 function Unsubscribe() {
@@ -103,8 +110,8 @@ function Unsubscribe() {
         <>
           <p>Are you sure you want to unsubscribe {email || ''}?</p>
           <Buttons>
-            <Button onClick={handleYesClick}>Yes</Button>
-            <Button onClick={handleNoClick}>No</Button>
+            <MyButton onClick={handleYesClick}>Yes</MyButton>
+            <MyButton onClick={handleNoClick}>No</MyButton>
           </Buttons>
         </>
       }
@@ -113,16 +120,18 @@ function Unsubscribe() {
         <>
           <p>You have unsubscribed from the mailing list.</p>
           <Link to="/">
-            <Button>Home</Button>
+            <MyButton>Home</MyButton>
           </Link>
         </>
       }
       {
         isError &&
         <>
-          <p>There was a problem unsubscribing. Send me a message and I'll fix it. I will personally remove your email from the mailing list.</p>
+          <p>
+            Hmm, weird. Something went wrong with your unsubscription. Maybe you already unsubscribed? If you keep receiving emails, send me a message and I will fix the problem
+          </p>
           <Link to="/Contact">
-            <Button>Contact</Button>
+            <MyButton>Contact Me</MyButton>
           </Link>
         </>
       }
@@ -130,9 +139,6 @@ function Unsubscribe() {
         isUnsubscribing &&
         <Loader message="Unsubscribing" />
       }
-      <p>unsubscribing: {isUnsubscribing ? 'yes' : 'no'}</p>
-      <p>finished: {finished ? 'yes' : 'no'}</p>
-      <p>isError: {isError ? 'yes' : 'no'}</p>
     </Wrapper>
   )
 }
