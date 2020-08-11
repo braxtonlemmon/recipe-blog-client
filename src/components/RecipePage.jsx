@@ -141,7 +141,6 @@ function RecipePage({ data, location }) {
           ratings={ratings}
           content={content}
         />
-        <div onClick={resetCheckboxes}>reset</div>
         <Ingredients
           recipe={recipe}
           checkboxes={checkboxes}

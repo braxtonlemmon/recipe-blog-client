@@ -26,6 +26,18 @@ const DateAndRatings = styled.div`
   width: 100%;
   max-width: 400px;
   justify-content: space-evenly;
+  .details-no-ratings {
+    font-size: 0.9em;
+    color: lightslategray;
+  }
+  .details-ratings {
+    display: flex;
+    align-items: center;
+    p {
+      margin-left: 5px;
+      font-size: 0.9em;
+    }
+  }
 `;
 
 const Specs = styled.div`
@@ -82,12 +94,20 @@ function Details({ recipe, convertDuration, ratings, content }) {
     <AboutBox id="about-box">
       <H2>About</H2>
       <DateAndRatings>
-        <Rating
-          readonly
-          initialRating={getAverage(ratings)}
-          emptySymbol={<FaRegStar/>}
-          fullSymbol={<FaStar/>}
-          />
+        {
+          ratings.length > 0
+          ? 
+          <div className="details-ratings">
+            <Rating
+              readonly
+              initialRating={getAverage(ratings)}
+              emptySymbol={<FaRegStar/>}
+              fullSymbol={<FaStar/>}
+            />
+            <p>( {ratings.length} )</p>
+            </div>
+          : <p className="details-no-ratings">- No ratings yet -</p>
+        }
         <p>{recipe.publish_date}</p>
       </DateAndRatings>
       <Specs>

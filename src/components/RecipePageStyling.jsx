@@ -195,7 +195,7 @@ const StepsBox = styled(InfoBox)`
   .reset-link {
     cursor: pointer;
     font-size: 1.1em;
-    color: blue;
+    color: darkslateblue;
   }
 `;
 
