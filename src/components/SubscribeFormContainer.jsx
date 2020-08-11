@@ -16,10 +16,9 @@ function SubscribeFormContainer({ setSubscribed }) {
 
   const handleSubmit = e => {
     e.preventDefault()
-    const isValid = handleValidation()
+    const isValid = handleValidation();
     if (isValid) {
       setSending(true);
-      console.log("good")
       fetch(
         "https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/emails",
         {
@@ -33,6 +32,7 @@ function SubscribeFormContainer({ setSubscribed }) {
           }),
         }
       )
+
       .then(response => {
         if (response.ok && response.status === 200) {
           setEmail("")
@@ -42,9 +42,35 @@ function SubscribeFormContainer({ setSubscribed }) {
         }
         throw new Error("Network response was not okay")
       })
+
+      .then(data => {
+        if (data.success) {
+          console.log('yo');
+          fetch("https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/newsletter/welcome", {
+            method: "POST",
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              address: 'braxtonlemmon@gmail.com'
+            })
+          })
+
+          .then(response => {
+            if (response.ok && response.status === 200) {
+              console.log('Welcome email sent');
+              return response.json();
+            }
+            throw new Error("Network response was not okay");
+          })
+        } else {
+          console.log('Already signed up');
+        }
+      })
       .catch(err => console.log(err.message))
     } else {
-      console.log("bad")
+      console.log("Invalid email. Try again.")
     }
   }
 
