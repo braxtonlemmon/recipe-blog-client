@@ -34,15 +34,13 @@ function Comments({ mongodb_id, handleNewRating }) {
           setCommentsLoaded={setCommentsLoaded}
           handleNewRating={handleNewRating}
         />
-        {/* { commentsLoaded &&  */}
-          <CommentBox
-            id="comment-box"
-            comments={comments}
-            topComments={topComments}
-            setCommentsLoaded={setCommentsLoaded}
-            commentsLoaded={commentsLoaded}
-          />
-        {/* } */}
+        <CommentBox
+          id="comment-box"
+          comments={comments}
+          topComments={topComments}
+          setCommentsLoaded={setCommentsLoaded}
+          commentsLoaded={commentsLoaded}
+        />
       </>
     )
 }
