@@ -23,7 +23,7 @@ const Content = styled.div`
   }
 
   h3 {
-    padding-left: 10px;
+    /* padding-left: 10px; */
     padding-top: 20px;
     font-size: 1.4em;
     text-decoration: underline;
@@ -31,23 +31,24 @@ const Content = styled.div`
   }
 
   h4 {
-    font-weight: bolder;
-    padding-left: 10px;
+    /* font-weight: bolder; */
+    /* padding-left: 10px; */
+    margin-top: 15px;
     font-size: 1.2em;
   }
   p {
-    margin: 15px 0;
-    padding-left: 10px;
+    margin-top: 20px;
+    /* padding-left: 10px; */
     font-size: 1.2em;
     line-height: 1.5em;
   }
   ul {
-    margin-left: 10px;
+    /* margin-left: 10px; */
     padding-bottom: 20px;
   }
   li {
     /* list-style: disc; */
-    margin-left: 10px;
+    /* margin-left: 10px; */
     /* margin-right: 20px; */
     padding-bottom: 15px;
   }

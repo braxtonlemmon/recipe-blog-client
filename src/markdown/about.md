@@ -20,15 +20,15 @@ My general culinary interests evolve constantly, but I am regularly influenced b
 ## Why did I make a recipe blog?
 <!-- My motivation to create this blog comes from several sources: -->
 
-### COOKING IS AWESOME
+### Cooking is Awesome
 I don't have much more to say about this one. I love cooking. I love web development. A recipe blog is the perfect combination.
 
-### WEB DEVELOPMENT
+### Web Development
 Over the past couple years I have been learning web development full-time by following an incredible open-source curriculum called The Odin Project. This recipe blog acts as a personal capstone project that allows me to implement both my front-end and back-end development skills. 
 
 The site you are viewings is built with Gatsby and deployed with Netlify. My administrative interface was built with Create React App and also deployed with Netlify. I built the API for Peel the Garlic using Node.js and Serverless. My database is hosted on MongoDB. I use AWS to host my recipe photographs and my API.
 
-### TO IMPROVE THE COOKING EXPERIENCE
+### To Improve the Cooking Experience
 
 Sometimes when viewing recipe blogs I imagine what the ideal online recipe experience would be like. Peel the Garlic attempts to provide the following:
   - #### 1) Accessibility: quantities listed    in both weight and volume
