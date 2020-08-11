@@ -51,8 +51,12 @@ const Copyright = styled.div`
   display: flex;
   span:first-child {
     font-size: 30px;
+    margin-right: 3px;
+    text-align: center;
   }
   align-items: center;
+  justify-content: center;
+  text-align: center;
 `;
 
 function Footer() {
@@ -69,8 +73,7 @@ function Footer() {
         <a title="Braxton Lemmon Web Developer" href="https://www.braxtonlemmon.com" target="_blank" rel="noopener noreferrer"> Braxton Lemmon</a>
       </Me>
       <Copyright>
-        <span role="img" aria-label="copyright">©</span>
-        <span>2020 - Peel the Garlic. All rights reserved.</span>
+        {'\u00A9 2020 - Peel the Garlic. All rights reserved.'}
       </Copyright>
     </Wrapper>
   )

@@ -37,7 +37,7 @@ function Ingredients({
       return () => observer.unobserve(box);
     }
   }, [])
-  console.log(checkboxes);
+
   return (
     <IngredientsBox
       fixed={ingredientsFixed}

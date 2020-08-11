@@ -112,7 +112,7 @@ function SEO({ recipe, isRecipe, title, description, url, lang }) {
   const metaDescription = description || site.siteMetadata.description;
   const image = recipe ? recipe.images[0] : '';
   const shortDescription = metaDescription.substring(0, 160) + ' ...';
-  console.log(shortDescription)
+
   // const recipeMeta = recipeData || {};
   const schemaOrgJSONLD = getSchemaOrgJSONLD({
     isRecipe,
