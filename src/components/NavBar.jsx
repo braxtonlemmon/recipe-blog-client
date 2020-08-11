@@ -11,7 +11,7 @@ const HeaderBar = styled.div`
   width: 100%;
   z-index: 503;
   background: white;
-  height: 50px;
+  height: 60px;
   box-shadow: 0px 2px 2px grey;
   grid-area: navbar;
   @supports not (display: grid) {
@@ -36,7 +36,7 @@ const Content = styled.div`
 const Logo = styled.p`
   position: absolute;
   left: 10px;
-  top: 12px;
+  top: 17px;
   height: 100%;
   opacity: 0;
   color: ${props => props.theme.colors.dark};
