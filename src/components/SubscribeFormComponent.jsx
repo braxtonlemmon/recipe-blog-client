@@ -24,11 +24,11 @@ const Wrapper = styled.form`
   position: relative;
   box-shadow: 0 0 10px rgba(0,0,0,0.4);
   border-radius: 15px;
+  width: 100%;
   margin: 15px auto;
   & > * {
     margin: 10px 0;
   }
-  width: 100%;
   .subscribe-error {
     color: red;
     font-weight: bold;
@@ -57,6 +57,7 @@ const Box = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 15px 5px;
+  width: 100%;
   label {
     font-size: 1.2em;
     margin-bottom: 15px;
@@ -71,7 +72,7 @@ const Box = styled.div`
     outline: none;
     border: 1px solid rgba(0,0,0,0.3);
     background: #fbfaff;
-    width: 100%;
+    width: 90%;
     max-width: 400px;
   }
 `
