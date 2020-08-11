@@ -30,14 +30,18 @@ function Unsubscribe() {
   const [finished, setFinished] = useState(false);
   const [isError, setError] = useState(false);
   const [email, setEmail] = useState('');
+  let params;
+  let id;
 
-  const params = new URLSearchParams(document.location.search.substring(1));
-  const id = params.get('subscriber')
+  if (typeof window !== 'undefined') {
+    params = new URLSearchParams(document.location.search.substring(1));
+    id = params.get('subscriber');
+  }
 
   const handleYesClick = (e) => {
     e.preventDefault();
     setUnsubscribing(true);
-    fetch(`http://localhost:4000/dev/api/emails/${id}`, {
+    fetch(`https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/emails/${id}`, {
       method: 'DELETE',
       headers: {
         Accept: "application/json",
@@ -68,7 +72,7 @@ function Unsubscribe() {
   useEffect(() => {
     if (!finished) {
 
-      fetch(`http://localhost:4000/dev/api/emails/${id}`, {
+      fetch(`https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/emails/${id}`, {
         method: 'GET',
         headers: {
           Accept: 'application/json',

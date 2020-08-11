@@ -31,7 +31,7 @@ function GoUp() {
   const [show, setShow] = useState();
 
   useEffect(() => {
-    if (typeof document !== 'undefined') {
+    if (typeof window !== 'undefined') {
       const aboutBox = document.getElementById('about-box');
       const slider = document.getElementById('slider');
       const observer = new IntersectionObserver(entries => {
