@@ -88,7 +88,7 @@ function ImageSlider({ images }) {
   }
 
   return (
-    <ImgWrapper>
+    <ImgWrapper id="slider">
       <FakeImg></FakeImg>
       <Img
         className="image"

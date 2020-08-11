@@ -10,6 +10,7 @@ import Ingredients from './Ingredients';
 import Steps from './Steps';
 import Details from './Details';
 import ToTop from './ToTop';
+import GoUp from './GoUp';
 import {
   Wrapper,
   MyH1,
@@ -154,6 +155,7 @@ function RecipePage({ data, location }) {
           convertDuration={convertDuration}
         />
         <ToTop />
+        <GoUp />
       </Wrapper>
     </>
   )

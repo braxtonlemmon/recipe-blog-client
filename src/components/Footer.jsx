@@ -10,6 +10,7 @@ const Wrapper = styled.footer`
   width: 100%;
   color: white;
   padding: 15px 0 ;
+  padding-bottom: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
