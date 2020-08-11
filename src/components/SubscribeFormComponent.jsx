@@ -35,17 +35,20 @@ const Wrapper = styled.form`
     height: 1.5em;
     margin: 0;
     position: absolute;
-    bottom: 20px;
+    bottom: 30px;
   }
   .error-left {
-    left: 20px;
+    left: 30px;
     transform: rotate(30deg);
     animation: ${left} 2s infinite 200ms;
+    max-width: 30px;
   }
   .error-right {
-    right: 20px;
+    right: 15px;
     transform: rotate(-30deg);
     animation: ${right} 2s infinite 200ms;
+    max-width: 50px;
+    text-align: center;
   }
 `;
 
@@ -53,22 +56,22 @@ const Box = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 15px 5px;
   label {
-    margin: 5px;
     font-size: 1.2em;
+    margin-bottom: 15px;
   }
   input {
     padding: 10px 6px;
+    margin-bottom: 15px;
     line-height: 1.2em;
     font-size: 1em;
     text-align: center;
     border-radius: 8px;
     outline: none;
     border: 1px solid rgba(0,0,0,0.3);
-    margin: 10px;
     background: #fbfaff;
     width: 100%;
-    min-width: 270px;
     max-width: 400px;
   }
 `
@@ -77,7 +80,7 @@ function SubscribeFormComponent({ email, handleChange, handleSubmit, error }) {
   return (
     <Wrapper>
       <Box>
-        <label htmlFor="email">Sign Up</label>
+        <label htmlFor="email">SAY YES TO RECIPES</label>
         <input
           type="email"
           id="email"
@@ -86,8 +89,8 @@ function SubscribeFormComponent({ email, handleChange, handleSubmit, error }) {
           onChange={handleChange}
           placeholder="Your email goes right here."
         />
+        <Button onClick={handleSubmit}>Subscribe</Button>
       </Box>
-      <Button onClick={handleSubmit}>Subscribe</Button>
       {error && 
         <>
           <p className="subscribe-error error-left">Uh oh!</p>
