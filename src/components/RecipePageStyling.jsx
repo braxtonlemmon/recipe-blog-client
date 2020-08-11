@@ -172,6 +172,7 @@ const StepsBox = styled(InfoBox)`
   .sidenote {
     /* font-style: italic; */
     font-size: 0.9em;
+    text-align: center;
   }
   ul {
     margin-top: 20px;
