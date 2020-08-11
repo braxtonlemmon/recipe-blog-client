@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CommentBox from './CommentBox';
 import CommentFormContainer from './CommentFormContainer';
 import PropTypes from 'prop-types';
+import CommentsLoader from './CommentsLoader';
 
 function Comments({ mongodb_id, handleNewRating }) {
   const [comments, setComments] = useState([]);
@@ -33,14 +34,15 @@ function Comments({ mongodb_id, handleNewRating }) {
           setCommentsLoaded={setCommentsLoaded}
           handleNewRating={handleNewRating}
         />
-        { commentsLoaded && 
+        {/* { commentsLoaded &&  */}
           <CommentBox
             id="comment-box"
             comments={comments}
             topComments={topComments}
             setCommentsLoaded={setCommentsLoaded}
+            commentsLoaded={commentsLoaded}
           />
-        }
+        {/* } */}
       </>
     )
 }

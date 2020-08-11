@@ -4,24 +4,18 @@ import PropTypes from 'prop-types';
 import { GiGarlic } from 'react-icons/gi';
 
 const Wrapper = styled.div`
-  position: fixed;
-  top: calc(50% - 100px);
   z-index: 100;
   height: 200px;
   width: 290px;
   display: flex;
-  grid-area: commentBox;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: ${props => props.theme.colors.dark};
-  border-radius: 30px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.4);
   padding: 20px 0;
   p {
     margin-top: 20px;
     font-size: 2em;
-    color: white;
+    color: ${props => props.theme.colors.dark};
   }
 `;
 
@@ -49,24 +43,24 @@ const Garlics = styled.div`
 const Garlic = styled(GiGarlic)`
   animation: ${jump} 1.1s linear infinite;
   margin: 0 10px;
-  color: white;
+  color: ${props => props.theme.colors.dark};
 `
-function Loader({ message }) {
+function CommentsLoader({ message }) {
   const size = 50;
   return (
     <Wrapper>
       <Garlics>
-        <Garlic size={size} id="garlic0"/>
-        <Garlic size={size} id="garlic1"/>
-        <Garlic size={size} id="garlic2"/>
+        <Garlic size={size} id="garlic0" />
+        <Garlic size={size} id="garlic1" />
+        <Garlic size={size} id="garlic2" />
       </Garlics>
       <p>{message}...</p>
     </Wrapper>
   )
 }
 
-Loader.propTypes = {
+CommentsLoader.propTypes = {
   message: PropTypes.string
 }
 
-export default Loader;
+export default CommentsLoader;

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { H2 } from './Headings';
 import Comment from './Comment';
 import PropTypes from 'prop-types';
+import CommentsLoader from './CommentsLoader';
 
 const Wrapper = styled.div`
   display: flex;
@@ -26,8 +27,14 @@ const List = styled.div`
   max-width: 600px;
 `
 
-function CommentBox({ comments, topComments, setCommentsLoaded}) {
-  if (topComments.length < 1) {
+function CommentBox({ comments, topComments, setCommentsLoaded, commentsLoaded}) {
+  if (!commentsLoaded) {
+    return (
+      <Wrapper>
+        <CommentsLoader message="Loading ..." />
+      </Wrapper>
+    )
+  } else if (topComments.length < 1) {
     return (
       <Wrapper>
         <p>There are no comments yet...</p>
