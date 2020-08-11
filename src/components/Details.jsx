@@ -34,7 +34,7 @@ const DateAndRatings = styled.div`
     display: flex;
     align-items: center;
     p {
-      margin-left: 5px;
+      margin-left: 3px;
       font-size: 0.9em;
     }
   }
@@ -104,8 +104,8 @@ function Details({ recipe, convertDuration, ratings, content }) {
               emptySymbol={<FaRegStar/>}
               fullSymbol={<FaStar/>}
             />
-            <p>( {ratings.length} )</p>
-            </div>
+            <p>({ratings.length})</p>
+          </div>
           : <p className="details-no-ratings">- No ratings yet -</p>
         }
         <p>{recipe.publish_date}</p>
