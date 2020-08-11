@@ -17,7 +17,7 @@ const FormWrapper = styled.form`
     text-align: center;
     border-radius: 8px;
     outline: none;
-    border: 1px solid grey;
+    border: 1px solid rgba(0,0,0,0.3);
     margin: 10px;
     background: #fbfaff;
     width: 100%;
