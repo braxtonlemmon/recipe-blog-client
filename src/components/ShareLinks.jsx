@@ -105,7 +105,8 @@ const Close = styled.div`
 `;
 
 function ShareLinks({ setViewShare }) {
-  const url='www.peelthegarlic.com/recipe/spanish-tortilla';
+  const path = typeof window !== 'undefined' ? window.location.pathname : '';
+  const url = `https://www.peelthegarlic.com${path}`
   const size = 37;
 
   const handleCloseShare = () => {

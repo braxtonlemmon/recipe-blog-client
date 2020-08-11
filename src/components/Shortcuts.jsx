@@ -41,7 +41,9 @@ function Shortcuts({ handlePrint, handleShare, setViewShare }) {
   const handleOpenShare = () => {
     setViewShare(true);
   }
-  
+  const path = typeof window !== 'undefined' ? window.location.pathname : '';
+  const url = `https://www.peelthegarlic.com${path}`
+
   return (
     <Links>
       <p>Psst! Some shortcuts just for you...</p>
