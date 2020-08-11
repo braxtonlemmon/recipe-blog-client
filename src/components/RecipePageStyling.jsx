@@ -170,7 +170,7 @@ const StepsBox = styled(InfoBox)`
     justify-self: left; 
   }
   .sidenote {
-    font-style: italic;
+    /* font-style: italic; */
     font-size: 0.9em;
   }
   ul {

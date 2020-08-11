@@ -11,7 +11,7 @@ function Steps({ recipe, checkboxes, handleCheck, resetCheckboxes }) {
     <StepsBox id="steps-box">
       <H2 id="steps">Steps</H2>
       <p className="sidenote">
-        ***click each step as you go to keep track of your progress***
+        (click each step as you go to keep track of your progress)
       </p>
       <ul>
         {recipe.steps.map((step, index) => (

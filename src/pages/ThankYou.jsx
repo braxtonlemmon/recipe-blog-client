@@ -4,7 +4,7 @@ import SEO from '../components/seo';
 import { H1 } from '../components/Headings';
 import { Link } from 'gatsby';
 import Button from '../components/Button';
-import { GiChefToque } from 'react-icons/gi';
+import { GiChefToque, GiHamburger } from 'react-icons/gi';
 
 const spin = keyframes`
   0% {
@@ -41,7 +41,7 @@ function ThankYou() {
       <SEO title="Thank You" description="Success contact message submission." />
       <Wrapper>
         <H1>Thank you!</H1>
-        <GiChefToque className="thank-you-logo" size={100} />
+        <GiHamburger className="thank-you-logo" size={100} />
         <p className="thank-you-intro">Your message is on its way. I will get back to you soon. Now back to the kitchen! </p>
         <Link to="/">
           <Button>Home</Button>
