@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { graphql } from 'gatsby';
+import { graphql, navigate } from 'gatsby';
 import Comments from './Comments';
 import ShareLinks from './ShareLinks';
 import ImageSlider from './ImageSlider';
@@ -72,6 +72,12 @@ function RecipePage({ data, location }) {
     setRatingsLoaded(false);
   }
 
+  function resetCheckboxes() {
+    setCheckboxes({});
+    localStorage.setItem(recipe.id, JSON.stringify({}));
+    window.location.reload();
+  }
+
   // loads saved data from localStorage
   useEffect(() => {
     if (typeof window !== 'undefined' && typeof window.localStorage != 'undefined') {
@@ -135,6 +141,7 @@ function RecipePage({ data, location }) {
           ratings={ratings}
           content={content}
         />
+        <div onClick={resetCheckboxes}>reset</div>
         <Ingredients
           recipe={recipe}
           checkboxes={checkboxes}
@@ -144,6 +151,7 @@ function RecipePage({ data, location }) {
           recipe={recipe}
           checkboxes={checkboxes}
           handleCheck={handleCheck}
+          resetCheckboxes={resetCheckboxes}
         />
         <Comments 
           mongodb_id={recipe.mongodb_id} 

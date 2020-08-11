@@ -180,6 +180,23 @@ const StepsBox = styled(InfoBox)`
   @supports not (display: grid) {
     margin-top: 30px;
   }
+  .reset-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 450px;
+    margin: 15px 0;
+    text-align: center;
+    line-height: 1.5em;
+    font-size: 0.9em;
+  }
+  .reset-link {
+    cursor: pointer;
+    font-size: 1.1em;
+    color: blue;
+  }
 `;
 
 const MyH1 = styled(H1)`

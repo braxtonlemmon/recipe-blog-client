@@ -13,8 +13,6 @@ function Ingredients({
 }) {
   const [ingredientsFixed, setIngredientsFixed] = useState(false)
   const [navHeight, setNavHeight] = useState()
-
-  
   // detects height of navbar to use when making ingredients box sticky
   useEffect(() => {
     const navbar = document.getElementById('navbar');
@@ -39,7 +37,7 @@ function Ingredients({
       return () => observer.unobserve(box);
     }
   }, [])
-
+  console.log(checkboxes);
   return (
     <IngredientsBox
       fixed={ingredientsFixed}

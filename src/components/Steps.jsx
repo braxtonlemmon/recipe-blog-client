@@ -6,7 +6,7 @@ import {
   Step
 } from './RecipePageStyling';
 
-function Steps({ recipe, checkboxes, handleCheck }) {
+function Steps({ recipe, checkboxes, handleCheck, resetCheckboxes }) {
   return (
     <StepsBox id="steps-box">
       <H2 id="steps">Steps</H2>
@@ -33,6 +33,12 @@ function Steps({ recipe, checkboxes, handleCheck }) {
           </Step>
         ))}
       </ul>
+      <div className="reset-box">
+        <p>Finished and want to make it again?</p>
+        <div>
+          <span className="reset-link" onClick={resetCheckboxes}>Reset</span> the page to clear the checkboxes and greyed-out steps (the page will refresh).
+        </div>
+      </div>
       <div id="steps-end"></div>
     </StepsBox>
   )
@@ -41,7 +47,8 @@ function Steps({ recipe, checkboxes, handleCheck }) {
 Steps.propTypes = {
   recipe: PropTypes.object,
   checkboxes: PropTypes.object,
-  handleCheck: PropTypes.func
+  handleCheck: PropTypes.func,
+  resetCheckboxes: PropTypes.func
 }
 
 export default Steps;
