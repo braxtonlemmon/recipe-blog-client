@@ -53,7 +53,7 @@ function SubscribeFormContainer({ setSubscribed }) {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              address: 'braxtonlemmon@gmail.com'
+              address: email
             })
           })
 
