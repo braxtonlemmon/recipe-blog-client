@@ -14,11 +14,79 @@ function SubscribeFormContainer({ setSubscribed }) {
     setEmail(value);
   }
 
+  // same as #handleSubmit, but includes API PUT request to sendgrid to add to 'newsletter' contact list
+  const handleSubmitWithPromises = e => {
+    e.preventDefault();
+    const isValid = handleValidation();
+    if (isValid) {
+      setSending(true);
+      const sendgridObject = {
+        "list_ids": [
+          `${process.env.GATSBY_SENDGRID_LIST_ID}`
+        ],
+        "contacts": [
+          {
+            "email": email
+          }
+        ]
+      }
+
+      Promise.all([
+        fetch(
+          "https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/emails",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              address: email
+            }),
+          }
+        ),
+        fetch("https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/newsletter/welcome", {
+          method: "POST",
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            address: email
+          })
+        }),
+        fetch("https://api.sendgrid.com/v3/marketing/contacts", {
+          method: 'PUT',
+          headers: {
+            Authorization: `Bearer ${process.env.GATSBY_SENDGRID_API}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(sendgridObject)
+        })
+      ])
+      .then(responses => {
+        return Promise.all(responses.map(response => {
+          return response.json();
+        }));
+      })
+      .then(() => {
+        setEmail("");
+        setSubscribed(true);
+        setSending(false);
+        console.log('Signed up');
+      })
+      .catch(error => {
+        console.log(error);
+      })
+    }
+  }
+
   const handleSubmit = e => {
     e.preventDefault()
     const isValid = handleValidation();
     if (isValid) {
       setSending(true);
+      // add email to database
       fetch(
         "https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/emails",
         {
@@ -107,6 +175,7 @@ function SubscribeFormContainer({ setSubscribed }) {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         error={error}
+        handleSubmitWithPromises={handleSubmitWithPromises}
       />
       {isSending &&
         <Loader message="Sending" />

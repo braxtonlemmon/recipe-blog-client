@@ -77,7 +77,7 @@ const Box = styled.div`
   }
 `
 
-function SubscribeFormComponent({ email, handleChange, handleSubmit, error }) {
+function SubscribeFormComponent({ email, handleChange, handleSubmit, error, handleSubmitWithPromises }) {
   return (
     <Wrapper>
       <Box>
@@ -90,7 +90,7 @@ function SubscribeFormComponent({ email, handleChange, handleSubmit, error }) {
           onChange={handleChange}
           placeholder="Your email goes right here."
         />
-        <Button onClick={handleSubmit}>Subscribe</Button>
+        <Button onClick={handleSubmitWithPromises}>Subscribe</Button>
       </Box>
       {error && 
         <>
@@ -106,6 +106,7 @@ SubscribeFormComponent.propTypes = {
   email: PropTypes.string,
   handleChange: PropTypes.func,
   handleSubmit: PropTypes.func,
+  handleSubmitWithPromises: PropTypes.func,
   error: PropTypes.string
 }
 

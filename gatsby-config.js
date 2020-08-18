@@ -79,8 +79,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Peel the Garlic`,
+        short_name: `Peel the Garlic`,
         start_url: `/`,
         background_color: `#2f3020`,
         theme_color: `#2f3020`,
