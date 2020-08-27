@@ -32,7 +32,7 @@ const Links = styled.div`
       margin: 0 10px;
     }
   }
-  padding-bottom: 10px;
+  padding-bottom: 15px;
   margin-bottom: 10px;
   border-bottom: 1px solid white;
 `;
