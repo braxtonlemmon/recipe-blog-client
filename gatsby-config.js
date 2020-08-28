@@ -19,7 +19,7 @@ module.exports = {
     siteUrl,
   },
   plugins: [
-    'gatsby-plugin-polyfill-io',
+    "gatsby-plugin-polyfill-io",
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -28,32 +28,32 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: 'markdown',
+        name: "markdown",
         path: `${__dirname}/src/markdown`,
-      }
+      },
     },
     {
-      resolve: 'gatsby-plugin-robots-txt',
+      resolve: "gatsby-plugin-robots-txt",
       options: {
         resolveEnv: () => NETLIFY_ENV,
         env: {
           production: {
-            policy: [{ userAgent: '*' }]
+            policy: [{ userAgent: "*" }],
           },
-          'branch-deploy': {
-            policy: [{ userAgent: '*', disallow: ['/'] }],
+          "branch-deploy": {
+            policy: [{ userAgent: "*", disallow: ["/"] }],
             sitemap: null,
-            host: null
+            host: null,
           },
-          'deploy-preview': {
-            policy: [{ userAgent: '*', disallow: ['/'] }],
+          "deploy-preview": {
+            policy: [{ userAgent: "*", disallow: ["/"] }],
             sitemap: null,
-            host: null
-          }
-        }
-      }
+            host: null,
+          },
+        },
+      },
     },
     {
       resolve: "gatsby-source-mongodb",
@@ -85,35 +85,39 @@ module.exports = {
         background_color: `#2f3020`,
         theme_color: `#2f3020`,
         display: `minimal-ui`,
-        icon: "src/images/garlic_logo.svg"
+        icon: "src/images/garlic_logo.svg",
       },
     },
     {
-      resolve: 'gatsby-plugin-google-fonts',
+      resolve: "gatsby-plugin-google-fonts",
       options: {
-        fonts: [
-          'Montserrat'
-        ]
-      }
-    },
-    {
-      resolve: 'gatsby-plugin-canonical-urls',
-      options: {
-        siteUrl: 'https://www.peelthegarlic.com/'
-      }
-    },
-    {
-      resolve: 'gatsby-plugin-layout',
-      options: {
-        component: require.resolve('./src/components/layout.js'),
+        fonts: ["Montserrat"],
       },
     },
-    'gatsby-plugin-styled-components',
+    {
+      resolve: "gatsby-plugin-canonical-urls",
+      options: {
+        siteUrl: "https://www.peelthegarlic.com/",
+      },
+    },
+    {
+      resolve: "gatsby-plugin-layout",
+      options: {
+        component: require.resolve("./src/components/layout.js"),
+      },
+    },
+    {
+      resolve: "gatsby-plugin-google-analytics",
+      options: {
+        trackingId: "UA-176765666-1",
+      },
+    },
+    "gatsby-plugin-styled-components",
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
-    'gatsby-plugin-sitemap',
-    'gatsby-plugin-netlify',
+    "gatsby-plugin-sitemap",
+    "gatsby-plugin-netlify",
     `gatsby-transformer-sharp`,
-    'gatsby-transformer-remark',
+    "gatsby-transformer-remark",
   ],
 }

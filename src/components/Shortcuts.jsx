@@ -51,7 +51,7 @@ function Shortcuts({ handlePrint, handleShare, setViewShare }) {
         <ScrollLink
           className="scrollLink button-w-icon"
           to={"about-end"}
-          smooth={true}
+          smooth={false}
         >
           Recipe
           <TiArrowDownOutline />
@@ -59,7 +59,7 @@ function Shortcuts({ handlePrint, handleShare, setViewShare }) {
         <ScrollLink
           className="scrollLink button-w-icon"
           to={"steps-end"}
-          smooth={true}
+          smooth={false}
         >
           Comments
           <TiArrowDownOutline />

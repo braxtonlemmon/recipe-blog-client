@@ -47,7 +47,7 @@ function GoUp() {
   }, []);
 
   return (
-    <ScrollLink to={"page-top"} smooth={true}>
+    <ScrollLink to={"page-top"} smooth={false}>
       <Wrapper show={show}>
         <TiArrowUpOutline className="go-up-arrow" size={20} />
       </Wrapper>

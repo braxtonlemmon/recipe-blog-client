@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 function ToTop() {
   return (
     <Wrapper>
-      <ScrollLink className="scrollLink button-w-icon" to={"page-top"} smooth={true}>
+      <ScrollLink className="scrollLink button-w-icon" to={"page-top"} >
         <span>
           <TiArrowUpOutline /> Top of page. <TiArrowUpOutline />
         </span>
