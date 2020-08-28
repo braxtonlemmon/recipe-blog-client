@@ -126,8 +126,9 @@ const IngredientsBox = styled(InfoBox)`
     position: sticky;
     top: ${props => `${props.navHeight + 10}px`};
     padding-top: 0;
+    /* height: 85vh; */
     max-height: 90vh;
-    margin: 15px auto;
+    /* margin: 15px auto; */
 
 
 
@@ -143,7 +144,7 @@ const IngredientsBox = styled(InfoBox)`
       box-shadow: 0px 4px 3px lightgrey;
     }
     ul {
-      overflow-y: auto;
+      overflow-y: scroll;
       margin: 5px 10px 10px 10px;
     }
   }
@@ -161,7 +162,7 @@ const IngredientsBox = styled(InfoBox)`
 
 const StepsBox = styled(InfoBox)`
   grid-area: steps;
-  width: 90%;
+  /* width: 90%; */
   padding: 15px 0;
   /* border: 1px solid blue; */
   @media (min-width: 760px) {
