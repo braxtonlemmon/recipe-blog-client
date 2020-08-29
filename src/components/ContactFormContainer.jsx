@@ -5,7 +5,6 @@ import Loader from './Loader';
 
 function ContactFormContainer() {
   const [data, setData] = useState({
-    from: '',
     email: '',
     subject: '',
     message: '',
@@ -56,7 +55,6 @@ function ContactFormContainer() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: data.from,
           email: data.email,
           subject: data.subject,
           message: data.message,
@@ -64,7 +62,7 @@ function ContactFormContainer() {
       })
       .then(response => {
         if (response.ok && response.status === 200) {
-          setData({ from: '', email: '', subject: '', message: '' });
+          setData({ email: '', subject: '', message: '' });
           setShowErrors(false);
           setSending(false);
           navigate('/ThankYou');
