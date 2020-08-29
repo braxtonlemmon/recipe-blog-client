@@ -48,24 +48,43 @@ function Unsubscribe() {
   const handleYesClick = (e) => {
     e.preventDefault();
     setUnsubscribing(true);
-    fetch(`https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/emails/${id}`, {
-      method: 'DELETE',
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      }
+    Promise.all([
+      fetch(
+        `https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/emails/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      ),
+      fetch(
+        `https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/newsletter/informUnsubscribe`,
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            subscriberId: id
+          })
+        }
+      )
+    ])
+    .then(responses => {
+      return Promise.all(responses.map(response => {
+        return response.json();
+      }));
     })
-    .then(response => {
-      if (response.ok && response.status === 200) {
-        console.log('booyah');
-        setUnsubscribing(false);
-        setFinished(true);
-        return;
-      }
-      throw new Error('Network response was not okay.')
+    .then(() => {
+      console.log("booyah");
+      setUnsubscribing(false);
+      setFinished(true);
     })
-    .catch(err => {
-      console.log(err.message)
+    .catch(error => {
+      console.log(error.message);
       setUnsubscribing(false);
       setError(true);
     })
