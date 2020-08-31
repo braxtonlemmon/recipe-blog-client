@@ -84,7 +84,7 @@ module.exports = {
         start_url: `/`,
         background_color: `#2f3020`,
         theme_color: `#2f3020`,
-        display: `standalone`,
+        display: `fullscreen`,
         icon: "src/images/garlic_logo.svg",
       },
     },
