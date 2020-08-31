@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import SEO from '../components/SEOv2';
 import { H1 } from '../components/Headings';
 import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
 
 const Wrapper = styled.div`
   display: flex;
@@ -54,8 +55,16 @@ const Content = styled.div`
   }
 `;
 
+
+const AboutPic = styled(Img)`
+  width: 100%;
+  max-width: 500px;
+  margin: 30px auto 20px auto;
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
+`;
 function About({ data }) {
   const { markdownRemark } = data;
+  const meFluid = data.file.childImageSharp.fluid;
   const { html } = markdownRemark;
 
   return (
@@ -64,6 +73,10 @@ function About({ data }) {
       <SEO title="About" description="About page" />
       <Wrapper>
         <H1>About</H1>
+        {/* <ImageBox>
+          <Img id="about-pic" fluid={meFluid} alt="picture of braxton" />
+        </ImageBox> */}
+        <AboutPic fluid={meFluid} alt="picture of me" />
         <Content
           dangerouslySetInnerHTML={{ __html: html }}
         ></Content>
@@ -77,6 +90,13 @@ export const pageQuery = graphql`
   query {
     markdownRemark(frontmatter: { title: { eq: "About"}}) {
       html
+    }
+    file(name: {eq: "me_cooking" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
     }
   }
 `;

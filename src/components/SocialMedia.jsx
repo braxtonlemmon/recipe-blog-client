@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { FaInstagram, FaGithub, FaFacebook } from 'react-icons/fa';
+import { FaInstagram, FaGithub, FaFacebook, FaTwitter } from 'react-icons/fa';
 
 const Wrapper = styled.div`
   display: flex;
@@ -35,6 +35,13 @@ function SocialMedia({ inverse }) {
         rel="noopener noreferrer"
       >
         <FaFacebook size={size} className="social-media-icon" />
+      </a>
+      <a
+        href="https://twitter.com/PeelGarlic"
+        target="blank"
+        rel="noopener noreferrer"
+      >
+        <FaTwitter size={size} className="social-media-icon" />
       </a>
       <a
         href="https://github.com/braxtonlemmon"

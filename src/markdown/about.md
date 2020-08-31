@@ -8,14 +8,20 @@ Peeling garlic is a tedious task. Sometimes the skin peels off easily, but more 
 While I appreciate the ease that comes along with a speedy meal, my favorite culinary experiences usually involve hours of involvement and attention to detail. Long drawn-out recipes aren't the norm on Peel the Garlic, but I just want you to be aware that I don't guarantee quick and convenient dishes, as speed is not my priority. Cooking one-pot meals with pre-chopped ingredients in ten minutes is fine and sometimes necessary when things get busy, but my belief is that everyone should regularly find time to set aside for cooking and appreciating food either alone or with friends and family. It's okay to slow down and peel the garlic.
 
 ## My Story
+Growing up an oldest child I would create masterpieces when babysitting my siblings. Working from inspiration, I strategically added chocolate syrup, honey, vanilla ice cream, sugar, whipped cream, strawberry milk, and sprinkles to the blender for the ultimate milkshake. My siblings praised me and my parents never knew.
+ 
+Years later I was hired at a local grocery store as their official “salsa maker.” I spent hours dicing bell peppers, blending tomatoes, developing the perfect guacamole, and taste testing. Lots of taste testing. During that job I fell deeply in love with food preparation.
+ 
+Today I don’t make so many milkshakes (don’t worry, that skill is not lost). What I do make is influenced by my everyday experiences and interactions. That sounds vague and cliché so let me explain. 
+ 
+Recently a friend and I ate at a Syrian restaurant. We ordered a meze platter. The food was great, but one dish really caught my attention. It was a sour dip made from roasted eggplant and I absolutely loved it, so I took mental notes. Currently I’m experimenting with eggplant roasting techniques to come up with a dip similar to the one I tried. 
+ 
+Sometimes it’s an experience like the one I just mentioned, sometimes it’s a conversation, and sometimes it’s going for a walk around town that grants me a spark of culinary creativity. 
+ 
+I am also greatly influenced by where I live. Visiting a location as a tourist and trying the local cuisine is awesome, but living somewhere, spending hours in the neighborhood grocery stores, and eating the same meals again and again creates a deep connection with the regional food that is not as easy to obtain in just a couple weeks.    
+ 
+I grew up in the American South and then lived in the Western United States. Additionally I have spent several years living in South America and most recently Europe. Each location has fueled my culinary creativity and has shaped my approach to how I interact with food. A great deal of my recipes are based on the relationships I formed with food while living in specific locations.
 
-Did I grow up cooking? If you count microwaving frozen burritos, mixing together ice cream and chocolate syrup in a blender, and smearing globs of peanut butter and jelly on Wonder bread, then yes, I grew up cooking. In all reality, it wasn't until I was in university that I first experienced the magic of the kitchen. In my small college dorm I baked my first chicken breast. It was unseasoned, dry, and flavorless, but I was overjoyed and gave myself a solid pat on the back. I began to attempt other culinary projects. Gazing into the grimy window of our small oven, my jaw dropped as I saw my first batch of pitas transform from a thin disk to an inflated UFO in a matter of seconds. When making pasta I remembered hearing somewhere that pasta is done if it sticks to the wall, so I would toss a few noodles up onto the ceiling for good measure. 
-
-A couple years later I saw a job posting for a "salsa maker" position at a grocery store. I drove to the store, found the manager, and started work soon after. After being trained, I was on my own making and packaging fresh salsa to be sold in the produce section. One evening at work I had just finished chopping one red, one yellow, and one orange bell pepper. I paused, looked at the peppers on the cutting board and the bowl of tomatoes in front of me, and suddenly felt a surge of satisfaction. As trivial as it sounds, in that moment I realized that I have a penchant for taking raw consumable ingredients and turning them into flavourful works of art. Since then my zeal for cooking has continually grown. 
-
-Inspired by my salsa making job, I opened a stand at the local farmer's market where I sold my fresh guacamole, tomatillo salsa, and a creamy cilantro dip. The experience was thrilling and motivated me to find other ways of sharing my food creations with people. I began to host events at my house called Tunes and Tastes. I would stage the living room for a casual house show or open-mic night and spend the day before preparing food for the event. These days I am active as ever in the kitchen. My food is primarily shared among family and friends, with the occasional dinner party every now and then.
-
-My general culinary interests evolve constantly, but I am regularly influenced by local cuisine. I grew up in the American South and then spent several years in the Western United States. Additionally I have spent several years living in South America and most recently Europe. Each location has fueled my culinary creativity and has shaped my approach to how I interact with food. 
 
 ## Why did I make a recipe blog?
 <!-- My motivation to create this blog comes from several sources: -->
