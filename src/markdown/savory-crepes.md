@@ -7,9 +7,9 @@ Now, what to do with your money-making crepe? I’ll tell you. Fill it with just
 
 Don’t overcook the crepes, or they will start to resemble large wafers and will crack and crumble as they are rolled. Just make sure you preheat the pan long enough and keep it at a relatively high temperature. The batter will cook through while leaving you with those nice brown spots we all like to see on our crepes. And remember to add a pat of butter to the pan between crepes. 
 
-Another suggestion (requirement) for this meal is to leave the yolks of your fried eggs runny. The yolk essentially acts as the sauce for the meal. The last thing you want to do is cut into your crepe and find a dry, crumbly yolk. 
+Another suggestion (requirement) for this meal is to leave the yolks of your fried eggs runny. The yolk essentially acts as the sauce for the crepe. The last thing you want to do is cut into your crepe and find a dry, crumbly yolk. 
 
-The amount of mustard you spread is up to you. I usually do about 1 teaspoon, but it all depends on how strong the mustard is. You don’t want mustard overkill, but the flavor should definitely be present. 
+The amount of mustard you spread is up to you. I usually do about 1 teaspoon per crepe, but it all depends on how strong the mustard is. You don’t want mustard overkill, but the flavor should definitely be present. 
 
 One last thing. I don’t mention it in the instructions (you’re getting the inside scoop, yo), but once I’ve assembled the crepe, I usually gently place it back in the pan and cook it for about one minute per side before serving on a plate and topping with the green onion, parsley, and pepper.
 It’s not necessary, but it gives the crepe a nice toast and raises the temperature a degree or two before serving.
