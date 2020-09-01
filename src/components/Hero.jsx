@@ -145,7 +145,7 @@ function Hero({ setRecipeClicked }) {
           images {
             localFile {
               childImageSharp {
-                fluid {
+                fluid(maxHeight: 700) {
                   ...GatsbyImageSharpFluid
                 }
               }
