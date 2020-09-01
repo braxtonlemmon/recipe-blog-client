@@ -1,9 +1,11 @@
+/* eslint-disable no-undef */
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { H1, H2 } from "./Headings"
 import Img from 'gatsby-image';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import makeSlug from '../utils/makeSlug';
+import PropTypes from 'prop-types';
 
 const Wrapper = styled(Link)`
   overflow-x: hidden;
@@ -193,6 +195,9 @@ function Hero({ setRecipeClicked }) {
       </HeroTextBox>
     </Wrapper>
   )
+}
+Hero.propTypes = {
+  setRecipeClicked: PropTypes.func
 }
 
 export default Hero;

@@ -26,6 +26,7 @@ function SocialMedia({ inverse }) {
         href="https://www.instagram.com/peelthegarlic/"
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Go to peel the garlic instagram."
       >
         <FaInstagram size={size} className="social-media-icon" />
       </a>
@@ -33,6 +34,7 @@ function SocialMedia({ inverse }) {
         href="https://www.facebook.com/Peel-the-Garlic-105045281272206"
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Go to peel the garlic facebook."
       >
         <FaFacebook size={size} className="social-media-icon" />
       </a>
@@ -40,6 +42,7 @@ function SocialMedia({ inverse }) {
         href="https://twitter.com/PeelGarlic"
         target="blank"
         rel="noopener noreferrer"
+        aria-label="Go to peel the garlic twitter."
       >
         <FaTwitter size={size} className="social-media-icon" />
       </a>
@@ -47,6 +50,7 @@ function SocialMedia({ inverse }) {
         href="https://github.com/braxtonlemmon"
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Go to peel the garlic github."
       >
         <FaGithub size={size} className="social-media-icon" />
       </a>

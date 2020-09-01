@@ -1,5 +1,6 @@
+/* eslint-disable no-undef */
 import React, { useEffect, useState, useRef } from 'react';
-import { graphql, navigate } from 'gatsby';
+import { graphql } from 'gatsby';
 import Comments from './Comments';
 import ShareLinks from './ShareLinks';
 import ImageSlider from './ImageSlider';

@@ -1,7 +1,7 @@
+/* eslint-disable no-undef */
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
-const { createProxyMiddleware } = require('http-proxy-middleware');
 const {
   NODE_ENV,
   URL: NETLIFY_SITE_URL = 'https://www.peelthegarlic.com',

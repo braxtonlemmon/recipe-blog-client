@@ -63,7 +63,7 @@ function Footer() {
   return (
     <Wrapper>
       <Links>
-        <Link title="All Recipes" to='/'>Recipes</Link>
+        <Link aria-label="All Recipes" to='/'>Recipes</Link>
         <Link title="About Page" to='/About'>About</Link>
         <Link title="Contact Page" to='/Contact'>Contact</Link> 
         <Link title="Subscribe to Newsletter" to="/Subscribe">Subscribe</Link>
