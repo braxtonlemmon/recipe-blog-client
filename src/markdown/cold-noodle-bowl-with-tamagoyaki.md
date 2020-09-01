@@ -1,7 +1,7 @@
 ---
 title: cold-noodle-bowl-with-tamagoyaki
 ---
-My best friend introduced me to Tamagoyaki. Never before had I added sugar to a stove-top egg dish. Some of you in the know are going to read through the ingredients and demand to know why you don’t see the word “dashi.” You make a good point. This is my pseudo version of Tamagoyaki. Maybe I should be calling it a rolled egg omelette, but Tamagoyaki is an awesome word. And while I realize this makes me sound ignorant about the Japanese language, the word makes me think of Tamagotchi, which makes me think about the digital pets of my 90s childhood.
+My best friend introduced me to Tamagoyaki. Never before had I added sugar to a stove-top egg dish. Some of you in the know are going to read through the ingredients and demand to know why you don’t see the word “dashi” (normally an ingredient in Tamagoyaki). You make a good point. This is my pseudo version of Tamagoyaki. Maybe I should be calling it a rolled egg omelette, but Tamagoyaki is an awesome word. And while I realize this makes me sound ignorant about the Japanese language, the word makes me think of Tamagotchi, which makes me think about the digital pets of my 90s childhood.
 
 Anyway, time for some notes on this refreshing dish. When it comes to noodles, I typically choose somen. They seem to really absorb the sauce, and the way they swirl into the bowl is just graceful. If I don’t use somen, I use soba. Feel free to experiment with other types of noodles, maybe I will too. Regarding cooking the noodles, I suggest waiting until you are practically ready to assemble the dish before boiling them. If you cook them first and then let them sit while you prepare everything else, the noodles will most likely end up sticky and clump together.
 
