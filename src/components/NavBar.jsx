@@ -57,7 +57,7 @@ const Links = styled.div`
   justify-self: baseline;
   overflow: hidden;
   transition: transform 500ms ease;
-  transform: ${props => props.isHeaderVisible ? 'translateY(0)' : 'translateY(150%)'};
+  transform: ${props => props.isHeaderVisible ? 'translateY(0)' : 'translateY(180%)'};
   @media (min-width: 412px) {
     gap: 20px;
     font-size: 1.1em;
