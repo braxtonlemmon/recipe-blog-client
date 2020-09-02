@@ -2,7 +2,7 @@
 title: roasted-cauliflower-with-creamy-mustard-and-tomato-sauce
 ---
 
-Meet the mustards. When reading about cauliflower on the www, I found out that the vegetable is part of a family of plants called the mustards! Technically the family is named Brassicaceae, but who knows how to pronounce that one? So cauliflower and the plants that yield the seeds used to make Grey Poupon Dijon and French’s 100% Yellow go to the same family reunions. 
+Meet the mustards. When reading about cauliflower on the www, I found out that the vegetable is part of a family of plants called the mustards! So cauliflower and the plants that yield the seeds used to make Grey Poupon Dijon and French’s 100% Yellow go to the same family reunions. Technically the family is named Brassicaceae, but who knows how to pronounce that one?
 
 So this recipe has cauliflower and mustard. Raw cauliflower dipped in ranch on a veggie tray and hot, roasted cauliflower with charred tips are two completely different experiences. I would pick the latter any day.  
 
