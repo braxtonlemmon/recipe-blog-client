@@ -103,7 +103,7 @@ const Layout = ({ children, location }) => {
         <Transition location={location}>
           {childrenWithProps}
         </Transition>
-        {loader && <Loader message="Loading..." />}
+        {loader && <Loader message="Loading" />}
       </Main>
       <Footer 
         setLoader={setLoader}

@@ -59,17 +59,12 @@ const Garlic = styled(GiGarlic)`
   color: white;
 `
 function Loader({ message }) {
-  const size = 50;
   return (
     <Wrapper>
       <Garlics>
-        {/* <Garlic size={size} id="garlic0"/>
-        <Garlic size={size} id="garlic1"/>
-        <Garlic size={size} id="garlic2"/> */}
         <img src={garlic} alt="garlic" className="loader-garlic" id="garlic0"/>
         <img src={garlic} alt="garlic" className="loader-garlic" id="garlic1"/>
         <img src={garlic} alt="garlic" className="loader-garlic" id="garlic2"/>
-
       </Garlics>
       <p>{message}...</p>
     </Wrapper>
