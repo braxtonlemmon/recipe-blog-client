@@ -6,6 +6,7 @@ import NavBar from './NavBar';
 import MobileMenu from './MobileMenu';
 import Footer from './Footer';
 import Transition from './transition';
+import Loader from '../components/Loader';
 
 const Wrapper = styled.div`
   display: grid;
@@ -42,7 +43,8 @@ const Main = styled.main`
 const Layout = ({ children, location }) => {
   const [isHeaderVisible, setHeaderVisible] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
-  
+  const [loader, setLoader] = useState(false);
+
   const handleMenuClick = () => {
     setShowMenu(!showMenu);
   }
@@ -74,7 +76,10 @@ const Layout = ({ children, location }) => {
       return () => observer.unobserve(header);
     }
   }, [])
-  
+  const childrenWithProps = React.Children.map(children, (child) =>
+    React.cloneElement(child, {setLoader: setLoader})
+  );
+
   return (
     <Wrapper
       onClick={() => handleMainClick()}
@@ -85,14 +90,23 @@ const Layout = ({ children, location }) => {
         handleMenuClick={handleMenuClick}
         showMenu={showMenu}
         location={location}
+        setLoader={setLoader}
       />
-      <MobileMenu showMenu={showMenu} isHeaderVisible={isHeaderVisible} setShowMenu={setShowMenu} />
+      <MobileMenu 
+        showMenu={showMenu} 
+        isHeaderVisible={isHeaderVisible} 
+        setShowMenu={setShowMenu} 
+        setLoader={setLoader}  
+      />
       <Main onClick={() => handleMainClick()}>
         <Transition location={location}>
-          {children}
+          {childrenWithProps}
         </Transition>
+        {loader && <Loader message="Loading..." />}
       </Main>
-      <Footer />
+      <Footer 
+        setLoader={setLoader}
+      />
     </Wrapper>
   )
 }

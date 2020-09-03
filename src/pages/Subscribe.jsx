@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { H1 } from '../components/Headings';
 import SubscribeFormContainer from '../components/SubscribeFormContainer';
@@ -44,13 +44,15 @@ const Intro = styled.p`
   }
 `;
 
-function Subscribe() {
+function Subscribe({ setLoader }) {
   const [subscribed, setSubscribed] = useState(false);
 
   const handleClose = () => {
     setSubscribed(false);
   }
-
+  useEffect(() => {
+    setLoader(false)
+  }, [])
   return (
     <Wrapper>
       <H1>Subscribe</H1>

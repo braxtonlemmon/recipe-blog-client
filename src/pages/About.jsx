@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 // import SEO from '../components/seo';
 import SEO from '../components/SEOv2';
@@ -62,11 +62,13 @@ const AboutPic = styled(Img)`
   margin: 30px auto 20px auto;
   box-shadow: 0 0 8px rgba(0,0,0,0.4);
 `;
-function About({ data }) {
+function About({ data, setLoader }) {
   const { markdownRemark } = data;
   const meFluid = data.file.childImageSharp.fluid;
   const { html } = markdownRemark;
-
+  useEffect(() => {
+    setLoader(false)
+  }, []);
   return (
     <>
       {/* <SEO title="About" description="About page" /> */}

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import SEO from '../components/SEOv2';
 import { H1 } from '../components/Headings';
 import ContactFormContainer from '../components/ContactFormContainer';
+import PropTypes from 'prop-types';
 
 const Wrapper = styled.div`
   display: flex;
@@ -59,7 +60,11 @@ const Wrapper = styled.div`
   }
 `;
 
-function Contact() {
+function Contact({ setLoader }) {
+  useEffect(() => {
+    setLoader(false)
+  }, [])
+
   return ( 
     <>
       <SEO title="Contact" description="Contact page" />
@@ -72,6 +77,10 @@ function Contact() {
       </Wrapper>
     </>
   )
+}
+
+Contact.propTypes = {
+  setLoader: PropTypes.func
 }
 
 export default Contact;

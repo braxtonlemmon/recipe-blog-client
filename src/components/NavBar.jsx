@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import Hamburger from './Hamburger';
@@ -17,6 +17,10 @@ const HeaderBar = styled.div`
   @supports not (display: grid) {
     position: relative;
   }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Content = styled.div`
@@ -96,7 +100,8 @@ const NavLink = styled.p`
   }
 `
 
-function NavBar({ isHeaderVisible, handleMenuClick, showMenu, location }) {
+function NavBar({ isHeaderVisible, handleMenuClick, showMenu, location, setLoader }) {
+  const [linkClicked, setLinkClicked] = useState(true);
   const data = useStaticQuery(
     graphql`
       query {
@@ -136,19 +141,19 @@ function NavBar({ isHeaderVisible, handleMenuClick, showMenu, location }) {
           </div>
         </Hamburger>
         <Links isHeaderVisible={isHeaderVisible}>
-          <Link to='/#recipes-index'>
+          <Link onClick={() => setLoader(true)} to='/#recipes-index'>
             <NavLink selected={location.pathname === '/'}>Recipes</NavLink>
           </Link>
-          {/* <Link to={`/recipe/${getRandomTitle()}`}>
+          {/* <Link onClick={() => setLoader(true)} to={`/recipe/${getRandomTitle()}`}>
             <NavLink>Random</NavLink>
           </Link> */}
-          <Link to='/About'>
+          <Link onClick={() => setLoader(true)} to='/About'>
             <NavLink selected={location.pathname === '/About'}>About</NavLink>
           </Link>
-          <Link to='/Contact'>
+          <Link onClick={() => setLoader(true)} to='/Contact'>
             <NavLink selected={location.pathname === '/Contact'}>Contact</NavLink>
           </Link>
-          <Link to='/Subscribe'>
+          <Link onClick={() => setLoader(true)} to='/Subscribe'>
             <NavLink>Subscribe</NavLink>
           </Link>
         </Links>
@@ -161,7 +166,8 @@ NavBar.propTypes = {
   isHeaderVisible: PropTypes.bool, 
   handleMenuClick: PropTypes.func, 
   showMenu: PropTypes.bool,
-  location: PropTypes.object 
+  location: PropTypes.object,
+  setLoader: PropTypes.func 
 }
 
 export default NavBar;

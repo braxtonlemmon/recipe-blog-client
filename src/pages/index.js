@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link, graphql } from 'gatsby';
 import RecipeCard from '../components/RecipeCard';
@@ -33,13 +33,17 @@ const Recipes = styled.div`
   }
 `;
 
-function IndexPage({ data }) {
+function IndexPage({ data, setLoader }) {
   const recipes = data.allMongodbTestRecipes.edges;
   const [recipeClicked, setRecipeClicked] = useState(false);
 
   const handleRecipeClick = () => {
     setRecipeClicked(true);
   }
+  
+  useEffect(() => {
+    setLoader(false)
+  }, [])
   
   return (
     <>

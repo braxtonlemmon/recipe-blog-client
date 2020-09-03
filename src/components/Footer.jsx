@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import SocialMedia from '../components/SocialMedia';
+import PropTypes from 'prop-types';
 
 const Wrapper = styled.footer`
   background: #754c4ccf;
@@ -59,14 +60,14 @@ const Copyright = styled.div`
   text-align: center;
 `;
 
-function Footer() {
+function Footer({ setLoader }) {
   return (
     <Wrapper>
       <Links>
-        <Link aria-label="All Recipes" to='/#recipes-index'>Recipes</Link>
-        <Link title="About Page" to='/About'>About</Link>
-        <Link title="Contact Page" to='/Contact'>Contact</Link> 
-        <Link title="Subscribe to Newsletter" to="/Subscribe">Subscribe</Link>
+        <Link onClick={() => setLoader(true)} aria-label="All Recipes" to='/#recipes-index'>Recipes</Link>
+        <Link onClick={() => setLoader(true)} title="About Page" to='/About'>About</Link>
+        <Link onClick={() => setLoader(true)} title="Contact Page" to='/Contact'>Contact</Link> 
+        <Link onClick={() => setLoader(true)} title="Subscribe to Newsletter" to="/Subscribe">Subscribe</Link>
       </Links>
       <SocialMedia inverse={true} />
       <Me>Designed and developed by 
@@ -77,6 +78,10 @@ function Footer() {
       </Copyright>
     </Wrapper>
   )
+}
+
+Footer.propTypes = {
+  setLoader: PropTypes.func
 }
 
 export default Footer;

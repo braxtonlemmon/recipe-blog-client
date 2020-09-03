@@ -55,7 +55,7 @@ const Links = styled.div`
   justify-content: space-around;
 `;
 
-function MobileMenu({ showMenu, setShowMenu, isHeaderVisible }) {
+function MobileMenu({ showMenu, setShowMenu, isHeaderVisible, setLoader }) {
   const data = useStaticQuery(
     graphql`
       query {
@@ -71,6 +71,7 @@ function MobileMenu({ showMenu, setShowMenu, isHeaderVisible }) {
 
   const handleClick = () => {
     setShowMenu(false);
+    setLoader(true);
   }
 
   useEffect(() => {
@@ -119,7 +120,8 @@ function MobileMenu({ showMenu, setShowMenu, isHeaderVisible }) {
 MobileMenu.propTypes = {
   showMenu: PropTypes.bool,
   setShowMenu: PropTypes.func,
-  isHeaderVisible: PropTypes.bool
+  isHeaderVisible: PropTypes.bool,
+  setLoader: PropTypes.func
 }
 
 export default MobileMenu;
