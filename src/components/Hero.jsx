@@ -128,7 +128,7 @@ const HeroTitle = styled(H1)`
   align-self: flex-start;
   text-align: start;
   transition: transform 1.1s ease;
-  transform: ${({ isVisible }) => isVisible ? 'translateX(0)' : 'translateX(250%)'};
+  transform: ${({ isVisible }) => isVisible ? 'translateX(0)' : 'translateX(500%)'};
   font-size: calc(19px + (35 - 19) * ((100vw - 320px) / (1600 - 320)));
   @media (min-width: 760px) {
     transform: ${({ isVisible }) => isVisible ? 'translateX(0)' : 'translateX(800%)'};
