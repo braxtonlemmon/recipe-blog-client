@@ -1,7 +1,7 @@
 ---
 title: shakshouka
 ---
-A few years ago I was on a search for camping meals that don’t involve Top Ramen, canned bean and bacon soup, or pouches of dehydrated sludge. My friend and I perused the web and came up with a list of novel ideas to break up the Friday night camp stove monotony. One recipe, with an unfamiliar title, stole the show. Shakshouka. While not feasible as a backpacking meal, this dish has become a favorite in both the kitchen and at the car-camping picnic table. Sidenote: modifications are necessary if you recipe to make this while camping.
+A few years ago I was on a search for camping meals that don’t involve Top Ramen, canned bean and bacon soup, or pouches of dehydrated sludge. My friend and I perused the web and came up with a list of novel ideas to break up the Friday night camp stove monotony. One recipe, with an unfamiliar title, stole the show. Shakshouka. While not feasible as a backpacking meal, this dish has become a favorite in both the kitchen and at the car-camping picnic table. Sidenote: modifications are necessary if you decide to make this recipe while camping.
 
 Apparently, like so many other dishes, no one reallllly knows where shakshouka originated. Turkey? Morocco? Yemen? Good question. Wherever it’s actually from, shakshouka remains popular in North Africa and the Middle East. 
 

@@ -12,4 +12,4 @@ There is no standard as to how long the sandwich needs to sit before eating. I�
 
 If you are anti-anchovies, use anchovies. Maybe this sandwich will grant you the acquired taste. They’re extremely salty and quite pungent, but there are so many ingredients piled into the bread that the flavors balance out and the anchovy power is reduced. If you are really, seriously anti-anchovies, use tuna.
 
-I’m excited for you to try this one out. Some vegetables might fall out as you take a bite and the tomato juice might drip down your arm, but it’s totally worth it. And remember, no mayonnaise on this one.
+I’m excited for you to try this one out. Some vegetables might fall out as you take a bite, and the tomato juice might drip down your arm, but it’s totally worth it. And remember, no mayonnaise on this one.
