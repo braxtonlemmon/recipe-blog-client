@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import { GiGarlic } from 'react-icons/gi';
+import garlic from '../images/garlic_logo.svg';
 
 const Wrapper = styled.div`
   position: fixed;
@@ -40,6 +41,9 @@ const Popup = styled.div`
     margin-top: 15px;
   }
   animation: ${fadeIn} 1s forwards;
+  #subscribe-garlic {
+    height: 90px;
+  }
 `;
 
 const Close = styled(AiOutlineCloseCircle)`
@@ -54,7 +58,8 @@ function SubscribePopup({ handleClose }) {
     <Wrapper onClick={handleClose} >
       <Popup>
         <Close size={30} />
-        <GiGarlic size={50} />
+        {/* <GiGarlic size={50} /> */}
+        <img src={garlic} alt="garlic logo" id="subscribe-garlic" />
         <p>Thanks for subscribing! Watch for the weekly newsletter every Tuesday.</p>
       </Popup>
     </Wrapper>

@@ -10,8 +10,6 @@ const Wrapper = styled.div`
   margin-top: 30px;
   position: fixed;
   position: relative;
-  z-index: 600;
-
 `;
 
 function ToTop() {

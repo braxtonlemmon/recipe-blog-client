@@ -33,7 +33,7 @@ const FormWrapper = styled.form`
     max-width: 450px;
   }
 
-  textarea {
+  /* textarea {
     resize: none;
     outline: none;
     padding: 5px;
@@ -42,17 +42,32 @@ const FormWrapper = styled.form`
     text-align: center;
     margin-bottom: 10px;
     background: #fbfaff;
-    border: 1px solid lightgray;
+    border: ${props => props.commentOkay === true ? '1px solid lightgray' : '2px solid red'};
     width: 100%;
     max-width: 550px;
     height: 150px;
-  }
+  } */
   @media (min-width: 1200px) {
     width: 80%;
   }
 `;
 
-function CommentFormComponent({ data, handleChange, handleSubmit, selected, handleOptionChange}) {
+const CommentArea = styled.textarea`
+    resize: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 8px;
+    font-size: 1em;
+    text-align: center;
+    margin-bottom: 10px;
+    background: #fbfaff;
+    border: ${props => props.commentOkay === true ? '1px solid lightgray' : '2px solid red'};
+    width: 100%;
+    max-width: 550px;
+    height: 150px;
+`;
+
+function CommentFormComponent({ data, handleChange, handleSubmit, selected, handleOptionChange, commentOkay }) {
   return (
     <FormWrapper 
       name="commentForm"
@@ -71,7 +86,7 @@ function CommentFormComponent({ data, handleChange, handleSubmit, selected, hand
       />
 
       <label htmlFor="content">Comment</label>
-      <textarea
+      <CommentArea
         name="content"
         id="content"
         required
@@ -79,8 +94,9 @@ function CommentFormComponent({ data, handleChange, handleSubmit, selected, hand
         placeholder="Your comment here..."
         value={data.content}
         onChange={handleChange}
+        commentOkay={commentOkay}
       >
-      </textarea>
+      </CommentArea>
       <Stars 
         selected={selected}
         handleOptionChange={handleOptionChange}
@@ -101,7 +117,8 @@ CommentFormComponent.propTypes = {
   handleChange: PropTypes.func,
   handleSubmit: PropTypes.func,
   selected: PropTypes.number,
-  handleOptionChange: PropTypes.func
+  handleOptionChange: PropTypes.func,
+  commentOkay: PropTypes.bool
 }
 
 export default CommentFormComponent;

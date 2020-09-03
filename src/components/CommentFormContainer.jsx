@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 function CommentFormContainer({ mongodb_id, setCommentsLoaded, handleNewRating }) {
   const [selected, setSelected] = useState(5);
+  const [commentOkay, setCommentOkay] = useState(true);
   const [data, setData] = useState({
     name: '',
     content: '',
@@ -21,9 +22,10 @@ function CommentFormContainer({ mongodb_id, setCommentsLoaded, handleNewRating }
   const handleSubmit = (e, level) => {
     e.preventDefault();
     if (data.content.length < 1 || data.content.length > 1000) {
-      return alert('wrongo');
+      setCommentOkay(false);
+      return;
     }
-    
+    setCommentOkay(true);
     fetch('https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/comments', {
       method: 'POST',
       headers: {
@@ -72,7 +74,7 @@ function CommentFormContainer({ mongodb_id, setCommentsLoaded, handleNewRating }
       .catch(err => console.log(err.message))
 
   }
-
+  
   return (
     <CommentFormComponent
       handleChange={handleChange}
@@ -80,6 +82,7 @@ function CommentFormContainer({ mongodb_id, setCommentsLoaded, handleNewRating }
       data={data}
       selected={selected}
       handleOptionChange={handleOptionChange}
+      commentOkay={commentOkay}
     />
   )
 }

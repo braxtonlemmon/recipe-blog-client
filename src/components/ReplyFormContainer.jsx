@@ -61,7 +61,7 @@ function ReplyFormContainer({ parent, recipe, setCommentsLoaded }) {
 
 ReplyFormContainer.propTypes = {
   parent: PropTypes.string,
-  recipe: PropTypes.string,
+  recipe: PropTypes.object,
   setCommentsLoaded: PropTypes.func,
 }
 
