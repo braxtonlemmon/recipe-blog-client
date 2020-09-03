@@ -136,7 +136,7 @@ function NavBar({ isHeaderVisible, handleMenuClick, showMenu, location }) {
           </div>
         </Hamburger>
         <Links isHeaderVisible={isHeaderVisible}>
-          <Link to='/'>
+          <Link to='/#recipes-index'>
             <NavLink selected={location.pathname === '/'}>Recipes</NavLink>
           </Link>
           {/* <Link to={`/recipe/${getRandomTitle()}`}>

@@ -92,7 +92,7 @@ function MobileMenu({ showMenu, setShowMenu, isHeaderVisible }) {
         <Wrapper showMenu={showMenu} id="menu">
           <Container>
             <Links>
-              <Link to="/" onClick={() => handleClick()}>
+              <Link to="/#recipes-index" onClick={() => handleClick()}>
                 Recipes
               </Link>
               <Link to="/About" onClick={() => handleClick()}>

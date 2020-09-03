@@ -19,20 +19,6 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
-// const Recipes = styled.ul`
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: center;
-//   width: 100%;
-//   margin-top: 2em;
-//   a {
-//     margin: 20px;
-//   }
-//   @media (min-width: 1000px) {
-//     max-width: 90%;
-//   }
-// `;
-
 const Recipes = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -60,18 +46,17 @@ function IndexPage({ data }) {
       <SEO title="Home" description="Catalog of recipes" />
       <Wrapper>
         <Hero setRecipeClicked={setRecipeClicked} />
+        <div id="recipes-index"></div>
         <Recipes>
           {recipes.map(({node}) => {
             const slug = makeSlug(node.title);
             if (node.is_published) {
               return (
                 <Link key={node.id} to={`/recipe/${slug}`} onClick={handleRecipeClick} aria-label={`Go to recipe ${node.title}`}>
-                  {/* <li key={`list~${node.id}`}> */}
                     <RecipeCard 
                       recipe={node} 
                       key={`card~${node.id}`} 
                     />
-                  {/* </li> */}
                 </Link>)
               }
             })}
