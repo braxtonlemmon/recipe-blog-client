@@ -14,6 +14,7 @@ const Wrapper = styled.div`
   grid-template-areas:
     "title"
     "pic"
+    "quote"
     "share"
     "links"
     "ratings"
@@ -28,6 +29,7 @@ const Wrapper = styled.div`
     grid-template-areas:
       "title title"
       "pic pic"
+      "quote quote"
       "share share"
       "links links"
       "ratings ratings"
@@ -81,6 +83,13 @@ const Wrapper = styled.div`
     }
   }
 `
+const Quote = styled.p`
+  grid-area: quote;
+  font-size: 1.4em;
+  /* font-style: italic; */
+  margin-top: 10px;
+  text-align: center;
+`;
 
 const InfoBox = styled.div`
   display: flex;
@@ -202,7 +211,7 @@ const Image = styled.div`
   height: 275px;
   width: 275px;
   box-shadow: -10px 8px 2px #383838, 10px 12px 2px #5c5c5c;
-  box-shadow: 0 0 35px grey;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
   border-radius: 8px;
   margin: 20px 0;
   @media (min-width: 412px) {
@@ -324,6 +333,7 @@ const Step = styled.li`
 
 export {
   Wrapper,
+  Quote,
   InfoBox,
   IngredientsBox,
   StepsBox,

@@ -16,6 +16,7 @@ import {
   Wrapper,
   MyH1,
   Image,
+  Quote,
   // ToTop
 } from './RecipePageStyling';
 import PropTypes from 'prop-types';
@@ -128,6 +129,7 @@ function RecipePage({ data, location }) {
         <Image>
           <ImageSlider images={images} />
         </Image>
+        <Quote>{recipe.quote}</Quote>
         <Shortcuts 
           handlePrint={handlePrint} 
           setViewShare={setViewShare}
@@ -193,6 +195,7 @@ export const pageQuery = graphql`
       size
       steps
       images
+      quote
       ratings
       publish_date(
         formatString: "MMMM DD, YYYY"

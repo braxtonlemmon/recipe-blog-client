@@ -116,7 +116,7 @@ function Details({ recipe, convertDuration, ratings, content }) {
         <p>Serves: {recipe.size}</p>
       </Specs>
       <TLDR>
-        <h1>TL;DR</h1>
+        <h1>The gist.</h1>
         <p>{recipe.description}</p>
       </TLDR>
       <Intro dangerouslySetInnerHTML={{ __html: content }} />
