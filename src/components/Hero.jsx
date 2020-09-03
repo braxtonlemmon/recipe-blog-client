@@ -139,7 +139,7 @@ function Hero({ setRecipeClicked }) {
   const [isVisible, setVisible] = useState();
   const data = useStaticQuery(graphql`
     query {
-      mongodbTestRecipes(title: { eq: "Savory Crepes" }) {
+      mongodbTestRecipes(title: { eq: "Shakshouka" }) {
         title
         quote
         publish_date   
@@ -147,7 +147,7 @@ function Hero({ setRecipeClicked }) {
           images {
             localFile {
               childImageSharp {
-                fluid(maxHeight: 700) {
+                fluid(maxHeight: 1600) {
                   ...GatsbyImageSharpFluid
                 }
               }
