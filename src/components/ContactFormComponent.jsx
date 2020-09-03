@@ -9,7 +9,11 @@ const FormWrapper = styled.form`
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 15px;
+  margin-top: 20px;
+  font-size: 1.2em;
+  box-shadow: 0 0 8px rgba(0,0,0,0.15);
+  padding: 15px;
+  border-radius: 12px;
   .contact-form-input {
     padding: 10px 6px;
     line-height: 1.2em;
