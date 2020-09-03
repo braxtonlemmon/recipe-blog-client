@@ -64,7 +64,7 @@ const HeroImage = styled(Img)`
     top: 0;
     width: 100%;
     height: 100%;
-    box-shadow: inset 170px 0 160px 0 ${props => props.theme.colors.hero};
+    box-shadow: inset 220px 0 180px 10px ${props => props.theme.colors.hero};
   }
   }
   @media (min-width: 1500px) {
