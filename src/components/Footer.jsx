@@ -60,14 +60,20 @@ const Copyright = styled.div`
   text-align: center;
 `;
 
-function Footer({ setLoader }) {
+function Footer({ setLoader, location }) {
+  const handleClick = (pageName) => {
+    if (pageName !== location.pathname) {
+      setLoader(true);
+    }
+  }
+
   return (
     <Wrapper>
       <Links>
-        <Link onClick={() => setLoader(true)} aria-label="All Recipes" to='/#recipes-index'>Recipes</Link>
-        <Link onClick={() => setLoader(true)} title="About Page" to='/About'>About</Link>
-        <Link onClick={() => setLoader(true)} title="Contact Page" to='/Contact'>Contact</Link> 
-        <Link onClick={() => setLoader(true)} title="Subscribe to Newsletter" to="/Subscribe">Subscribe</Link>
+        <Link onClick={() => handleClick('/')} aria-label="All Recipes" to='/#recipes-index'>Recipes</Link>
+        <Link onClick={() => handleClick('/About')} title="About Page" to='/About'>About</Link>
+        <Link onClick={() => handleClick('/Contact')} title="Contact Page" to='/Contact'>Contact</Link> 
+        <Link onClick={() => handleClick('/Subscribe')} title="Subscribe to Newsletter" to="/Subscribe">Subscribe</Link>
       </Links>
       <SocialMedia inverse={true} />
       <Me>Designed and developed by 

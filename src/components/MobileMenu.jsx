@@ -55,7 +55,7 @@ const Links = styled.div`
   justify-content: space-around;
 `;
 
-function MobileMenu({ showMenu, setShowMenu, isHeaderVisible, setLoader }) {
+function MobileMenu({ showMenu, setShowMenu, isHeaderVisible, setLoader, location }) {
   const data = useStaticQuery(
     graphql`
       query {
@@ -69,9 +69,11 @@ function MobileMenu({ showMenu, setShowMenu, isHeaderVisible, setLoader }) {
       }
     `);
 
-  const handleClick = () => {
+  const handleClick = (pageName) => {
     setShowMenu(false);
-    setLoader(true);
+    if (location.pathname !== pageName) {
+      setLoader(true);
+    }
   }
 
   useEffect(() => {
@@ -93,18 +95,18 @@ function MobileMenu({ showMenu, setShowMenu, isHeaderVisible, setLoader }) {
         <Wrapper showMenu={showMenu} id="menu">
           <Container>
             <Links>
-              <Link to="/#recipes-index" onClick={() => handleClick()}>
+              <Link to="/#recipes-index" onClick={() => handleClick('/')}>
                 Recipes
               </Link>
-              <Link to="/About" onClick={() => handleClick()}>
+              <Link to="/About" onClick={() => handleClick('/About')}>
                 About
               </Link>
-              <Link to="/Contact" onClick={() => handleClick()}>
+              <Link to="/Contact" onClick={() => handleClick('/Contact')}>
                 Contact
               </Link>
               <Link
                 to={`/Subscribe`}
-                onClick={() => handleClick()}
+                onClick={() => handleClick('/Subscribe')}
               >
                 Subscribe
               </Link>

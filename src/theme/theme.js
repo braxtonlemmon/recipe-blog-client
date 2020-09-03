@@ -4,7 +4,8 @@ const theme = {
     medium: '#596235',
     pale: '#cdcbd6',
     coral: '#d96846',
-    hero: '#130e0c'
+    hero: '#130e0c',
+    bg: '#919879'
   },
   
   fontSize: {

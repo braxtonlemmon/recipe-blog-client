@@ -97,6 +97,7 @@ const Layout = ({ children, location }) => {
         isHeaderVisible={isHeaderVisible} 
         setShowMenu={setShowMenu} 
         setLoader={setLoader}  
+        location={location}
       />
       <Main onClick={() => handleMainClick()}>
         <Transition location={location}>
@@ -106,6 +107,7 @@ const Layout = ({ children, location }) => {
       </Main>
       <Footer 
         setLoader={setLoader}
+        location={location}
       />
     </Wrapper>
   )

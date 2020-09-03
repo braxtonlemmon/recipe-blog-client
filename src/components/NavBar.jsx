@@ -122,6 +122,12 @@ function NavBar({ isHeaderVisible, handleMenuClick, showMenu, location, setLoade
     return randomTitle.toLowerCase().replace(/ /g, '-');
   }
 
+  const handleClick = (pageName) => {
+    if (pageName !== location.pathname) {
+      setLoader(true);
+    }
+  }
+
   return (
     <HeaderBar 
       id="navbar" 
@@ -141,19 +147,19 @@ function NavBar({ isHeaderVisible, handleMenuClick, showMenu, location, setLoade
           </div>
         </Hamburger>
         <Links isHeaderVisible={isHeaderVisible}>
-          <Link onClick={() => setLoader(true)} to='/#recipes-index'>
+          <Link onClick={() => handleClick('/')} to='/#recipes-index'>
             <NavLink selected={location.pathname === '/'}>Recipes</NavLink>
           </Link>
-          {/* <Link onClick={() => setLoader(true)} to={`/recipe/${getRandomTitle()}`}>
+          {/* <Link onClick={() => handleClick()} to={`/recipe/${getRandomTitle()}`}>
             <NavLink>Random</NavLink>
           </Link> */}
-          <Link onClick={() => setLoader(true)} to='/About'>
+          <Link onClick={() => handleClick('/About')} to='/About'>
             <NavLink selected={location.pathname === '/About'}>About</NavLink>
           </Link>
-          <Link onClick={() => setLoader(true)} to='/Contact'>
+          <Link onClick={() => handleClick('/Contact')} to='/Contact'>
             <NavLink selected={location.pathname === '/Contact'}>Contact</NavLink>
           </Link>
-          <Link onClick={() => setLoader(true)} to='/Subscribe'>
+          <Link onClick={() => handleClick('/Subscribe')} to='/Subscribe'>
             <NavLink>Subscribe</NavLink>
           </Link>
         </Links>
