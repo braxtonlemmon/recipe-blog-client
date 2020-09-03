@@ -33,9 +33,11 @@ const DateAndRatings = styled.div`
   .details-ratings {
     display: flex;
     align-items: center;
+    color: ${props => props.theme.colors.star};
     p {
       margin-left: 3px;
       font-size: 0.9em;
+      color: black;
     }
   }
 `;
@@ -67,7 +69,8 @@ const TLDR = styled.div`
   text-align: center;
   h1 {
     margin-bottom: 10px;
-    font-weight: bold;
+    font-weight: bolder;
+    font-size: 1.3em;
   }
 `;
 
