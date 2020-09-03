@@ -38,12 +38,6 @@ const Container = styled.div`
   max-height: 600px;
   padding-top: 60px;
   padding-left: 5px;
-  a {
-    /* padding: 20px 10px; */
-    width: 100%;
-    font-size: 1.3em;
-    /* border-bottom: 1px solid black; */
-  }
 `;
 
 const Links = styled.div`
@@ -53,6 +47,12 @@ const Links = styled.div`
   max-height: 300px;
   padding-left: 10px;
   justify-content: space-around;
+  a {
+    /* padding: 20px 10px; */
+    width: 100%;
+    font-size: 1.6em;
+    /* border-bottom: 1px solid black; */
+  }
 `;
 
 function MobileMenu({ showMenu, setShowMenu, isHeaderVisible, setLoader, location }) {
@@ -111,7 +111,7 @@ function MobileMenu({ showMenu, setShowMenu, isHeaderVisible, setLoader, locatio
                 Subscribe
               </Link>
             </Links>
-            <SocialMedia inverse={false} />
+            <SocialMedia inverse={false} menu={true} />
           </Container>
         </Wrapper>
       )}
