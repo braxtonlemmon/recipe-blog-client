@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import PropTypes from 'prop-types';
-import { GiGarlic } from 'react-icons/gi';
 import garlic from '../images/loader_garlic.svg';
 
 const Wrapper = styled.div`
@@ -53,11 +52,6 @@ const Garlics = styled.div`
   }
 `;
 
-const Garlic = styled(GiGarlic)`
-  animation: ${jump} 1.1s linear infinite;
-  margin: 0 10px;
-  color: white;
-`
 function Loader({ message }) {
   return (
     <Wrapper>

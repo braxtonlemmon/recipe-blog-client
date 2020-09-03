@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Link, graphql, useStaticQuery } from 'gatsby';
@@ -56,19 +57,6 @@ const Links = styled.div`
 `;
 
 function MobileMenu({ showMenu, setShowMenu, isHeaderVisible, setLoader, location }) {
-  const data = useStaticQuery(
-    graphql`
-      query {
-        allMongodbTestRecipes {
-          edges {
-            node {
-              title
-            }
-          }
-        }
-      }
-    `);
-
   const handleClick = (pageName) => {
     setShowMenu(false);
     if (location.pathname !== pageName) {
@@ -80,15 +68,7 @@ function MobileMenu({ showMenu, setShowMenu, isHeaderVisible, setLoader, locatio
     const body = document.querySelector('body');
     showMenu ? body.style.overflow = 'hidden' : body.style.overflow = 'visible';
   }, [showMenu])
-  
-        
-  const getRandomTitle = () => {
-    const dbTitles = data.allMongodbTestRecipes.edges.map(({ node }) => node.title)
-    const randomTitle = dbTitles[Math.floor(Math.random() * dbTitles.length)]
-    return randomTitle.toLowerCase().replace(/ /g, "-")
-  }
-    
-  
+   
   return (
     <>
       {!isHeaderVisible && (

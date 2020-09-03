@@ -107,7 +107,7 @@ SubscribeFormComponent.propTypes = {
   handleChange: PropTypes.func,
   handleSubmit: PropTypes.func,
   handleSubmitWithPromises: PropTypes.func,
-  error: PropTypes.string
+  error: PropTypes.bool
 }
 
 export default SubscribeFormComponent;

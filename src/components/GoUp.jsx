@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { TiArrowUpOutline } from 'react-icons/ti';
@@ -32,7 +33,6 @@ function GoUp() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const aboutBox = document.getElementById('about-box');
       const slider = document.getElementById('slider');
       const observer = new IntersectionObserver(entries => {
         if (!entries[0].isIntersecting) {

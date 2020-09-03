@@ -47,7 +47,7 @@ function CommentBox({ comments, topComments, setCommentsLoaded, commentsLoaded})
       <H2>Comments</H2>
       <List>
         {
-          topComments.map((comment, i) => {
+          topComments.map(comment => {
             let margin = 15;
             return (
               <Comment 

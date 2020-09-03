@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useState } from 'react';
 import CommentFormComponent from './CommentFormComponent';
 import PropTypes from 'prop-types';
@@ -51,6 +52,7 @@ function CommentFormContainer({ mongodb_id, setCommentsLoaded, handleNewRating }
     })
     .catch(err => console.log(err.message));
 
+    // eslint-disable-next-line no-undef
     fetch(
       `https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/recipes/${mongodb_id}/ratings`,
       {
@@ -74,7 +76,7 @@ function CommentFormContainer({ mongodb_id, setCommentsLoaded, handleNewRating }
       .catch(err => console.log(err.message))
 
   }
-  
+
   return (
     <CommentFormComponent
       handleChange={handleChange}

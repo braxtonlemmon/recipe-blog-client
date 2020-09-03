@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
-import { Link, useStaticQuery, graphql } from 'gatsby';
+import { Link } from 'gatsby';
 import Hamburger from './Hamburger';
 import PropTypes from 'prop-types';
 
@@ -82,13 +82,10 @@ const NavLink = styled.p`
   font-size: 0.9em;
   padding: 4px 0 5px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0);
-  /* border-top: 1px solid rgba(0, 0, 0, 0); */
   transition: border-bottom 250ms ease-in-out;
-  /* transition: border-top 250ms ease-in-out; */
   transition: all 250ms ease;
   &:hover {
     border-bottom: 1px solid rgba(0, 0, 0, 1);
-    /* border-top: 1px solid rgba(0, 0, 0, 1); */
   }
 
   @media (min-width: 600px) {
@@ -101,27 +98,6 @@ const NavLink = styled.p`
 `
 
 function NavBar({ isHeaderVisible, handleMenuClick, showMenu, location, setLoader }) {
-  const [linkClicked, setLinkClicked] = useState(true);
-  const data = useStaticQuery(
-    graphql`
-      query {
-        allMongodbTestRecipes {
-          edges {
-            node {
-              title
-            }
-          }
-        }
-      }
-    `
-  );
-  
-  const getRandomTitle = () => {
-    const dbTitles = data.allMongodbTestRecipes.edges.map(({ node }) => node.title);
-    const randomTitle = dbTitles[Math.floor(Math.random() * dbTitles.length)];
-    return randomTitle.toLowerCase().replace(/ /g, '-');
-  }
-
   const handleClick = (pageName) => {
     if (pageName !== location.pathname) {
       setLoader(true);

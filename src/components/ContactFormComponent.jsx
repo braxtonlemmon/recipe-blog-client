@@ -52,7 +52,7 @@ const Buttons = styled.div`
   margin: 5px 0;
 `;
 
-function ContactFormComponent({ handleChange, data, handleSubmit, showErrors, formErrors }) {
+function ContactFormComponent({ handleChange, data, handleSubmit }) {
   return (
     <FormWrapper>
       <FormBox>

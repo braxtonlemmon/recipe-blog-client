@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useState } from 'react';
 import ContactFormComponent from './ContactFormComponent';
 import { navigate } from 'gatsby';

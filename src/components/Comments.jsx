@@ -1,8 +1,8 @@
+/* eslint-disable no-undef */
 import React, { useState, useEffect } from 'react';
 import CommentBox from './CommentBox';
 import CommentFormContainer from './CommentFormContainer';
 import PropTypes from 'prop-types';
-import CommentsLoader from './CommentsLoader';
 
 function Comments({ mongodb_id, handleNewRating }) {
   const [comments, setComments] = useState([]);
@@ -10,21 +10,17 @@ function Comments({ mongodb_id, handleNewRating }) {
   const [commentsLoaded, setCommentsLoaded] = useState(false);
 
   useEffect(() => {
-    // const abortController = new AbortController();
-
-    // fetch(`https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/comments/${mongodb_id}`, { signal: abortController.signal })
-        fetch(
-          `https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/comments/${mongodb_id}`,
-        )
-          .then(result => result.json())
-          .then(data => {
-            const topLevel = data.data.filter(comment => comment.level === 0)
-            setTopComments(topLevel)
-            setComments(data.data)
-          })
-          .then(() => setCommentsLoaded(true))
-          .catch(err => console.error("Request failed", err))
-      // return () => abortController.abort();
+    fetch(
+      `https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/comments/${mongodb_id}`,
+    )
+      .then(result => result.json())
+      .then(data => {
+        const topLevel = data.data.filter(comment => comment.level === 0)
+        setTopComments(topLevel)
+        setComments(data.data)
+      })
+      .then(() => setCommentsLoaded(true))
+      .catch(err => console.error("Request failed", err))
   }, [commentsLoaded, mongodb_id])
   
   return (
