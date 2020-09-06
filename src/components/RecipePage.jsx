@@ -17,7 +17,6 @@ import {
   MyH1,
   Image,
   Quote,
-  // ToTop
 } from './RecipePageStyling';
 import PropTypes from 'prop-types';
 import Printable from './Printable';

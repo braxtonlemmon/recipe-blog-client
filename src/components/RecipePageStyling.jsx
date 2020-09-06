@@ -321,7 +321,6 @@ const Step = styled.li`
     display: flex;
     align-items: center;
     cursor: pointer;
-    /* text-decoration: ${props => props.done === 'yes' ? 'line-through' : 'none'};
     color: ${props => props.done === 'yes' ? 'orange' : 'black'}; */
   }
   input:checked + label {
