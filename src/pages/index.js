@@ -47,7 +47,7 @@ function IndexPage({ data, setLoader }) {
   
   return (
     <>
-      <SEO title="Home" description="Catalog of recipes" />
+      <SEO title="Peel the Garlic" description="Recipes that invite you to slow down and peel the garlic." />
       <Wrapper>
         <Hero setRecipeClicked={setRecipeClicked} />
         <div id="recipes-index"></div>
