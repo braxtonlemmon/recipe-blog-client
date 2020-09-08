@@ -79,7 +79,10 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query {
-    allMongodbTestRecipes {
+    allMongodbTestRecipes(sort: {
+      fields: [publish_date]
+      order: DESC
+    }) {
       edges {
         node {
           id
