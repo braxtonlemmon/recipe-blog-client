@@ -21,12 +21,10 @@ const Wrapper = styled.div`
 const Announcement = styled(Link)`
   font-size: 1.5em;
   color: ${props => props.theme.colors.dark};
-  padding: 10px 5px;
+  padding: 15px;
   width: 70%;
   max-width: 700px;
   text-align: center;
-  /* border-top: 4px double ${props => props.theme.colors.dark};
-  border-bottom: 4px double ${props => props.theme.colors.dark}; */
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
   border-radius: 40px;
   &:hover {
@@ -70,7 +68,7 @@ function IndexPage({ data, setLoader }) {
         <Hero setRecipeClicked={setRecipeClicked} />
         <div id="recipes-index"></div>
         <Announcement to="/Newsletter">
-          New recipe every Tuesday!
+          Hey! New recipe every Tuesday.
         </Announcement>
         <Recipes>
           {recipes.map(({ node }) => {
