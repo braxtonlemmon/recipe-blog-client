@@ -2,8 +2,18 @@ import React from "react"
 import SEO from "../components/seo"
 import { H1 } from '../components/Headings';
 import Button from '../components/Button';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link } from 'gatsby';
+import { GiSpoon } from 'react-icons/gi';
+
+const wobble = keyframes`
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(30deg); }
+  40% { transform: rotate(0deg); }
+  60% { transform: rotate(30deg); }
+  80% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,14 +26,30 @@ const Wrapper = styled.div`
   padding-top: 2em;
 `;
 
+const Title = styled(H1)`
+  letter-spacing: 6px;
+  font-size: 5em;
+`;
+
+const Spoon = styled(GiSpoon)`
+  animation: ${wobble} 2.1s linear infinite;
+`;
+
+const Blurb = styled.p`
+  text-align: center;
+  margin: 15px 5px;
+  font-size: 1.2em;
+  line-height: 1.3em;
+`;
+
 const NotFoundPage = () => (
   <>
-    <SEO title="404: Not found" />
+    <SEO title="404: Oops" />
     <Wrapper>
-      <H1>404</H1>
-      <p>{`It seems you've made your way to the back of the kitchen utensil drawer.`}</p>
-      <p>{`There's not much back here other than a lost spoon and some crumbs.`}</p>
-      <p>{`The good news is that there's an easy way out. Just click below.`}</p>
+      <Title>404</Title>
+      <Blurb>{`It seems you've made your way to the back of the kitchen utensil drawer. There's not much back here other than a lost spoon and some crumbs.`}</Blurb>
+      <Spoon size={120} />
+      <Blurb>{`Click below to get out.`}</Blurb>
       <Link to="/">
         <Button>Home</Button>
       </Link>
