@@ -85,10 +85,10 @@ function MobileMenu({ showMenu, setShowMenu, isHeaderVisible, setLoader, locatio
                 Contact
               </Link>
               <Link
-                to={`/Subscribe`}
-                onClick={() => handleClick('/Subscribe')}
+                to={`/Newsletter`}
+                onClick={() => handleClick('/Newsletter')}
               >
-                Subscribe
+                Newsletter
               </Link>
             </Links>
             <SocialMedia inverse={false} menu={true} />

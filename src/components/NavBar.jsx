@@ -135,8 +135,8 @@ function NavBar({ isHeaderVisible, handleMenuClick, showMenu, location, setLoade
           <Link onClick={() => handleClick('/Contact')} to='/Contact'>
             <NavLink selected={location.pathname === '/Contact'}>Contact</NavLink>
           </Link>
-          <Link onClick={() => handleClick('/Subscribe')} to='/Subscribe'>
-            <NavLink>Subscribe</NavLink>
+          <Link onClick={() => handleClick('/Newsletter')} to='/Newsletter'>
+            <NavLink>Newsletter</NavLink>
           </Link>
         </Links>
       </Content>

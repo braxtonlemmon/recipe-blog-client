@@ -44,7 +44,7 @@ const Intro = styled.p`
   }
 `;
 
-function Subscribe({ setLoader }) {
+function Newsletter({ setLoader }) {
   const [subscribed, setSubscribed] = useState(false);
 
   const handleClose = () => {
@@ -55,7 +55,7 @@ function Subscribe({ setLoader }) {
   }, [])
   return (
     <Wrapper>
-      <H1>Subscribe</H1>
+      <H1>Newsletter</H1>
       <Intro>
         {`Here's the deal. You'll get one email each week that contains a new recipe from Peel the Garlic. Every email will have an unsubscribe link at the bottom in case you get sick of me, or decide that cooking is for the birds and that the take-out life is the life for you`}
         <FaPizzaSlice className="subscribe-pizza" size={18}/>
@@ -71,4 +71,4 @@ function Subscribe({ setLoader }) {
   )
 }
 
-export default Subscribe;
+export default Newsletter;

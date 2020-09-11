@@ -3,6 +3,7 @@ import SEO from "../components/seo"
 import { H1 } from '../components/Headings';
 import Button from '../components/Button';
 import styled from 'styled-components';
+import { Link } from 'gatsby';
 
 const Wrapper = styled.div`
   display: flex;
@@ -23,7 +24,9 @@ const NotFoundPage = () => (
       <p>{`It seems you've made your way to the back of the kitchen utensil drawer.`}</p>
       <p>{`There's not much back here other than a lost spoon and some crumbs.`}</p>
       <p>{`The good news is that there's an easy way out. Just click below.`}</p>
-      <Button>Home</Button>
+      <Link to="/">
+        <Button>Home</Button>
+      </Link>
     </Wrapper>
   </>
 )

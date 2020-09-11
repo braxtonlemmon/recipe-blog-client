@@ -14,6 +14,7 @@ const Wrapper = styled(Link)`
   width: 100%;
   z-index: 10;
   background: ${props => props.theme.colors.hero};
+  margin-bottom: 40px;
   @media (min-width: 760px) {
     height: 700px;
   }

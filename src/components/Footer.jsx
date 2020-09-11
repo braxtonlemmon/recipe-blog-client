@@ -73,7 +73,7 @@ function Footer({ setLoader, location }) {
         <Link onClick={() => handleClick('/')} aria-label="All Recipes" to='/#recipes-index'>Recipes</Link>
         <Link onClick={() => handleClick('/About')} title="About Page" to='/About'>About</Link>
         <Link onClick={() => handleClick('/Contact')} title="Contact Page" to='/Contact'>Contact</Link> 
-        <Link onClick={() => handleClick('/Subscribe')} title="Subscribe to Newsletter" to="/Subscribe">Subscribe</Link>
+        <Link onClick={() => handleClick('/Newsletter')} title="Subscribe to Newsletter" to="/Newsletter">Newsletter</Link>
       </Links>
       <SocialMedia inverse={true} />
       <Me>Designed and developed by 
