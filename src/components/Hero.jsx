@@ -53,7 +53,7 @@ const HeroImage = styled(Img)`
   width: 100%;
   height: 100%;
   & > img {
-    object-fit: cover;
+    object-fit: covers;
   }
   @media (min-width: 900px) {
     width: 75%;
@@ -140,7 +140,7 @@ function Hero({ setRecipeClicked }) {
   const [isVisible, setVisible] = useState();
   const data = useStaticQuery(graphql`
     query {
-      mongodbTestRecipes(title: { eq: "Shakshouka" }) {
+      mongodbTestRecipes(title: { eq: "Braised Pork Chops with Peach and Basil" }) {
         title
         quote
         publish_date   
