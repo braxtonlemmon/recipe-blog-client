@@ -134,13 +134,16 @@ const HeroTitle = styled(H1)`
   @media (min-width: 760px) {
     transform: ${({ isVisible }) => isVisible ? 'translateX(0)' : 'translateX(800%)'};
   }
+  @media (min-width: 1500px) {
+    transform: ${({ isVisible }) => isVisible ? 'translateX(0)' : 'translateX(1000%)'};
+  }
 `
 
 function Hero({ setRecipeClicked }) {
   const [isVisible, setVisible] = useState();
   const data = useStaticQuery(graphql`
     query {
-      mongodbTestRecipes(title: { eq: "Braised Pork Chops with Peach and Basil" }) {
+      mongodbTestRecipes(title: { eq: "Panzanella" }) {
         title
         quote
         publish_date   
