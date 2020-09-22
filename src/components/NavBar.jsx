@@ -68,7 +68,7 @@ const Links = styled.div`
   }
   @media (min-width: 730px) {
     ${props => !props.isHeaderVisible && css`
-      transform: translateX(30%);
+      transform: translateX(25%);
     `}
   }
   @media (min-width: 950px) {
