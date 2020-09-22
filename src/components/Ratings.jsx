@@ -26,7 +26,7 @@ const Wrapper = styled.div`
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
   grid-area: ratings;
   transition: height 500ms ease 2s, transform 500ms ease 2s;
-  height: ${props => props.rated ? '0px' : '100px'};
+  height: ${props => props.rated ? '0px' : '150px'};
   transform: ${props => props.rated ? 'scaleY(0)' : 'scaleY(100%)'};
   .star {
     height: 30px;
@@ -48,12 +48,20 @@ const Wrapper = styled.div`
     animation: ${grow} 1.3s ease-in-out infinite;
   }
 `
+const Top = styled.div`
+  display: flex;
+`;
+
+const Mid = styled.div`
+  display: flex;
+`;
 
 const Bottom = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  margin-top: 15px;
 `;
 
 function Ratings({ id, handleNewRating }) {
@@ -90,21 +98,26 @@ function Ratings({ id, handleNewRating }) {
 
   return (
     <Wrapper rated={rated}>
-      { !rated &&
-        <Stars 
-          selected={selected}
-          handleOptionChange={handleOptionChange}
-        />
-      }
+      <Top>
+        {!rated && (
+          <Stars
+            selected={selected}
+            handleOptionChange={handleOptionChange}
+          />
+        )}
+      </Top>
+      <Mid>
+        {!rated && <p className="made-it ratings-text">Made it?</p>}
+        {!rated && <p className="rate-it ratings-text">Rate it!</p>}
+      </Mid>
       <Bottom>
-        { !rated && <p className="made-it ratings-text">Made it?</p>}
-        {
-          rated
-          ? <p className="ratings-text">Thanks for rating!</p>
-          : 
+        {/* {!rated && <p className="made-it ratings-text">Made it?</p>} */}
+        {rated ? (
+          <p className="ratings-text">Thanks for rating!</p>
+        ) : (
           <Button onClick={handleRate}>Rate</Button>
-        }
-        { !rated && <p className="rate-it ratings-text">Rate it!</p>}
+        )}
+        {/* {!rated && <p className="rate-it ratings-text">Rate it!</p>} */}
       </Bottom>
     </Wrapper>
   )

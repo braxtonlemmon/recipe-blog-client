@@ -5,10 +5,11 @@ import { FaRegStar, FaStar } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
 const RatingBar = styled(Rating)`
-  margin-bottom: 10px;
-  .star {
-    height: 30px;
-    width: 30px;
+  margin-bottom: 12px;
+  
+  span .star {
+    height: 35px;
+    width: 35px;
     margin: 0 5px;
     color: ${props => props.theme.colors.star};
   }
