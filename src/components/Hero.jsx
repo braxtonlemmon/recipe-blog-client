@@ -143,10 +143,10 @@ function Hero({ setRecipeClicked }) {
   const [isVisible, setVisible] = useState();
   const data = useStaticQuery(graphql`
     query {
-      mongodbTestRecipes(title: { eq: "Panzanella" }) {
+      mongodbTestRecipes(title: { eq: "Pissaladière" }) {
         title
         quote
-        publish_date   
+        publish_date
         fields {
           images {
             localFile {
@@ -158,7 +158,7 @@ function Hero({ setRecipeClicked }) {
             }
           }
         }
-      } 
+      }
     }
   `)
   const featured = data.mongodbTestRecipes;

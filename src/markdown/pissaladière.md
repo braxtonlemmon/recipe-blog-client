@@ -1,5 +1,5 @@
 ---
-title: pissaladiere
+title: pissaladière
 ---
 There’s an episode of Spongebob Squarepants where Spongebob and Patrick are talking to a pirate ghost who is making an attempt to scare them. Unphased, Patrick demands the ghost tell him the whereabouts of his pizza order. The ghost waves his hands, says, “Pizza? I’ll give you a pizza!” and magically produces a pizza box. Spongebob and Patrick open the box, look inside, and scream. Why? They find a pizza topped with anchovies.
 
