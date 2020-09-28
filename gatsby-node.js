@@ -22,9 +22,9 @@ exports.createPages = async ({ graphql, actions }) => {
 
   for (const { node } of data.recipes.edges) {
     const title = makeSlug(node.title);
-    // const title = node.title.toLowerCase().replace(/ /g, '-');
     createPage({
-      path: `/recipe/${title}/`,
+      path: decodeURIComponent(`/recipe/${title}`),
+      // path: `/recipe/${title}/`,
       component: pageTemplate,
       context: {
         id: node.id,
