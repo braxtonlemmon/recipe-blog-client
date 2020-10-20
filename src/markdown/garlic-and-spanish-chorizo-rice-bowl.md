@@ -1,7 +1,7 @@
 ---
 title: garlic-and-spanish-chorizo-rice-bowl
 ---
-One of the core elements of the hardcore genre is the breakdown. It’s the musical moment when the screaming guitar riffs go quiet, the overall beat slows down, and the sludgy bass drum invites listeners to clump together for the classic mosh pit. Whether you like the angsty genre or not, take the opportunity at least once in your lifetime to listen to a hardcore song, wait for the breakdown, and let loose in your personal mosh pit.
+One of the core elements of the hardcore punk genre is the breakdown. It’s the musical moment when the screaming guitar riffs go quiet, the overall beat slows down, and the sludgy bass drum invites listeners to clump together for the classic mosh pit. Whether you like the angsty genre or not, take the opportunity at least once in your lifetime to listen to a hardcore song, wait for the breakdown, and let loose in your personal mosh pit.
 
 Today’s breakdown is called the Chorizo Breakdown. Chorizo can be confusing. I’ve made a fair amount of chorizo blunders myself, so I’m going to share with you what I’ve learned about this poignant pork product.
 
