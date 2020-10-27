@@ -143,7 +143,7 @@ function Hero({ setRecipeClicked }) {
   const [isVisible, setVisible] = useState();
   const data = useStaticQuery(graphql`
     query {
-      mongodbTestRecipes(title: { eq: "Roasted Eggplant and Caramelized Onion Dip" }) {
+      mongodbTestRecipes(title: { eq: "Braised Endive and Ham Gratin" }) {
         title
         quote
         publish_date
@@ -179,6 +179,7 @@ function Hero({ setRecipeClicked }) {
       return () => observer.unobserve(hero);
     }
   }, [])
+  console.log(featured)
 
   return (
     <Wrapper to={`/recipe/${slug}`} onClick={() => setRecipeClicked(true) }>

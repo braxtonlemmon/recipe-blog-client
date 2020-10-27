@@ -1,4 +1,0 @@
----
-title: endives
----
-blah

@@ -56,8 +56,9 @@ function IndexPage({ data, setLoader }) {
   
   useEffect(() => {
     setLoader(false)
+    console.log(recipes);
   }, [])
-  
+
   return (
     <>
       <SEO
