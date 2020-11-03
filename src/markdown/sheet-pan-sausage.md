@@ -1,3 +1,0 @@
----
-title: sheet-pan-sausage
---- 
