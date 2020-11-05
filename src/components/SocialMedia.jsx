@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { FaInstagram, FaGithub, FaFacebook, FaTwitter } from 'react-icons/fa';
+import { FaInstagram, FaGithub, FaFacebook, FaTwitter, FaPinterest } from 'react-icons/fa';
 
 const Wrapper = styled.div`
   display: flex;
@@ -23,6 +23,14 @@ function SocialMedia({ inverse, menu }) {
   const size = 40;
   return (
     <Wrapper inverse={inverse} menu={menu}>
+      <a
+        href="https://www.pinterest.com/peelthegarlic"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Go to peel the garlic pinterest."
+      >
+        <FaPinterest size={size} className="social-media-icon" />
+      </a>
       <a
         href="https://www.instagram.com/peelthegarlic/"
         target="_blank"
