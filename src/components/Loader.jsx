@@ -6,7 +6,7 @@ import garlic from '../images/loader_garlic.svg';
 const Wrapper = styled.div`
   position: fixed;
   top: calc(50% - 100px);
-  z-index: 100;
+  z-index: 502;
   height: 200px;
   width: 290px;
   display: flex;
