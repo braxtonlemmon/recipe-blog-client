@@ -1,5 +1,20 @@
 ---
 title: tomato-jam
 ---
+When it comes to tomatoes, better late than never is what I say. I am currently looking out my window as I write, and I see a few solid icicles clinging to the gutter and a good six or so inches of snow on the ground. The Rocky Mountain tomato season is over. If you live in the neighborhood of California or Texas however, you might still be able to snag a few red globes from the garden. Wherever you are, if you can get your hands on some tasty tomatoes, give this recipe a try. If not, put it in your back pocket for next summer, and let the excitement build.
 
-Sev
+There’s a sweet science to jam-making. As I don’t comprehend the nitty-gritty details enough to confidently explain it to myself in the mirror, I’m not even going to attempt to explain it here on the public world wide web. That would be embarrassing. What I do know is that the process involves enzymes, heat, polymer chains, pectin (which a tomato has a lot of), sugar, and acid. There. That’s as much as I’m going to say regarding the science of making jam. Take a five-minute coffee break to do a bit of googling and read about how it all works.
+
+Like several other recipes on the site, this one is going to ask for some patience and a bit of babysitting. Show your tomato jam some true love. Think about your favorite childhood toy. Maybe it happened to be a Beanie Baby stuffed animal dog named Bones with brown ears and cute droopy eyes. You know, just maybe. Think about how much you loved Bones and how he was your best friend. That’s the kind of love and patience this jam deserves. It’ll be worth it.
+
+I’ll say a few things about the flavors I chose to include in the jam. Let’s start with the red pepper flakes. Sometimes I can’t stop myself from sprinkling a pinch of red pepper flakes into a dish. It just feels right, and adding a minor quantity of the flakes often greatly enhances flavors while not actually turning the dish to the spicy-side. That’s what happens with this jam. The heat from the flakes creates an energy in the jam while not classifying the sweet tomato gel as spicy.
+
+Instead of including an onion, I decided to feature a shallot. Shallots are often a bit sweeter than onions, and are usually less powerful when cooked. I didn’t want an onion flavor to compete with the tomatoes, and I liked the idea of using the shallot’s natural sweetness. As soon as I decided to use a shallot, I immediately thought of how much I love combining shallots with ginger. So ginger was invited to the jam session and ended up becoming a permanent guest.
+
+The acid for the jam comes from a lime. A fresh lime, mind you. That stuff that comes in the green plastic bottle might make your jam taste a little funky. The risk is up to you though, and as Stevie Nicks always says, you can go your own way. I’m just saying, fresh limes raise the roof. Fresh lemon juice could also be used, but I like the pairing of lime with the shallot and ginger flavors.
+
+Lastly, I’ll say a thing or two about the cinnamon stick. There is a reason I chose a cinnamon stick over ground cinnamon. The cinnamon stick is added at the beginning of the recipe. Relatively soon after the cooking has begun, the stick is removed. This gives you the flexibility of tasting and removing the cinnamon stick as soon as you feel like the cinnamon flavor is at the level you want. I removed the stick after 30 minutes of cooking, but you may decide you want a less-present cinnamon flavor and remove it earlier. Your call, and that’s the story of why I went with a cinnamon stick.
+
+Remember this: the jam will firm up as it cools. Obtaining the perfect jam consistency depends on the ingredient ratios, the intensity of the cooking heat, and how long you keep the pot on the flame. If this is your very first time making jam, don’t be discouraged if it doesn’t turn out like you envisioned. Try again. Mix up the method. Try other recipes. You’ll get it. 
+
+When the jam is cooled and ready to eat, consider the following suggestion regarding how to serve it. In the picture on this page you can see two blurry sandwiches behind the bowl of jam. Those particular sandwiches had crisp bacon, sliced tomatoes, plain cream cheese, and the tomato jam. A real winner in my book. Try it and enjoy.
