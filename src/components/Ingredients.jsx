@@ -3,7 +3,8 @@ import { H2 } from './Headings';
 import PropTypes from 'prop-types';
 import {
   IngredientsBox,
-  Ingredient
+  Ingredient,
+  IngredientSection
 } from './RecipePageStyling';
 
 function Ingredients({ 
@@ -46,7 +47,40 @@ function Ingredients({
     >
       <H2 className="ingredients-box-title">Ingredients</H2>
       <ul>
-        {recipe.ingredients.map((ingredient, index) => (
+        {recipe.ingredients.map((ingredient, index) => {
+          console.log(ingredient[0])
+          if (ingredient[0] === '*') {
+            return (
+              <IngredientSection>
+                {ingredient.substr(1, ingredient.length - 1)}
+              </IngredientSection>
+            )
+          } else {
+            return (
+              <Ingredient
+                key={ingredient}
+                done={checkboxes[`ingredient-checkbox-${index}`]}
+                checkboxes={checkboxes}
+              >
+                <input
+                  className="checkbox"
+                  type="checkbox"
+                  id={`ingredient-checkbox-${index}`}
+                  defaultChecked={
+                    checkboxes[`ingredient-checkbox-${index}`] === true
+                  }
+                  onChange={handleCheck}
+                ></input>
+                <label
+                  className="ingredient-label"
+                  htmlFor={`ingredient-checkbox-${index}`}
+                >
+                  {ingredient}
+                </label>
+              </Ingredient>
+            )}
+        })}
+        {/* {recipe.ingredients.map((ingredient, index) => (
           <Ingredient
             key={ingredient}
             done={checkboxes[`ingredient-checkbox-${index}`]}
@@ -68,7 +102,7 @@ function Ingredients({
               {ingredient}
             </label>
           </Ingredient>
-        ))}
+        ))} */}
       </ul>
     </IngredientsBox>
   )

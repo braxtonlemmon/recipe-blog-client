@@ -269,6 +269,15 @@ const Ingredient = styled.li`
   }
 `
 
+const IngredientSection = styled.li`
+  line-height: 1.2em;
+  letter-spacing: 0.15px;
+  padding-top: 15px;
+  border-bottom: 2px solid black;
+  font-weight: bold;
+  margin-right: 5px;
+`;
+
 const Step = styled.li`
   /* margin: 5px 10px 15px 10px; */
   /* padding-bottom: 10px; */
@@ -339,5 +348,6 @@ export {
   MyH1,
   Image,
   Ingredient,
+  IngredientSection,
   Step,
 }
