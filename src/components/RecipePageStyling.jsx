@@ -330,13 +330,22 @@ const Step = styled.li`
     display: flex;
     align-items: center;
     cursor: pointer;
-    color: ${props => props.done === 'yes' ? 'orange' : 'black'}; */
+    color: ${props => props.done === 'yes' ? 'grey' : 'black'}; */
   }
   input:checked + label {
     color: grey;
     text-decoration: line-through;
   }
   width: 100%;
+`;
+
+const StepSection = styled.li`
+  line-height: 1.2em;
+  letter-spacing: 0.15px;
+  padding-top: 15px;
+  font-weight: bold;
+  margin-right: 5px;
+  font-size: 1.2em;
 `;
 
 export {
@@ -350,4 +359,5 @@ export {
   Ingredient,
   IngredientSection,
   Step,
+  StepSection
 }
