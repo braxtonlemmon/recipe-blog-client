@@ -143,7 +143,7 @@ function Hero({ setRecipeClicked }) {
   const [isVisible, setVisible] = useState();
   const data = useStaticQuery(graphql`
     query {
-      mongodbTestRecipes(title: { eq: "Carbonnade Flamande" }) {
+      mongodbTestRecipes(title: { eq: "Hazelnut and Kale Stuffing" }) {
         title
         quote
         publish_date
@@ -188,14 +188,13 @@ function Hero({ setRecipeClicked }) {
       ></DimLayer>
       <BigScreenBox></BigScreenBox>
       <HeroImage
-        fluid={featured.fields.images[0].localFile.childImageSharp.fluid}
+        fluid={featured.fields.images[2].localFile.childImageSharp.fluid}
         alt={featured.title}
         />
       <HeroTextBox
         isVisible={isVisible}
       >
         <HeroQuote isVisible={isVisible}>{`${featured.quote}`}</HeroQuote>
-        {/* <HeroQuote isVisible={isVisible}>Turmeric in a burger? Yes, please.</HeroQuote> */}
         <HeroTitle isVisible={isVisible}>{featured.title}</HeroTitle>
       </HeroTextBox>
     </Wrapper>
