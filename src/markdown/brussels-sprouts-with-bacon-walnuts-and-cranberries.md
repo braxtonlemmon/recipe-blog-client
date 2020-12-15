@@ -14,3 +14,4 @@ Add walnuts and suddenly the texture of the dish improves dramatically. The eart
 At the very end of cooking you will add the dressing. The quantity of dressing is not intended to drown the ingredients in the skillet, but you can always scale up on ingredients when making the  dressing if you feel like the dish needs more. 
 
 This is one of those recipes where I consider every ingredient to be extremely important when it comes to the overall flavor. I’m definitely guilty of omitting one or two ingredients when following a recipe because I don’t have it on hand or don’t want to buy it at the grocery store. If possible, don’t make that mistake with this recipe. Enjoy and let me know how it goes!
+
