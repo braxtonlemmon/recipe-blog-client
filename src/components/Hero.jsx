@@ -42,7 +42,7 @@ const BigScreenBox = styled.div`
     opacity: 1;
   }
   @media (min-width: 1500px) {
-    width: 40%;
+    width: 41%;
   }
 `;
 
@@ -66,6 +66,7 @@ const HeroImage = styled(Img)`
     width: 100%;
     height: 100%;
     box-shadow: inset 220px 0 180px 10px ${props => props.theme.colors.hero};
+    /* box-shadow: inset 220px 0 180px 10px black; */
   }
   }
   @media (min-width: 1500px) {
@@ -143,7 +144,7 @@ function Hero({ setRecipeClicked }) {
   const [isVisible, setVisible] = useState();
   const data = useStaticQuery(graphql`
     query {
-      mongodbTestRecipes(title: { eq: "Acorn Squash with Ginger Nutmeg Custard" }) {
+      mongodbTestRecipes(title: { eq: "Ancho Chili and Potato Soup" }) {
         title
         quote
         publish_date

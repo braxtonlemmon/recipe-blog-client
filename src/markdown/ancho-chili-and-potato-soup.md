@@ -1,0 +1,14 @@
+---
+title: ancho-chili-and-potato-soup
+---
+For most of my life, I’ve walked past those plastic bags of dried chilies you find at most grocery stores without the slightest hint of stopping to look at, let alone purchase, one of the bags. A few months ago I decided to change that. I’m embarrassed that I’ve spent so many years <em>not</em> cooking with dried chilies. What you get after patiently extracting the flavor from a dried chili is unlike any chili powder or other seasoning I’ve ever tasted. 
+
+If you’ve never cooked with dried chilies (again, I just started a couple months ago), set aside any apprehension you feel about cutting into one of those dark, crinkly pods, and declare to the world today that you are ready to try something new. If you do that, no one will be able to call you anything but cool. Tempting, eh?
+
+This recipe originally started as an idea for a tortilla soup. I envisioned a light-colored, creamy potato soup topped with nicely contrasting black beans and tortilla strips. Then something happened at the grocery store. I bought some ancho chilies. At home I decided to work one chili into the recipe to boost the flavor of the soup. One chili turned into two chilies. My light-colored soup was suddenly a dark, chili color. In addition to the color change, I no longer wanted all the potatoes pureed, and instead decided to leave half of the potatoes as cubes to give the soup texture. 
+
+When working with the chilies, you may want to consider wearing food prep gloves. Ancho chilies rank low on the Scoville scale, but still contain capsaicin, the compound in chilies that lights your tongue on fire. Based solely on personal observation, it seems that skin sensitivity to capsaicin depends on the person. I once had a friend who cooked with me, handled a jalapeño with bare hands, and complained of burning fingers for days. Other people, like lucky me, have emotionless fingertips and can handle a habanero with bare fingers and be totally fine. Maybe it has something to do with me touching way too many piping-hot pans and rubbing my fingertips on way too many rocks when rock climbing? Either way, wear gloves if you want to play it safe.
+
+When you open your bag of ancho chilies, you’ll notice they are quite dry. They shouldn’t be brittle and bone-dry; they should still be somewhat pliable. Regardless of their level of dryness, you will need to rehydrate the chilies for this recipe. This is done using hot water. After removing the seeds and the white pith (which, did you know, contains 90% of the capsaicin?), you’ll cover the chilies with hot water and allow them to soften for nearly half an hour. Then you will be able to blend the softened chilies with chicken broth and eventually incorporate the rich ancho flavor into the soup.
+
+If you’ve never cooked with dried chilies before, this recipe should be a nice primer and will hopefully convince you to make them a regular member of your pantry inventory. Enjoy.
