@@ -80,7 +80,7 @@ function Footer({ setLoader, location }) {
         <a title="Braxton Lemmon Web Developer" href="https://www.braxtonlemmon.com" target="_blank" rel="noopener noreferrer"> Braxton Lemmon</a>
       </Me>
       <Copyright>
-        {'\u00A9 2020 - Peel the Garlic. All rights reserved.'}
+        {'\u00A9 2020 - 2021 | Peel the Garlic. All rights reserved.'}
       </Copyright>
     </Wrapper>
   )
