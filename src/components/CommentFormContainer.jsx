@@ -1,9 +1,10 @@
 /* eslint-disable no-undef */
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import CommentFormComponent from './CommentFormComponent';
 import PropTypes from 'prop-types';
 
 function CommentFormContainer({ mongodb_id, setCommentsLoaded, handleNewRating }) {
+  const commentRef = useRef(null);
   const [selected, setSelected] = useState(5);
   const [commentOkay, setCommentOkay] = useState(true);
   const [data, setData] = useState({
@@ -16,6 +17,7 @@ function CommentFormContainer({ mongodb_id, setCommentsLoaded, handleNewRating }
   }
 
   const handleChange = (e) => {
+    console.log(typeof commentRef);
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
   }
@@ -85,6 +87,7 @@ function CommentFormContainer({ mongodb_id, setCommentsLoaded, handleNewRating }
       selected={selected}
       handleOptionChange={handleOptionChange}
       commentOkay={commentOkay}
+      commentRef={commentRef}
     />
   )
 }

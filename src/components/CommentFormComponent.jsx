@@ -55,7 +55,7 @@ const FormWrapper = styled.form`
 const CommentArea = styled.textarea`
     resize: none;
     outline: none;
-    padding: 5px;
+    padding: 15px 5px;
     border-radius: 8px;
     font-size: 1em;
     text-align: center;
@@ -64,10 +64,13 @@ const CommentArea = styled.textarea`
     border: ${props => props.commentOkay === true ? '1px solid lightgray' : '2px solid red'};
     width: 100%;
     max-width: 550px;
-    height: 150px;
+    height: ${props => props.height};
+    min-height: 150px;
+    overflow: hidden;
 `;
 
-function CommentFormComponent({ data, handleChange, handleSubmit, selected, handleOptionChange, commentOkay }) {
+function CommentFormComponent({ data, handleChange, handleSubmit, selected, handleOptionChange, commentOkay, commentRef }) {
+ 
   return (
     <FormWrapper 
       name="commentForm"
@@ -95,6 +98,8 @@ function CommentFormComponent({ data, handleChange, handleSubmit, selected, hand
         value={data.content}
         onChange={handleChange}
         commentOkay={commentOkay}
+        ref={commentRef}
+        height={`${commentRef.current ? commentRef.current.scrollHeight : '150'}px`}
       >
       </CommentArea>
       <Stars 
@@ -118,7 +123,8 @@ CommentFormComponent.propTypes = {
   handleSubmit: PropTypes.func,
   selected: PropTypes.number,
   handleOptionChange: PropTypes.func,
-  commentOkay: PropTypes.bool
+  commentOkay: PropTypes.bool,
+  commentRef: PropTypes.object
 }
 
 export default CommentFormComponent;
