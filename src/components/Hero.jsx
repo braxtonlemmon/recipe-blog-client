@@ -144,7 +144,7 @@ function Hero({ setRecipeClicked }) {
   const [isVisible, setVisible] = useState();
   const data = useStaticQuery(graphql`
     query {
-      mongodbTestRecipes(title: { eq: "Salade Nicoise" }) {
+      mongodbTestRecipes(title: { eq: "Roasted Sweet Potato Soup" }) {
         title
         quote
         publish_date
