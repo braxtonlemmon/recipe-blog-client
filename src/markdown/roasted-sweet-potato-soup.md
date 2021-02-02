@@ -9,7 +9,7 @@ Something else you should know: there’s a debate in the world about whether th
 
 Anyway, this soup has the potential to be really sweet and may even teeter on the verge of being liquid candy. If you want that, add the full ⅓ cup of brown sugar. If not, take it down to ¼ cup or even less. It depends on you and it depends on your dinner guests. Are they younger than 9, or are they older than 79? You know?
 
-I chose to pair the sweetpotatoes with a turnip. Root buddies for life. The turnip, when roasted, provides an additional sweetness and a subtle earthy flavor. Included in the roasting party is a single, unpeeled garlic clove. I’ve been studying Mexican cuisine recently, and have done a fair amount of dry roasting and oven roasting unpeeled garlic cloves. You could say I was inspired when making this soup.
+I chose to pair the sweetpotatoes with a turnip. Root buddies for life. The turnip, when roasted, provides an additional sweetness and a subtle earthy flavor. Included in the roasting party is a single, unpeeled garlic clove. I’ve been studying Mexican cuisine recently and have done a fair amount of dry roasting and oven roasting unpeeled garlic cloves. You could say I was inspired when making this soup.
 
 The soup base, before adding the roasted vegetables, is made of celery and onion sauteed in butter and chicken broth. Some ground nutmeg and cinnamon are added to give the whole soup a very wintery feel. Try to tell me nutmeg and cinnamon don’t make you think of a cozy winter.
 
