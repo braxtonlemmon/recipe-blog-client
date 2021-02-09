@@ -1,11 +1,11 @@
 /* eslint-disable no-undef */
-import React, {useState, useEffect} from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from "react"
+import styled from "styled-components"
 import { H1, H2 } from "./Headings"
-import Img from 'gatsby-image';
-import { Link, graphql, useStaticQuery } from 'gatsby';
-import makeSlug from '../utils/makeSlug';
-import PropTypes from 'prop-types';
+import Img from "gatsby-image"
+import { Link, graphql, useStaticQuery } from "gatsby"
+import makeSlug from "../utils/makeSlug"
+import PropTypes from "prop-types"
 
 const Wrapper = styled(Link)`
   overflow-x: hidden;
@@ -21,11 +21,10 @@ const Wrapper = styled(Link)`
   @media (min-width: 900px) {
     height: 600px;
   }
-  @media(min-width: 1200px) {
+  @media (min-width: 1200px) {
     height: 700px;
   }
-
-`;
+`
 
 const BigScreenBox = styled.div`
   position: absolute;
@@ -35,7 +34,11 @@ const BigScreenBox = styled.div`
   height: 100%;
   z-index: 13;
   opacity: 0;
-  background: linear-gradient(to right, ${props => props.theme.colors.hero}, rgba(0,0,0,0));
+  background: linear-gradient(
+    to right,
+    ${props => props.theme.colors.hero},
+    rgba(0, 0, 0, 0)
+  );
   background: ${props => props.theme.colors.hero};
 
   @media (min-width: 900px) {
@@ -44,7 +47,7 @@ const BigScreenBox = styled.div`
   @media (min-width: 1500px) {
     width: 41%;
   }
-`;
+`
 
 const HeroImage = styled(Img)`
   position: absolute;
@@ -58,16 +61,16 @@ const HeroImage = styled(Img)`
   @media (min-width: 900px) {
     width: 75%;
     left: 25%;
-  &:after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    box-shadow: inset 220px 0 180px 10px ${props => props.theme.colors.hero};
-    /* box-shadow: inset 220px 0 180px 10px black; */
-  }
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      box-shadow: inset 220px 0 180px 10px ${props => props.theme.colors.hero};
+      /* box-shadow: inset 220px 0 180px 10px black; */
+    }
   }
   @media (min-width: 1500px) {
     width: 60%;
@@ -87,7 +90,6 @@ const DimLayer = styled.div`
   }
 `
 
-
 const HeroTextBox = styled.div`
   position: absolute;
   bottom: 10px;
@@ -105,8 +107,6 @@ const HeroTextBox = styled.div`
     bottom: 25%;
     width: 35%;
   }
-
-
 `
 
 const HeroQuote = styled(H2)`
@@ -115,12 +115,13 @@ const HeroQuote = styled(H2)`
   align-self: flex-start;
   text-align: left;
   transition: transform 1.1s ease;
-  transform: ${({ isVisible }) => isVisible ? 'translateX(0)' : 'translateX(-105%)'};
+  transform: ${({ isVisible }) =>
+    isVisible ? "translateX(0)" : "translateX(-105%)"};
   font-size: calc(32px + (70 - 32) * ((100vw - 320px) / (1600 - 320)));
   /* 
   calc([min] + ([max] - [min]) * ((100vw - [minVw]) / ([maxVw] - [minVw])))
    */
-`;
+`
 
 const HeroTitle = styled(H1)`
   color: white;
@@ -130,21 +131,24 @@ const HeroTitle = styled(H1)`
   align-self: flex-start;
   text-align: start;
   transition: transform 1.1s ease;
-  transform: ${({ isVisible }) => isVisible ? 'translateX(0)' : 'translateX(500%)'};
+  transform: ${({ isVisible }) =>
+    isVisible ? "translateX(0)" : "translateX(500%)"};
   font-size: calc(19px + (35 - 19) * ((100vw - 320px) / (1600 - 320)));
   @media (min-width: 760px) {
-    transform: ${({ isVisible }) => isVisible ? 'translateX(0)' : 'translateX(800%)'};
+    transform: ${({ isVisible }) =>
+      isVisible ? "translateX(0)" : "translateX(800%)"};
   }
   @media (min-width: 1500px) {
-    transform: ${({ isVisible }) => isVisible ? 'translateX(0)' : 'translateX(1000%)'};
+    transform: ${({ isVisible }) =>
+      isVisible ? "translateX(0)" : "translateX(1000%)"};
   }
 `
 
 function Hero({ setRecipeClicked }) {
-  const [isVisible, setVisible] = useState();
+  const [isVisible, setVisible] = useState()
   const data = useStaticQuery(graphql`
     query {
-      mongodbTestRecipes(title: { eq: "Falafel and Tahini Sauce" }) {
+      mongodbTestRecipes(title: { eq: "Salmorejo" }) {
         title
         quote
         publish_date
@@ -162,39 +166,35 @@ function Hero({ setRecipeClicked }) {
       }
     }
   `)
-  const featured = data.mongodbTestRecipes;
-  const slug = makeSlug(featured.title);
+  const featured = data.mongodbTestRecipes
+  const slug = makeSlug(featured.title)
 
   useEffect(() => {
-    if (typeof document !== 'undefined') {
-      const hero = document.getElementById('hero-image');
+    if (typeof document !== "undefined") {
+      const hero = document.getElementById("hero-image")
       const options = {
-        threshold: 0.5
+        threshold: 0.5,
       }
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-          entry.isIntersecting ? setVisible(true) : setVisible(false);
+          entry.isIntersecting ? setVisible(true) : setVisible(false)
         })
-      }, options);
-      observer.observe(hero);
-      return () => observer.unobserve(hero);
+      }, options)
+      observer.observe(hero)
+      return () => observer.unobserve(hero)
     }
   }, [])
   console.log(featured)
 
   return (
-    <Wrapper to={`/recipe/${slug}`} onClick={() => setRecipeClicked(true) }>
-      <DimLayer
-        id="hero-image"
-      ></DimLayer>
+    <Wrapper to={`/recipe/${slug}`} onClick={() => setRecipeClicked(true)}>
+      <DimLayer id="hero-image"></DimLayer>
       <BigScreenBox></BigScreenBox>
       <HeroImage
         fluid={featured.fields.images[0].localFile.childImageSharp.fluid}
         alt={featured.title}
-        />
-      <HeroTextBox
-        isVisible={isVisible}
-      >
+      />
+      <HeroTextBox isVisible={isVisible}>
         <HeroQuote isVisible={isVisible}>{`${featured.quote}`}</HeroQuote>
         <HeroTitle isVisible={isVisible}>{featured.title}</HeroTitle>
       </HeroTextBox>
@@ -202,7 +202,7 @@ function Hero({ setRecipeClicked }) {
   )
 }
 Hero.propTypes = {
-  setRecipeClicked: PropTypes.func
+  setRecipeClicked: PropTypes.func,
 }
 
-export default Hero;
+export default Hero
