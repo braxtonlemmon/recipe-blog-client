@@ -56,7 +56,7 @@ const HeroImage = styled(Img)`
   width: 100%;
   height: 100%;
   & > img {
-    object-fit: covers;
+    object-fit: cover;
   }
   @media (min-width: 900px) {
     width: 75%;
@@ -148,7 +148,7 @@ function Hero({ setRecipeClicked }) {
   const [isVisible, setVisible] = useState()
   const data = useStaticQuery(graphql`
     query {
-      mongodbTestRecipes(title: { eq: "Salmorejo" }) {
+      mongodbTestRecipes(title: { eq: "Tomatillo and Chili Braised Chicken" }) {
         title
         quote
         publish_date
@@ -193,6 +193,9 @@ function Hero({ setRecipeClicked }) {
       <HeroImage
         fluid={featured.fields.images[0].localFile.childImageSharp.fluid}
         alt={featured.title}
+        imgStyle={{
+          objectPosition: "center 35%",
+        }}
       />
       <HeroTextBox isVisible={isVisible}>
         <HeroQuote isVisible={isVisible}>{`${featured.quote}`}</HeroQuote>
