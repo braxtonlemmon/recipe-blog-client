@@ -148,7 +148,9 @@ function Hero({ setRecipeClicked }) {
   const [isVisible, setVisible] = useState()
   const data = useStaticQuery(graphql`
     query {
-      mongodbTestRecipes(title: { eq: "Tomatillo and Chili Braised Chicken" }) {
+      mongodbTestRecipes(
+        title: { eq: "Quiche with Bacon and Caramelized Mushrooms" }
+      ) {
         title
         quote
         publish_date
@@ -193,9 +195,9 @@ function Hero({ setRecipeClicked }) {
       <HeroImage
         fluid={featured.fields.images[0].localFile.childImageSharp.fluid}
         alt={featured.title}
-        imgStyle={{
-          objectPosition: "center 35%",
-        }}
+        // imgStyle={{
+        //   objectPosition: "center 35%",
+        // }}
       />
       <HeroTextBox isVisible={isVisible}>
         <HeroQuote isVisible={isVisible}>{`${featured.quote}`}</HeroQuote>
