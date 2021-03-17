@@ -149,7 +149,7 @@ function Hero({ setRecipeClicked }) {
   const data = useStaticQuery(graphql`
     query {
       mongodbTestRecipes(
-        title: { eq: "Pork Medallions, Braised Cabbage, and Pear Lager Sauce" }
+        title: { eq: "Provençal Tian and Cottage Cheese Filled Crepes" }
       ) {
         title
         quote
