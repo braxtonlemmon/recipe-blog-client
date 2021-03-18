@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react"
-import styled from 'styled-components';
+import styled from "styled-components"
 import PropTypes from "prop-types"
-import Header from './Header';
-import NavBar from './NavBar';
-import MobileMenu from './MobileMenu';
-import Footer from './Footer';
-import Transition from './transition';
-import Loader from '../components/Loader';
+import Header from "./Header"
+import NavBar from "./NavBar"
+import MobileMenu from "./MobileMenu"
+import Footer from "./Footer"
+import Transition from "./transition"
+import Loader from "../components/Loader"
 
 const Wrapper = styled.div`
   display: grid;
@@ -32,58 +32,56 @@ const Wrapper = styled.div`
 
 const Main = styled.main`
   padding-bottom: 3em;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   height: 100%;
   width: 100%;
   position: relative;
   grid-area: main;
-`;
+`
 
 const Layout = ({ children, location }) => {
-  const [isHeaderVisible, setHeaderVisible] = useState(true);
-  const [showMenu, setShowMenu] = useState(false);
-  const [loader, setLoader] = useState(false);
+  const [isHeaderVisible, setHeaderVisible] = useState(true)
+  const [showMenu, setShowMenu] = useState(false)
+  const [loader, setLoader] = useState(false)
 
   const handleMenuClick = () => {
-    setShowMenu(!showMenu);
+    setShowMenu(!showMenu)
   }
-  
+
   const handleMainClick = () => {
     if (showMenu) {
-      setShowMenu(false);
+      setShowMenu(false)
     }
   }
-  
+
   useEffect(() => {
-    if (typeof document !== 'undefined') {
-      const header = document.getElementById('header');
+    if (typeof document !== "undefined") {
+      const header = document.getElementById("header")
       const options = {
-        threshold: 0
+        threshold: 0,
       }
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            setHeaderVisible(true);
-            setShowMenu(false);
+            setHeaderVisible(true)
+            setShowMenu(false)
           } else {
-            setHeaderVisible(false);
+            setHeaderVisible(false)
           }
         })
       }, options)
 
-      observer.observe(header);
-      return () => observer.unobserve(header);
+      observer.observe(header)
+      return () => observer.unobserve(header)
     }
   }, [])
-  const childrenWithProps = React.Children.map(children, (child) =>
-    React.cloneElement(child, {setLoader: setLoader})
-  );
+  const childrenWithProps = React.Children.map(children, child =>
+    React.cloneElement(child, { setLoader: setLoader })
+  )
 
   return (
-    <Wrapper
-      onClick={() => handleMainClick()}
-    >
+    <Wrapper onClick={() => handleMainClick()}>
       <Header isHeaderVisible={isHeaderVisible} />
       <NavBar
         isHeaderVisible={isHeaderVisible}
@@ -92,23 +90,18 @@ const Layout = ({ children, location }) => {
         location={location}
         setLoader={setLoader}
       />
-      <MobileMenu 
-        showMenu={showMenu} 
-        isHeaderVisible={isHeaderVisible} 
-        setShowMenu={setShowMenu} 
-        setLoader={setLoader}  
-        location={location}
-      />
-      <Main onClick={() => handleMainClick()}>
-        <Transition location={location}>
-          {childrenWithProps}
-        </Transition>
-        {loader && <Loader message="Loading" />}
-      </Main>
-      <Footer 
+      <MobileMenu
+        showMenu={showMenu}
+        isHeaderVisible={isHeaderVisible}
+        setShowMenu={setShowMenu}
         setLoader={setLoader}
         location={location}
       />
+      <Main onClick={() => handleMainClick()}>
+        <Transition location={location}>{childrenWithProps}</Transition>
+        {loader && <Loader message="Loading" />}
+      </Main>
+      <Footer setLoader={setLoader} location={location} />
     </Wrapper>
   )
 }
