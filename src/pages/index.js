@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { Link, graphql } from 'gatsby';
-import RecipeCard from '../components/RecipeCard';
+import React, { useState, useEffect } from "react"
+import styled from "styled-components"
+import { Link, graphql } from "gatsby"
+import RecipeCard from "../components/RecipeCard"
 // import SEO from '../components/seo';
-import SEO from '../components/SEOv2';
-import Hero from '../components/Hero';
-import PropTypes from 'prop-types';
-import makeSlug from '../utils/makeSlug';
-import Loader from '../components/Loader';
+import SEO from "../components/SEOv2"
+import Hero from "../components/Hero"
+import PropTypes from "prop-types"
+import makeSlug from "../utils/makeSlug"
+import Loader from "../components/Loader"
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   justify-items: center;
   width: 100%;
   position: relative;
-`;
+`
 
 const Announcement = styled(Link)`
   font-size: 1.5em;
@@ -25,10 +25,10 @@ const Announcement = styled(Link)`
   width: 70%;
   max-width: 700px;
   text-align: center;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   border-radius: 40px;
   &:hover {
-    box-shadow: 0 0 12px rgba(0,0,0,0.4);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
   }
 `
 
@@ -44,19 +44,19 @@ const Recipes = styled.div`
   @media (min-width: 1000px) {
     max-width: 90%;
   }
-`;
+`
 
 function IndexPage({ data, setLoader }) {
-  const recipes = data.allMongodbTestRecipes.edges;
-  const [recipeClicked, setRecipeClicked] = useState(false);
+  const recipes = data.allMongodbTestRecipes.edges
+  const [recipeClicked, setRecipeClicked] = useState(false)
 
   const handleRecipeClick = () => {
-    setRecipeClicked(true);
+    setRecipeClicked(true)
   }
-  
+
   useEffect(() => {
     setLoader(false)
-    console.log(recipes);
+    console.log(recipes)
   }, [])
 
   return (
@@ -69,7 +69,7 @@ function IndexPage({ data, setLoader }) {
         <Hero setRecipeClicked={setRecipeClicked} />
         <div id="recipes-index"></div>
         <Announcement to="/Newsletter">
-          Hey! New recipe every Tuesday.
+          New recipe added every other week!
         </Announcement>
         <Recipes>
           {recipes.map(({ node }) => {
@@ -98,23 +98,18 @@ IndexPage.propTypes = {
   data: PropTypes.object,
 }
 
-export default IndexPage;
+export default IndexPage
 
 export const pageQuery = graphql`
   query {
-    allMongodbTestRecipes(sort: {
-      fields: [publish_date]
-      order: DESC
-    }) {
+    allMongodbTestRecipes(sort: { fields: [publish_date], order: DESC }) {
       edges {
         node {
           id
           title
           quote
           is_published
-          publish_date(
-            formatString: "MMMM DD, YYYY"
-          )
+          publish_date(formatString: "MMMM DD, YYYY")
           fields {
             images {
               localFile {
@@ -130,4 +125,4 @@ export const pageQuery = graphql`
       }
     }
   }
-  `
+`
