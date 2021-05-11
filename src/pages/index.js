@@ -69,7 +69,7 @@ function IndexPage({ data, setLoader }) {
         <Hero setRecipeClicked={setRecipeClicked} />
         <div id="recipes-index"></div>
         <Announcement to="/Newsletter">
-          New recipe added when I feel like it :)
+          Want to know when I post a new recipe? Click here.
         </Announcement>
         <Recipes>
           {recipes.map(({ node }) => {

@@ -1,0 +1,21 @@
+---
+title: papa-rellena
+---
+
+There is a slight, slight chance that someone reading this will have noticed I’ve been quite absent for several weeks. To that reader, I will provide an explanation. I got a job! A few years ago I started an immersive journey into the world of web development and computer programming. Peel the Garlic, in fact, was born as a hobby coding project. The hours of head-scratching and keyboard mashing seem to have paid off and I’m employed full-time in my first software engineering position. Exciting, I know! The downside, obviously, is that my time is now distributed quite differently than before. I’m still hanging out in the kitchen on a daily basis, I just haven’t been able to maintain a weekly recipe release since starting a new job. I’m here to apologize and clarify my plan going forward.
+
+I cannot guarantee weekly published recipes, but I can guarantee that Peel the Garlic will continue. For those of you who live for consistency, I’m sorry. New recipes will be published (like this one for example), but on a relatively random and sporadic timeline. If that doesn’t put some excitement and spontaneity in your life, I don’t know what will. So with that, on to today’s recipe!
+
+Close your eyes for one moment and visualize a potato. Now open them again so you can keep reading. DO you know where the potato originally came from? It’s not Idaho, yo. It comes from a magical place high in the mountains with an ancient underwater temple: Lake Titicaca. At an elevation of over 12,000 ft, Lake Titicaca straddles the border of Peru and Bolivia in the Andes mountains. The rumor in the history world is that this region is the birthplace of the potato. Today, Peru is home to over 3,000 (or 4,000, according to some) potato varieties. Pause now and do a Google Image search for Peruvian potatoes and you’ll see some colorful, oddly-shaped spuds.
+
+As a result of hosting varieties upon varieties of these tubers, Peru is also home to some really great potato dishes. One of these, papa rellena, is mega-fun because the final product ends up looking again like a whole potato. But cut inside to that “potato”, and, surprise!
+
+The idea behind papa rellena is simple: envelope a savory sauteed mixture with mashed potatoes, and deep fry the entire unit. You’ll be using basic Yukon Gold potatoes in this recipe, so no need to journey to the Andes for the fancy stuff. The potatoes will be boiled skin-on and peeled post-boil when cool enough to handle.
+
+This recipe goes with a classic papa rellena filling, including ground beef, hard boiled eggs, raisins, olives, and a few other flavorful ingredients. You could definitely play around with what goes into papa rellena, so feel free to get experimental after trying today’s recipe.
+
+The most difficult step in the entire process, in my opinion, is sealing the mashed potato around the filling. The potato might start to stick to your hands, the filling might pop out of the potato, and the doorbell might ring. So I’ll tell you what works best for me. Before plopping a potato glob into your hands, coat them in oil. I’ve heard other people like to dust cornstarch on their hands instead, and maybe that works as well. Either method should work. Once you’ve flattened out the potato mash into a disk, add as much filling as you dare. For me, this amount is usually between 2-3 tablespoons. Now here comes the important part. Get both of your hands, side by side, under that potato disk. Almost as if you had just landed in your hands. In one clamshell motion, keeping the pinky-sides of your hands together, fold the disk together, wrapping the potato completely around the filling. You did it! Now make it look like a rugby ball and move onto the next one.
+
+I like to wait until all the rugby balls are complete before beginning the egg/flour drenching process. At this point, as long as your oil is hot enough, you’re ready to fry those things. Be sure to monitor the cooking. One, it’s hot oil, and two, you want even browning, not even burning.
+
+Once they’re all done frying, it’s time to serve. Top with the cabbage and cilantro. If you wish, you can also accompany the dish with a salsa or other sauce of your choosing. Enjoy!
