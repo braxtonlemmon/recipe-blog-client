@@ -1,5 +1,5 @@
-import { H1 } from './Headings';
-import styled from 'styled-components';
+import { H1 } from "./Headings"
+import styled from "styled-components"
 
 const Wrapper = styled.div`
   display: flex;
@@ -89,7 +89,7 @@ const Quote = styled.p`
   /* font-style: italic; */
   margin-top: 10px;
   text-align: center;
-`;
+`
 
 const InfoBox = styled.div`
   display: flex;
@@ -97,7 +97,7 @@ const InfoBox = styled.div`
   /* padding: 10px; */
   /* margin: 5px; */
   align-items: center;
-`;
+`
 
 // const AboutBox = styled(InfoBox)`
 //   grid-area: about;
@@ -106,8 +106,6 @@ const InfoBox = styled.div`
 //   margin-bottom: 15px;
 //   border-bottom: 5px solid ${props => props.theme.colors.dark};
 // `;
-
-
 
 const IngredientsBox = styled(InfoBox)`
   /* display: grid; */
@@ -168,7 +166,7 @@ const StepsBox = styled(InfoBox)`
   @media (min-width: 760px) {
     /* border-left: 2px dashed black; */
     padding-left: 20px;
-    justify-self: left; 
+    justify-self: left;
   }
   .sidenote {
     /* font-style: italic; */
@@ -199,7 +197,7 @@ const StepsBox = styled(InfoBox)`
     font-size: 1.1em;
     color: darkslateblue;
   }
-`;
+`
 
 const MyH1 = styled(H1)`
   grid-area: title;
@@ -208,10 +206,10 @@ const MyH1 = styled(H1)`
 
 const Image = styled.div`
   grid-area: pic;
-  height: 275px;
-  width: 275px;
+  height: 270px;
+  width: 270px;
   box-shadow: -10px 8px 2px #383838, 10px 12px 2px #5c5c5c;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   margin: 20px 0;
   @media (min-width: 412px) {
@@ -230,7 +228,7 @@ const Image = styled.div`
     height: 100%;
     border-radius: 8px;
   }
-`;
+`
 
 const Ingredient = styled.li`
   margin: 10px;
@@ -276,7 +274,7 @@ const IngredientSection = styled.li`
   border-bottom: 2px solid black;
   font-weight: bold;
   margin-right: 5px;
-`;
+`
 
 const Step = styled.li`
   /* margin: 5px 10px 15px 10px; */
@@ -315,8 +313,9 @@ const Step = styled.li`
     align-items: center;
     height: 100%;
     width: 100%;
-    text-decoration: ${props => props.done === 'yes' ? 'line-through' : 'none'};
-    color: ${props => props.done === 'yes' ? 'grey' : 'black'};
+    text-decoration: ${props =>
+      props.done === "yes" ? "line-through" : "none"};
+    color: ${props => (props.done === "yes" ? "grey" : "black")};
   }
 
   .step-number {
@@ -330,14 +329,14 @@ const Step = styled.li`
     display: flex;
     align-items: center;
     cursor: pointer;
-    color: ${props => props.done === 'yes' ? 'grey' : 'black'}; */
+    color: ${props => (props.done === "yes" ? "grey" : "black")}; */
   }
   input:checked + label {
     color: grey;
     text-decoration: line-through;
   }
   width: 100%;
-`;
+`
 
 const StepSection = styled.li`
   line-height: 1.2em;
@@ -346,7 +345,7 @@ const StepSection = styled.li`
   font-weight: bold;
   margin-right: 5px;
   font-size: 1.2em;
-`;
+`
 
 export {
   Wrapper,
@@ -359,5 +358,5 @@ export {
   Ingredient,
   IngredientSection,
   Step,
-  StepSection
+  StepSection,
 }

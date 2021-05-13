@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import { H2 } from './Headings';
-import PropTypes from 'prop-types';
-import Button from './Button';
-import Stars from './Stars';
+import React from "react"
+import styled from "styled-components"
+import { H2 } from "./Headings"
+import PropTypes from "prop-types"
+import Button from "./Button"
+import Stars from "./Stars"
 
 const FormWrapper = styled.form`
   display: flex;
@@ -12,7 +12,7 @@ const FormWrapper = styled.form`
   justify-content: center;
   border-top: 5px solid ${props => props.theme.colors.dark};
   padding: 15px;
-  width: 90%;
+  width: 95%;
   grid-area: commentForm;
   margin-top: 15px;
   z-index: 501;
@@ -42,7 +42,8 @@ const FormWrapper = styled.form`
     text-align: center;
     margin-bottom: 10px;
     background: #fbfaff;
-    border: ${props => props.commentOkay === true ? '1px solid lightgray' : '2px solid red'};
+    border: ${props =>
+      props.commentOkay === true ? "1px solid lightgray" : "2px solid red"};
     width: 100%;
     max-width: 550px;
     height: 150px;
@@ -50,33 +51,37 @@ const FormWrapper = styled.form`
   @media (min-width: 1200px) {
     width: 80%;
   }
-`;
+`
 
 const CommentArea = styled.textarea`
-    resize: none;
-    outline: none;
-    padding: 15px 5px;
-    border-radius: 8px;
-    font-size: 1em;
-    text-align: center;
-    margin-bottom: 10px;
-    background: #fbfaff;
-    border: ${props => props.commentOkay === true ? '1px solid lightgray' : '2px solid red'};
-    width: 100%;
-    max-width: 550px;
-    height: ${props => props.height};
-    min-height: 150px;
-    overflow: hidden;
-`;
+  resize: none;
+  outline: none;
+  padding: 15px 5px;
+  border-radius: 8px;
+  font-size: 1em;
+  text-align: center;
+  margin-bottom: 10px;
+  background: #fbfaff;
+  border: ${props =>
+    props.commentOkay === true ? "1px solid lightgray" : "2px solid red"};
+  width: 100%;
+  max-width: 550px;
+  height: ${props => props.height};
+  min-height: 150px;
+  overflow: hidden;
+`
 
-function CommentFormComponent({ data, handleChange, handleSubmit, selected, handleOptionChange, commentOkay, commentRef }) {
- 
+function CommentFormComponent({
+  data,
+  handleChange,
+  handleSubmit,
+  selected,
+  handleOptionChange,
+  commentOkay,
+  commentRef,
+}) {
   return (
-    <FormWrapper 
-      name="commentForm"
-      id="comments-anchor"  
-    >
-
+    <FormWrapper name="commentForm" id="comments-anchor">
       <H2>What did you think? Leave a comment!</H2>
       <label htmlFor="name">Name</label>
       <input
@@ -99,21 +104,13 @@ function CommentFormComponent({ data, handleChange, handleSubmit, selected, hand
         onChange={handleChange}
         commentOkay={commentOkay}
         ref={commentRef}
-        height={`${commentRef.current ? commentRef.current.scrollHeight : '150'}px`}
-      >
-      </CommentArea>
-      <Stars 
-        selected={selected}
-        handleOptionChange={handleOptionChange}
-      />
-      <Button
-        onClick={(e) => handleSubmit(e, 0)}
-      >
-        Submit
-      </Button>
-
+        height={`${
+          commentRef.current ? commentRef.current.scrollHeight : "150"
+        }px`}
+      ></CommentArea>
+      <Stars selected={selected} handleOptionChange={handleOptionChange} />
+      <Button onClick={e => handleSubmit(e, 0)}>Submit</Button>
     </FormWrapper>
-
   )
 }
 
@@ -124,7 +121,7 @@ CommentFormComponent.propTypes = {
   selected: PropTypes.number,
   handleOptionChange: PropTypes.func,
   commentOkay: PropTypes.bool,
-  commentRef: PropTypes.object
+  commentRef: PropTypes.object,
 }
 
-export default CommentFormComponent;
+export default CommentFormComponent

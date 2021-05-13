@@ -1,8 +1,8 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import { Link } from 'gatsby';
-import Hamburger from './Hamburger';
-import PropTypes from 'prop-types';
+import React from "react"
+import styled, { css } from "styled-components"
+import { Link } from "gatsby"
+import Hamburger from "./Hamburger"
+import PropTypes from "prop-types"
 
 const HeaderBar = styled.div`
   position: -webkit-sticky;
@@ -21,7 +21,7 @@ const HeaderBar = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
+`
 
 const Content = styled.div`
   width: 100%;
@@ -35,7 +35,7 @@ const Content = styled.div`
   .logo {
     font-weight: bolder;
   }
-`;
+`
 
 const Logo = styled.p`
   position: absolute;
@@ -45,10 +45,11 @@ const Logo = styled.p`
   opacity: 0;
   color: ${props => props.theme.colors.dark};
   transition: opacity 250ms ease;
-  opacity: ${({ isHeaderVisible }) => isHeaderVisible ? '0' : '1'};
+  opacity: ${({ isHeaderVisible }) => (isHeaderVisible ? "0" : "1")};
   font-size: 1.5em;
   transition: transform 400ms ease;
-  transform: ${props => props.isHeaderVisible ? 'translateY(-150%)' : 'translateY(0%)'};
+  transform: ${props =>
+    props.isHeaderVisible ? "translateY(-150%)" : "translateY(0%)"};
 `
 
 const Links = styled.div`
@@ -61,25 +62,28 @@ const Links = styled.div`
   justify-self: baseline;
   overflow: hidden;
   transition: transform 500ms ease;
-  transform: ${props => props.isHeaderVisible ? 'translateY(0)' : 'translateY(180%)'};
+  transform: ${props =>
+    props.isHeaderVisible ? "translateY(0)" : "translateY(180%)"};
   @media (min-width: 412px) {
     gap: 20px;
     font-size: 1.1em;
   }
   @media (min-width: 730px) {
-    ${props => !props.isHeaderVisible && css`
-      transform: translateX(25%);
-    `}
+    ${props =>
+      !props.isHeaderVisible &&
+      css`
+        transform: translateX(25%);
+      `}
   }
   @media (min-width: 950px) {
     transform: translateX(0);
   }
-`;
+`
 
 const NavLink = styled.p`
   color: ${props => props.theme.colors.dark};
   text-transform: uppercase;
-  font-size: 0.9em;
+  font-size: 0.8em;
   padding: 4px 0 5px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0);
   transition: border-bottom 250ms ease-in-out;
@@ -97,25 +101,31 @@ const NavLink = styled.p`
   }
 `
 
-function NavBar({ isHeaderVisible, handleMenuClick, showMenu, location, setLoader }) {
-  const handleClick = (pageName) => {
+function NavBar({
+  isHeaderVisible,
+  handleMenuClick,
+  showMenu,
+  location,
+  setLoader,
+}) {
+  const handleClick = pageName => {
     if (pageName !== location.pathname) {
-      setLoader(true);
+      setLoader(true)
     }
   }
 
   return (
-    <HeaderBar 
-      id="navbar" 
-      isHeaderVisible={isHeaderVisible}
-    >
+    <HeaderBar id="navbar" isHeaderVisible={isHeaderVisible}>
       <Content isHeaderVisible={isHeaderVisible}>
         <Link to="/">
           <Logo isHeaderVisible={isHeaderVisible} className="logo">
             PEEL THE GARLIC
           </Logo>
         </Link>
-        <Hamburger onClick={() => handleMenuClick()} isHeaderVisible={isHeaderVisible}>
+        <Hamburger
+          onClick={() => handleMenuClick()}
+          isHeaderVisible={isHeaderVisible}
+        >
           <div className="icon">
             <div className={showMenu ? "line1 view" : "line1"}></div>
             <div className={showMenu ? "line2 view" : "line2"}></div>
@@ -123,19 +133,21 @@ function NavBar({ isHeaderVisible, handleMenuClick, showMenu, location, setLoade
           </div>
         </Hamburger>
         <Links isHeaderVisible={isHeaderVisible}>
-          <Link onClick={() => handleClick('/')} to='/#recipes-index'>
-            <NavLink selected={location.pathname === '/'}>Recipes</NavLink>
+          <Link onClick={() => handleClick("/")} to="/#recipes-index">
+            <NavLink selected={location.pathname === "/"}>Recipes</NavLink>
           </Link>
           {/* <Link onClick={() => handleClick()} to={`/recipe/${getRandomTitle()}`}>
             <NavLink>Random</NavLink>
           </Link> */}
-          <Link onClick={() => handleClick('/About')} to='/About'>
-            <NavLink selected={location.pathname === '/About'}>About</NavLink>
+          <Link onClick={() => handleClick("/About")} to="/About">
+            <NavLink selected={location.pathname === "/About"}>About</NavLink>
           </Link>
-          <Link onClick={() => handleClick('/Contact')} to='/Contact'>
-            <NavLink selected={location.pathname === '/Contact'}>Contact</NavLink>
+          <Link onClick={() => handleClick("/Contact")} to="/Contact">
+            <NavLink selected={location.pathname === "/Contact"}>
+              Contact
+            </NavLink>
           </Link>
-          <Link onClick={() => handleClick('/Newsletter')} to='/Newsletter'>
+          <Link onClick={() => handleClick("/Newsletter")} to="/Newsletter">
             <NavLink>Newsletter</NavLink>
           </Link>
         </Links>
@@ -144,13 +156,12 @@ function NavBar({ isHeaderVisible, handleMenuClick, showMenu, location, setLoade
   )
 }
 
-NavBar.propTypes = { 
-  isHeaderVisible: PropTypes.bool, 
-  handleMenuClick: PropTypes.func, 
+NavBar.propTypes = {
+  isHeaderVisible: PropTypes.bool,
+  handleMenuClick: PropTypes.func,
   showMenu: PropTypes.bool,
   location: PropTypes.object,
-  setLoader: PropTypes.func 
+  setLoader: PropTypes.func,
 }
 
-export default NavBar;
-
+export default NavBar

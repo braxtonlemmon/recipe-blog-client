@@ -1,7 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import { FaInstagram, FaGithub, FaFacebook, FaTwitter, FaPinterest } from 'react-icons/fa';
+import React from "react"
+import styled from "styled-components"
+import PropTypes from "prop-types"
+import {
+  FaInstagram,
+  FaGithub,
+  FaFacebook,
+  FaTwitter,
+  FaPinterest,
+} from "react-icons/fa"
 
 const Wrapper = styled.div`
   display: flex;
@@ -9,18 +15,19 @@ const Wrapper = styled.div`
   align-items: center;
   margin: 15px 0;
   .social-media-icon {
-    margin: ${props => props.menu ? '5px 8px' : '5px 15px'};
+    margin: ${props => (props.menu ? "5px 8px" : "5px 15px")};
     /* margin: 5px 15px; */
     cursor: pointer;
-    color: ${props => props.inverse === true ? 'white' : props.theme.colors.dark};
+    color: ${props =>
+      props.inverse === true ? "white" : props.theme.colors.dark};
     &:hover {
       color: ${props => props.theme.colors.pale};
     }
   }
-`;
+`
 
 function SocialMedia({ inverse, menu }) {
-  const size = 40;
+  const size = 30
   return (
     <Wrapper inverse={inverse} menu={menu}>
       <a
@@ -68,7 +75,7 @@ function SocialMedia({ inverse, menu }) {
 }
 
 SocialMedia.propTypes = {
-  inverse: PropTypes.bool
+  inverse: PropTypes.bool,
 }
 
-export default SocialMedia;
+export default SocialMedia

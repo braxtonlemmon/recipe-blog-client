@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import { Link as ScrollLink } from 'react-scroll';
-import { FaPrint } from 'react-icons/fa';
-import { TiArrowDownOutline } from 'react-icons/ti';
+import React from "react"
+import styled from "styled-components"
+import PropTypes from "prop-types"
+import { Link as ScrollLink } from "react-scroll"
+import { FaPrint } from "react-icons/fa"
+import { TiArrowDownOutline } from "react-icons/ti"
 import { GrShareOption } from "react-icons/gr"
 
 const Links = styled.div`
@@ -34,14 +34,15 @@ const Links = styled.div`
   }
   .button-w-icon {
     width: 120px;
+    margin: 5px;
   }
-`;
+`
 
 function Shortcuts({ handlePrint, handleShare, setViewShare }) {
   const handleOpenShare = () => {
-    setViewShare(true);
+    setViewShare(true)
   }
-  const path = typeof window !== 'undefined' ? window.location.pathname : '';
+  const path = typeof window !== "undefined" ? window.location.pathname : ""
   const url = `https://www.peelthegarlic.com${path}`
 
   return (
@@ -80,7 +81,7 @@ function Shortcuts({ handlePrint, handleShare, setViewShare }) {
 Shortcuts.propTypes = {
   handlePrint: PropTypes.func,
   handleShare: PropTypes.func,
-  setViewShare: PropTypes.func
+  setViewShare: PropTypes.func,
 }
 
-export default Shortcuts;
+export default Shortcuts
