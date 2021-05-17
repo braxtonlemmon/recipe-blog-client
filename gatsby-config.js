@@ -132,6 +132,12 @@ module.exports = {
     //     prefix: "recipes",
     //   },
     // },
+    {
+      resolve: "gatsby-plugin-sitemap",
+      options: {
+        exclude: ["/ThankYou", "/unsubscribe"],
+      },
+    },
     "gatsby-plugin-styled-components",
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
