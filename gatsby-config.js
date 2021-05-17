@@ -1,15 +1,15 @@
 /* eslint-disable no-undef */
-require('dotenv').config({
+require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
-});
+})
 const {
   NODE_ENV,
-  URL: NETLIFY_SITE_URL = 'https://www.peelthegarlic.com',
+  URL: NETLIFY_SITE_URL = "https://www.peelthegarlic.com",
   DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
   CONTEXT: NETLIFY_ENV = NODE_ENV,
-} = process.env;
-const isNetlifyProduction = NETLIFY_ENV === 'production';
-const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
+} = process.env
+const isNetlifyProduction = NETLIFY_ENV === "production"
+const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL
 
 module.exports = {
   siteMetadata: {
@@ -32,6 +32,15 @@ module.exports = {
       options: {
         name: "markdown",
         path: `${__dirname}/src/markdown`,
+      },
+    },
+    {
+      resolve: "gatsby-transformer-cloudinary",
+      options: {
+        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+        apiKey: process.env.CLOUDINARY_API_KEY,
+        apiSecret: process.env.CLOUDINARY_API_SECRET,
+        uploadFolder: "gatsby-cloudinary",
       },
     },
     {
@@ -92,7 +101,7 @@ module.exports = {
       resolve: "gatsby-plugin-google-fonts",
       options: {
         fonts: ["Montserrat"],
-        display: 'swap'
+        display: "swap",
       },
     },
     {
@@ -113,6 +122,16 @@ module.exports = {
         trackingId: "UA-176765666-1",
       },
     },
+    // {
+    //   resolve: "gatsby-source-cloudinary",
+    //   options: {
+    //     cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+    //     apiKey: process.env.CLOUDINARY_API_KEY,
+    //     apiSecret: process.env.CLOUDINARY_API_SECRET,
+    //     resourceType: "image",
+    //     prefix: "recipes",
+    //   },
+    // },
     "gatsby-plugin-styled-components",
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
