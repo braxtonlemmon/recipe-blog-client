@@ -35,15 +35,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-transformer-cloudinary",
-      options: {
-        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
-        apiKey: process.env.CLOUDINARY_API_KEY,
-        apiSecret: process.env.CLOUDINARY_API_SECRET,
-        uploadFolder: "gatsby-cloudinary",
-      },
-    },
-    {
       resolve: "gatsby-plugin-robots-txt",
       options: {
         resolveEnv: () => NETLIFY_ENV,
@@ -122,16 +113,6 @@ module.exports = {
         trackingId: "UA-176765666-1",
       },
     },
-    // {
-    //   resolve: "gatsby-source-cloudinary",
-    //   options: {
-    //     cloudName: process.env.CLOUDINARY_CLOUD_NAME,
-    //     apiKey: process.env.CLOUDINARY_API_KEY,
-    //     apiSecret: process.env.CLOUDINARY_API_SECRET,
-    //     resourceType: "image",
-    //     prefix: "recipes",
-    //   },
-    // },
     {
       resolve: "gatsby-plugin-sitemap",
       options: {
