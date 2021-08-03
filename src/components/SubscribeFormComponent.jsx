@@ -1,20 +1,19 @@
-import React from 'react';
-import styled, {keyframes} from 'styled-components';
-import Button from './Button';
-import PropTypes from 'prop-types';
+import React from "react"
+import styled, { keyframes } from "styled-components"
+import Button from "./Button"
+import PropTypes from "prop-types"
 
 const left = keyframes`
   0% { transform: rotate(30deg)}
   50% { transform: rotate(-30deg)}
   100% { transform: rotate(30deg)}
-`;
+`
 
 const right = keyframes`
   0% { transform: rotate(-30deg)}
   50% { transform: rotate(30deg) }
   100% { transform: rotate(-30deg)}
-`;
-
+`
 
 const Wrapper = styled.form`
   display: flex;
@@ -22,9 +21,10 @@ const Wrapper = styled.form`
   justify-content: baseline;
   align-items: center;
   position: relative;
-  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   border-radius: 15px;
   width: 100%;
+  max-width: 600px;
   margin: 15px auto;
   & > * {
     margin: 10px 0;
@@ -50,7 +50,7 @@ const Wrapper = styled.form`
     max-width: 50px;
     text-align: center;
   }
-`;
+`
 
 const Box = styled.div`
   display: flex;
@@ -70,14 +70,20 @@ const Box = styled.div`
     text-align: center;
     border-radius: 8px;
     outline: none;
-    border: 1px solid rgba(0,0,0,0.3);
+    border: 1px solid rgba(0, 0, 0, 0.3);
     background: #fbfaff;
     width: 90%;
     max-width: 400px;
   }
 `
 
-function SubscribeFormComponent({ email, handleChange, handleSubmit, error, handleSubmitWithPromises }) {
+function SubscribeFormComponent({
+  email,
+  handleChange,
+  handleSubmit,
+  error,
+  handleSubmitWithPromises,
+}) {
   return (
     <Wrapper>
       <Box>
@@ -92,12 +98,12 @@ function SubscribeFormComponent({ email, handleChange, handleSubmit, error, hand
         />
         <Button onClick={handleSubmitWithPromises}>Subscribe</Button>
       </Box>
-      {error && 
+      {error && (
         <>
           <p className="subscribe-error error-left">Uh oh!</p>
           <p className="subscribe-error error-right">Try again!</p>
         </>
-      }
+      )}
     </Wrapper>
   )
 }
@@ -107,7 +113,7 @@ SubscribeFormComponent.propTypes = {
   handleChange: PropTypes.func,
   handleSubmit: PropTypes.func,
   handleSubmitWithPromises: PropTypes.func,
-  error: PropTypes.bool
+  error: PropTypes.bool,
 }
 
-export default SubscribeFormComponent;
+export default SubscribeFormComponent
