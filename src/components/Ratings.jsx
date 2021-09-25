@@ -94,7 +94,7 @@ function Ratings({ id, handleNewRating }) {
         }
         throw new Error("Network response was not okay")
       })
-      .catch(err => console.log(err.message))
+      .catch(err => console.log(`Problem with Ratings: ${err.message}`))
   }
 
   return (

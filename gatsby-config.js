@@ -116,15 +116,16 @@ module.exports = {
     {
       resolve: "gatsby-plugin-sitemap",
       options: {
-        exclude: ["/ThankYou", "/unsubscribe"],
+        excludes: ["/ThankYou", "/unsubscribe"],
       },
     },
     "gatsby-plugin-styled-components",
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
-    "gatsby-plugin-sitemap",
     "gatsby-plugin-netlify",
     `gatsby-transformer-sharp`,
     "gatsby-transformer-remark",
+    `gatsby-plugin-typescript`,
   ],
 }

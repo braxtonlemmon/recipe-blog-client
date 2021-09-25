@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { H1, H2 } from "./Headings"
-import Img from "gatsby-image"
+import { getSrc, StaticImage } from "gatsby-plugin-image"
 import { Link, graphql, useStaticQuery } from "gatsby"
 import makeSlug from "../utils/makeSlug"
 import PropTypes from "prop-types"
@@ -49,7 +49,7 @@ const BigScreenBox = styled.div`
   }
 `
 
-const HeroImage = styled(Img)`
+const HeroImage = styled(StaticImage)`
   position: absolute;
   top: 0;
   left: 0;
@@ -147,26 +147,18 @@ const HeroTitle = styled(H1)`
 function Hero({ setRecipeClicked }) {
   const [isVisible, setVisible] = useState()
   const data = useStaticQuery(graphql`
-    query {
+    query HeroQuery {
       mongodbTestRecipes(title: { eq: "Frango com Quiabo" }) {
         title
         quote
         publish_date
-        fields {
-          images {
-            localFile {
-              childImageSharp {
-                fluid(maxHeight: 1600) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
+        images
       }
     }
   `)
   const featured = data.mongodbTestRecipes
+  const image = featured.images[0]
+  console.log(image)
   const slug = makeSlug(featured.title)
 
   useEffect(() => {
@@ -185,18 +177,25 @@ function Hero({ setRecipeClicked }) {
     }
   }, [])
   console.log(featured)
-
   return (
     <Wrapper to={`/recipe/${slug}`} onClick={() => setRecipeClicked(true)}>
       <DimLayer id="hero-image"></DimLayer>
       <BigScreenBox></BigScreenBox>
-      <HeroImage
-        fluid={featured.fields.images[0].localFile.childImageSharp.fluid}
-        alt={featured.title}
-        // imgStyle={{
-        //   objectPosition: "center 35%",
-        // }}
-      />
+      {/* <StaticImage
+        // fluid={
+        //   featured.fields.images[0].localFile.childImageSharp.gatsbyImageData
+        // }
+        src={featured.fields.images[0].url}
+        alt="blah"
+        imgStyle={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+        }}
+      /> */}
+      <StaticImage src={image} alt="blah" />
       <HeroTextBox isVisible={isVisible}>
         <HeroQuote isVisible={isVisible}>{`${featured.quote}`}</HeroQuote>
         <HeroTitle isVisible={isVisible}>{featured.title}</HeroTitle>

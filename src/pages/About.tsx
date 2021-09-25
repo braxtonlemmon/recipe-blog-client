@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useEffect } from "react"
+import styled from "styled-components"
 // import SEO from '../components/seo';
-import SEO from '../components/SEOv2';
-import { H1 } from '../components/Headings';
-import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import SEO from "../components/SEOv2"
+import { H1 } from "../components/Headings"
+import { graphql } from "gatsby"
+import { GatsbyImage } from "gatsby-plugin-image"
+import { AboutPageQuery } from "../../graphql-types"
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,13 +15,13 @@ const Wrapper = styled.div`
   width: 80%;
   padding-top: 2em;
   margin: 0 auto;
-`;
+`
 
 const Content = styled.div`
   h2 {
-    font-size: 1.8em; 
+    font-size: 1.8em;
     margin-top: 40px;
-    text-align: left; 
+    text-align: left;
   }
 
   h3 {
@@ -53,54 +54,51 @@ const Content = styled.div`
     /* margin-right: 20px; */
     padding-bottom: 15px;
   }
-`;
+`
 
-
-const AboutPic = styled(Img)`
+const AboutPic = styled(GatsbyImage)`
   width: 100%;
   max-width: 500px;
   margin: 30px auto 20px auto;
-  box-shadow: 0 0 8px rgba(0,0,0,0.4);
-`;
-function About({ data, setLoader }) {
-  const { markdownRemark } = data;
-  const meFluid = data.file.childImageSharp.fluid;
-  const { html } = markdownRemark;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+`
+
+type AboutProps = {
+  data: AboutPageQuery
+  setLoader: (loader: boolean) => void
+}
+
+const About: React.FC<AboutProps> = props => {
+  const { data, setLoader } = props
+  const { markdownRemark } = data
+  const meFluid = data.file.childImageSharp.gatsbyImageData
+  const { html } = markdownRemark
   useEffect(() => {
     setLoader(false)
-  }, []);
+  }, [])
   return (
     <>
-      {/* <SEO title="About" description="About page" /> */}
       <SEO title="About" description="About page" />
       <Wrapper>
         <H1>About</H1>
-        {/* <ImageBox>
-          <Img id="about-pic" fluid={meFluid} alt="picture of braxton" />
-        </ImageBox> */}
-        <AboutPic fluid={meFluid} alt="picture of me" />
-        <Content
-          dangerouslySetInnerHTML={{ __html: html }}
-        ></Content>
-        {/* <div dangerouslySetInnerHTML={{ __html: html }} /> */}
+        <AboutPic image={meFluid} alt="picture of me" />
+        <Content dangerouslySetInnerHTML={{ __html: html }}></Content>
       </Wrapper>
     </>
   )
 }
 
 export const pageQuery = graphql`
-  query {
-    markdownRemark(frontmatter: { title: { eq: "About"}}) {
+  query AboutPage {
+    markdownRemark(frontmatter: { title: { eq: "About" } }) {
       html
     }
-    file(name: {eq: "me_cooking" }) {
+    file(name: { eq: "me_cooking" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(layout: FULL_WIDTH)
       }
     }
   }
-`;
+`
 
-export default About;
+export default About

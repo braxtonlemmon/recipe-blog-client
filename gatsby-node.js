@@ -1,9 +1,9 @@
-const path = require('path');
-const { createRemoteFileNode } = require('gatsby-source-filesystem');
-const makeSlug = require('./src/utils/makeSlug');
+const path = require("path")
+const { createRemoteFileNode } = require("gatsby-source-filesystem")
+const makeSlug = require("./src/utils/makeSlug")
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions;
+  const { createPage } = actions
 
   const { data } = await graphql(`
     {
@@ -18,17 +18,17 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  const pageTemplate = path.resolve('./src/components/RecipePage.jsx');
+  const pageTemplate = path.resolve("./src/components/RecipePage.tsx")
 
   for (const { node } of data.recipes.edges) {
-    const title = makeSlug(node.title);
+    const title = makeSlug(node.title)
     createPage({
       path: decodeURIComponent(`/recipe/${title}`),
       // path: `/recipe/${title}/`,
       component: pageTemplate,
       context: {
         id: node.id,
-        title: title
+        title: title,
       },
     })
   }
@@ -36,7 +36,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
 const isEmpty = val => {
   if (val === undefined || val.length === 0) {
-    return true;
+    return true
   } else {
     return false
   }
@@ -51,7 +51,7 @@ exports.onCreateNode = async ({
 }) => {
   const { createNodeField, createNode } = actions
 
-  if (node.internal.type === 'mongodbTestRecipes') {
+  if (node.internal.type === "mongodbTestRecipes") {
     if (node.images && !isEmpty(node.images)) {
       const images = await Promise.all(
         node.images.map(url =>
@@ -65,9 +65,9 @@ exports.onCreateNode = async ({
           })
         )
       )
-      
+
       await createNodeField({
-        node, 
+        node,
         name: "images",
         value: images,
       })
@@ -78,4 +78,3 @@ exports.onCreateNode = async ({
     }
   }
 }
-

@@ -56,7 +56,6 @@ function IndexPage({ data, setLoader }) {
 
   useEffect(() => {
     setLoader(false)
-    console.log(recipes)
   }, [])
 
   return (
@@ -96,12 +95,13 @@ function IndexPage({ data, setLoader }) {
 
 IndexPage.propTypes = {
   data: PropTypes.object,
+  setLoader: PropTypes.func,
 }
 
 export default IndexPage
 
 export const pageQuery = graphql`
-  query {
+  query IndexQuery {
     allMongodbTestRecipes(sort: { fields: [publish_date], order: DESC }) {
       edges {
         node {
@@ -114,9 +114,7 @@ export const pageQuery = graphql`
             images {
               localFile {
                 childImageSharp {
-                  fluid(maxWidth: 1000) {
-                    ...GatsbyImageSharpFluid
-                  }
+                  gatsbyImageData(layout: FULL_WIDTH)
                 }
               }
             }

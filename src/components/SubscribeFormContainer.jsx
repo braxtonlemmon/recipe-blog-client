@@ -1,34 +1,32 @@
-import React, { useState } from 'react';
-import SubscribeFormComponent from './SubscribeFormComponent';
-import PropTypes from 'prop-types';
-import Loader from './Loader';
+import React, { useState } from "react"
+import SubscribeFormComponent from "./SubscribeFormComponent"
+import PropTypes from "prop-types"
+import Loader from "./Loader"
 
 function SubscribeFormContainer({ setSubscribed }) {
   const [email, setEmail] = useState("")
-  const [error, setError] = useState(false);
-  const [isSending, setSending] = useState(false);
+  const [error, setError] = useState(false)
+  const [isSending, setSending] = useState(false)
 
   const handleChange = e => {
     const { value } = e.target
-    setError(false);
-    setEmail(value);
+    setError(false)
+    setEmail(value)
   }
 
   // same as #handleSubmit, but includes API PUT request to sendgrid to add to 'newsletter' contact list
   const handleSubmitWithPromises = e => {
-    e.preventDefault();
-    const isValid = handleValidation();
+    e.preventDefault()
+    const isValid = handleValidation()
     if (isValid) {
-      setSending(true);
+      setSending(true)
       const sendgridObject = {
-        "list_ids": [
-          `${process.env.GATSBY_SENDGRID_LIST_ID}`
-        ],
-        "contacts": [
+        list_ids: [`${process.env.GATSBY_SENDGRID_LIST_ID}`],
+        contacts: [
           {
-            "email": email
-          }
-        ]
+            email: email,
+          },
+        ],
       }
 
       Promise.all([
@@ -41,51 +39,55 @@ function SubscribeFormContainer({ setSubscribed }) {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              address: email
+              address: email,
             }),
           }
         ),
-        fetch("https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/newsletter/welcome", {
-          method: "POST",
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            address: email
-          })
-        }),
+        fetch(
+          "https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/newsletter/welcome",
+          {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              address: email,
+            }),
+          }
+        ),
         fetch("https://api.sendgrid.com/v3/marketing/contacts", {
-          method: 'PUT',
+          method: "PUT",
           headers: {
             Authorization: `Bearer ${process.env.GATSBY_SENDGRID_API}`,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(sendgridObject)
-        })
+          body: JSON.stringify(sendgridObject),
+        }),
       ])
-      .then(responses => {
-        return Promise.all(responses.map(response => {
-          return response.json();
-        }));
-      })
-      .then(() => {
-        setEmail("");
-        setSubscribed(true);
-        setSending(false);
-        console.log('Signed up');
-      })
-      .catch(error => {
-        console.log(error);
-      })
+        .then(responses => {
+          return Promise.all(
+            responses.map(response => {
+              return response.json()
+            })
+          )
+        })
+        .then(() => {
+          setEmail("")
+          setSubscribed(true)
+          setSending(false)
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
   }
 
   const handleSubmit = e => {
     e.preventDefault()
-    const isValid = handleValidation();
+    const isValid = handleValidation()
     if (isValid) {
-      setSending(true);
+      setSending(true)
       // add email to database
       fetch(
         "https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/emails",
@@ -96,47 +98,46 @@ function SubscribeFormContainer({ setSubscribed }) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            address: email
+            address: email,
           }),
         }
       )
+        .then(response => {
+          if (response.ok && response.status === 200) {
+            setEmail("")
+            setSubscribed(true)
+            setSending(false)
+            return response.json()
+          }
+          throw new Error("Network response was not okay")
+        })
 
-      .then(response => {
-        if (response.ok && response.status === 200) {
-          setEmail("")
-          setSubscribed(true);
-          setSending(false);
-          return response.json()
-        }
-        throw new Error("Network response was not okay")
-      })
-
-      .then(data => {
-        if (data.success) {
-          console.log('yo');
-          fetch("https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/newsletter/welcome", {
-            method: "POST",
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              address: email
+        .then(data => {
+          if (data.success) {
+            fetch(
+              "https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/newsletter/welcome",
+              {
+                method: "POST",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  address: email,
+                }),
+              }
+            ).then(response => {
+              if (response.ok && response.status === 200) {
+                console.log("Welcome email sent")
+                return response.json()
+              }
+              throw new Error("Network response was not okay")
             })
-          })
-
-          .then(response => {
-            if (response.ok && response.status === 200) {
-              console.log('Welcome email sent');
-              return response.json();
-            }
-            throw new Error("Network response was not okay");
-          })
-        } else {
-          console.log('Already signed up');
-        }
-      })
-      .catch(err => console.log(err.message))
+          } else {
+            console.log("Already signed up")
+          }
+        })
+        .catch(err => console.log(err.message))
     } else {
       console.log("Invalid email. Try again.")
     }
@@ -164,28 +165,26 @@ function SubscribeFormContainer({ setSubscribed }) {
         formIsValid = false
       }
     }
-    formIsValid ? setError(false) : setError(true);
+    formIsValid ? setError(false) : setError(true)
     return formIsValid
   }
 
   return (
     <>
-      <SubscribeFormComponent 
+      <SubscribeFormComponent
         email={email}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         error={error}
         handleSubmitWithPromises={handleSubmitWithPromises}
       />
-      {isSending &&
-        <Loader message="Sending" />
-      }
+      {isSending && <Loader message="Sending" />}
     </>
   )
 }
 
 SubscribeFormContainer.propTypes = {
-  setSubscribed: PropTypes.func
+  setSubscribed: PropTypes.func,
 }
 
-export default SubscribeFormContainer;
+export default SubscribeFormContainer

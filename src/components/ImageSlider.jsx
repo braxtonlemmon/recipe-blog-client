@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import styled, { keyframes } from 'styled-components';
-import Img from 'gatsby-image';
-import PropTypes from 'prop-types';
-import { FaAngleRight, FaAngleLeft } from 'react-icons/fa';
+import React, { useState } from "react"
+import styled, { keyframes } from "styled-components"
+import { GatsbyImage } from "gatsby-plugin-image"
+import PropTypes from "prop-types"
+import { FaAngleRight, FaAngleLeft } from "react-icons/fa"
 
 const slide = keyframes`
   from {
@@ -11,7 +11,7 @@ const slide = keyframes`
   to {
     opacity: 1;
   }
-`;
+`
 
 const ImgWrapper = styled.div`
   position: relative;
@@ -19,12 +19,12 @@ const ImgWrapper = styled.div`
   height: 100%;
   .image {
     animation-delay: 0.1s;
-    animation: ${slide} 0.8s ;
+    animation: ${slide} 0.8s;
     height: 100%;
     width: 100%;
     border-radius: 10px;
   }
-`;
+`
 
 const FakeImg = styled.div`
   position: absolute;
@@ -35,7 +35,7 @@ const FakeImg = styled.div`
   border-radius: 8px;
   box-shadow: inset 0 0 50px black;
   z-index: 1;
-`;
+`
 
 const ButtonsBox = styled.div`
   display: ${props => (props.multiple === true ? "flex" : "none")};
@@ -72,33 +72,32 @@ const ArrowBox = styled.div`
     color: white;
     transform: scale(1.05);
   }
-`;
+`
 
 function ImageSlider({ images }) {
-  const [index, setIndex] = useState(0);
-   
-  const length = images.length - 1;
+  const [index, setIndex] = useState(0)
+
+  const length = images.length - 1
 
   const handleNext = () => {
-    index === length ? setIndex(0) : setIndex(index + 1);
+    index === length ? setIndex(0) : setIndex(index + 1)
   }
 
   const handlePrevious = () => {
-    index === 0 ? setIndex(length) : setIndex(index - 1);
+    index === 0 ? setIndex(length) : setIndex(index - 1)
   }
 
   return (
     <ImgWrapper id="slider">
       <FakeImg></FakeImg>
-      <Img
+      <GatsbyImage
+        image={images[index].localFile.childImageSharp.gatsbyImageData}
         className="image"
-        fluid={images[index].localFile.childImageSharp.fluid}
         key={`image${index}`}
         alt="okay"
+        placeholder="blurred"
       />
-      <ButtonsBox
-        multiple={images.length > 1}
-      >
+      <ButtonsBox multiple={images.length > 1}>
         <ArrowBox onClick={() => handlePrevious()}>
           <FaAngleLeft className="image-slider___button" />
         </ArrowBox>
@@ -111,7 +110,7 @@ function ImageSlider({ images }) {
 }
 
 ImageSlider.propTypes = {
-  images: PropTypes.array
+  images: PropTypes.array,
 }
 
-export default ImageSlider;
+export default ImageSlider
