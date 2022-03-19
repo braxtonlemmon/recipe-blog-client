@@ -86,7 +86,7 @@ const Quote = styled.div`
 
 // Functional component
 function RecipeCard({ recipe }) {
-  const images = recipe.fields.images
+  const image = recipe.photos[0].asset.gatsbyImageData
 
   return (
     <Wrapper>
@@ -95,7 +95,7 @@ function RecipeCard({ recipe }) {
           <H2>{recipe.title}</H2>
         </Title>
         <GatsbyImage
-          image={images[0].localFile.childImageSharp.gatsbyImageData}
+          image={image}
           className="thumbnail-image"
           placeholder="blurred"
           alt={recipe.title}

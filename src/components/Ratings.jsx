@@ -1,10 +1,9 @@
 import React, { useState } from "react"
 import styled, { keyframes } from "styled-components"
-import Rating from "react-rating"
-import { FaRegStar, FaStar } from "react-icons/fa"
 import Button from "./Button"
 import Stars from "./Stars"
 import PropTypes from "prop-types"
+import sanityClient from "@sanity/client"
 
 const grow = keyframes`
   0% { transform: scale(1); }
@@ -41,7 +40,6 @@ const Wrapper = styled.div`
 
   .made-it {
     margin-right: 15px;
-    /* animation: ${grow} 1.5s ease-in-out infinite; */
   }
   .rate-it {
     margin-left: 15px;
@@ -73,28 +71,26 @@ function Ratings({ id, handleNewRating }) {
   }
 
   const handleRate = () => {
-    fetch(
-      `https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/recipes/${id}/ratings`,
-      {
-        method: "PUT",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          rating: selected,
-        }),
-      }
-    )
-      .then(response => {
-        if (response.ok && response.status === 200) {
-          handleNewRating()
-          setRated(true)
-          return response.json()
-        }
-        throw new Error("Network response was not okay")
+    const client = sanityClient({
+      projectId: process.env.SANITY_PROJECT_ID,
+      dataset: process.env.SANITY_DATASET,
+      apiVersion: "2022-01-01",
+      token: process.env.SANITY_TOKEN,
+    })
+
+    client
+      .patch(id)
+      .setIfMissing({ ratings: [] })
+      .append("ratings", [selected])
+      .commit()
+      .catch(err => {
+        throw new Error(`There was a problem submitting rating: ${err.message}`)
       })
-      .catch(err => console.log(`Problem with Ratings: ${err.message}`))
+      .finally(() => {
+        handleNewRating()
+        setSelected(5)
+        setRated(true)
+      })
   }
 
   return (
@@ -109,13 +105,11 @@ function Ratings({ id, handleNewRating }) {
         {!rated && <p className="rate-it ratings-text">Rate it!</p>}
       </Mid>
       <Bottom>
-        {/* {!rated && <p className="made-it ratings-text">Made it?</p>} */}
         {rated ? (
           <p className="ratings-text">Thanks for rating!</p>
         ) : (
           <Button onClick={handleRate}>Rate</Button>
         )}
-        {/* {!rated && <p className="rate-it ratings-text">Rate it!</p>} */}
       </Bottom>
     </Wrapper>
   )

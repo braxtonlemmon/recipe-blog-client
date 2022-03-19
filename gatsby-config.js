@@ -56,27 +56,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-mongodb",
-      options: {
-        dbName: "test",
-        collection: "recipes",
-        server: {
-          address: "cluster0-shard-00-00-hhm0q.mongodb.net",
-          port: 27017,
-        },
-        auth: {
-          user: process.env.GATSBY_MONGO_USERNAME,
-          password: process.env.GATSBY_MONGO_PASSWORD,
-        },
-        extraParams: {
-          replicaSet: "cluster0-shard-0",
-          ssl: true,
-          authSource: "admin",
-          retryWrites: true,
-        },
-      },
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Peel the Garlic`,
@@ -117,6 +96,16 @@ module.exports = {
       resolve: "gatsby-plugin-sitemap",
       options: {
         excludes: ["/ThankYou", "/unsubscribe"],
+      },
+    },
+    {
+      resolve: "gatsby-source-sanity",
+      options: {
+        projectId: "bgdyw4m1",
+        dataset: "production",
+        token: process.env.SANITY_TOKEN,
+        watchMode: true,
+        overlayDrafts: true,
       },
     },
     "gatsby-plugin-styled-components",

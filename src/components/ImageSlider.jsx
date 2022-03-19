@@ -91,7 +91,7 @@ function ImageSlider({ images }) {
     <ImgWrapper id="slider">
       <FakeImg></FakeImg>
       <GatsbyImage
-        image={images[index].localFile.childImageSharp.gatsbyImageData}
+        image={images[index].asset.gatsbyImageData}
         className="image"
         key={`image${index}`}
         alt="okay"

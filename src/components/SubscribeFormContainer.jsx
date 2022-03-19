@@ -29,117 +29,22 @@ function SubscribeFormContainer({ setSubscribed }) {
         ],
       }
 
-      Promise.all([
-        fetch(
-          "https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/emails",
-          {
-            method: "POST",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              address: email,
-            }),
-          }
-        ),
-        fetch(
-          "https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/newsletter/welcome",
-          {
-            method: "POST",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              address: email,
-            }),
-          }
-        ),
-        fetch("https://api.sendgrid.com/v3/marketing/contacts", {
-          method: "PUT",
-          headers: {
-            Authorization: `Bearer ${process.env.GATSBY_SENDGRID_API}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(sendgridObject),
-        }),
-      ])
-        .then(responses => {
-          return Promise.all(
-            responses.map(response => {
-              return response.json()
-            })
-          )
-        })
+      fetch("https://api.sendgrid.com/v3/marketing/contacts", {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${process.env.GATSBY_SENDGRID_API}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(sendgridObject),
+      })
         .then(() => {
           setEmail("")
           setSubscribed(true)
           setSending(false)
         })
         .catch(error => {
-          console.log(error)
+          console.error("There was a problem subscribing.", error)
         })
-    }
-  }
-
-  const handleSubmit = e => {
-    e.preventDefault()
-    const isValid = handleValidation()
-    if (isValid) {
-      setSending(true)
-      // add email to database
-      fetch(
-        "https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/emails",
-        {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            address: email,
-          }),
-        }
-      )
-        .then(response => {
-          if (response.ok && response.status === 200) {
-            setEmail("")
-            setSubscribed(true)
-            setSending(false)
-            return response.json()
-          }
-          throw new Error("Network response was not okay")
-        })
-
-        .then(data => {
-          if (data.success) {
-            fetch(
-              "https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/newsletter/welcome",
-              {
-                method: "POST",
-                headers: {
-                  Accept: "application/json",
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  address: email,
-                }),
-              }
-            ).then(response => {
-              if (response.ok && response.status === 200) {
-                console.log("Welcome email sent")
-                return response.json()
-              }
-              throw new Error("Network response was not okay")
-            })
-          } else {
-            console.log("Already signed up")
-          }
-        })
-        .catch(err => console.log(err.message))
-    } else {
-      console.log("Invalid email. Try again.")
     }
   }
 
@@ -174,7 +79,6 @@ function SubscribeFormContainer({ setSubscribed }) {
       <SubscribeFormComponent
         email={email}
         handleChange={handleChange}
-        handleSubmit={handleSubmit}
         error={error}
         handleSubmitWithPromises={handleSubmitWithPromises}
       />

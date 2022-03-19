@@ -100,10 +100,9 @@ function SEO({ recipe, isRecipe, title, description, url, lang }) {
   )
 
   const metaDescription = description || site.siteMetadata.description
-  const image = recipe ? recipe.images[0] : ""
+  const image = recipe ? recipe.photos[0].asset.url : ""
   const shortDescription = metaDescription.substring(0, 160) + " ..."
 
-  // const recipeMeta = recipeData || {};
   const schemaOrgJSONLD = getSchemaOrgJSONLD({
     isRecipe,
     url,

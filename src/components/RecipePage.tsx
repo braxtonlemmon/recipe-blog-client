@@ -17,6 +17,7 @@ import PropTypes from "prop-types"
 import Printable from "./Printable"
 import { useReactToPrint } from "react-to-print"
 import useSiteMetadata from "../hooks/use-site-metadata"
+import sanityClient from "@sanity/client"
 
 const convertDuration = duration => {
   if (duration > 59) {
@@ -29,13 +30,15 @@ const convertDuration = duration => {
 }
 
 function RecipePage({ data, location }) {
-  const recipe = data.mongodbTestRecipes
-  const images = data.mongodbTestRecipes.fields.images
+  const recipe = data.sanityRecipe
+  const images = data.sanityRecipe.photos
   const content = data.markdownRemark.html
   const [viewShare, setViewShare] = useState(false)
   const [checkboxes, setCheckboxes] = useState(loadCheckboxes())
   const [ratings, setRatings] = useState([])
   const [ratingsLoaded, setRatingsLoaded] = useState(false)
+  const [comments, setComments] = useState<object[]>()
+  const [commentsLoaded, setCommentsLoaded] = useState(false)
   const { siteUrl } = useSiteMetadata()
   const url = `${siteUrl}${location.pathname}`
 
@@ -51,7 +54,7 @@ function RecipePage({ data, location }) {
       typeof window !== "undefined" &&
       typeof window.localStorage != "undefined"
     ) {
-      const storedData = JSON.parse(localStorage.getItem(recipe.id))
+      const storedData = JSON.parse(localStorage.getItem(recipe._id))
       return storedData === null ? {} : storedData
     } else {
       return {}
@@ -63,9 +66,9 @@ function RecipePage({ data, location }) {
       typeof window !== "undefined" &&
       typeof window.localStorage != "undefined"
     ) {
-      const storedData = JSON.parse(localStorage.getItem(recipe.id))
+      const storedData = JSON.parse(localStorage.getItem(recipe._id))
       storedData[e.target.id] = e.target.checked
-      localStorage.setItem(recipe.id, JSON.stringify(storedData))
+      localStorage.setItem(recipe._id, JSON.stringify(storedData))
       setCheckboxes(storedData)
     }
   }
@@ -76,7 +79,7 @@ function RecipePage({ data, location }) {
 
   function resetCheckboxes() {
     setCheckboxes({})
-    localStorage.setItem(recipe.id, JSON.stringify({}))
+    localStorage.setItem(recipe._id, JSON.stringify({}))
     window.location.reload()
   }
 
@@ -86,34 +89,56 @@ function RecipePage({ data, location }) {
       typeof window !== "undefined" &&
       typeof window.localStorage != "undefined"
     ) {
-      const storedData = JSON.parse(localStorage.getItem(recipe.id))
+      const storedData = JSON.parse(localStorage.getItem(recipe._id))
       if (storedData === null) {
-        localStorage.setItem(recipe.id, JSON.stringify({}))
+        localStorage.setItem(recipe._id, JSON.stringify({}))
       } else {
         setCheckboxes({ ...storedData })
       }
     }
-  }, [recipe.id])
+  }, [recipe._id])
 
   useEffect(() => {
-    const id = recipe.mongodb_id
-    fetch(
-      `https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/recipes/${id}/ratings`,
-      {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      }
-    )
-      .then(response => response.json())
-      .then(data => {
-        setRatings(data.ratings)
+    const client = sanityClient({
+      projectId: process.env.SANITY_PROJECT_ID,
+      dataset: process.env.SANITY_DATASET,
+      apiVersion: "2022-01-01",
+      useCdn: false,
+    })
+    const query = `*[_type == "recipe" && _id == "${recipe._id}"] {
+      ratings
+    }`
+    client
+      .fetch(query)
+      .then(results => {
+        const foundRatings =
+          results.length > 0 && results[0]?.ratings ? results[0].ratings : []
+        setRatings(foundRatings)
         setRatingsLoaded(true)
       })
-      .catch(err => console.error("Request failed", err))
+      .catch(err => {
+        console.error("Request failed", err)
+      })
   }, [ratingsLoaded])
+
+  useEffect(() => {
+    const client = sanityClient({
+      projectId: process.env.SANITY_PROJECT_ID,
+      dataset: process.env.SANITY_DATASET,
+      apiVersion: "2021-12-18",
+      useCdn: false, // `false` if you want to ensure fresh data
+    })
+    const query = `*[_type == "comment" && recipe._ref == "${recipe._id}"]`
+    client
+      .fetch(query)
+      .then(foundComments => {
+        setComments(foundComments)
+      })
+      .then(() => {
+        setCommentsLoaded(true)
+      })
+      .catch(err => console.error("Request failed", err))
+  }, [commentsLoaded])
 
   return (
     <>
@@ -132,7 +157,7 @@ function RecipePage({ data, location }) {
         </Image>
         <Quote>{recipe.quote}</Quote>
         <Shortcuts handlePrint={handlePrint} setViewShare={setViewShare} />
-        <Ratings id={recipe.mongodb_id} handleNewRating={handleNewRating} />
+        <Ratings id={recipe._id} handleNewRating={handleNewRating} />
         <Details
           recipe={recipe}
           convertDuration={convertDuration}
@@ -151,8 +176,12 @@ function RecipePage({ data, location }) {
           resetCheckboxes={resetCheckboxes}
         />
         <Comments
-          mongodb_id={recipe.mongodb_id}
           handleNewRating={handleNewRating}
+          comments={comments}
+          commentsLoaded={commentsLoaded}
+          setCommentsLoaded={setCommentsLoaded}
+          setRatingsLoaded={setRatingsLoaded}
+          recipe={recipe._id}
         />
         <Printable
           ref={componentRef}
@@ -173,10 +202,9 @@ RecipePage.propTypes = {
 export default RecipePage
 
 export const pageQuery = graphql`
-  query RecipePageQuery($id: String!, $title: String!) {
-    mongodbTestRecipes(id: { eq: $id }) {
-      id
-      mongodb_id
+  query RecipePageQuery($title: String!, $slug: String!) {
+    sanityRecipe(title: { eq: $title }) {
+      _id
       title
       description
       keywords
@@ -189,21 +217,16 @@ export const pageQuery = graphql`
       intro
       size
       steps
-      images
+      photos {
+        asset {
+          gatsbyImageData(layout: FULL_WIDTH)
+        }
+      }
       quote
       ratings
       publish_date(formatString: "MMMM DD, YYYY")
-      fields {
-        images {
-          localFile {
-            childImageSharp {
-              gatsbyImageData(layout: FULL_WIDTH)
-            }
-          }
-        }
-      }
     }
-    markdownRemark(frontmatter: { title: { eq: $title } }) {
+    markdownRemark(frontmatter: { title: { eq: $slug } }) {
       html
     }
   }

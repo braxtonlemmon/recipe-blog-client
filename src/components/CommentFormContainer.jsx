@@ -2,11 +2,13 @@
 import React, { useState, useRef } from "react"
 import CommentFormComponent from "./CommentFormComponent"
 import PropTypes from "prop-types"
+import sanityClient from "@sanity/client"
 
 function CommentFormContainer({
-  mongodb_id,
   setCommentsLoaded,
+  setRatingsLoaded,
   handleNewRating,
+  recipe,
 }) {
   const commentRef = useRef(null)
   const [selected, setSelected] = useState(5)
@@ -32,57 +34,49 @@ function CommentFormContainer({
       return
     }
     setCommentOkay(true)
-    fetch(
-      "https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/comments",
-      {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: data.name,
-          content: data.content,
-          recipe: mongodb_id,
-          level: level,
-          fromAdmin: false,
-          answered: false,
-        }),
-      }
-    )
-      .then(response => {
-        if (response.ok && response.status === 200) {
-          setData({ name: "", content: "" })
-          setCommentsLoaded(false)
-          return response.json()
-        }
-        throw new Error("Network response was not okay")
-      })
-      .catch(err => console.log(err.message))
+    const client = sanityClient({
+      projectId: process.env.SANITY_PROJECT_ID,
+      dataset: process.env.SANITY_DATASET,
+      apiVersion: "2022-01-01",
+      token: process.env.SANITY_TOKEN,
+    })
 
-    // eslint-disable-next-line no-undef
-    fetch(
-      `https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/recipes/${mongodb_id}/ratings`,
-      {
-        method: "PUT",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+    // Create new comment
+    client
+      .create({
+        _type: "comment",
+        name: data.name,
+        content: data.content,
+        level: level,
+        fromAdmin: false,
+        answered: false,
+        recipe: {
+          _type: "reference",
+          _ref: recipe,
         },
-        body: JSON.stringify({
-          rating: selected,
-        }),
-      }
-    )
-      .then(response => {
-        if (response.ok && response.status === 200) {
-          setSelected(5)
-          handleNewRating()
-          return response.json()
-        }
-        throw new Error("Network response was not okay")
       })
-      .catch(err => console.log(err.message))
+      .then(() => {
+        setData({ name: "", content: "" })
+        setCommentsLoaded(false)
+        setRatingsLoaded(false)
+      })
+      .catch(err => {
+        throw new Error(`There was a problem creating comment: ${err.message}`)
+      })
+
+    // Submit new rating
+    client
+      .patch(recipe)
+      .setIfMissing({ ratings: [] })
+      .append("ratings", [selected])
+      .commit()
+      .catch(err => {
+        throw new Error(`There was a problem submitting rating: ${err.message}`)
+      })
+      .finally(() => {
+        setSelected(5)
+        handleNewRating()
+      })
   }
 
   return (
@@ -99,7 +93,6 @@ function CommentFormContainer({
 }
 
 CommentFormContainer.propTypes = {
-  mongodb_id: PropTypes.string,
   setCommentsLoaded: PropTypes.func,
   handleNewRating: PropTypes.func,
 }

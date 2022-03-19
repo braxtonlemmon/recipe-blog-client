@@ -1,49 +1,51 @@
 /* eslint-disable no-undef */
-import React, { useState, useEffect } from 'react';
-import CommentBox from './CommentBox';
-import CommentFormContainer from './CommentFormContainer';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from "react"
+import CommentBox from "./CommentBox"
+import CommentFormContainer from "./CommentFormContainer"
+import PropTypes from "prop-types"
 
-function Comments({ mongodb_id, handleNewRating }) {
-  const [comments, setComments] = useState([]);
-  const [topComments, setTopComments] = useState([]);
-  const [commentsLoaded, setCommentsLoaded] = useState(false);
+function Comments({
+  handleNewRating,
+  comments,
+  commentsLoaded,
+  setCommentsLoaded,
+  setRatingsLoaded,
+  recipe,
+}) {
+  const [topComments, setTopComments] = useState([])
 
   useEffect(() => {
-    fetch(
-      `https://cauk2n799k.execute-api.eu-west-1.amazonaws.com/dev/api/comments/${mongodb_id}`,
-    )
-      .then(result => result.json())
-      .then(data => {
-        const topLevel = data.data.filter(comment => comment.level === 0)
-        setTopComments(topLevel)
-        setComments(data.data)
-      })
-      .then(() => setCommentsLoaded(true))
-      .catch(err => console.error("Request failed", err))
-  }, [commentsLoaded, mongodb_id])
-  
+    const getDate = date => new Date(date)
+    console.log(comments)
+    if (comments) {
+      const topLevel = comments
+        .filter(comment => comment.level === 0)
+        .sort((a, b) => getDate(b._createdAt) - getDate(a._createdAt))
+      setTopComments(topLevel)
+    }
+  }, [comments])
+
   return (
-      <>
-        <CommentFormContainer
-          mongodb_id={mongodb_id}
-          setCommentsLoaded={setCommentsLoaded}
-          handleNewRating={handleNewRating}
-        />
-        <CommentBox
-          id="comment-box"
-          comments={comments}
-          topComments={topComments}
-          setCommentsLoaded={setCommentsLoaded}
-          commentsLoaded={commentsLoaded}
-        />
-      </>
-    )
+    <>
+      <CommentFormContainer
+        setCommentsLoaded={setCommentsLoaded}
+        setRatingsLoaded={setRatingsLoaded}
+        handleNewRating={handleNewRating}
+        recipe={recipe}
+      />
+      <CommentBox
+        id="comment-box"
+        comments={comments}
+        topComments={topComments}
+        setCommentsLoaded={setCommentsLoaded}
+        commentsLoaded={commentsLoaded}
+      />
+    </>
+  )
 }
 
 Comments.propTypes = {
-  mongodb_id: PropTypes.string,
-  handleNewRating: PropTypes.func
+  handleNewRating: PropTypes.func,
 }
 
-export default Comments;
+export default Comments
