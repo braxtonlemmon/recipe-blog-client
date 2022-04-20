@@ -72,10 +72,10 @@ function Ratings({ id, handleNewRating }) {
 
   const handleRate = () => {
     const client = sanityClient({
-      projectId: process.env.SANITY_PROJECT_ID,
-      dataset: process.env.SANITY_DATASET,
+      projectId: process.env.GATSBY_PROJECT_ID,
+      dataset: process.env.GATSBY_SANITY_DATASET,
       apiVersion: "2022-01-01",
-      token: process.env.SANITY_TOKEN,
+      token: process.env.GATSBY_SANITY_TOKEN,
     })
 
     client

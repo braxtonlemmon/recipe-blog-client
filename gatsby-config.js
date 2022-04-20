@@ -103,7 +103,7 @@ module.exports = {
       options: {
         projectId: "bgdyw4m1",
         dataset: "production",
-        token: process.env.SANITY_TOKEN,
+        token: process.env.GATSBY_SANITY_TOKEN,
         watchMode: true,
         overlayDrafts: true,
       },
