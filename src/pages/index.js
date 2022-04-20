@@ -6,7 +6,7 @@ import Hero from "../components/Hero"
 import PropTypes from "prop-types"
 import makeSlug from "../utils/makeSlug"
 import Loader from "../components/Loader"
-import { Announcement, Recipes, Wrapper } from "./styles/indexStyles"
+import { Announcement, Recipes, Wrapper } from "../styles/indexStyles"
 
 function IndexPage({ data, setLoader }) {
   const recipes = data.allSanityRecipe.edges
