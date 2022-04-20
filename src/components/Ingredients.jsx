@@ -12,9 +12,11 @@ function Ingredients({ recipe, checkboxes, handleCheck }) {
   const [navHeight, setNavHeight] = useState()
   // detects height of navbar to use when making ingredients box sticky
   useEffect(() => {
-    const navbar = document.getElementById("navbar")
-    const height = navbar.getBoundingClientRect().height
-    setNavHeight(height)
+    if (typeof document !== "undefined") {
+      const navbar = document.getElementById("navbar")
+      const height = navbar.getBoundingClientRect().height
+      setNavHeight(height)
+    }
   }, [])
 
   // observer that watches position of ingredients box

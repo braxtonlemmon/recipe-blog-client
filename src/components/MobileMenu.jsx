@@ -65,8 +65,10 @@ function MobileMenu({ showMenu, setShowMenu, isHeaderVisible, setLoader, locatio
   }
 
   useEffect(() => {
-    const body = document.querySelector('body');
-    showMenu ? body.style.overflow = 'hidden' : body.style.overflow = 'visible';
+    if (typeof document !== "undefined") {
+      const body = document.querySelector('body');
+      showMenu ? body.style.overflow = 'hidden' : body.style.overflow = 'visible';
+    }
   }, [showMenu])
    
   return (
