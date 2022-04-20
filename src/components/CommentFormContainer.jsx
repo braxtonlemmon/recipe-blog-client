@@ -41,7 +41,7 @@ function CommentFormContainer({
       token: process.env.SANITY_TOKEN,
     })
 
-    // Create new comment
+    // Create a new comment
     client
       .create({
         _type: "comment",
