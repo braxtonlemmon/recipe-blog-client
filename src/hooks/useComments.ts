@@ -6,8 +6,9 @@ const useComments = (recipeId: string) => {
 
   useEffect(() => {
     const client = sanityClient({
-      projectId: process.env.GATSBY_PROJECT_ID,
+      projectId: process.env.GATSBY_SANITY_PROJECT_ID,
       dataset: process.env.GATSBY_SANITY_DATASET,
+      token: process.env.GATSBY_SANITY_TOKEN,
       apiVersion: "2022-01-01",
       useCdn: false,
     })

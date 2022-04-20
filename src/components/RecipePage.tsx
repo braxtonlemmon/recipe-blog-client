@@ -100,8 +100,9 @@ function RecipePage({ data, location }) {
 
   useEffect(() => {
     const client = sanityClient({
-      projectId: process.env.GATSBY_PROJECT_ID,
+      projectId: process.env.GATSBY_SANITY_PROJECT_ID,
       dataset: process.env.GATSBY_SANITY_DATASET,
+      token: process.env.GATSBY_SANITY_TOKEN,
       apiVersion: "2022-01-01",
       useCdn: false,
     })
@@ -123,8 +124,9 @@ function RecipePage({ data, location }) {
 
   useEffect(() => {
     const client = sanityClient({
-      projectId: process.env.GATSBY_PROJECT_ID,
+      projectId: process.env.GATSBY_SANITY_PROJECT_ID,
       dataset: process.env.GATSBY_SANITY_DATASET,
+      token: process.env.GATSBY_SANITY_TOKEN,
       apiVersion: "2021-12-18",
       useCdn: false, // `false` if you want to ensure fresh data
     })

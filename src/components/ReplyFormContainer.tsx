@@ -32,7 +32,7 @@ function ReplyFormContainer({
     }
 
     const client = sanityClient({
-      projectId: process.env.GATSBY_PROJECT_ID,
+      projectId: process.env.GATSBY_SANITY_PROJECT_ID,
       dataset: process.env.GATSBY_SANITY_DATASET,
       apiVersion: "2022-01-01",
       token: process.env.GATSBY_SANITY_TOKEN,
