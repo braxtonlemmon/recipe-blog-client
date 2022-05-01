@@ -40,12 +40,10 @@ module.exports = {
         resolveEnv: () => NETLIFY_ENV,
         env: {
           production: {
-            policy: [{ userAgent: "*" }],
+            policy: [{ userAgent: "*" , allow: '/'}],
           },
-          "branch-deploy": {
-            policy: [{ userAgent: "*", disallow: ["/"] }],
-            sitemap: null,
-            host: null,
+          development: {
+            policy: [{ userAgent: '*', disallow: ['/']}]
           },
           "deploy-preview": {
             policy: [{ userAgent: "*", disallow: ["/"] }],
@@ -104,7 +102,6 @@ module.exports = {
         projectId: process.env.GATSBY_SANITY_PROJECT_ID,
         dataset: process.env.GATSBY_SANITY_DATASET,
         token: process.env.GATSBY_SANITY_TOKEN,
-        watchMode: true,
         overlayDrafts: true,
       },
     },
