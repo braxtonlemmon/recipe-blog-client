@@ -16,7 +16,6 @@ function Comments({
 
   useEffect(() => {
     const getDate = date => new Date(date)
-    console.log(comments)
     if (comments) {
       const topLevel = comments
         .filter(comment => comment.level === 0)
