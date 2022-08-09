@@ -10,13 +10,13 @@ const {
 const isNetlifyProduction = NETLIFY_ENV === "production"
 const siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL
 
-export const siteMetadata = {
+exports.siteMetadata = {
   title: `Peel the Garlic`,
   description: `Online recipes with the user in mind.`,
   author: `Braxton Lemmon`,
   siteUrl,
 }
-export const plugins = [
+exports.plugins = [
   "gatsby-plugin-polyfill-io",
   {
     resolve: `gatsby-source-filesystem`,
