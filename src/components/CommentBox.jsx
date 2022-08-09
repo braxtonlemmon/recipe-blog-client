@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import { H2 } from './Headings';
-import Comment from './Comment';
-import PropTypes from 'prop-types';
-import CommentsLoader from './CommentsLoader';
+import React from "react"
+import styled from "styled-components"
+import { H2 } from "./Headings"
+import Comment from "./Comment"
+import PropTypes from "prop-types"
+import CommentsLoader from "./CommentsLoader"
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,14 +20,19 @@ const Wrapper = styled.div`
   p {
     text-align: center;
   }
-`;
+`
 
 const List = styled.div`
   width: 95%;
   max-width: 600px;
 `
 
-function CommentBox({ comments, topComments, setCommentsLoaded, commentsLoaded}) {
+function CommentBox({
+  comments,
+  topComments,
+  setCommentsLoaded,
+  commentsLoaded,
+}) {
   if (!commentsLoaded) {
     return (
       <Wrapper>
@@ -42,33 +47,32 @@ function CommentBox({ comments, topComments, setCommentsLoaded, commentsLoaded})
       </Wrapper>
     )
   } else {
-  return (
-    <Wrapper>
-      <H2>Comments</H2>
-      <List>
-        {
-          topComments.map(comment => {
-            let margin = 15;
+    return (
+      <Wrapper>
+        <H2>Comments</H2>
+        <List>
+          {topComments.map(comment => {
+            let margin = 15
             return (
-              <Comment 
-                key={comment._id} 
-                setCommentsLoaded={setCommentsLoaded} 
-                comment={comment} 
-                comments={comments} 
-                margin={margin}/>
+              <Comment
+                key={comment._id}
+                setCommentsLoaded={setCommentsLoaded}
+                comment={comment}
+                comments={comments}
+                margin={margin}
+              />
             )
-          })
-        }
-      </List>
-    </Wrapper>
-  )
-}
+          })}
+        </List>
+      </Wrapper>
+    )
+  }
 }
 
 CommentBox.propTypes = {
   topComments: PropTypes.array,
   comments: PropTypes.array,
-  setCommentsLoaded: PropTypes.func
+  setCommentsLoaded: PropTypes.func,
 }
 
-export default CommentBox;
+export default CommentBox

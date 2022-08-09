@@ -32,7 +32,7 @@ function GoUp() {
   const [show, setShow] = useState();
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof document !== 'undefined') {
       const slider = document.getElementById('slider');
       const observer = new IntersectionObserver(entries => {
         if (!entries[0].isIntersecting) {

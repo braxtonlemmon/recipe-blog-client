@@ -80,7 +80,6 @@ const Box = styled.div`
 function SubscribeFormComponent({
   email,
   handleChange,
-  handleSubmit,
   error,
   handleSubmitWithPromises,
 }) {

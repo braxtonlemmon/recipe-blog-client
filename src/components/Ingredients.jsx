@@ -1,41 +1,41 @@
-import React, { useState, useEffect } from 'react';
-import { H2 } from './Headings';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from "react"
+import { H2 } from "./Headings"
+import PropTypes from "prop-types"
 import {
   IngredientsBox,
   Ingredient,
-  IngredientSection
-} from './RecipePageStyling';
+  IngredientSection,
+} from "./RecipePageStyling"
 
-function Ingredients({ 
-  recipe, 
-  checkboxes, 
-  handleCheck 
-}) {
+function Ingredients({ recipe, checkboxes, handleCheck }) {
   const [ingredientsFixed, setIngredientsFixed] = useState(false)
   const [navHeight, setNavHeight] = useState()
   // detects height of navbar to use when making ingredients box sticky
   useEffect(() => {
-    const navbar = document.getElementById('navbar');
-    const height = navbar.getBoundingClientRect().height;
-    setNavHeight(height);
-  }, []);
-  
+    if (typeof document !== "undefined") {
+      const navbar = document.getElementById("navbar")
+      const height = navbar.getBoundingClientRect().height
+      setNavHeight(height)
+    }
+  }, [])
+
   // observer that watches position of ingredients box
   useEffect(() => {
-    if (typeof document !== 'undefined') {
-      const box = document.getElementById('ingredients-box');
+    if (typeof document !== "undefined") {
+      const box = document.getElementById("ingredients-box")
       const options = {
-        threshold: 1
+        threshold: 1,
       }
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-          entry.isIntersecting ? setIngredientsFixed(true) : setIngredientsFixed(false);
+          entry.isIntersecting
+            ? setIngredientsFixed(true)
+            : setIngredientsFixed(false)
         })
       }, options)
 
-      observer.observe(box);
-      return () => observer.unobserve(box);
+      observer.observe(box)
+      return () => observer.unobserve(box)
     }
   }, [])
 
@@ -48,8 +48,7 @@ function Ingredients({
       <H2 className="ingredients-box-title">Ingredients</H2>
       <ul>
         {recipe.ingredients.map((ingredient, index) => {
-          console.log(ingredient[0])
-          if (ingredient[0] === '*') {
+          if (ingredient[0] === "*") {
             return (
               <IngredientSection>
                 {ingredient.substr(1, ingredient.length - 1)}
@@ -78,7 +77,8 @@ function Ingredients({
                   {ingredient}
                 </label>
               </Ingredient>
-            )}
+            )
+          }
         })}
         {/* {recipe.ingredients.map((ingredient, index) => (
           <Ingredient
@@ -113,8 +113,7 @@ Ingredients.propTypes = {
   ingredientsFixed: PropTypes.bool,
   navHeight: PropTypes.number,
   checkboxes: PropTypes.object,
-  handleCheck: PropTypes.func
+  handleCheck: PropTypes.func,
 }
 
-export default Ingredients;
-
+export default Ingredients

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import ReplyFormContainer from './ReplyFormContainer';
-import PropTypes from 'prop-types';
-import Button from './Button';
+import React, { useState } from "react"
+import styled from "styled-components"
+import ReplyFormContainer from "./ReplyFormContainer"
+import PropTypes from "prop-types"
+import Button from "./Button"
 
 const CommentRow = styled.div`
   position: relative;
@@ -12,7 +12,8 @@ const CommentRow = styled.div`
   width: 80%;
   padding: 15px;
   padding-bottom: 30px;
-  background: ${props => props.fromAdmin ? '${props => props.theme.colors.medium}6e' : '#cdcbd640'};
+  background: ${props =>
+    props.fromAdmin ? "${props => props.theme.colors.medium}6e" : "#cdcbd640"};
   box-shadow: -2px 2px 2px lightgrey;
   z-index: 500;
   margin: 15px 0;
@@ -46,7 +47,7 @@ const CommentRow = styled.div`
     width: 100%;
     border: 1px solid black;
   }
-`;
+`
 
 const ReplyButton = styled(Button)`
   position: absolute;
@@ -54,7 +55,7 @@ const ReplyButton = styled(Button)`
   bottom: 10px;
   margin-top: 20px;
   padding: 4px 5px;
-  `;
+`
 
 const CloseButton = styled.div`
   font-size: 1em;
@@ -76,24 +77,53 @@ const CloseButton = styled.div`
   &:hover {
     background: rgba(0, 0, 0, 0.3);
   }
-`;
+`
 
 function Comment({ comment, comments, margin, setCommentsLoaded }) {
-  const [replyClicked, setReplyClicked] = useState(false);
+  const [replyClicked, setReplyClicked] = useState(false)
 
   const handleReplyClick = () => {
-    setReplyClicked(!replyClicked);
+    setReplyClicked(!replyClicked)
   }
 
-  const children = comments.filter(comm => comm.parent === comment._id);
+  const getFormattedDate = date => {
+    const months = {
+      1: "January",
+      2: "February",
+      3: "March",
+      4: "April",
+      5: "May",
+      6: "June",
+      7: "July",
+      8: "August",
+      9: "September",
+      10: "October",
+      11: "November",
+      12: "December",
+    }
+    if (date) {
+      const splitDate = date.split(/[-T]+/)
+      const year = splitDate[0]
+      const month = months[parseInt(splitDate[1])]
+      const day = splitDate[2]
+      return `${month} ${day}, ${year}`
+    }
+    return ""
+  }
+  const children = comments.filter(
+    comm => comm.parent?._ref && comm.parent._ref === comment._id
+  )
   const nestedComments = (children || []).map(comment => {
     return (
-      <Comment 
-        key={comment._id} 
-        setCommentsLoaded={setCommentsLoaded} 
-        comment={comment} margin={margin + 15} 
-        comments={comments} type="child" 
-      />)
+      <Comment
+        key={comment._id}
+        setCommentsLoaded={setCommentsLoaded}
+        comment={comment}
+        margin={margin + 15}
+        comments={comments}
+        type="child"
+      />
+    )
   })
 
   return (
@@ -106,22 +136,23 @@ function Comment({ comment, comments, margin, setCommentsLoaded }) {
       >
         <div className="comment-info">
           <span className="comment-name">{comment.name.toUpperCase()}</span>
-          <span className="comment-date">{comment.dateFormatted}</span>
+          <span className="comment-date">
+            {comment._createdAt ? getFormattedDate(comment._createdAt) : ""}
+          </span>
         </div>
         <p className="comment-content">{comment.content}</p>
-        {
-          replyClicked &&
+        {replyClicked && (
           <ReplyFormContainer
             parent={comment._id}
-            recipe={comment.recipe}
+            recipe={comment.recipe._ref}
             setCommentsLoaded={setCommentsLoaded}
           />
-        }
-        {
-          replyClicked
-          ? <CloseButton onClick={handleReplyClick}>x</CloseButton>
-          : <ReplyButton onClick={handleReplyClick}>Reply</ReplyButton>
-        }
+        )}
+        {replyClicked ? (
+          <CloseButton onClick={handleReplyClick}>x</CloseButton>
+        ) : (
+          <ReplyButton onClick={handleReplyClick}>Reply</ReplyButton>
+        )}
       </CommentRow>
       {nestedComments}
     </div>
@@ -135,4 +166,4 @@ Comment.propTypes = {
   setCommentsLoaded: PropTypes.func,
 }
 
-export default Comment;
+export default Comment

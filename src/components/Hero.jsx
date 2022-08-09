@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { H1, H2 } from "./Headings"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { Link, graphql, useStaticQuery } from "gatsby"
 import makeSlug from "../utils/makeSlug"
 import PropTypes from "prop-types"
@@ -49,7 +49,7 @@ const BigScreenBox = styled.div`
   }
 `
 
-const HeroImage = styled(Img)`
+const HeroImage = styled(GatsbyImage)`
   position: absolute;
   top: 0;
   left: 0;
@@ -147,26 +147,21 @@ const HeroTitle = styled(H1)`
 function Hero({ setRecipeClicked }) {
   const [isVisible, setVisible] = useState()
   const data = useStaticQuery(graphql`
-    query {
-      mongodbTestRecipes(title: { eq: "Frango com Quiabo" }) {
+    query HeroQuery {
+      sanityRecipe(title: { eq: "Frango com Quiabo" }) {
         title
         quote
         publish_date
-        fields {
-          images {
-            localFile {
-              childImageSharp {
-                fluid(maxHeight: 1600) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
+        photos {
+          asset {
+            gatsbyImageData(layout: FULL_WIDTH)
           }
         }
       }
     }
   `)
-  const featured = data.mongodbTestRecipes
+  const featured = data.sanityRecipe
+  const image = featured.photos[0].asset.gatsbyImageData
   const slug = makeSlug(featured.title)
 
   useEffect(() => {
@@ -184,19 +179,11 @@ function Hero({ setRecipeClicked }) {
       return () => observer.unobserve(hero)
     }
   }, [])
-  console.log(featured)
-
   return (
     <Wrapper to={`/recipe/${slug}`} onClick={() => setRecipeClicked(true)}>
       <DimLayer id="hero-image"></DimLayer>
       <BigScreenBox></BigScreenBox>
-      <HeroImage
-        fluid={featured.fields.images[0].localFile.childImageSharp.fluid}
-        alt={featured.title}
-        // imgStyle={{
-        //   objectPosition: "center 35%",
-        // }}
-      />
+      <HeroImage image={image} alt="blah" placeholder="blurred" />
       <HeroTextBox isVisible={isVisible}>
         <HeroQuote isVisible={isVisible}>{`${featured.quote}`}</HeroQuote>
         <HeroTitle isVisible={isVisible}>{featured.title}</HeroTitle>

@@ -33,21 +33,6 @@ const FormWrapper = styled.form`
     max-width: 450px;
   }
 
-  /* textarea {
-    resize: none;
-    outline: none;
-    padding: 5px;
-    border-radius: 8px;
-    font-size: 1em;
-    text-align: center;
-    margin-bottom: 10px;
-    background: #fbfaff;
-    border: ${props =>
-      props.commentOkay === true ? "1px solid lightgray" : "2px solid red"};
-    width: 100%;
-    max-width: 550px;
-    height: 150px;
-  } */
   @media (min-width: 1200px) {
     width: 80%;
   }

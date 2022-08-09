@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import Img from 'gatsby-image';
-import PropTypes from 'prop-types';
+import React from "react"
+import styled from "styled-components"
+import { GatsbyImage } from "gatsby-plugin-image"
+import PropTypes from "prop-types"
 
 const Wrapper = styled.div`
   position: relative;
@@ -17,15 +17,14 @@ const Wrapper = styled.div`
     width: 400px;
     height: 400px;
   }
-`;
+`
 
 const Title = styled.div`
   position: absolute;
   top: 10px;
   left: 10px;
   z-index: 1;
-
-`;
+`
 
 const H2 = styled.h2`
   background: rgba(0, 0, 0, 0.5);
@@ -36,7 +35,7 @@ const H2 = styled.h2`
   font-weight: bolder;
   color: white;
   width: min-content;
-`;
+`
 
 const Image = styled.div`
   height: 100%;
@@ -56,7 +55,7 @@ const Image = styled.div`
     padding: 5px;
     background: rgba(0, 0, 0, 0.5);
   }
-`;
+`
 
 const Quote = styled.div`
   position: absolute;
@@ -83,12 +82,11 @@ const Quote = styled.div`
   @media (min-width: 412px) {
     font-size: 2.5em;
   }
-`;
+`
 
 // Functional component
 function RecipeCard({ recipe }) {
-  const images = recipe.fields.images;
- 
+  const image = recipe.photos[0].asset.gatsbyImageData
 
   return (
     <Wrapper>
@@ -96,9 +94,10 @@ function RecipeCard({ recipe }) {
         <Title>
           <H2>{recipe.title}</H2>
         </Title>
-        <Img
+        <GatsbyImage
+          image={image}
           className="thumbnail-image"
-          fluid={images[0].localFile.childImageSharp.fluid}
+          placeholder="blurred"
           alt={recipe.title}
         />
         <p>{recipe.publish_date}</p>
@@ -114,4 +113,4 @@ RecipeCard.propTypes = {
   recipe: PropTypes.object,
 }
 
-export default RecipeCard;
+export default RecipeCard
