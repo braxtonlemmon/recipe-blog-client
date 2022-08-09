@@ -3,7 +3,7 @@ module.exports = {
     node: true,
     commonjs: true,
   },
-  parser: "babel-eslint",
+  parser: "@babel/eslint-parser",
   rules: {
     strict: 0,
   },
