@@ -1,5 +1,5 @@
 ---
-title: beet-mash-and-pistachio-crumble-tartine
+title: cactus-paddle-nopal-salad
 ---
 You may have noticed that my last recipe was published back in July. The hawk-eyed readers among you will then notice that "July" was thirteen months ago. Oops. Oh well, I’m back and fingers-crossed I’m here to stay. Please don’t shame me, and please make this recipe.
 
