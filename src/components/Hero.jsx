@@ -148,7 +148,7 @@ function Hero({ setRecipeClicked }) {
   const [isVisible, setVisible] = useState()
   const data = useStaticQuery(graphql`
     query HeroQuery {
-      sanityRecipe(title: { eq: "Frango com Quiabo" }) {
+      sanityRecipe(title: { eq: "Cactus Paddle (Nopal) Salad" }) {
         title
         quote
         publish_date
