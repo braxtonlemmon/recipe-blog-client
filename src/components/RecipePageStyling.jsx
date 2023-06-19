@@ -2,14 +2,13 @@ import { H1 } from "./Headings"
 import styled from "styled-components"
 
 const Wrapper = styled.div`
-  display: flex;
   flex-direction: column;
   display: grid;
   justify-items: center;
   align-items: baseline;
   padding: 2em 15px 10px 15px;
   /* padding-bottom: 25px; */
-  width: 100%;
+  width: 100vw;
   grid-template-columns: 1fr;
   grid-template-areas:
     "title"
@@ -128,8 +127,6 @@ const IngredientsBox = styled(InfoBox)`
     max-height: 90vh;
     /* margin: 15px auto; */
 
-
-
     .ingredients-box-title {
       position: -webkit-sticky;
       position: sticky;
@@ -166,6 +163,7 @@ const StepsBox = styled(InfoBox)`
   @media (min-width: 760px) {
     /* border-left: 2px dashed black; */
     padding-left: 20px;
+    padding-right: 20px;
     justify-self: left;
   }
   .sidenote {
