@@ -1,11 +1,12 @@
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
-import PropTypes from 'prop-types';
-import garlic from '../images/loader_garlic.svg';
+import React from "react"
+import styled, { keyframes } from "styled-components"
+import PropTypes from "prop-types"
+import garlic from "../images/loader_garlic.svg"
 
 const Wrapper = styled.div`
   position: fixed;
   top: calc(50% - 100px);
+  left: calc(50% - 145px);
   z-index: 502;
   height: 200px;
   width: 290px;
@@ -16,7 +17,7 @@ const Wrapper = styled.div`
   justify-content: center;
   background: ${props => props.theme.colors.bg};
   border-radius: 30px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   padding: 20px 0;
   p {
     margin-top: 20px;
@@ -24,16 +25,14 @@ const Wrapper = styled.div`
     color: black;
     font-weight: bold;
   }
-
-`;
+`
 
 const jump = keyframes`
   0%   { transform: translateY(initial); }
   30%  { transform: translateY(-15px) }
   70%  { transform: translateY(initial); }
   100% { transform: translateY(initial); }
-`;
-
+`
 
 const Garlics = styled.div`
   .loader-garlic {
@@ -42,23 +41,22 @@ const Garlics = styled.div`
   }
   display: flex;
   #garlic0 {
-
   }
   #garlic1 {
-    animation-delay: -1.0s;
+    animation-delay: -1s;
   }
   #garlic2 {
     animation-delay: -0.9s;
   }
-`;
+`
 
 function Loader({ message }) {
   return (
     <Wrapper>
       <Garlics>
-        <img src={garlic} alt="garlic" className="loader-garlic" id="garlic0"/>
-        <img src={garlic} alt="garlic" className="loader-garlic" id="garlic1"/>
-        <img src={garlic} alt="garlic" className="loader-garlic" id="garlic2"/>
+        <img src={garlic} alt="garlic" className="loader-garlic" id="garlic0" />
+        <img src={garlic} alt="garlic" className="loader-garlic" id="garlic1" />
+        <img src={garlic} alt="garlic" className="loader-garlic" id="garlic2" />
       </Garlics>
       <p>{message}...</p>
     </Wrapper>
@@ -66,7 +64,7 @@ function Loader({ message }) {
 }
 
 Loader.propTypes = {
-  message: PropTypes.string
+  message: PropTypes.string,
 }
 
-export default Loader;
+export default Loader
