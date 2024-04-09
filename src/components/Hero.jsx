@@ -60,7 +60,7 @@ const HeroImage = styled(GatsbyImage)`
   }
   @media (min-width: 900px) {
     width: 75%;
-    left: 25%;
+    left: 30%;
     &:after {
       content: "";
       display: block;
@@ -148,7 +148,7 @@ function Hero({ setRecipeClicked }) {
   const [isVisible, setVisible] = useState()
   const data = useStaticQuery(graphql`
     query HeroQuery {
-      sanityRecipe(title: { eq: "Jerk Chicken" }) {
+      sanityRecipe(title: { eq: "Mediterranean Stuffed Chicken Breast" }) {
         title
         quote
         publish_date
